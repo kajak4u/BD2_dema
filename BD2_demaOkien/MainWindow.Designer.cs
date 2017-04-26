@@ -30,6 +30,7 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.pacjenciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wizytyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -37,7 +38,8 @@
             // 
             this.menuStrip1.AllowMerge = false;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pacjenciToolStripMenuItem});
+            this.pacjenciToolStripMenuItem,
+            this.wizytyToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.MdiWindowListItem = this.pacjenciToolStripMenuItem;
             this.menuStrip1.Name = "menuStrip1";
@@ -49,8 +51,15 @@
             // 
             this.pacjenciToolStripMenuItem.Name = "pacjenciToolStripMenuItem";
             this.pacjenciToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.pacjenciToolStripMenuItem.Text = "Pacjenci";
+            this.pacjenciToolStripMenuItem.Text = "&Pacjenci";
             this.pacjenciToolStripMenuItem.Click += new System.EventHandler(this.pacjenciToolStripMenuItem_Click);
+            // 
+            // wizytyToolStripMenuItem
+            // 
+            this.wizytyToolStripMenuItem.Name = "wizytyToolStripMenuItem";
+            this.wizytyToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.wizytyToolStripMenuItem.Text = "&Wizyty";
+            this.wizytyToolStripMenuItem.Click += new System.EventHandler(this.wizytyToolStripMenuItem_Click);
             // 
             // MainWindow
             // 
@@ -71,5 +80,6 @@
         #endregion
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem pacjenciToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem wizytyToolStripMenuItem;
     }
 }

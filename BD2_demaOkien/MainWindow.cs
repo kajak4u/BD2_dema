@@ -22,9 +22,16 @@ namespace BD2_demaOkien
 
         private void pacjenciToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Patients patients = new Patients();
+            PatientsWindow patients = new PatientsWindow();
             patients.MdiParent = this;
             patients.Show();
+        }
+
+        private void wizytyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VisitsWindow visits = new VisitsWindow();
+            visits.MdiParent = this;
+            visits.Show();
         }
     }
 }

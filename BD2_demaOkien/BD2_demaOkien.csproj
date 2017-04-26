@@ -77,11 +77,11 @@
     <Compile Include="PatientDetailsWindow.Designer.cs">
       <DependentUpon>PatientDetailsWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Patients.cs">
+    <Compile Include="PatientsWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Patients.Designer.cs">
-      <DependentUpon>Patients.cs</DependentUpon>
+    <Compile Include="PatientsWindow.Designer.cs">
+      <DependentUpon>PatientsWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -100,8 +100,8 @@
     <EmbeddedResource Include="PatientDetailsWindow.resx">
       <DependentUpon>PatientDetailsWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Patients.resx">
-      <DependentUpon>Patients.cs</DependentUpon>
+    <EmbeddedResource Include="PatientsWindow.resx">
+      <DependentUpon>PatientsWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

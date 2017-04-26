@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BD2_demaOkien
 {
-    public partial class Patients : Form
+    public partial class PatientsWindow : Form
     {
-        public Patients()
+        public PatientsWindow()
         {
             InitializeComponent();
         }
@@ -29,7 +29,7 @@ namespace BD2_demaOkien
 
         private void Patients_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'bD2_demaDataSet.Patients' table. You can move, or remove it, as needed.
+            // TODO: This line of code loads data into the 'bD2_demaDataSet.PatientsWindow' table. You can move, or remove it, as needed.
             this.patientsTableAdapter.Fill(this.bD2_demaDataSet.Patients);
 
         }
@@ -59,7 +59,9 @@ namespace BD2_demaOkien
 
         private void bindingNavigatorItemVisits_Click(object sender, EventArgs e)
         {
-            new VisitsWindow().ShowDialog();
+            VisitsWindow visits = new VisitsWindow();
+            visits.MdiParent = this.MdiParent;
+            visits.Show();
         }
     }
 }
