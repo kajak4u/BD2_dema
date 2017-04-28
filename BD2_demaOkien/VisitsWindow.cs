@@ -21,8 +21,6 @@ namespace BD2_demaOkien
         {
             // TODO: This line of code loads data into the 'bD_2DataSet.Visit' table. You can move, or remove it, as needed.
             this.visitTableAdapter.Fill(this.bD_2DataSet.Visit);
-            // TODO: This line of code loads data into the 'bD2_demaDataSet1.Visits' table. You can move, or remove it, as needed.
-            this.visitsTableAdapter.Fill(this.bD2_demaDataSet1.Visits);
             comboBox1.SelectedIndex = 0;
         }
     }

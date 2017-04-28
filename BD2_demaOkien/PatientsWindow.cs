@@ -31,8 +31,6 @@ namespace BD2_demaOkien
         {
             // TODO: This line of code loads data into the 'bD_2DataSet.Patient' table. You can move, or remove it, as needed.
             this.patientTableAdapter.Fill(this.bD_2DataSet.Patient);
-            // TODO: This line of code loads data into the 'bD2_demaDataSet11.Patients' table. You can move, or remove it, as needed.
-            this.patientsTableAdapter1.Fill(this.bD2_demaDataSet11.Patients);
 
         }
 
@@ -40,7 +38,7 @@ namespace BD2_demaOkien
         {
             try
             {
-                this.patientsTableAdapter1.Fill(this.bD2_demaDataSet11.Patients);
+                this.patientTableAdapter.Fill(this.bD_2DataSet.Patient);
             }
             catch (System.Exception ex)
             {
