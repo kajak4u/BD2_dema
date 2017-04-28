@@ -33,5 +33,15 @@ namespace BD2_demaOkien.Properties {
                 return ((string)(this["BD2_demaConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localDB)\\MSSQLLocalDB;Initial Catalog=BD_2;Integrated Security=True")]
+        public string BD_2ConnectionString {
+            get {
+                return ((string)(this["BD_2ConnectionString"]));
+            }
+        }
     }
 }

@@ -29,6 +29,8 @@ namespace BD2_demaOkien
 
         private void Patients_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'bD_2DataSet.Patient' table. You can move, or remove it, as needed.
+            this.patientTableAdapter.Fill(this.bD_2DataSet.Patient);
             // TODO: This line of code loads data into the 'bD2_demaDataSet11.Patients' table. You can move, or remove it, as needed.
             this.patientsTableAdapter1.Fill(this.bD2_demaDataSet11.Patients);
 
