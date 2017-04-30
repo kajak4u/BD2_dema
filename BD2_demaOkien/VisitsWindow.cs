@@ -26,12 +26,12 @@ namespace BD2_demaOkien
 
         private void bindingNavigatorItemData_Click(object sender, EventArgs e)
         {
-            new VisitDetailsWindow().ShowDialog();
+            new VisitDetailsWindow_Register(ViewMode.MODE_VIEW).ShowDialog();
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            new VisitAddWindow().ShowDialog();
+            new VisitDetailsWindow_Register(ViewMode.MODE_CREATE).ShowDialog();
         }
     }
 }

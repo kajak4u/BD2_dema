@@ -6,7 +6,7 @@ using WindowsFormsCalendar;
 
 namespace BD2_demaOkien
 {
-    partial class VisitAddWindow
+    partial class VisitDetailsWindow_Register
     {
         /// <summary>
         /// Required designer variable.
@@ -34,12 +34,11 @@ namespace BD2_demaOkien
         /// </summary>
         private void InitializeComponent()
         {
-            this.DataPanel = new System.Windows.Forms.Panel();
-            this.dayScheduler = new BD2_demaOkien.DayScheduler();
+            this.CalendarPanel = new System.Windows.Forms.Panel();
             this.ResultPanel = new System.Windows.Forms.Panel();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonApply = new System.Windows.Forms.Button();
-            this.CalendarPanel = new System.Windows.Forms.Panel();
+            this.DataPanel = new System.Windows.Forms.Panel();
             this.dateTimeVisitDate = new System.Windows.Forms.DateTimePicker();
             this.dateTimeVisitTime = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,40 +48,26 @@ namespace BD2_demaOkien
             this.textBoxPatient = new System.Windows.Forms.TextBox();
             this.buttonChoosePatient = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.DataPanel.SuspendLayout();
-            this.ResultPanel.SuspendLayout();
+            this.ViewPanel = new System.Windows.Forms.Panel();
+            this.buttonEdit = new System.Windows.Forms.Button();
+            this.buttonClose = new System.Windows.Forms.Button();
+            this.dayScheduler = new BD2_demaOkien.DayScheduler();
             this.CalendarPanel.SuspendLayout();
+            this.ResultPanel.SuspendLayout();
+            this.DataPanel.SuspendLayout();
+            this.ViewPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // DataPanel
+            // CalendarPanel
             // 
-            this.DataPanel.AutoScroll = true;
-            this.DataPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.DataPanel.Controls.Add(this.dayScheduler);
-            this.DataPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DataPanel.Location = new System.Drawing.Point(0, 105);
-            this.DataPanel.Name = "DataPanel";
-            this.DataPanel.Size = new System.Drawing.Size(456, 348);
-            this.DataPanel.TabIndex = 0;
-            // 
-            // dayScheduler
-            // 
-            this.dayScheduler.AllowItemEdit = false;
-            this.dayScheduler.AllowNew = false;
-            this.dayScheduler.CalendarTimeFormat = WindowsFormsCalendar.CalendarTimeFormat.TwentyFourHour;
-            this.dayScheduler.dayBegin = System.TimeSpan.Parse("08:00:00");
-            this.dayScheduler.dayEnd = System.TimeSpan.Parse("16:00:00");
-            this.dayScheduler.FirstDayOfWeek = System.DayOfWeek.Monday;
-            this.dayScheduler.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dayScheduler.ItemsBackgroundColor = System.Drawing.Color.RoyalBlue;
-            this.dayScheduler.ItemsFont = null;
-            this.dayScheduler.ItemsForeColor = System.Drawing.Color.Black;
-            this.dayScheduler.Location = new System.Drawing.Point(0, -780);
-            this.dayScheduler.Name = "dayScheduler";
-            this.dayScheduler.Size = new System.Drawing.Size(435, 1518);
-            this.dayScheduler.TabIndex = 24;
-            this.dayScheduler.Text = "dayScheduler";
-            this.dayScheduler.TimeScale = WindowsFormsCalendar.CalendarTimeScale.FifteenMinutes;
+            this.CalendarPanel.AutoScroll = true;
+            this.CalendarPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.CalendarPanel.Controls.Add(this.dayScheduler);
+            this.CalendarPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CalendarPanel.Location = new System.Drawing.Point(0, 105);
+            this.CalendarPanel.Name = "CalendarPanel";
+            this.CalendarPanel.Size = new System.Drawing.Size(456, 313);
+            this.CalendarPanel.TabIndex = 0;
             // 
             // ResultPanel
             // 
@@ -90,7 +75,7 @@ namespace BD2_demaOkien
             this.ResultPanel.Controls.Add(this.buttonCancel);
             this.ResultPanel.Controls.Add(this.buttonApply);
             this.ResultPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ResultPanel.Location = new System.Drawing.Point(0, 453);
+            this.ResultPanel.Location = new System.Drawing.Point(0, 418);
             this.ResultPanel.Name = "ResultPanel";
             this.ResultPanel.Size = new System.Drawing.Size(456, 35);
             this.ResultPanel.TabIndex = 23;
@@ -105,6 +90,7 @@ namespace BD2_demaOkien
             this.buttonCancel.TabIndex = 19;
             this.buttonCancel.Text = "Anuluj";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonApply
             // 
@@ -116,24 +102,25 @@ namespace BD2_demaOkien
             this.buttonApply.TabIndex = 18;
             this.buttonApply.Text = "Zatwierdź";
             this.buttonApply.UseVisualStyleBackColor = true;
+            this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
             // 
-            // CalendarPanel
+            // DataPanel
             // 
-            this.CalendarPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.CalendarPanel.Controls.Add(this.dateTimeVisitDate);
-            this.CalendarPanel.Controls.Add(this.dateTimeVisitTime);
-            this.CalendarPanel.Controls.Add(this.label3);
-            this.CalendarPanel.Controls.Add(this.comboBoxDoctor);
-            this.CalendarPanel.Controls.Add(this.buttonChooseDoctor);
-            this.CalendarPanel.Controls.Add(this.label2);
-            this.CalendarPanel.Controls.Add(this.textBoxPatient);
-            this.CalendarPanel.Controls.Add(this.buttonChoosePatient);
-            this.CalendarPanel.Controls.Add(this.label1);
-            this.CalendarPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CalendarPanel.Location = new System.Drawing.Point(0, 0);
-            this.CalendarPanel.Name = "CalendarPanel";
-            this.CalendarPanel.Size = new System.Drawing.Size(456, 105);
-            this.CalendarPanel.TabIndex = 25;
+            this.DataPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.DataPanel.Controls.Add(this.dateTimeVisitDate);
+            this.DataPanel.Controls.Add(this.dateTimeVisitTime);
+            this.DataPanel.Controls.Add(this.label3);
+            this.DataPanel.Controls.Add(this.comboBoxDoctor);
+            this.DataPanel.Controls.Add(this.buttonChooseDoctor);
+            this.DataPanel.Controls.Add(this.label2);
+            this.DataPanel.Controls.Add(this.textBoxPatient);
+            this.DataPanel.Controls.Add(this.buttonChoosePatient);
+            this.DataPanel.Controls.Add(this.label1);
+            this.DataPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.DataPanel.Location = new System.Drawing.Point(0, 0);
+            this.DataPanel.Name = "DataPanel";
+            this.DataPanel.Size = new System.Drawing.Size(456, 105);
+            this.DataPanel.TabIndex = 25;
             // 
             // dateTimeVisitDate
             // 
@@ -232,35 +219,91 @@ namespace BD2_demaOkien
             this.label1.Text = "Pacjent           ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // VisitAddWindow
+            // ViewPanel
+            // 
+            this.ViewPanel.AutoSize = true;
+            this.ViewPanel.Controls.Add(this.buttonEdit);
+            this.ViewPanel.Controls.Add(this.buttonClose);
+            this.ViewPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ViewPanel.Location = new System.Drawing.Point(0, 453);
+            this.ViewPanel.Name = "ViewPanel";
+            this.ViewPanel.Size = new System.Drawing.Size(456, 35);
+            this.ViewPanel.TabIndex = 26;
+            // 
+            // buttonEdit
+            // 
+            this.buttonEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonEdit.Location = new System.Drawing.Point(344, 2);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(100, 30);
+            this.buttonEdit.TabIndex = 19;
+            this.buttonEdit.Text = "Edytuj";
+            this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            // 
+            // buttonClose
+            // 
+            this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonClose.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonClose.Location = new System.Drawing.Point(12, 2);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(100, 30);
+            this.buttonClose.TabIndex = 18;
+            this.buttonClose.Text = "Zamknij";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            // 
+            // dayScheduler
+            // 
+            this.dayScheduler.AllowItemEdit = false;
+            this.dayScheduler.AllowNew = false;
+            this.dayScheduler.CalendarTimeFormat = WindowsFormsCalendar.CalendarTimeFormat.TwentyFourHour;
+            this.dayScheduler.dayBegin = System.TimeSpan.Parse("08:00:00");
+            this.dayScheduler.dayEnd = System.TimeSpan.Parse("16:00:00");
+            this.dayScheduler.FirstDayOfWeek = System.DayOfWeek.Monday;
+            this.dayScheduler.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dayScheduler.ItemsBackgroundColor = System.Drawing.Color.RoyalBlue;
+            this.dayScheduler.ItemsFont = null;
+            this.dayScheduler.ItemsForeColor = System.Drawing.Color.Black;
+            this.dayScheduler.Location = new System.Drawing.Point(0, -780);
+            this.dayScheduler.Name = "dayScheduler";
+            this.dayScheduler.Size = new System.Drawing.Size(435, 1518);
+            this.dayScheduler.TabIndex = 24;
+            this.dayScheduler.Text = "dayScheduler";
+            this.dayScheduler.TimeScale = WindowsFormsCalendar.CalendarTimeScale.FifteenMinutes;
+            // 
+            // VisitDetailsWindow_Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(456, 488);
-            this.Controls.Add(this.DataPanel);
             this.Controls.Add(this.CalendarPanel);
+            this.Controls.Add(this.DataPanel);
             this.Controls.Add(this.ResultPanel);
+            this.Controls.Add(this.ViewPanel);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "VisitAddWindow";
+            this.Name = "VisitDetailsWindow_Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Nowa wizyta";
-            this.DataPanel.ResumeLayout(false);
-            this.ResultPanel.ResumeLayout(false);
             this.CalendarPanel.ResumeLayout(false);
-            this.CalendarPanel.PerformLayout();
+            this.ResultPanel.ResumeLayout(false);
+            this.DataPanel.ResumeLayout(false);
+            this.DataPanel.PerformLayout();
+            this.ViewPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Panel DataPanel;
+        private System.Windows.Forms.Panel CalendarPanel;
         private Panel ResultPanel;
         private Button buttonCancel;
         private Button buttonApply;
         private DayScheduler dayScheduler;
-        private Panel CalendarPanel;
+        private Panel DataPanel;
         private DateTimePicker dateTimeVisitDate;
         private DateTimePicker dateTimeVisitTime;
         private Label label3;
@@ -270,5 +313,8 @@ namespace BD2_demaOkien
         private TextBox textBoxPatient;
         private Button buttonChoosePatient;
         private Label label1;
+        private Panel ViewPanel;
+        private Button buttonEdit;
+        private Button buttonClose;
     }
 }
