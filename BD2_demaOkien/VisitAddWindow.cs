@@ -15,12 +15,12 @@ namespace BD2_demaOkien
         public VisitAddWindow()
         {
             InitializeComponent();
-            this.dateTimePicker3.Value = DateTime.Now;
+            this.dateTimeVisitDate.Value = DateTime.Now;
         }
 
-        private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
+        private void dateTimeVisitDate_ValueChanged(object sender, EventArgs e)
         {
-            this.calendar1.SetViewRange(this.dateTimePicker3.Value, dateTimePicker3.Value);
+            this.dayScheduler.SetViewRange(this.dateTimeVisitDate.Value, dateTimeVisitDate.Value);
         }
     }
 }
