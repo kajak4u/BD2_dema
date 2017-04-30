@@ -63,5 +63,10 @@ namespace BD2_demaOkien
             visits.MdiParent = this.MdiParent;
             visits.Show();
         }
+
+        private void bindingNavigatorItemData_Click(object sender, EventArgs e)
+        {
+            new PatientDetailsWindow(ViewMode.MODE_VIEW).ShowDialog();
+        }
     }
 }

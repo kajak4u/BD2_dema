@@ -41,6 +41,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.patientidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phonenumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pESELDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bD_2DataSet = new BD2_demaOkien.BD_2DataSet();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -60,22 +68,14 @@
             this.bindingNavigatorItemVisits = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorItemTests = new System.Windows.Forms.ToolStripButton();
-            this.bD_2DataSet = new BD2_demaOkien.BD_2DataSet();
-            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.patientTableAdapter = new BD2_demaOkien.BD_2DataSetTableAdapters.PatientTableAdapter();
-            this.patientidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phonenumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pESELDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bD_2DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bD_2DataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -206,6 +206,66 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(539, 240);
             this.dataGridView1.TabIndex = 2;
+            // 
+            // patientidDataGridViewTextBoxColumn
+            // 
+            this.patientidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.patientidDataGridViewTextBoxColumn.DataPropertyName = "Patient_id";
+            this.patientidDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.patientidDataGridViewTextBoxColumn.Name = "patientidDataGridViewTextBoxColumn";
+            this.patientidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.patientidDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // firstnameDataGridViewTextBoxColumn
+            // 
+            this.firstnameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.firstnameDataGridViewTextBoxColumn.DataPropertyName = "First_name";
+            this.firstnameDataGridViewTextBoxColumn.HeaderText = "Imię";
+            this.firstnameDataGridViewTextBoxColumn.Name = "firstnameDataGridViewTextBoxColumn";
+            this.firstnameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastnameDataGridViewTextBoxColumn
+            // 
+            this.lastnameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.lastnameDataGridViewTextBoxColumn.DataPropertyName = "Last_name";
+            this.lastnameDataGridViewTextBoxColumn.HeaderText = "Nazwisko";
+            this.lastnameDataGridViewTextBoxColumn.Name = "lastnameDataGridViewTextBoxColumn";
+            this.lastnameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // phonenumberDataGridViewTextBoxColumn
+            // 
+            this.phonenumberDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.phonenumberDataGridViewTextBoxColumn.DataPropertyName = "Phone_number";
+            this.phonenumberDataGridViewTextBoxColumn.HeaderText = "Nr telefonu";
+            this.phonenumberDataGridViewTextBoxColumn.Name = "phonenumberDataGridViewTextBoxColumn";
+            this.phonenumberDataGridViewTextBoxColumn.ReadOnly = true;
+            this.phonenumberDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // pESELDataGridViewTextBoxColumn
+            // 
+            this.pESELDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.pESELDataGridViewTextBoxColumn.DataPropertyName = "PESEL";
+            this.pESELDataGridViewTextBoxColumn.HeaderText = "PESEL";
+            this.pESELDataGridViewTextBoxColumn.Name = "pESELDataGridViewTextBoxColumn";
+            this.pESELDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // addressidDataGridViewTextBoxColumn
+            // 
+            this.addressidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.addressidDataGridViewTextBoxColumn.DataPropertyName = "address_id";
+            this.addressidDataGridViewTextBoxColumn.HeaderText = "Adres";
+            this.addressidDataGridViewTextBoxColumn.Name = "addressidDataGridViewTextBoxColumn";
+            this.addressidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // patientBindingSource
+            // 
+            this.patientBindingSource.DataMember = "Patient";
+            this.patientBindingSource.DataSource = this.bD_2DataSet;
+            // 
+            // bD_2DataSet
+            // 
+            this.bD_2DataSet.DataSetName = "BD_2DataSet";
+            this.bD_2DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bindingNavigator1
             // 
@@ -354,6 +414,7 @@
             this.bindingNavigatorItemData.Name = "bindingNavigatorItemData";
             this.bindingNavigatorItemData.Size = new System.Drawing.Size(38, 22);
             this.bindingNavigatorItemData.Text = "Dane";
+            this.bindingNavigatorItemData.Click += new System.EventHandler(this.bindingNavigatorItemData_Click);
             // 
             // toolStripSeparator3
             // 
@@ -384,69 +445,9 @@
             this.bindingNavigatorItemTests.Size = new System.Drawing.Size(53, 22);
             this.bindingNavigatorItemTests.Text = "Badania";
             // 
-            // bD_2DataSet
-            // 
-            this.bD_2DataSet.DataSetName = "BD_2DataSet";
-            this.bD_2DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // patientBindingSource
-            // 
-            this.patientBindingSource.DataMember = "Patient";
-            this.patientBindingSource.DataSource = this.bD_2DataSet;
-            // 
             // patientTableAdapter
             // 
             this.patientTableAdapter.ClearBeforeFill = true;
-            // 
-            // patientidDataGridViewTextBoxColumn
-            // 
-            this.patientidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.patientidDataGridViewTextBoxColumn.DataPropertyName = "Patient_id";
-            this.patientidDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.patientidDataGridViewTextBoxColumn.Name = "patientidDataGridViewTextBoxColumn";
-            this.patientidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.patientidDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // firstnameDataGridViewTextBoxColumn
-            // 
-            this.firstnameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.firstnameDataGridViewTextBoxColumn.DataPropertyName = "First_name";
-            this.firstnameDataGridViewTextBoxColumn.HeaderText = "Imię";
-            this.firstnameDataGridViewTextBoxColumn.Name = "firstnameDataGridViewTextBoxColumn";
-            this.firstnameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lastnameDataGridViewTextBoxColumn
-            // 
-            this.lastnameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.lastnameDataGridViewTextBoxColumn.DataPropertyName = "Last_name";
-            this.lastnameDataGridViewTextBoxColumn.HeaderText = "Nazwisko";
-            this.lastnameDataGridViewTextBoxColumn.Name = "lastnameDataGridViewTextBoxColumn";
-            this.lastnameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // phonenumberDataGridViewTextBoxColumn
-            // 
-            this.phonenumberDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.phonenumberDataGridViewTextBoxColumn.DataPropertyName = "Phone_number";
-            this.phonenumberDataGridViewTextBoxColumn.HeaderText = "Nr telefonu";
-            this.phonenumberDataGridViewTextBoxColumn.Name = "phonenumberDataGridViewTextBoxColumn";
-            this.phonenumberDataGridViewTextBoxColumn.ReadOnly = true;
-            this.phonenumberDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // pESELDataGridViewTextBoxColumn
-            // 
-            this.pESELDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.pESELDataGridViewTextBoxColumn.DataPropertyName = "PESEL";
-            this.pESELDataGridViewTextBoxColumn.HeaderText = "PESEL";
-            this.pESELDataGridViewTextBoxColumn.Name = "pESELDataGridViewTextBoxColumn";
-            this.pESELDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // addressidDataGridViewTextBoxColumn
-            // 
-            this.addressidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.addressidDataGridViewTextBoxColumn.DataPropertyName = "address_id";
-            this.addressidDataGridViewTextBoxColumn.HeaderText = "Adres";
-            this.addressidDataGridViewTextBoxColumn.Name = "addressidDataGridViewTextBoxColumn";
-            this.addressidDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // PatientsWindow
             // 
@@ -464,11 +465,11 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bD_2DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bD_2DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

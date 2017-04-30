@@ -43,5 +43,17 @@ namespace BD2_demaOkien.Properties {
                 return ((string)(this["BD_2ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("04/29/2017 22:46:05")]
+        public global::System.DateTime chosenDateTime {
+            get {
+                return ((global::System.DateTime)(this["chosenDateTime"]));
+            }
+            set {
+                this["chosenDateTime"] = value;
+            }
+        }
     }
 }

@@ -23,5 +23,15 @@ namespace BD2_demaOkien
             this.visitTableAdapter.Fill(this.bD_2DataSet.Visit);
             comboBox1.SelectedIndex = 0;
         }
+
+        private void bindingNavigatorItemData_Click(object sender, EventArgs e)
+        {
+            new VisitDetailsWindow().ShowDialog();
+        }
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+            new VisitAddWindow().ShowDialog();
+        }
     }
 }

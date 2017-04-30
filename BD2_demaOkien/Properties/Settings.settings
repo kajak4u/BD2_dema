@@ -18,5 +18,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=(localDB)\MSSQLLocalDB;Initial Catalog=BD_2;Integrated Security=True</Value>
     </Setting>
+    <Setting Name="chosenDateTime" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">04/29/2017 22:46:05</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
