@@ -59,6 +59,12 @@
     <Compile Include="DayScheduler.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ExaminationsWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExaminationsWindow.Designer.cs">
+      <DependentUpon>ExaminationsWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewMode.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>

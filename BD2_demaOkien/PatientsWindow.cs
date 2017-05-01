@@ -68,5 +68,12 @@ namespace BD2_demaOkien
         {
             new PatientDetailsWindow(ViewMode.MODE_VIEW).ShowDialog();
         }
+
+        private void bindingNavigatorItemTests_Click(object sender, EventArgs e)
+        {
+            ExaminationsWindow examinations = new ExaminationsWindow();
+            examinations.MdiParent = this.MdiParent;
+            examinations.Show();
+        }
     }
 }

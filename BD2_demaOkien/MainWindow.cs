@@ -33,5 +33,12 @@ namespace BD2_demaOkien
             visits.MdiParent = this;
             visits.Show();
         }
+
+        private void wynikibadańToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExaminationsWindow examinations = new ExaminationsWindow();
+            examinations.MdiParent = this.MdiParent;
+            examinations.Show();
+        }
     }
 }

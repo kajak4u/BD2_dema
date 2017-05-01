@@ -444,6 +444,7 @@
             this.bindingNavigatorItemTests.Name = "bindingNavigatorItemTests";
             this.bindingNavigatorItemTests.Size = new System.Drawing.Size(53, 22);
             this.bindingNavigatorItemTests.Text = "Badania";
+            this.bindingNavigatorItemTests.Click += new System.EventHandler(this.bindingNavigatorItemTests_Click);
             // 
             // patientTableAdapter
             // 
