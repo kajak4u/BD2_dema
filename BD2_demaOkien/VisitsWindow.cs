@@ -20,7 +20,7 @@ namespace BD2_demaOkien
         private void VisitsWindow_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'bD_2DataSet.Visit' table. You can move, or remove it, as needed.
-            this.visitTableAdapter.Fill(this.bD_2DataSet.Visit);
+            //this.visitTableAdapter.Fill(this.bD_2DataSet.Visit);
             comboBox1.SelectedIndex = 0;
         }
 

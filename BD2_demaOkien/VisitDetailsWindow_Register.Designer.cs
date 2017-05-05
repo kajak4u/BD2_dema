@@ -79,6 +79,7 @@ namespace BD2_demaOkien
             this.ResultPanel.Name = "ResultPanel";
             this.ResultPanel.Size = new System.Drawing.Size(456, 35);
             this.ResultPanel.TabIndex = 23;
+            this.ResultPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ResultPanel_Paint);
             // 
             // buttonCancel
             // 
@@ -287,6 +288,7 @@ namespace BD2_demaOkien
             this.Name = "VisitDetailsWindow_Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Nowa wizyta";
+            this.Load += new System.EventHandler(this.VisitDetailsWindow_Register_Load);
             this.CalendarPanel.ResumeLayout(false);
             this.ResultPanel.ResumeLayout(false);
             this.DataPanel.ResumeLayout(false);

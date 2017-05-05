@@ -65,6 +65,12 @@
     <Compile Include="ExaminationsWindow.Designer.cs">
       <DependentUpon>ExaminationsWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExaminationWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExaminationWindow.Designer.cs">
+      <DependentUpon>ExaminationWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewMode.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -110,6 +116,15 @@
     <Compile Include="VisitsWindow.Designer.cs">
       <DependentUpon>VisitsWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="VisitsWindow_Doctor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisitsWindow_Doctor.Designer.cs">
+      <DependentUpon>VisitsWindow_Doctor.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ExaminationWindow.resx">
+      <DependentUpon>ExaminationWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VisitsWindow.resx">
       <DependentUpon>VisitsWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisitsWindow_Doctor.resx">
+      <DependentUpon>VisitsWindow_Doctor.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="BD_2DataSet.xsc">
       <DependentUpon>BD_2DataSet.xsd</DependentUpon>

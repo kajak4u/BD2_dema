@@ -53,5 +53,15 @@ namespace BD2_demaOkien
             this.openMode = ViewMode.MODE_VIEW;
             SetEnabledControls();
         }
+
+        private void VisitDetailsWindow_Register_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ResultPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
