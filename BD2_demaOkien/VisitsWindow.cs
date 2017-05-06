@@ -12,9 +12,15 @@ namespace BD2_demaOkien
 {
     public partial class VisitsWindow : Form
     {
-        public VisitsWindow()
+        public VisitsWindow(Role openedRole)
         {
             InitializeComponent();
+            if(openedRole == Role.DOCTOR)
+            {
+                label4.Visible = false;
+                comboBox2.Visible = false;
+                comboBox2.SelectedValue = "/**current user**/";
+            }
         }
 
         private void VisitsWindow_Load(object sender, EventArgs e)
@@ -26,12 +32,12 @@ namespace BD2_demaOkien
 
         private void bindingNavigatorItemData_Click(object sender, EventArgs e)
         {
-            new VisitDetailsWindow_Register(ViewMode.MODE_VIEW).ShowDialog();
+            new VisitDetailsWindow_Register(ViewMode.VIEW).ShowDialog();
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            new VisitDetailsWindow_Register(ViewMode.MODE_CREATE).ShowDialog();
+            new VisitDetailsWindow_Register(ViewMode.CREATE).ShowDialog();
         }
     }
 }

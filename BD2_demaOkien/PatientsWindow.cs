@@ -49,24 +49,24 @@ namespace BD2_demaOkien
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            new PatientDetailsWindow(ViewMode.MODE_CREATE).ShowDialog();
+            new PatientDetailsWindow(ViewMode.CREATE).ShowDialog();
         }
 
         private void bindingNavigatorEditItem_Click(object sender, EventArgs e)
         {
-            new PatientDetailsWindow(ViewMode.MODE_EDIT).ShowDialog();
+            new PatientDetailsWindow(ViewMode.EDIT).ShowDialog();
         }
 
         private void bindingNavigatorItemVisits_Click(object sender, EventArgs e)
         {
-            VisitsWindow visits = new VisitsWindow();
+            VisitsWindow visits = new VisitsWindow(Role.REGISTRAR);
             visits.MdiParent = this.MdiParent;
             visits.Show();
         }
 
         private void bindingNavigatorItemData_Click(object sender, EventArgs e)
         {
-            new PatientDetailsWindow(ViewMode.MODE_VIEW).ShowDialog();
+            new PatientDetailsWindow(ViewMode.VIEW).ShowDialog();
         }
 
         private void bindingNavigatorItemTests_Click(object sender, EventArgs e)

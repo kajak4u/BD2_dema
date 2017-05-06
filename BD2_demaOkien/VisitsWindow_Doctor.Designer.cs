@@ -29,12 +29,10 @@
         private void InitializeComponent()
         {
             this.DataPanel = new System.Windows.Forms.Panel();
-            this.dateTimeMyVisitsDate = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.CalendarPanel = new System.Windows.Forms.Panel();
+            this.dateTimeMyVisitsDate = new System.Windows.Forms.DateTimePicker();
             this.daySchedulerMyVisits = new BD2_demaOkien.DayScheduler();
-            this.comboBoxMyVisitsPatient = new System.Windows.Forms.ComboBox();
             this.DataPanel.SuspendLayout();
             this.CalendarPanel.SuspendLayout();
             this.SuspendLayout();
@@ -42,36 +40,13 @@
             // DataPanel
             // 
             this.DataPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.DataPanel.Controls.Add(this.comboBoxMyVisitsPatient);
             this.DataPanel.Controls.Add(this.dateTimeMyVisitsDate);
-            this.DataPanel.Controls.Add(this.label3);
             this.DataPanel.Controls.Add(this.label1);
             this.DataPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.DataPanel.Location = new System.Drawing.Point(0, 0);
             this.DataPanel.Name = "DataPanel";
-            this.DataPanel.Size = new System.Drawing.Size(696, 88);
+            this.DataPanel.Size = new System.Drawing.Size(696, 59);
             this.DataPanel.TabIndex = 26;
-            // 
-            // dateTimeMyVisitsDate
-            // 
-            this.dateTimeMyVisitsDate.Checked = false;
-            this.dateTimeMyVisitsDate.CustomFormat = "";
-            this.dateTimeMyVisitsDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::BD2_demaOkien.Properties.Settings.Default, "chosenDateTime", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.dateTimeMyVisitsDate.Location = new System.Drawing.Point(94, 46);
-            this.dateTimeMyVisitsDate.Name = "dateTimeMyVisitsDate";
-            this.dateTimeMyVisitsDate.Size = new System.Drawing.Size(190, 20);
-            this.dateTimeMyVisitsDate.TabIndex = 31;
-            this.dateTimeMyVisitsDate.Value = global::BD2_demaOkien.Properties.Settings.Default.chosenDateTime;
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(13, 46);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 20);
-            this.label3.TabIndex = 29;
-            this.label3.Text = "Termin           ";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // label1
             // 
@@ -80,7 +55,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 20);
             this.label1.TabIndex = 23;
-            this.label1.Text = "Pacjent           ";
+            this.label1.Text = "Termin           ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // CalendarPanel
@@ -89,10 +64,22 @@
             this.CalendarPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.CalendarPanel.Controls.Add(this.daySchedulerMyVisits);
             this.CalendarPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CalendarPanel.Location = new System.Drawing.Point(0, 88);
+            this.CalendarPanel.Location = new System.Drawing.Point(0, 59);
             this.CalendarPanel.Name = "CalendarPanel";
-            this.CalendarPanel.Size = new System.Drawing.Size(696, 400);
+            this.CalendarPanel.Size = new System.Drawing.Size(696, 429);
             this.CalendarPanel.TabIndex = 27;
+            // 
+            // dateTimeMyVisitsDate
+            // 
+            this.dateTimeMyVisitsDate.Checked = false;
+            this.dateTimeMyVisitsDate.CustomFormat = "";
+            this.dateTimeMyVisitsDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::BD2_demaOkien.Properties.Settings.Default, "chosenDateTime", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.dateTimeMyVisitsDate.Location = new System.Drawing.Point(89, 17);
+            this.dateTimeMyVisitsDate.Name = "dateTimeMyVisitsDate";
+            this.dateTimeMyVisitsDate.Size = new System.Drawing.Size(190, 20);
+            this.dateTimeMyVisitsDate.TabIndex = 31;
+            this.dateTimeMyVisitsDate.Value = global::BD2_demaOkien.Properties.Settings.Default.chosenDateTime;
+            this.dateTimeMyVisitsDate.ValueChanged += new System.EventHandler(this.dateTimeMyVisitsDate_ValueChanged);
             // 
             // daySchedulerMyVisits
             // 
@@ -112,14 +99,6 @@
             this.daySchedulerMyVisits.TabIndex = 24;
             this.daySchedulerMyVisits.Text = "dayScheduler";
             this.daySchedulerMyVisits.TimeScale = WindowsFormsCalendar.CalendarTimeScale.FifteenMinutes;
-            // 
-            // comboBoxMyVisitsPatient
-            // 
-            this.comboBoxMyVisitsPatient.FormattingEnabled = true;
-            this.comboBoxMyVisitsPatient.Location = new System.Drawing.Point(94, 16);
-            this.comboBoxMyVisitsPatient.Name = "comboBoxMyVisitsPatient";
-            this.comboBoxMyVisitsPatient.Size = new System.Drawing.Size(588, 21);
-            this.comboBoxMyVisitsPatient.TabIndex = 32;
             // 
             // VisitsWindow_Doctor
             // 
@@ -141,12 +120,9 @@
         #endregion
 
         private System.Windows.Forms.Panel DataPanel;
-        private System.Windows.Forms.DateTimePicker dateTimeMyVisitsDate;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel CalendarPanel;
         private DayScheduler daySchedulerMyVisits;
-        private System.Windows.Forms.ComboBox comboBoxMyVisitsPatient;
-
+        private System.Windows.Forms.DateTimePicker dateTimeMyVisitsDate;
     }
 }

@@ -22,7 +22,7 @@ namespace BD2_demaOkien
 
         private void SetEnabledControls()
         {
-            bool readOnly = (viewMode == ViewMode.MODE_VIEW);
+            bool readOnly = (viewMode == ViewMode.VIEW);
             panelAddEdit.Visible = readOnly;
             panelView.Visible = !readOnly;
 
@@ -44,20 +44,20 @@ namespace BD2_demaOkien
 
         private void buttonApply_Click(object sender, EventArgs e)
         {
-            viewMode = ViewMode.MODE_VIEW;
+            viewMode = ViewMode.VIEW;
             SetEnabledControls();
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            viewMode = ViewMode.MODE_VIEW;
+            viewMode = ViewMode.VIEW;
             SetEnabledControls();
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
 
-            viewMode = ViewMode.MODE_EDIT;
+            viewMode = ViewMode.EDIT;
             SetEnabledControls();
         }
 

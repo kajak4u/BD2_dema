@@ -15,11 +15,18 @@ namespace BD2_demaOkien
         public VisitsWindow_Doctor()
         {
             InitializeComponent();
+            this.dateTimeMyVisitsDate.Value = DateTime.Now;
         }
 
         private void VisitsWindow_Doctor_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void dateTimeMyVisitsDate_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime newDay = dateTimeMyVisitsDate.Value;
+            daySchedulerMyVisits.SetViewRange(newDay, newDay);
         }
     }
 }

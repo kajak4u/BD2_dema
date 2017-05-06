@@ -29,13 +29,13 @@ namespace BD2_demaOkien
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            this.openMode = ViewMode.MODE_EDIT;
+            this.openMode = ViewMode.EDIT;
             SetEnabledControls();
         }
 
         private void SetEnabledControls()
         {
-            bool readOnly = (openMode == ViewMode.MODE_VIEW);
+            bool readOnly = (openMode == ViewMode.VIEW);
             ResultPanel.Visible = !readOnly;
             ViewPanel.Visible = readOnly;
             dayScheduler.Enabled = !readOnly;
@@ -44,13 +44,13 @@ namespace BD2_demaOkien
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            this.openMode = ViewMode.MODE_VIEW;
+            this.openMode = ViewMode.VIEW;
             SetEnabledControls();
         }
 
         private void buttonApply_Click(object sender, EventArgs e)
         {
-            this.openMode = ViewMode.MODE_VIEW;
+            this.openMode = ViewMode.VIEW;
             SetEnabledControls();
         }
 

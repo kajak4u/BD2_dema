@@ -29,7 +29,7 @@ namespace BD2_demaOkien
 
         private void wizytyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            VisitsWindow visits = new VisitsWindow();
+            VisitsWindow visits = new VisitsWindow(Role.REGISTRAR);
             visits.MdiParent = this;
             visits.Show();
         }
@@ -43,7 +43,7 @@ namespace BD2_demaOkien
 
         private void wizytyToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            VisitsWindow visits = new VisitsWindow();
+            VisitsWindow visits = new VisitsWindow(Role.DOCTOR);
             visits.MdiParent = this;
             visits.Show();
         }
