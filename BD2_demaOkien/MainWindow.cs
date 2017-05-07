@@ -36,8 +36,8 @@ namespace BD2_demaOkien
 
         private void wynikibadańToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ExaminationsWindow examinations = new ExaminationsWindow();
-            examinations.MdiParent = this.MdiParent;
+            ExaminationsWindow examinations = new ExaminationsWindow(Role.REGISTRAR);
+            examinations.MdiParent = this;
             examinations.Show();
         }
 
@@ -51,6 +51,13 @@ namespace BD2_demaOkien
         private void przeglądMoichWizytToolStripMenuItem_Click(object sender, EventArgs e)
         {
             VisitsWindow_Doctor visits = new VisitsWindow_Doctor();
+            visits.MdiParent = this;
+            visits.Show();
+        }
+
+        private void badaniaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExaminationsWindow visits = new ExaminationsWindow(Role.DOCTOR);
             visits.MdiParent = this;
             visits.Show();
         }

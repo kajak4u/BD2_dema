@@ -60,6 +60,18 @@
     <Compile Include="DayScheduler.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ExaminationsAddWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExaminationsAddWindow.Designer.cs">
+      <DependentUpon>ExaminationsAddWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExaminationsDetailWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExaminationsDetailWindow.Designer.cs">
+      <DependentUpon>ExaminationsDetailWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExaminationsWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +129,9 @@
     <Compile Include="VisitsWindow_Doctor.Designer.cs">
       <DependentUpon>VisitsWindow_Doctor.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ExaminationsWindow.resx">
+      <DependentUpon>ExaminationsWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>

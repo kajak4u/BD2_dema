@@ -12,9 +12,36 @@ namespace BD2_demaOkien
 {
     public partial class ExaminationsWindow : Form
     {
+        private Role userType;
+
         public ExaminationsWindow()
         {
             InitializeComponent();
+        }
+
+        public ExaminationsWindow(Role userType)
+        {
+            InitializeComponent();
+            this.userType = userType;
+            SetBinderControls();
+        }
+
+        private void SetBinderControls()
+        {
+            if (userType == Role.REGISTRAR)
+            {
+                bindingNavigatorAddNewItem.Visible = false;
+            }
+        }
+
+        private void bindingNavigatorItemData_Click(object sender, EventArgs e)
+        {
+            new ExaminationsDetailWindow().ShowDialog();
+        }
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+            new ExaminationsAddWindow().ShowDialog();
         }
     }
 }

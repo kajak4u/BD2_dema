@@ -121,6 +121,7 @@
             this.badaniaToolStripMenuItem.Name = "badaniaToolStripMenuItem";
             this.badaniaToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.badaniaToolStripMenuItem.Text = "&Badania";
+            this.badaniaToolStripMenuItem.Click += new System.EventHandler(this.badaniaToolStripMenuItem_Click);
             // 
             // laborantToolStripMenuItem
             // 
