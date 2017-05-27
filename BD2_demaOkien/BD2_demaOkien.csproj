@@ -83,11 +83,17 @@
       <DependentUpon>ExaminationsWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Enums.cs" />
-    <Compile Include="ExaminationsWindow_Lab.cs">
+    <Compile Include="ExaminationsWindowLabguy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ExaminationsWindow_Lab.Designer.cs">
-      <DependentUpon>ExaminationsWindow_Lab.cs</DependentUpon>
+    <Compile Include="ExaminationsWindowLabguy.Designer.cs">
+      <DependentUpon>ExaminationsWindowLabguy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExaminationsWindowLabmaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExaminationsWindowLabmaster.Designer.cs">
+      <DependentUpon>ExaminationsWindowLabmaster.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -139,14 +145,20 @@
     <Compile Include="VisitsWindow_Doctor.Designer.cs">
       <DependentUpon>VisitsWindow_Doctor.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ExaminationsDetailWindow.resx">
+      <DependentUpon>ExaminationsDetailWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ChooseDoctorModal.resx">
       <DependentUpon>ChooseDoctorModal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExaminationsWindow.resx">
       <DependentUpon>ExaminationsWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ExaminationsWindow_Lab.resx">
-      <DependentUpon>ExaminationsWindow_Lab.cs</DependentUpon>
+    <EmbeddedResource Include="ExaminationsWindowLabguy.resx">
+      <DependentUpon>ExaminationsWindowLabguy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExaminationsWindowLabmaster.resx">
+      <DependentUpon>ExaminationsWindowLabmaster.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

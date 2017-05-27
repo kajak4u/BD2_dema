@@ -64,9 +64,16 @@ namespace BD2_demaOkien
 
         private void badaniaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            ExaminationsWindow_Lab examinations = new ExaminationsWindow_Lab(Role.LAB);
-            examinations.MdiParent = this;
-            examinations.Show();
+            ExaminationsWindowLabguy visits = new ExaminationsWindowLabguy();
+            visits.MdiParent = this;
+            visits.Show();
+        }
+
+        private void badaniaToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            ExaminationsWindowLabmaster visits = new ExaminationsWindowLabmaster();
+            visits.MdiParent = this;
+            visits.Show();
         }
     }
 }
