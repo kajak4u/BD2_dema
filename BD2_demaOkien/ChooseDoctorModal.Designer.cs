@@ -165,7 +165,6 @@
         private BD_2DataSet bD_2DataSet;
         private System.Windows.Forms.BindingSource workerBindingSource;
         private BD_2DataSetTableAdapters.WorkerTableAdapter workerTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.Panel panelView;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonApply;
