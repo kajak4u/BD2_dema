@@ -9,11 +9,21 @@ using WindowsFormsCalendar;
 
 namespace BD2_demaOkien
 {
+    class CalendarTimeEventArgs : EventArgs
+    {
+        public readonly DateTime startTime;
+        public CalendarTimeEventArgs(DateTime startTime)
+        {
+            this.startTime = startTime;
+        }
+    }
     //this code is awful but I didn't find a better way...
     class DayScheduler : WindowsFormsCalendar.Calendar
     {
         private TimeSpan _dayBegin = new TimeSpan(0,0,0);
         private TimeSpan _dayEnd = new TimeSpan(24,0,0);
+        public delegate void CalendarTimeEventHandler(object sender, CalendarTimeEventArgs e);
+        public event CalendarTimeEventHandler ItemFocusChanged;
         public TimeSpan dayBegin
         {
             get {   return _dayBegin; }
@@ -98,7 +108,13 @@ namespace BD2_demaOkien
                 {
                     parent.ScrollControlIntoView(c);
                 }
+                ItemFocusChanged(this, new CalendarTimeEventArgs(elem.Date));
             }
+        }
+        protected override void OnMouseClick(MouseEventArgs e)
+        {
+            base.OnMouseClick(e);
+            ItemFocusChanged(this, new CalendarTimeEventArgs(this.SelectedElementStart.Date));
         }
     }
 }

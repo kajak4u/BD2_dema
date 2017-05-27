@@ -64,8 +64,9 @@
             this.bindingNavigatorEditItem = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorItemData = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorItemVisits = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorItemAddVisit = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorItemTests = new System.Windows.Forms.ToolStripButton();
             this.patientTableAdapter = new BD2_demaOkien.BD_2DataSetTableAdapters.PatientTableAdapter();
@@ -289,8 +290,9 @@
             this.bindingNavigatorDeleteItem,
             this.toolStripSeparator1,
             this.bindingNavigatorItemData,
-            this.toolStripSeparator3,
+            this.toolStripSeparator4,
             this.bindingNavigatorItemVisits,
+            this.bindingNavigatorItemAddVisit,
             this.toolStripSeparator2,
             this.bindingNavigatorItemTests});
             this.bindingNavigator1.Location = new System.Drawing.Point(0, 240);
@@ -416,10 +418,10 @@
             this.bindingNavigatorItemData.Text = "Dane";
             this.bindingNavigatorItemData.Click += new System.EventHandler(this.bindingNavigatorItemData_Click);
             // 
-            // toolStripSeparator3
+            // toolStripSeparator4
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorItemVisits
             // 
@@ -430,6 +432,16 @@
             this.bindingNavigatorItemVisits.Size = new System.Drawing.Size(46, 22);
             this.bindingNavigatorItemVisits.Text = "Wizyty";
             this.bindingNavigatorItemVisits.Click += new System.EventHandler(this.bindingNavigatorItemVisits_Click);
+            // 
+            // bindingNavigatorItemAddVisit
+            // 
+            this.bindingNavigatorItemAddVisit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorItemAddVisit.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorItemAddVisit.Image")));
+            this.bindingNavigatorItemAddVisit.Name = "bindingNavigatorItemAddVisit";
+            this.bindingNavigatorItemAddVisit.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorItemAddVisit.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorItemAddVisit.Text = "Dodaj wizytę";
+            this.bindingNavigatorItemAddVisit.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripSeparator2
             // 
@@ -504,7 +516,6 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorItemData;
         private System.Windows.Forms.ToolStripButton bindingNavigatorItemVisits;
         private System.Windows.Forms.ToolStripButton bindingNavigatorItemTests;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private BD_2DataSet bD_2DataSet;
@@ -516,5 +527,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn phonenumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pESELDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorItemAddVisit;
     }
 }

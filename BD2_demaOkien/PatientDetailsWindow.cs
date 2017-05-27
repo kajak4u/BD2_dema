@@ -44,14 +44,24 @@ namespace BD2_demaOkien
 
         private void buttonApply_Click(object sender, EventArgs e)
         {
-            viewMode = ViewMode.VIEW;
-            SetEnabledControls();
+            if (viewMode == ViewMode.CREATE)
+                Close();
+            else
+            {
+                viewMode = ViewMode.VIEW;
+                SetEnabledControls();
+            }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            viewMode = ViewMode.VIEW;
-            SetEnabledControls();
+            if (viewMode == ViewMode.CREATE)
+                Close();
+            else
+            {
+                viewMode = ViewMode.VIEW;
+                SetEnabledControls();
+            }
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)

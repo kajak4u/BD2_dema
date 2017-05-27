@@ -20,14 +20,19 @@ namespace BD2_demaOkien
                 label4.Visible = false;
                 comboBox2.Visible = false;
                 comboBox2.SelectedValue = "/**current user**/";
+                bindingNavigatorAddNewItem.Visible = false;
+                this.comboBox1.SelectedText = "Zarejestrowane";
+            }
+            else if(openedRole == Role.REGISTRAR)
+            {
+                textBox3.Enabled = false;
+                textBox3.Text = "/**current patient**/";
+                this.Text = "Wizyty dla: ";
             }
         }
 
         private void VisitsWindow_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'bD_2DataSet.Visit' table. You can move, or remove it, as needed.
-            //this.visitTableAdapter.Fill(this.bD_2DataSet.Visit);
-            comboBox1.SelectedIndex = 0;
         }
 
         private void bindingNavigatorItemData_Click(object sender, EventArgs e)
@@ -38,6 +43,22 @@ namespace BD2_demaOkien
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
             new VisitDetailsWindow_Register(ViewMode.CREATE).ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.visitTableAdapter.Fill(this.bD_2DataSet.Visit);
+            //TODO: filtry
+        }
+
+        private void bindingNavigator1_RefreshItems(object sender, EventArgs e)
+        {
+
+            bool currentExists = (bindingNavigator1.BindingSource != null && bindingNavigator1.BindingSource.Current != null);
+
+            bindingNavigatorEditItem.Enabled = currentExists;
+            bindingNavigatorItemData.Enabled = currentExists;
+            bindingNavigatorItemCancel.Enabled = currentExists;
         }
     }
 }

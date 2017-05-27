@@ -35,23 +35,25 @@ namespace BD2_demaOkien
         private void InitializeComponent()
         {
             this.CalendarPanel = new System.Windows.Forms.Panel();
+            this.dayScheduler = new BD2_demaOkien.DayScheduler();
             this.ResultPanel = new System.Windows.Forms.Panel();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonApply = new System.Windows.Forms.Button();
             this.DataPanel = new System.Windows.Forms.Panel();
-            this.dateTimeVisitDate = new System.Windows.Forms.DateTimePicker();
+            this.textBoxPatientName = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.dateTimeVisitTime = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dateTimeVisitDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxDoctor = new System.Windows.Forms.ComboBox();
             this.buttonChooseDoctor = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBoxPatient = new System.Windows.Forms.TextBox();
-            this.buttonChoosePatient = new System.Windows.Forms.Button();
+            this.textBoxPatientPESEL = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ViewPanel = new System.Windows.Forms.Panel();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
-            this.dayScheduler = new BD2_demaOkien.DayScheduler();
             this.CalendarPanel.SuspendLayout();
             this.ResultPanel.SuspendLayout();
             this.DataPanel.SuspendLayout();
@@ -64,10 +66,31 @@ namespace BD2_demaOkien
             this.CalendarPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.CalendarPanel.Controls.Add(this.dayScheduler);
             this.CalendarPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CalendarPanel.Location = new System.Drawing.Point(0, 105);
+            this.CalendarPanel.Location = new System.Drawing.Point(0, 145);
             this.CalendarPanel.Name = "CalendarPanel";
-            this.CalendarPanel.Size = new System.Drawing.Size(456, 313);
+            this.CalendarPanel.Size = new System.Drawing.Size(456, 273);
             this.CalendarPanel.TabIndex = 0;
+            // 
+            // dayScheduler
+            // 
+            this.dayScheduler.AllowItemEdit = false;
+            this.dayScheduler.AllowNew = false;
+            this.dayScheduler.CalendarTimeFormat = WindowsFormsCalendar.CalendarTimeFormat.TwentyFourHour;
+            this.dayScheduler.dayBegin = System.TimeSpan.Parse("08:00:00");
+            this.dayScheduler.dayEnd = System.TimeSpan.Parse("16:00:00");
+            this.dayScheduler.FirstDayOfWeek = System.DayOfWeek.Monday;
+            this.dayScheduler.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dayScheduler.ItemsBackgroundColor = System.Drawing.Color.RoyalBlue;
+            this.dayScheduler.ItemsFont = null;
+            this.dayScheduler.ItemsForeColor = System.Drawing.Color.Black;
+            this.dayScheduler.Location = new System.Drawing.Point(0, -780);
+            this.dayScheduler.Name = "dayScheduler";
+            this.dayScheduler.Size = new System.Drawing.Size(435, 1518);
+            this.dayScheduler.TabIndex = 24;
+            this.dayScheduler.Text = "dayScheduler";
+            this.dayScheduler.TimeScale = WindowsFormsCalendar.CalendarTimeScale.FifteenMinutes;
+            this.dayScheduler.ItemFocusChanged += new BD2_demaOkien.DayScheduler.CalendarTimeEventHandler(this.dayScheduler_ItemFocusChanged);
+            this.dayScheduler.Click += new System.EventHandler(this.buttonSetScheduler);
             // 
             // ResultPanel
             // 
@@ -89,7 +112,7 @@ namespace BD2_demaOkien
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(100, 30);
             this.buttonCancel.TabIndex = 19;
-            this.buttonCancel.Text = "Anuluj";
+            this.buttonCancel.Text = "Porzuć";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
@@ -108,20 +131,64 @@ namespace BD2_demaOkien
             // DataPanel
             // 
             this.DataPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.DataPanel.Controls.Add(this.dateTimeVisitDate);
+            this.DataPanel.Controls.Add(this.textBoxPatientName);
+            this.DataPanel.Controls.Add(this.button1);
             this.DataPanel.Controls.Add(this.dateTimeVisitTime);
+            this.DataPanel.Controls.Add(this.label4);
+            this.DataPanel.Controls.Add(this.dateTimeVisitDate);
             this.DataPanel.Controls.Add(this.label3);
             this.DataPanel.Controls.Add(this.comboBoxDoctor);
             this.DataPanel.Controls.Add(this.buttonChooseDoctor);
             this.DataPanel.Controls.Add(this.label2);
-            this.DataPanel.Controls.Add(this.textBoxPatient);
-            this.DataPanel.Controls.Add(this.buttonChoosePatient);
+            this.DataPanel.Controls.Add(this.textBoxPatientPESEL);
             this.DataPanel.Controls.Add(this.label1);
             this.DataPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.DataPanel.Location = new System.Drawing.Point(0, 0);
             this.DataPanel.Name = "DataPanel";
-            this.DataPanel.Size = new System.Drawing.Size(456, 105);
+            this.DataPanel.Size = new System.Drawing.Size(456, 145);
             this.DataPanel.TabIndex = 25;
+            // 
+            // textBoxPatientName
+            // 
+            this.textBoxPatientName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxPatientName.Enabled = false;
+            this.textBoxPatientName.Location = new System.Drawing.Point(175, 17);
+            this.textBoxPatientName.Name = "textBoxPatientName";
+            this.textBoxPatientName.Size = new System.Drawing.Size(241, 20);
+            this.textBoxPatientName.TabIndex = 34;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(307, 69);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(109, 23);
+            this.button1.TabIndex = 33;
+            this.button1.Text = "Wyświetl godziny";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.buttonSetScheduler);
+            // 
+            // dateTimeVisitTime
+            // 
+            this.dateTimeVisitTime.CustomFormat = "HH:mm";
+            this.dateTimeVisitTime.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::BD2_demaOkien.Properties.Settings.Default, "chosenDateTime", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.dateTimeVisitTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimeVisitTime.Location = new System.Drawing.Point(94, 96);
+            this.dateTimeVisitTime.Name = "dateTimeVisitTime";
+            this.dateTimeVisitTime.ShowUpDown = true;
+            this.dateTimeVisitTime.Size = new System.Drawing.Size(60, 20);
+            this.dateTimeVisitTime.TabIndex = 30;
+            this.dateTimeVisitTime.Value = global::BD2_demaOkien.Properties.Settings.Default.chosenDateTime;
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.Location = new System.Drawing.Point(13, 96);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 20);
+            this.label4.TabIndex = 32;
+            this.label4.Text = "Godzina          ";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // dateTimeVisitDate
             // 
@@ -133,19 +200,6 @@ namespace BD2_demaOkien
             this.dateTimeVisitDate.Size = new System.Drawing.Size(207, 20);
             this.dateTimeVisitDate.TabIndex = 31;
             this.dateTimeVisitDate.Value = global::BD2_demaOkien.Properties.Settings.Default.chosenDateTime;
-            this.dateTimeVisitDate.ValueChanged += new System.EventHandler(this.dateTimeVisitDate_ValueChanged);
-            // 
-            // dateTimeVisitTime
-            // 
-            this.dateTimeVisitTime.CustomFormat = "HH:mm";
-            this.dateTimeVisitTime.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::BD2_demaOkien.Properties.Settings.Default, "chosenDateTime", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.dateTimeVisitTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimeVisitTime.Location = new System.Drawing.Point(307, 69);
-            this.dateTimeVisitTime.Name = "dateTimeVisitTime";
-            this.dateTimeVisitTime.ShowUpDown = true;
-            this.dateTimeVisitTime.Size = new System.Drawing.Size(60, 20);
-            this.dateTimeVisitTime.TabIndex = 30;
-            this.dateTimeVisitTime.Value = global::BD2_demaOkien.Properties.Settings.Default.chosenDateTime;
             // 
             // label3
             // 
@@ -154,7 +208,7 @@ namespace BD2_demaOkien
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 20);
             this.label3.TabIndex = 29;
-            this.label3.Text = "Termin           ";
+            this.label3.Text = "Data              ";
             this.label3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // comboBoxDoctor
@@ -178,6 +232,7 @@ namespace BD2_demaOkien
             this.buttonChooseDoctor.Text = "...";
             this.buttonChooseDoctor.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonChooseDoctor.UseVisualStyleBackColor = true;
+            this.buttonChooseDoctor.Click += new System.EventHandler(this.buttonChooseDoctor_Click);
             // 
             // label2
             // 
@@ -189,26 +244,15 @@ namespace BD2_demaOkien
             this.label2.Text = "Lekarz           ";
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // textBoxPatient
+            // textBoxPatientPESEL
             // 
-            this.textBoxPatient.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBoxPatientPESEL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPatient.Location = new System.Drawing.Point(94, 17);
-            this.textBoxPatient.Name = "textBoxPatient";
-            this.textBoxPatient.Size = new System.Drawing.Size(322, 20);
-            this.textBoxPatient.TabIndex = 24;
-            // 
-            // buttonChoosePatient
-            // 
-            this.buttonChoosePatient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonChoosePatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonChoosePatient.Location = new System.Drawing.Point(414, 16);
-            this.buttonChoosePatient.Name = "buttonChoosePatient";
-            this.buttonChoosePatient.Size = new System.Drawing.Size(25, 22);
-            this.buttonChoosePatient.TabIndex = 25;
-            this.buttonChoosePatient.Text = "...";
-            this.buttonChoosePatient.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonChoosePatient.UseVisualStyleBackColor = true;
+            this.textBoxPatientPESEL.Enabled = false;
+            this.textBoxPatientPESEL.Location = new System.Drawing.Point(94, 17);
+            this.textBoxPatientPESEL.Name = "textBoxPatientPESEL";
+            this.textBoxPatientPESEL.Size = new System.Drawing.Size(75, 20);
+            this.textBoxPatientPESEL.TabIndex = 24;
             // 
             // label1
             // 
@@ -252,27 +296,8 @@ namespace BD2_demaOkien
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(100, 30);
             this.buttonClose.TabIndex = 18;
-            this.buttonClose.Text = "Zamknij";
+            this.buttonClose.Text = "Powrót";
             this.buttonClose.UseVisualStyleBackColor = true;
-            // 
-            // dayScheduler
-            // 
-            this.dayScheduler.AllowItemEdit = false;
-            this.dayScheduler.AllowNew = false;
-            this.dayScheduler.CalendarTimeFormat = WindowsFormsCalendar.CalendarTimeFormat.TwentyFourHour;
-            this.dayScheduler.dayBegin = System.TimeSpan.Parse("08:00:00");
-            this.dayScheduler.dayEnd = System.TimeSpan.Parse("16:00:00");
-            this.dayScheduler.FirstDayOfWeek = System.DayOfWeek.Monday;
-            this.dayScheduler.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dayScheduler.ItemsBackgroundColor = System.Drawing.Color.RoyalBlue;
-            this.dayScheduler.ItemsFont = null;
-            this.dayScheduler.ItemsForeColor = System.Drawing.Color.Black;
-            this.dayScheduler.Location = new System.Drawing.Point(0, -780);
-            this.dayScheduler.Name = "dayScheduler";
-            this.dayScheduler.Size = new System.Drawing.Size(435, 1518);
-            this.dayScheduler.TabIndex = 24;
-            this.dayScheduler.Text = "dayScheduler";
-            this.dayScheduler.TimeScale = WindowsFormsCalendar.CalendarTimeScale.FifteenMinutes;
             // 
             // VisitDetailsWindow_Register
             // 
@@ -312,11 +337,13 @@ namespace BD2_demaOkien
         private ComboBox comboBoxDoctor;
         private Button buttonChooseDoctor;
         private Label label2;
-        private TextBox textBoxPatient;
-        private Button buttonChoosePatient;
+        private TextBox textBoxPatientPESEL;
         private Label label1;
         private Panel ViewPanel;
         private Button buttonEdit;
         private Button buttonClose;
+        private Button button1;
+        private Label label4;
+        private TextBox textBoxPatientName;
     }
 }

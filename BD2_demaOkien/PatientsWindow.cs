@@ -25,6 +25,7 @@ namespace BD2_demaOkien
             bindingNavigatorItemData.Enabled = currentExists;
             bindingNavigatorItemVisits.Enabled = currentExists;
             bindingNavigatorItemTests.Enabled = currentExists;
+            bindingNavigatorItemAddVisit.Enabled = currentExists;
         }
 
         private void Patients_Load(object sender, EventArgs e)
@@ -74,6 +75,11 @@ namespace BD2_demaOkien
             ExaminationsWindow examinations = new ExaminationsWindow();
             examinations.MdiParent = this.MdiParent;
             examinations.Show();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            new VisitDetailsWindow_Register(ViewMode.CREATE).ShowDialog();
         }
     }
 }

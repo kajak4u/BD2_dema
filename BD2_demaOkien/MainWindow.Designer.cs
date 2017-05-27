@@ -80,6 +80,7 @@
             // 
             // wizytyToolStripMenuItem
             // 
+            this.wizytyToolStripMenuItem.Enabled = false;
             this.wizytyToolStripMenuItem.Name = "wizytyToolStripMenuItem";
             this.wizytyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.wizytyToolStripMenuItem.Text = "&Wizyty";
@@ -136,6 +137,7 @@
             this.badaniaToolStripMenuItem1.Name = "badaniaToolStripMenuItem1";
             this.badaniaToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
             this.badaniaToolStripMenuItem1.Text = "&Badania";
+            this.badaniaToolStripMenuItem1.Click += new System.EventHandler(this.badaniaToolStripMenuItem1_Click);
             // 
             // kierLabToolStripMenuItem
             // 

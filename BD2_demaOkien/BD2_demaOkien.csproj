@@ -57,9 +57,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BD_2DataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DayScheduler.cs">
-      <SubType>Component</SubType>
+    <Compile Include="ChooseDoctorModal.cs">
+      <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ChooseDoctorModal.Designer.cs">
+      <DependentUpon>ChooseDoctorModal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DayScheduler.cs" />
     <Compile Include="ExaminationsAddWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +83,12 @@
       <DependentUpon>ExaminationsWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Enums.cs" />
+    <Compile Include="ExaminationsWindow_Lab.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExaminationsWindow_Lab.Designer.cs">
+      <DependentUpon>ExaminationsWindow_Lab.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,8 +139,14 @@
     <Compile Include="VisitsWindow_Doctor.Designer.cs">
       <DependentUpon>VisitsWindow_Doctor.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ChooseDoctorModal.resx">
+      <DependentUpon>ChooseDoctorModal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExaminationsWindow.resx">
       <DependentUpon>ExaminationsWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExaminationsWindow_Lab.resx">
+      <DependentUpon>ExaminationsWindow_Lab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
