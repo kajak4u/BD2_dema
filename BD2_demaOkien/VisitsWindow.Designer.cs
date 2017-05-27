@@ -73,6 +73,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorItemCancel = new System.Windows.Forms.ToolStripButton();
             this.visitTableAdapter = new BD2_demaOkien.BD_2DataSetTableAdapters.VisitTableAdapter();
+            this.bindingNavigatorItemPerform = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.visitBindingSource)).BeginInit();
@@ -381,7 +382,8 @@
             this.toolStripSeparator1,
             this.bindingNavigatorItemData,
             this.toolStripSeparator2,
-            this.bindingNavigatorItemCancel});
+            this.bindingNavigatorItemCancel,
+            this.bindingNavigatorItemPerform});
             this.bindingNavigator1.Location = new System.Drawing.Point(0, 240);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -512,6 +514,16 @@
             // 
             this.visitTableAdapter.ClearBeforeFill = true;
             // 
+            // bindingNavigatorItemPerform
+            // 
+            this.bindingNavigatorItemPerform.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.bindingNavigatorItemPerform.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorItemPerform.Image")));
+            this.bindingNavigatorItemPerform.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bindingNavigatorItemPerform.Name = "bindingNavigatorItemPerform";
+            this.bindingNavigatorItemPerform.Size = new System.Drawing.Size(78, 22);
+            this.bindingNavigatorItemPerform.Text = "Przeprowadź";
+            this.bindingNavigatorItemPerform.Click += new System.EventHandler(this.bindingNavigatorItemPerform_Click);
+            // 
             // VisitsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -582,5 +594,6 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorItemData;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton bindingNavigatorItemCancel;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorItemPerform;
     }
 }

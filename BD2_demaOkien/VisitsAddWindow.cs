@@ -11,10 +11,10 @@ using System.Windows.Forms;
 namespace BD2_demaOkien
 {
     [Description("Okno wizyty widziane przez rejestratorkę")]
-    public partial class VisitDetailsWindow_Register : Form
+    public partial class VisitsAddWindow : Form
     {
         private ViewMode openMode;
-        public VisitDetailsWindow_Register(ViewMode openMode)
+        public VisitsAddWindow(ViewMode openMode)
         {
             InitializeComponent();
             this.dateTimeVisitDate.Value = DateTime.Now;

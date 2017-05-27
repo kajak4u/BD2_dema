@@ -28,21 +28,23 @@ namespace BD2_demaOkien
                 textBox3.Enabled = false;
                 textBox3.Text = "/**current patient**/";
                 this.Text = "Wizyty dla: ";
+                bindingNavigatorItemPerform.Visible = false;
             }
         }
 
         private void VisitsWindow_Load(object sender, EventArgs e)
         {
+            dateTimePicker1.Value = dateTimePicker2.Value = DateTime.Now;
         }
 
         private void bindingNavigatorItemData_Click(object sender, EventArgs e)
         {
-            new VisitDetailsWindow_Register(ViewMode.VIEW).ShowDialog();
+            new VisitsAddWindow(ViewMode.VIEW).ShowDialog();
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            new VisitDetailsWindow_Register(ViewMode.CREATE).ShowDialog();
+            new VisitsAddWindow(ViewMode.CREATE).ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -59,6 +61,12 @@ namespace BD2_demaOkien
             bindingNavigatorEditItem.Enabled = currentExists;
             bindingNavigatorItemData.Enabled = currentExists;
             bindingNavigatorItemCancel.Enabled = currentExists;
+            bindingNavigatorItemPerform.Enabled = currentExists;
+        }
+
+        private void bindingNavigatorItemPerform_Click(object sender, EventArgs e)
+        {
+            new VisitsPerformWindow().ShowDialog();
         }
     }
 }

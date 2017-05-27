@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BD2_demaOkien", "BD2_demaOkien\BD2_demaOkien.csproj", "{658DEFBD-084A-49F8-BB72-A32EA61022E7}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MasterDetailGrid", "MasterDetailGrid\MasterDetailGrid.vbproj", "{F9064A2E-86AC-42C6-9326-D88BD1F52884}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{658DEFBD-084A-49F8-BB72-A32EA61022E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{658DEFBD-084A-49F8-BB72-A32EA61022E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{658DEFBD-084A-49F8-BB72-A32EA61022E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9064A2E-86AC-42C6-9326-D88BD1F52884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9064A2E-86AC-42C6-9326-D88BD1F52884}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9064A2E-86AC-42C6-9326-D88BD1F52884}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9064A2E-86AC-42C6-9326-D88BD1F52884}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

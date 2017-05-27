@@ -6,7 +6,7 @@ using WindowsFormsCalendar;
 
 namespace BD2_demaOkien
 {
-    partial class VisitDetailsWindow_Register
+    partial class VisitsAddWindow
     {
         /// <summary>
         /// Required designer variable.

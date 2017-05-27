@@ -20,13 +20,22 @@ namespace BD2_demaOkien
 
         private void VisitsWindow_Doctor_Load(object sender, EventArgs e)
         {
-
+            setSchedulerDate(DateTime.Now);
         }
 
-        private void dateTimeMyVisitsDate_ValueChanged(object sender, EventArgs e)
+        private void setSchedulerDate(DateTime newDay)
         {
-            DateTime newDay = dateTimeMyVisitsDate.Value;
             daySchedulerMyVisits.SetViewRange(newDay, newDay);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            setSchedulerDate(dateTimeMyVisitsDate.Value);
+        }
+
+        private void buttonPerform_Click(object sender, EventArgs e)
+        {
+            new VisitsPerformWindow().ShowDialog();
         }
     }
 }

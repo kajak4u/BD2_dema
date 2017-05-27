@@ -135,7 +135,7 @@
             // badaniaToolStripMenuItem1
             // 
             this.badaniaToolStripMenuItem1.Name = "badaniaToolStripMenuItem1";
-            this.badaniaToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.badaniaToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
             this.badaniaToolStripMenuItem1.Text = "&Badania";
             this.badaniaToolStripMenuItem1.Click += new System.EventHandler(this.badaniaToolStripMenuItem1_Click);
             // 
@@ -150,7 +150,7 @@
             // badaniaToolStripMenuItem2
             // 
             this.badaniaToolStripMenuItem2.Name = "badaniaToolStripMenuItem2";
-            this.badaniaToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.badaniaToolStripMenuItem2.Size = new System.Drawing.Size(116, 22);
             this.badaniaToolStripMenuItem2.Text = "&Badania";
             this.badaniaToolStripMenuItem2.Click += new System.EventHandler(this.badaniaToolStripMenuItem2_Click);
             // 

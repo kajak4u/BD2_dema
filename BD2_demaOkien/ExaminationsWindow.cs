@@ -41,7 +41,7 @@ namespace BD2_demaOkien
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            new ExaminationsAddWindow().ShowDialog();
+            //new ExaminationsAddWindow().ShowDialog();
         }
     }
 }

@@ -108,13 +108,15 @@ namespace BD2_demaOkien
                 {
                     parent.ScrollControlIntoView(c);
                 }
-                ItemFocusChanged(this, new CalendarTimeEventArgs(elem.Date));
+                if (ItemFocusChanged != null)
+                    ItemFocusChanged(this, new CalendarTimeEventArgs(elem.Date));
             }
         }
         protected override void OnMouseClick(MouseEventArgs e)
         {
             base.OnMouseClick(e);
-            ItemFocusChanged(this, new CalendarTimeEventArgs(this.SelectedElementStart.Date));
+            if(ItemFocusChanged != null)
+                ItemFocusChanged(this, new CalendarTimeEventArgs(this.SelectedElementStart.Date));
         }
     }
 }

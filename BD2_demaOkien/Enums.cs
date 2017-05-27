@@ -6,6 +6,11 @@
         EDIT,
         VIEW
     }
+    public enum ExaminationMode
+    {
+        LAB,
+        PHYSICAL
+    }
 
     public enum Role
     {

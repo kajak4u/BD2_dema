@@ -79,7 +79,7 @@ namespace BD2_demaOkien
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            new VisitDetailsWindow_Register(ViewMode.CREATE).ShowDialog();
+            new VisitsAddWindow(ViewMode.CREATE).ShowDialog();
         }
     }
 }
