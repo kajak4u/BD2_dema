@@ -38,7 +38,11 @@ namespace BD2_demaOkien {
         
         private WorkerDataTable tableWorker;
         
-        private VisitsWithExaminationsDataTable tableVisitsWithExaminations;
+        private ShortVisitDataTable tableShortVisit;
+        
+        private ShortLABExaminationsDataTable tableShortLABExaminations;
+        
+        private ShortPhysicalExaminationsDataTable tableShortPhysicalExaminations;
         
         private global::System.Data.DataRelation relationFK_LAB_examination_Examination_dictionary;
         
@@ -62,7 +66,13 @@ namespace BD2_demaOkien {
         
         private global::System.Data.DataRelation relationFK_Worker_Address;
         
-        private global::System.Data.DataRelation relationFK_Physical_examination_Examination_dictionary1;
+        private global::System.Data.DataRelation relationFK_LAB_examination_Visit1;
+        
+        private global::System.Data.DataRelation relationFK_Physical_examination_Visit1;
+        
+        private global::System.Data.DataRelation relationShortVisit_ShortLABExaminations;
+        
+        private global::System.Data.DataRelation relationShortVisit_ShortPhysicalExaminations;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -113,8 +123,14 @@ namespace BD2_demaOkien {
                 if ((ds.Tables["Worker"] != null)) {
                     base.Tables.Add(new WorkerDataTable(ds.Tables["Worker"]));
                 }
-                if ((ds.Tables["VisitsWithExaminations"] != null)) {
-                    base.Tables.Add(new VisitsWithExaminationsDataTable(ds.Tables["VisitsWithExaminations"]));
+                if ((ds.Tables["ShortVisit"] != null)) {
+                    base.Tables.Add(new ShortVisitDataTable(ds.Tables["ShortVisit"]));
+                }
+                if ((ds.Tables["ShortLABExaminations"] != null)) {
+                    base.Tables.Add(new ShortLABExaminationsDataTable(ds.Tables["ShortLABExaminations"]));
+                }
+                if ((ds.Tables["ShortPhysicalExaminations"] != null)) {
+                    base.Tables.Add(new ShortPhysicalExaminationsDataTable(ds.Tables["ShortPhysicalExaminations"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -208,9 +224,29 @@ namespace BD2_demaOkien {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public VisitsWithExaminationsDataTable VisitsWithExaminations {
+        public ShortVisitDataTable ShortVisit {
             get {
-                return this.tableVisitsWithExaminations;
+                return this.tableShortVisit;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ShortLABExaminationsDataTable ShortLABExaminations {
+            get {
+                return this.tableShortLABExaminations;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ShortPhysicalExaminationsDataTable ShortPhysicalExaminations {
+            get {
+                return this.tableShortPhysicalExaminations;
             }
         }
         
@@ -302,8 +338,14 @@ namespace BD2_demaOkien {
                 if ((ds.Tables["Worker"] != null)) {
                     base.Tables.Add(new WorkerDataTable(ds.Tables["Worker"]));
                 }
-                if ((ds.Tables["VisitsWithExaminations"] != null)) {
-                    base.Tables.Add(new VisitsWithExaminationsDataTable(ds.Tables["VisitsWithExaminations"]));
+                if ((ds.Tables["ShortVisit"] != null)) {
+                    base.Tables.Add(new ShortVisitDataTable(ds.Tables["ShortVisit"]));
+                }
+                if ((ds.Tables["ShortLABExaminations"] != null)) {
+                    base.Tables.Add(new ShortLABExaminationsDataTable(ds.Tables["ShortLABExaminations"]));
+                }
+                if ((ds.Tables["ShortPhysicalExaminations"] != null)) {
+                    base.Tables.Add(new ShortPhysicalExaminationsDataTable(ds.Tables["ShortPhysicalExaminations"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -380,10 +422,22 @@ namespace BD2_demaOkien {
                     this.tableWorker.InitVars();
                 }
             }
-            this.tableVisitsWithExaminations = ((VisitsWithExaminationsDataTable)(base.Tables["VisitsWithExaminations"]));
+            this.tableShortVisit = ((ShortVisitDataTable)(base.Tables["ShortVisit"]));
             if ((initTable == true)) {
-                if ((this.tableVisitsWithExaminations != null)) {
-                    this.tableVisitsWithExaminations.InitVars();
+                if ((this.tableShortVisit != null)) {
+                    this.tableShortVisit.InitVars();
+                }
+            }
+            this.tableShortLABExaminations = ((ShortLABExaminationsDataTable)(base.Tables["ShortLABExaminations"]));
+            if ((initTable == true)) {
+                if ((this.tableShortLABExaminations != null)) {
+                    this.tableShortLABExaminations.InitVars();
+                }
+            }
+            this.tableShortPhysicalExaminations = ((ShortPhysicalExaminationsDataTable)(base.Tables["ShortPhysicalExaminations"]));
+            if ((initTable == true)) {
+                if ((this.tableShortPhysicalExaminations != null)) {
+                    this.tableShortPhysicalExaminations.InitVars();
                 }
             }
             this.relationFK_LAB_examination_Examination_dictionary = this.Relations["FK_LAB_examination_Examination_dictionary"];
@@ -397,7 +451,10 @@ namespace BD2_demaOkien {
             this.relationFK_Visit_Worker = this.Relations["FK_Visit_Worker"];
             this.relationFK_Visit_Worker1 = this.Relations["FK_Visit_Worker1"];
             this.relationFK_Worker_Address = this.Relations["FK_Worker_Address"];
-            this.relationFK_Physical_examination_Examination_dictionary1 = this.Relations["FK_Physical_examination_Examination_dictionary1"];
+            this.relationFK_LAB_examination_Visit1 = this.Relations["FK_LAB_examination_Visit1"];
+            this.relationFK_Physical_examination_Visit1 = this.Relations["FK_Physical_examination_Visit1"];
+            this.relationShortVisit_ShortLABExaminations = this.Relations["ShortVisit_ShortLABExaminations"];
+            this.relationShortVisit_ShortPhysicalExaminations = this.Relations["ShortVisit_ShortPhysicalExaminations"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -422,8 +479,12 @@ namespace BD2_demaOkien {
             base.Tables.Add(this.tableVisit);
             this.tableWorker = new WorkerDataTable();
             base.Tables.Add(this.tableWorker);
-            this.tableVisitsWithExaminations = new VisitsWithExaminationsDataTable();
-            base.Tables.Add(this.tableVisitsWithExaminations);
+            this.tableShortVisit = new ShortVisitDataTable();
+            base.Tables.Add(this.tableShortVisit);
+            this.tableShortLABExaminations = new ShortLABExaminationsDataTable();
+            base.Tables.Add(this.tableShortLABExaminations);
+            this.tableShortPhysicalExaminations = new ShortPhysicalExaminationsDataTable();
+            base.Tables.Add(this.tableShortPhysicalExaminations);
             this.relationFK_LAB_examination_Examination_dictionary = new global::System.Data.DataRelation("FK_LAB_examination_Examination_dictionary", new global::System.Data.DataColumn[] {
                         this.tableExamination_dictionary.Examination_codeColumn}, new global::System.Data.DataColumn[] {
                         this.tableLAB_examination.LAB_examination_codeColumn}, false);
@@ -468,10 +529,22 @@ namespace BD2_demaOkien {
                         this.tableAddress.Address_idColumn}, new global::System.Data.DataColumn[] {
                         this.tableWorker.address_idColumn}, false);
             this.Relations.Add(this.relationFK_Worker_Address);
-            this.relationFK_Physical_examination_Examination_dictionary1 = new global::System.Data.DataRelation("FK_Physical_examination_Examination_dictionary1", new global::System.Data.DataColumn[] {
-                        this.tableExamination_dictionary.Examination_codeColumn}, new global::System.Data.DataColumn[] {
-                        this.tableVisitsWithExaminations.Physical_examination_codeColumn}, false);
-            this.Relations.Add(this.relationFK_Physical_examination_Examination_dictionary1);
+            this.relationFK_LAB_examination_Visit1 = new global::System.Data.DataRelation("FK_LAB_examination_Visit1", new global::System.Data.DataColumn[] {
+                        this.tableShortVisit.visit_idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableLAB_examination.visit_idColumn}, false);
+            this.Relations.Add(this.relationFK_LAB_examination_Visit1);
+            this.relationFK_Physical_examination_Visit1 = new global::System.Data.DataRelation("FK_Physical_examination_Visit1", new global::System.Data.DataColumn[] {
+                        this.tableShortVisit.visit_idColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePhysical_examination.visit_idColumn}, false);
+            this.Relations.Add(this.relationFK_Physical_examination_Visit1);
+            this.relationShortVisit_ShortLABExaminations = new global::System.Data.DataRelation("ShortVisit_ShortLABExaminations", new global::System.Data.DataColumn[] {
+                        this.tableShortVisit.visit_idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableShortLABExaminations.visit_idColumn}, false);
+            this.Relations.Add(this.relationShortVisit_ShortLABExaminations);
+            this.relationShortVisit_ShortPhysicalExaminations = new global::System.Data.DataRelation("ShortVisit_ShortPhysicalExaminations", new global::System.Data.DataColumn[] {
+                        this.tableShortVisit.visit_idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableShortPhysicalExaminations.visit_idColumn}, false);
+            this.Relations.Add(this.relationShortVisit_ShortPhysicalExaminations);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -518,7 +591,19 @@ namespace BD2_demaOkien {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeVisitsWithExaminations() {
+        private bool ShouldSerializeShortVisit() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeShortLABExaminations() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeShortPhysicalExaminations() {
             return false;
         }
         
@@ -599,7 +684,13 @@ namespace BD2_demaOkien {
         public delegate void WorkerRowChangeEventHandler(object sender, WorkerRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void VisitsWithExaminationsRowChangeEventHandler(object sender, VisitsWithExaminationsRowChangeEvent e);
+        public delegate void ShortVisitRowChangeEventHandler(object sender, ShortVisitRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void ShortLABExaminationsRowChangeEventHandler(object sender, ShortLABExaminationsRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void ShortPhysicalExaminationsRowChangeEventHandler(object sender, ShortPhysicalExaminationsRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1407,7 +1498,7 @@ namespace BD2_demaOkien {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public LAB_examinationRow AddLAB_examinationRow(int LAB_examination_id, Examination_dictionaryRow parentExamination_dictionaryRowByFK_LAB_examination_Examination_dictionary, string doctor_notes, WorkerRow parentWorkerRowByFK_LAB_examination_Worker, System.DateTime commission_examination_date, string LAB_examination_result, System.TimeSpan LAB_examination_date, WorkerRow parentWorkerRowByFK_LAB_examination_Worker1, string LAB_manager_notes, System.DateTime ending_examination_date, string status, VisitRow parentVisitRowByFK_LAB_examination_Visit) {
+            public LAB_examinationRow AddLAB_examinationRow(int LAB_examination_id, Examination_dictionaryRow parentExamination_dictionaryRowByFK_LAB_examination_Examination_dictionary, string doctor_notes, WorkerRow parentWorkerRowByFK_LAB_examination_Worker, System.DateTime commission_examination_date, string LAB_examination_result, System.DateTime LAB_examination_date, WorkerRow parentWorkerRowByFK_LAB_examination_Worker1, string LAB_manager_notes, System.DateTime ending_examination_date, string status, VisitRow parentVisitRowByFK_LAB_examination_Visit) {
                 LAB_examinationRow rowLAB_examinationRow = ((LAB_examinationRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         LAB_examination_id,
@@ -1492,7 +1583,7 @@ namespace BD2_demaOkien {
                 base.Columns.Add(this.columncommission_examination_date);
                 this.columnLAB_examination_result = new global::System.Data.DataColumn("LAB_examination_result", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLAB_examination_result);
-                this.columnLAB_examination_date = new global::System.Data.DataColumn("LAB_examination_date", typeof(global::System.TimeSpan), null, global::System.Data.MappingType.Element);
+                this.columnLAB_examination_date = new global::System.Data.DataColumn("LAB_examination_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLAB_examination_date);
                 this.columnLAB_manager_id = new global::System.Data.DataColumn("LAB_manager_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLAB_manager_id);
@@ -3077,22 +3168,24 @@ namespace BD2_demaOkien {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class VisitsWithExaminationsDataTable : global::System.Data.TypedTableBase<VisitsWithExaminationsRow> {
+        public partial class ShortVisitDataTable : global::System.Data.TypedTableBase<ShortVisitRow> {
             
-            private global::System.Data.DataColumn columnstatus;
+            private global::System.Data.DataColumn columnvisit_id;
             
-            private global::System.Data.DataColumn columndiagnosis;
+            private global::System.Data.DataColumn columnStatus;
             
-            private global::System.Data.DataColumn columnending_date;
+            private global::System.Data.DataColumn columnData_wizyty;
             
-            private global::System.Data.DataColumn columnPhysical_examination_code;
+            private global::System.Data.DataColumn columnLekarz;
             
-            private global::System.Data.DataColumn columnResult;
+            private global::System.Data.DataColumn columnWywiad;
+            
+            private global::System.Data.DataColumn columnDiagnoza;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public VisitsWithExaminationsDataTable() {
-                this.TableName = "VisitsWithExaminations";
+            public ShortVisitDataTable() {
+                this.TableName = "ShortVisit";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -3100,7 +3193,7 @@ namespace BD2_demaOkien {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal VisitsWithExaminationsDataTable(global::System.Data.DataTable table) {
+            internal ShortVisitDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -3117,48 +3210,56 @@ namespace BD2_demaOkien {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected VisitsWithExaminationsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected ShortVisitDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn statusColumn {
+            public global::System.Data.DataColumn visit_idColumn {
                 get {
-                    return this.columnstatus;
+                    return this.columnvisit_id;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn diagnosisColumn {
+            public global::System.Data.DataColumn StatusColumn {
                 get {
-                    return this.columndiagnosis;
+                    return this.columnStatus;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ending_dateColumn {
+            public global::System.Data.DataColumn Data_wizytyColumn {
                 get {
-                    return this.columnending_date;
+                    return this.columnData_wizyty;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Physical_examination_codeColumn {
+            public global::System.Data.DataColumn LekarzColumn {
                 get {
-                    return this.columnPhysical_examination_code;
+                    return this.columnLekarz;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ResultColumn {
+            public global::System.Data.DataColumn WywiadColumn {
                 get {
-                    return this.columnResult;
+                    return this.columnWywiad;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DiagnozaColumn {
+                get {
+                    return this.columnDiagnoza;
                 }
             }
             
@@ -3173,52 +3274,57 @@ namespace BD2_demaOkien {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public VisitsWithExaminationsRow this[int index] {
+            public ShortVisitRow this[int index] {
                 get {
-                    return ((VisitsWithExaminationsRow)(this.Rows[index]));
+                    return ((ShortVisitRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event VisitsWithExaminationsRowChangeEventHandler VisitsWithExaminationsRowChanging;
+            public event ShortVisitRowChangeEventHandler ShortVisitRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event VisitsWithExaminationsRowChangeEventHandler VisitsWithExaminationsRowChanged;
+            public event ShortVisitRowChangeEventHandler ShortVisitRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event VisitsWithExaminationsRowChangeEventHandler VisitsWithExaminationsRowDeleting;
+            public event ShortVisitRowChangeEventHandler ShortVisitRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event VisitsWithExaminationsRowChangeEventHandler VisitsWithExaminationsRowDeleted;
+            public event ShortVisitRowChangeEventHandler ShortVisitRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddVisitsWithExaminationsRow(VisitsWithExaminationsRow row) {
+            public void AddShortVisitRow(ShortVisitRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public VisitsWithExaminationsRow AddVisitsWithExaminationsRow(string status, string diagnosis, System.DateTime ending_date, Examination_dictionaryRow parentExamination_dictionaryRowByFK_Physical_examination_Examination_dictionary1, string Result) {
-                VisitsWithExaminationsRow rowVisitsWithExaminationsRow = ((VisitsWithExaminationsRow)(this.NewRow()));
+            public ShortVisitRow AddShortVisitRow(int visit_id, string Status, System.DateTime Data_wizyty, string Lekarz, string Wywiad, string Diagnoza) {
+                ShortVisitRow rowShortVisitRow = ((ShortVisitRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        status,
-                        diagnosis,
-                        ending_date,
-                        null,
-                        Result};
-                if ((parentExamination_dictionaryRowByFK_Physical_examination_Examination_dictionary1 != null)) {
-                    columnValuesArray[3] = parentExamination_dictionaryRowByFK_Physical_examination_Examination_dictionary1[0];
-                }
-                rowVisitsWithExaminationsRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowVisitsWithExaminationsRow);
-                return rowVisitsWithExaminationsRow;
+                        visit_id,
+                        Status,
+                        Data_wizyty,
+                        Lekarz,
+                        Wywiad,
+                        Diagnoza};
+                rowShortVisitRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowShortVisitRow);
+                return rowShortVisitRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ShortVisitRow FindByvisit_id(int visit_id) {
+                return ((ShortVisitRow)(this.Rows.Find(new object[] {
+                            visit_id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                VisitsWithExaminationsDataTable cln = ((VisitsWithExaminationsDataTable)(base.Clone()));
+                ShortVisitDataTable cln = ((ShortVisitDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -3226,63 +3332,71 @@ namespace BD2_demaOkien {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new VisitsWithExaminationsDataTable();
+                return new ShortVisitDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnstatus = base.Columns["status"];
-                this.columndiagnosis = base.Columns["diagnosis"];
-                this.columnending_date = base.Columns["ending_date"];
-                this.columnPhysical_examination_code = base.Columns["Physical_examination_code"];
-                this.columnResult = base.Columns["Result"];
+                this.columnvisit_id = base.Columns["visit_id"];
+                this.columnStatus = base.Columns["Status"];
+                this.columnData_wizyty = base.Columns["Data wizyty"];
+                this.columnLekarz = base.Columns["Lekarz"];
+                this.columnWywiad = base.Columns["Wywiad"];
+                this.columnDiagnoza = base.Columns["Diagnoza"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnstatus = new global::System.Data.DataColumn("status", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnstatus);
-                this.columndiagnosis = new global::System.Data.DataColumn("diagnosis", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndiagnosis);
-                this.columnending_date = new global::System.Data.DataColumn("ending_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnending_date);
-                this.columnPhysical_examination_code = new global::System.Data.DataColumn("Physical_examination_code", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPhysical_examination_code);
-                this.columnResult = new global::System.Data.DataColumn("Result", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnResult);
-                this.columnstatus.AllowDBNull = false;
-                this.columnstatus.MaxLength = 15;
-                this.columndiagnosis.MaxLength = 50;
-                this.columnPhysical_examination_code.MaxLength = 30;
-                this.columnResult.MaxLength = 50;
+                this.columnvisit_id = new global::System.Data.DataColumn("visit_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnvisit_id);
+                this.columnStatus = new global::System.Data.DataColumn("Status", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStatus);
+                this.columnData_wizyty = new global::System.Data.DataColumn("Data wizyty", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnData_wizyty);
+                this.columnLekarz = new global::System.Data.DataColumn("Lekarz", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLekarz);
+                this.columnWywiad = new global::System.Data.DataColumn("Wywiad", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnWywiad);
+                this.columnDiagnoza = new global::System.Data.DataColumn("Diagnoza", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDiagnoza);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnvisit_id}, true));
+                this.columnvisit_id.AllowDBNull = false;
+                this.columnvisit_id.Unique = true;
+                this.columnStatus.AllowDBNull = false;
+                this.columnStatus.MaxLength = 15;
+                this.columnLekarz.ReadOnly = true;
+                this.columnLekarz.MaxLength = 60;
+                this.columnWywiad.MaxLength = 2147483647;
+                this.columnDiagnoza.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public VisitsWithExaminationsRow NewVisitsWithExaminationsRow() {
-                return ((VisitsWithExaminationsRow)(this.NewRow()));
+            public ShortVisitRow NewShortVisitRow() {
+                return ((ShortVisitRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new VisitsWithExaminationsRow(builder);
+                return new ShortVisitRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(VisitsWithExaminationsRow);
+                return typeof(ShortVisitRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.VisitsWithExaminationsRowChanged != null)) {
-                    this.VisitsWithExaminationsRowChanged(this, new VisitsWithExaminationsRowChangeEvent(((VisitsWithExaminationsRow)(e.Row)), e.Action));
+                if ((this.ShortVisitRowChanged != null)) {
+                    this.ShortVisitRowChanged(this, new ShortVisitRowChangeEvent(((ShortVisitRow)(e.Row)), e.Action));
                 }
             }
             
@@ -3290,8 +3404,8 @@ namespace BD2_demaOkien {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.VisitsWithExaminationsRowChanging != null)) {
-                    this.VisitsWithExaminationsRowChanging(this, new VisitsWithExaminationsRowChangeEvent(((VisitsWithExaminationsRow)(e.Row)), e.Action));
+                if ((this.ShortVisitRowChanging != null)) {
+                    this.ShortVisitRowChanging(this, new ShortVisitRowChangeEvent(((ShortVisitRow)(e.Row)), e.Action));
                 }
             }
             
@@ -3299,8 +3413,8 @@ namespace BD2_demaOkien {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.VisitsWithExaminationsRowDeleted != null)) {
-                    this.VisitsWithExaminationsRowDeleted(this, new VisitsWithExaminationsRowChangeEvent(((VisitsWithExaminationsRow)(e.Row)), e.Action));
+                if ((this.ShortVisitRowDeleted != null)) {
+                    this.ShortVisitRowDeleted(this, new ShortVisitRowChangeEvent(((ShortVisitRow)(e.Row)), e.Action));
                 }
             }
             
@@ -3308,14 +3422,14 @@ namespace BD2_demaOkien {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.VisitsWithExaminationsRowDeleting != null)) {
-                    this.VisitsWithExaminationsRowDeleting(this, new VisitsWithExaminationsRowChangeEvent(((VisitsWithExaminationsRow)(e.Row)), e.Action));
+                if ((this.ShortVisitRowDeleting != null)) {
+                    this.ShortVisitRowDeleting(this, new ShortVisitRowChangeEvent(((ShortVisitRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveVisitsWithExaminationsRow(VisitsWithExaminationsRow row) {
+            public void RemoveShortVisitRow(ShortVisitRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -3342,7 +3456,647 @@ namespace BD2_demaOkien {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "VisitsWithExaminationsDataTable";
+                attribute2.FixedValue = "ShortVisitDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ShortLABExaminationsDataTable : global::System.Data.TypedTableBase<ShortLABExaminationsRow> {
+            
+            private global::System.Data.DataColumn columnKod_badania;
+            
+            private global::System.Data.DataColumn columnNazwa_badania;
+            
+            private global::System.Data.DataColumn columnNotatki;
+            
+            private global::System.Data.DataColumn columnData_badania;
+            
+            private global::System.Data.DataColumn columnWynik;
+            
+            private global::System.Data.DataColumn columnWykonał;
+            
+            private global::System.Data.DataColumn columnvisit_id;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ShortLABExaminationsDataTable() {
+                this.TableName = "ShortLABExaminations";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ShortLABExaminationsDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected ShortLABExaminationsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Kod_badaniaColumn {
+                get {
+                    return this.columnKod_badania;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Nazwa_badaniaColumn {
+                get {
+                    return this.columnNazwa_badania;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NotatkiColumn {
+                get {
+                    return this.columnNotatki;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Data_badaniaColumn {
+                get {
+                    return this.columnData_badania;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn WynikColumn {
+                get {
+                    return this.columnWynik;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn WykonałColumn {
+                get {
+                    return this.columnWykonał;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn visit_idColumn {
+                get {
+                    return this.columnvisit_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ShortLABExaminationsRow this[int index] {
+                get {
+                    return ((ShortLABExaminationsRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ShortLABExaminationsRowChangeEventHandler ShortLABExaminationsRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ShortLABExaminationsRowChangeEventHandler ShortLABExaminationsRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ShortLABExaminationsRowChangeEventHandler ShortLABExaminationsRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ShortLABExaminationsRowChangeEventHandler ShortLABExaminationsRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddShortLABExaminationsRow(ShortLABExaminationsRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ShortLABExaminationsRow AddShortLABExaminationsRow(string Kod_badania, string Nazwa_badania, string Notatki, System.DateTime Data_badania, string Wynik, string Wykonał, ShortVisitRow parentShortVisitRowByShortVisit_ShortLABExaminations) {
+                ShortLABExaminationsRow rowShortLABExaminationsRow = ((ShortLABExaminationsRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Kod_badania,
+                        Nazwa_badania,
+                        Notatki,
+                        Data_badania,
+                        Wynik,
+                        Wykonał,
+                        null};
+                if ((parentShortVisitRowByShortVisit_ShortLABExaminations != null)) {
+                    columnValuesArray[6] = parentShortVisitRowByShortVisit_ShortLABExaminations[0];
+                }
+                rowShortLABExaminationsRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowShortLABExaminationsRow);
+                return rowShortLABExaminationsRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ShortLABExaminationsDataTable cln = ((ShortLABExaminationsDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ShortLABExaminationsDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnKod_badania = base.Columns["Kod badania"];
+                this.columnNazwa_badania = base.Columns["Nazwa badania"];
+                this.columnNotatki = base.Columns["Notatki"];
+                this.columnData_badania = base.Columns["Data badania"];
+                this.columnWynik = base.Columns["Wynik"];
+                this.columnWykonał = base.Columns["Wykonał"];
+                this.columnvisit_id = base.Columns["visit_id"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnKod_badania = new global::System.Data.DataColumn("Kod badania", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnKod_badania);
+                this.columnNazwa_badania = new global::System.Data.DataColumn("Nazwa badania", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNazwa_badania);
+                this.columnNotatki = new global::System.Data.DataColumn("Notatki", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNotatki);
+                this.columnData_badania = new global::System.Data.DataColumn("Data badania", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnData_badania);
+                this.columnWynik = new global::System.Data.DataColumn("Wynik", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnWynik);
+                this.columnWykonał = new global::System.Data.DataColumn("Wykonał", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnWykonał);
+                this.columnvisit_id = new global::System.Data.DataColumn("visit_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnvisit_id);
+                this.columnKod_badania.AllowDBNull = false;
+                this.columnKod_badania.MaxLength = 30;
+                this.columnNazwa_badania.MaxLength = 50;
+                this.columnNotatki.MaxLength = 2147483647;
+                this.columnWynik.MaxLength = 50;
+                this.columnWykonał.ReadOnly = true;
+                this.columnWykonał.MaxLength = 60;
+                this.columnvisit_id.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ShortLABExaminationsRow NewShortLABExaminationsRow() {
+                return ((ShortLABExaminationsRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ShortLABExaminationsRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ShortLABExaminationsRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ShortLABExaminationsRowChanged != null)) {
+                    this.ShortLABExaminationsRowChanged(this, new ShortLABExaminationsRowChangeEvent(((ShortLABExaminationsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ShortLABExaminationsRowChanging != null)) {
+                    this.ShortLABExaminationsRowChanging(this, new ShortLABExaminationsRowChangeEvent(((ShortLABExaminationsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ShortLABExaminationsRowDeleted != null)) {
+                    this.ShortLABExaminationsRowDeleted(this, new ShortLABExaminationsRowChangeEvent(((ShortLABExaminationsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ShortLABExaminationsRowDeleting != null)) {
+                    this.ShortLABExaminationsRowDeleting(this, new ShortLABExaminationsRowChangeEvent(((ShortLABExaminationsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveShortLABExaminationsRow(ShortLABExaminationsRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                BD_2DataSet ds = new BD_2DataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ShortLABExaminationsDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ShortPhysicalExaminationsDataTable : global::System.Data.TypedTableBase<ShortPhysicalExaminationsRow> {
+            
+            private global::System.Data.DataColumn columnKod_badania;
+            
+            private global::System.Data.DataColumn columnNazwa_badania;
+            
+            private global::System.Data.DataColumn columnWynik;
+            
+            private global::System.Data.DataColumn columnvisit_id;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ShortPhysicalExaminationsDataTable() {
+                this.TableName = "ShortPhysicalExaminations";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ShortPhysicalExaminationsDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected ShortPhysicalExaminationsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Kod_badaniaColumn {
+                get {
+                    return this.columnKod_badania;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Nazwa_badaniaColumn {
+                get {
+                    return this.columnNazwa_badania;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn WynikColumn {
+                get {
+                    return this.columnWynik;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn visit_idColumn {
+                get {
+                    return this.columnvisit_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ShortPhysicalExaminationsRow this[int index] {
+                get {
+                    return ((ShortPhysicalExaminationsRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ShortPhysicalExaminationsRowChangeEventHandler ShortPhysicalExaminationsRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ShortPhysicalExaminationsRowChangeEventHandler ShortPhysicalExaminationsRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ShortPhysicalExaminationsRowChangeEventHandler ShortPhysicalExaminationsRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ShortPhysicalExaminationsRowChangeEventHandler ShortPhysicalExaminationsRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddShortPhysicalExaminationsRow(ShortPhysicalExaminationsRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ShortPhysicalExaminationsRow AddShortPhysicalExaminationsRow(string Kod_badania, string Nazwa_badania, string Wynik, ShortVisitRow parentShortVisitRowByShortVisit_ShortPhysicalExaminations) {
+                ShortPhysicalExaminationsRow rowShortPhysicalExaminationsRow = ((ShortPhysicalExaminationsRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Kod_badania,
+                        Nazwa_badania,
+                        Wynik,
+                        null};
+                if ((parentShortVisitRowByShortVisit_ShortPhysicalExaminations != null)) {
+                    columnValuesArray[3] = parentShortVisitRowByShortVisit_ShortPhysicalExaminations[0];
+                }
+                rowShortPhysicalExaminationsRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowShortPhysicalExaminationsRow);
+                return rowShortPhysicalExaminationsRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ShortPhysicalExaminationsDataTable cln = ((ShortPhysicalExaminationsDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ShortPhysicalExaminationsDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnKod_badania = base.Columns["Kod badania"];
+                this.columnNazwa_badania = base.Columns["Nazwa badania"];
+                this.columnWynik = base.Columns["Wynik"];
+                this.columnvisit_id = base.Columns["visit_id"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnKod_badania = new global::System.Data.DataColumn("Kod badania", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnKod_badania);
+                this.columnNazwa_badania = new global::System.Data.DataColumn("Nazwa badania", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNazwa_badania);
+                this.columnWynik = new global::System.Data.DataColumn("Wynik", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnWynik);
+                this.columnvisit_id = new global::System.Data.DataColumn("visit_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnvisit_id);
+                this.columnKod_badania.AllowDBNull = false;
+                this.columnKod_badania.MaxLength = 30;
+                this.columnNazwa_badania.MaxLength = 50;
+                this.columnWynik.AllowDBNull = false;
+                this.columnWynik.MaxLength = 50;
+                this.columnvisit_id.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ShortPhysicalExaminationsRow NewShortPhysicalExaminationsRow() {
+                return ((ShortPhysicalExaminationsRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ShortPhysicalExaminationsRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ShortPhysicalExaminationsRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ShortPhysicalExaminationsRowChanged != null)) {
+                    this.ShortPhysicalExaminationsRowChanged(this, new ShortPhysicalExaminationsRowChangeEvent(((ShortPhysicalExaminationsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ShortPhysicalExaminationsRowChanging != null)) {
+                    this.ShortPhysicalExaminationsRowChanging(this, new ShortPhysicalExaminationsRowChangeEvent(((ShortPhysicalExaminationsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ShortPhysicalExaminationsRowDeleted != null)) {
+                    this.ShortPhysicalExaminationsRowDeleted(this, new ShortPhysicalExaminationsRowChangeEvent(((ShortPhysicalExaminationsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ShortPhysicalExaminationsRowDeleting != null)) {
+                    this.ShortPhysicalExaminationsRowDeleting(this, new ShortPhysicalExaminationsRowChangeEvent(((ShortPhysicalExaminationsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveShortPhysicalExaminationsRow(ShortPhysicalExaminationsRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                BD_2DataSet ds = new BD_2DataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ShortPhysicalExaminationsDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -3578,17 +4332,6 @@ namespace BD2_demaOkien {
                     return ((Physical_examinationRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Physical_examination_Examination_dictionary"])));
                 }
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public VisitsWithExaminationsRow[] GetVisitsWithExaminationsRows() {
-                if ((this.Table.ChildRelations["FK_Physical_examination_Examination_dictionary1"] == null)) {
-                    return new VisitsWithExaminationsRow[0];
-                }
-                else {
-                    return ((VisitsWithExaminationsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Physical_examination_Examination_dictionary1"])));
-                }
-            }
         }
         
         /// <summary>
@@ -3689,10 +4432,10 @@ namespace BD2_demaOkien {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.TimeSpan LAB_examination_date {
+            public System.DateTime LAB_examination_date {
                 get {
                     try {
-                        return ((global::System.TimeSpan)(this[this.tableLAB_examination.LAB_examination_dateColumn]));
+                        return ((global::System.DateTime)(this[this.tableLAB_examination.LAB_examination_dateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'LAB_examination_date\' in table \'LAB_examination\' is DBNull." +
@@ -3816,6 +4559,17 @@ namespace BD2_demaOkien {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_LAB_examination_Worker1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ShortVisitRow ShortVisitRow {
+                get {
+                    return ((ShortVisitRow)(this.GetParentRow(this.Table.ParentRelations["FK_LAB_examination_Visit1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_LAB_examination_Visit1"]);
                 }
             }
             
@@ -4084,6 +4838,17 @@ namespace BD2_demaOkien {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Physical_examination_Visit"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ShortVisitRow ShortVisitRow {
+                get {
+                    return ((ShortVisitRow)(this.GetParentRow(this.Table.ParentRelations["FK_Physical_examination_Visit1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Physical_examination_Visit1"]);
                 }
             }
         }
@@ -4514,150 +5279,469 @@ namespace BD2_demaOkien {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class VisitsWithExaminationsRow : global::System.Data.DataRow {
+        public partial class ShortVisitRow : global::System.Data.DataRow {
             
-            private VisitsWithExaminationsDataTable tableVisitsWithExaminations;
+            private ShortVisitDataTable tableShortVisit;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal VisitsWithExaminationsRow(global::System.Data.DataRowBuilder rb) : 
+            internal ShortVisitRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableVisitsWithExaminations = ((VisitsWithExaminationsDataTable)(this.Table));
+                this.tableShortVisit = ((ShortVisitDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string status {
+            public int visit_id {
                 get {
-                    return ((string)(this[this.tableVisitsWithExaminations.statusColumn]));
+                    return ((int)(this[this.tableShortVisit.visit_idColumn]));
                 }
                 set {
-                    this[this.tableVisitsWithExaminations.statusColumn] = value;
+                    this[this.tableShortVisit.visit_idColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string diagnosis {
+            public string Status {
                 get {
-                    try {
-                        return ((string)(this[this.tableVisitsWithExaminations.diagnosisColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'diagnosis\' in table \'VisitsWithExaminations\' is DBNull.", e);
-                    }
+                    return ((string)(this[this.tableShortVisit.StatusColumn]));
                 }
                 set {
-                    this[this.tableVisitsWithExaminations.diagnosisColumn] = value;
+                    this[this.tableShortVisit.StatusColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime ending_date {
+            public System.DateTime Data_wizyty {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableVisitsWithExaminations.ending_dateColumn]));
+                        return ((global::System.DateTime)(this[this.tableShortVisit.Data_wizytyColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ending_date\' in table \'VisitsWithExaminations\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Data wizyty\' in table \'ShortVisit\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableVisitsWithExaminations.ending_dateColumn] = value;
+                    this[this.tableShortVisit.Data_wizytyColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Physical_examination_code {
+            public string Lekarz {
                 get {
                     try {
-                        return ((string)(this[this.tableVisitsWithExaminations.Physical_examination_codeColumn]));
+                        return ((string)(this[this.tableShortVisit.LekarzColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Physical_examination_code\' in table \'VisitsWithExaminations" +
-                                "\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Lekarz\' in table \'ShortVisit\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableVisitsWithExaminations.Physical_examination_codeColumn] = value;
+                    this[this.tableShortVisit.LekarzColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Result {
+            public string Wywiad {
                 get {
                     try {
-                        return ((string)(this[this.tableVisitsWithExaminations.ResultColumn]));
+                        return ((string)(this[this.tableShortVisit.WywiadColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Result\' in table \'VisitsWithExaminations\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Wywiad\' in table \'ShortVisit\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableVisitsWithExaminations.ResultColumn] = value;
+                    this[this.tableShortVisit.WywiadColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Examination_dictionaryRow Examination_dictionaryRow {
+            public string Diagnoza {
                 get {
-                    return ((Examination_dictionaryRow)(this.GetParentRow(this.Table.ParentRelations["FK_Physical_examination_Examination_dictionary1"])));
+                    try {
+                        return ((string)(this[this.tableShortVisit.DiagnozaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Diagnoza\' in table \'ShortVisit\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Physical_examination_Examination_dictionary1"]);
+                    this[this.tableShortVisit.DiagnozaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsdiagnosisNull() {
-                return this.IsNull(this.tableVisitsWithExaminations.diagnosisColumn);
+            public bool IsData_wizytyNull() {
+                return this.IsNull(this.tableShortVisit.Data_wizytyColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetdiagnosisNull() {
-                this[this.tableVisitsWithExaminations.diagnosisColumn] = global::System.Convert.DBNull;
+            public void SetData_wizytyNull() {
+                this[this.tableShortVisit.Data_wizytyColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isending_dateNull() {
-                return this.IsNull(this.tableVisitsWithExaminations.ending_dateColumn);
+            public bool IsLekarzNull() {
+                return this.IsNull(this.tableShortVisit.LekarzColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setending_dateNull() {
-                this[this.tableVisitsWithExaminations.ending_dateColumn] = global::System.Convert.DBNull;
+            public void SetLekarzNull() {
+                this[this.tableShortVisit.LekarzColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPhysical_examination_codeNull() {
-                return this.IsNull(this.tableVisitsWithExaminations.Physical_examination_codeColumn);
+            public bool IsWywiadNull() {
+                return this.IsNull(this.tableShortVisit.WywiadColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPhysical_examination_codeNull() {
-                this[this.tableVisitsWithExaminations.Physical_examination_codeColumn] = global::System.Convert.DBNull;
+            public void SetWywiadNull() {
+                this[this.tableShortVisit.WywiadColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsResultNull() {
-                return this.IsNull(this.tableVisitsWithExaminations.ResultColumn);
+            public bool IsDiagnozaNull() {
+                return this.IsNull(this.tableShortVisit.DiagnozaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetResultNull() {
-                this[this.tableVisitsWithExaminations.ResultColumn] = global::System.Convert.DBNull;
+            public void SetDiagnozaNull() {
+                this[this.tableShortVisit.DiagnozaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public LAB_examinationRow[] GetLAB_examinationRows() {
+                if ((this.Table.ChildRelations["FK_LAB_examination_Visit1"] == null)) {
+                    return new LAB_examinationRow[0];
+                }
+                else {
+                    return ((LAB_examinationRow[])(base.GetChildRows(this.Table.ChildRelations["FK_LAB_examination_Visit1"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public Physical_examinationRow[] GetPhysical_examinationRows() {
+                if ((this.Table.ChildRelations["FK_Physical_examination_Visit1"] == null)) {
+                    return new Physical_examinationRow[0];
+                }
+                else {
+                    return ((Physical_examinationRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Physical_examination_Visit1"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ShortLABExaminationsRow[] GetShortLABExaminationsRows() {
+                if ((this.Table.ChildRelations["ShortVisit_ShortLABExaminations"] == null)) {
+                    return new ShortLABExaminationsRow[0];
+                }
+                else {
+                    return ((ShortLABExaminationsRow[])(base.GetChildRows(this.Table.ChildRelations["ShortVisit_ShortLABExaminations"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ShortPhysicalExaminationsRow[] GetShortPhysicalExaminationsRows() {
+                if ((this.Table.ChildRelations["ShortVisit_ShortPhysicalExaminations"] == null)) {
+                    return new ShortPhysicalExaminationsRow[0];
+                }
+                else {
+                    return ((ShortPhysicalExaminationsRow[])(base.GetChildRows(this.Table.ChildRelations["ShortVisit_ShortPhysicalExaminations"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ShortLABExaminationsRow : global::System.Data.DataRow {
+            
+            private ShortLABExaminationsDataTable tableShortLABExaminations;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ShortLABExaminationsRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableShortLABExaminations = ((ShortLABExaminationsDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Kod_badania {
+                get {
+                    return ((string)(this[this.tableShortLABExaminations.Kod_badaniaColumn]));
+                }
+                set {
+                    this[this.tableShortLABExaminations.Kod_badaniaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Nazwa_badania {
+                get {
+                    try {
+                        return ((string)(this[this.tableShortLABExaminations.Nazwa_badaniaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Nazwa badania\' in table \'ShortLABExaminations\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableShortLABExaminations.Nazwa_badaniaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Notatki {
+                get {
+                    try {
+                        return ((string)(this[this.tableShortLABExaminations.NotatkiColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Notatki\' in table \'ShortLABExaminations\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableShortLABExaminations.NotatkiColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime Data_badania {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableShortLABExaminations.Data_badaniaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Data badania\' in table \'ShortLABExaminations\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableShortLABExaminations.Data_badaniaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Wynik {
+                get {
+                    try {
+                        return ((string)(this[this.tableShortLABExaminations.WynikColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Wynik\' in table \'ShortLABExaminations\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableShortLABExaminations.WynikColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Wykonał {
+                get {
+                    try {
+                        return ((string)(this[this.tableShortLABExaminations.WykonałColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Wykonał\' in table \'ShortLABExaminations\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableShortLABExaminations.WykonałColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int visit_id {
+                get {
+                    return ((int)(this[this.tableShortLABExaminations.visit_idColumn]));
+                }
+                set {
+                    this[this.tableShortLABExaminations.visit_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ShortVisitRow ShortVisitRow {
+                get {
+                    return ((ShortVisitRow)(this.GetParentRow(this.Table.ParentRelations["ShortVisit_ShortLABExaminations"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["ShortVisit_ShortLABExaminations"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNazwa_badaniaNull() {
+                return this.IsNull(this.tableShortLABExaminations.Nazwa_badaniaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNazwa_badaniaNull() {
+                this[this.tableShortLABExaminations.Nazwa_badaniaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNotatkiNull() {
+                return this.IsNull(this.tableShortLABExaminations.NotatkiColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNotatkiNull() {
+                this[this.tableShortLABExaminations.NotatkiColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsData_badaniaNull() {
+                return this.IsNull(this.tableShortLABExaminations.Data_badaniaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetData_badaniaNull() {
+                this[this.tableShortLABExaminations.Data_badaniaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsWynikNull() {
+                return this.IsNull(this.tableShortLABExaminations.WynikColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetWynikNull() {
+                this[this.tableShortLABExaminations.WynikColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsWykonałNull() {
+                return this.IsNull(this.tableShortLABExaminations.WykonałColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetWykonałNull() {
+                this[this.tableShortLABExaminations.WykonałColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ShortPhysicalExaminationsRow : global::System.Data.DataRow {
+            
+            private ShortPhysicalExaminationsDataTable tableShortPhysicalExaminations;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ShortPhysicalExaminationsRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableShortPhysicalExaminations = ((ShortPhysicalExaminationsDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Kod_badania {
+                get {
+                    return ((string)(this[this.tableShortPhysicalExaminations.Kod_badaniaColumn]));
+                }
+                set {
+                    this[this.tableShortPhysicalExaminations.Kod_badaniaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Nazwa_badania {
+                get {
+                    try {
+                        return ((string)(this[this.tableShortPhysicalExaminations.Nazwa_badaniaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Nazwa badania\' in table \'ShortPhysicalExaminations\' is DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableShortPhysicalExaminations.Nazwa_badaniaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Wynik {
+                get {
+                    return ((string)(this[this.tableShortPhysicalExaminations.WynikColumn]));
+                }
+                set {
+                    this[this.tableShortPhysicalExaminations.WynikColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int visit_id {
+                get {
+                    return ((int)(this[this.tableShortPhysicalExaminations.visit_idColumn]));
+                }
+                set {
+                    this[this.tableShortPhysicalExaminations.visit_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ShortVisitRow ShortVisitRow {
+                get {
+                    return ((ShortVisitRow)(this.GetParentRow(this.Table.ParentRelations["ShortVisit_ShortPhysicalExaminations"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["ShortVisit_ShortPhysicalExaminations"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNazwa_badaniaNull() {
+                return this.IsNull(this.tableShortPhysicalExaminations.Nazwa_badaniaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNazwa_badaniaNull() {
+                this[this.tableShortPhysicalExaminations.Nazwa_badaniaColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4903,22 +5987,90 @@ namespace BD2_demaOkien {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class VisitsWithExaminationsRowChangeEvent : global::System.EventArgs {
+        public class ShortVisitRowChangeEvent : global::System.EventArgs {
             
-            private VisitsWithExaminationsRow eventRow;
+            private ShortVisitRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public VisitsWithExaminationsRowChangeEvent(VisitsWithExaminationsRow row, global::System.Data.DataRowAction action) {
+            public ShortVisitRowChangeEvent(ShortVisitRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public VisitsWithExaminationsRow Row {
+            public ShortVisitRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class ShortLABExaminationsRowChangeEvent : global::System.EventArgs {
+            
+            private ShortLABExaminationsRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ShortLABExaminationsRowChangeEvent(ShortLABExaminationsRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ShortLABExaminationsRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class ShortPhysicalExaminationsRowChangeEvent : global::System.EventArgs {
+            
+            private ShortPhysicalExaminationsRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ShortPhysicalExaminationsRowChangeEvent(ShortPhysicalExaminationsRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ShortPhysicalExaminationsRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -8113,7 +9265,7 @@ SELECT Worker_id, Role, First_name, Last_name, NPWZ, [E-mail_Address], Phone_num
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class VisitsWithExaminationsTableAdapter : global::System.ComponentModel.Component {
+    public partial class ShortVisitTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -8127,7 +9279,7 @@ SELECT Worker_id, Role, First_name, Last_name, NPWZ, [E-mail_Address], Phone_num
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public VisitsWithExaminationsTableAdapter() {
+        public ShortVisitTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -8224,12 +9376,13 @@ SELECT Worker_id, Role, First_name, Last_name, NPWZ, [E-mail_Address], Phone_num
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "VisitsWithExaminations";
-            tableMapping.ColumnMappings.Add("status", "status");
-            tableMapping.ColumnMappings.Add("diagnosis", "diagnosis");
-            tableMapping.ColumnMappings.Add("ending_date", "ending_date");
-            tableMapping.ColumnMappings.Add("Physical_examination_code", "Physical_examination_code");
-            tableMapping.ColumnMappings.Add("Result", "Result");
+            tableMapping.DataSetTable = "ShortVisit";
+            tableMapping.ColumnMappings.Add("visit_id", "visit_id");
+            tableMapping.ColumnMappings.Add("Status", "Status");
+            tableMapping.ColumnMappings.Add("Data wizyty", "Data wizyty");
+            tableMapping.ColumnMappings.Add("Lekarz", "Lekarz");
+            tableMapping.ColumnMappings.Add("Wywiad", "Wywiad");
+            tableMapping.ColumnMappings.Add("Diagnoza", "Diagnoza");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -8246,9 +9399,10 @@ SELECT Worker_id, Role, First_name, Last_name, NPWZ, [E-mail_Address], Phone_num
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        V.status, V.diagnosis, V.ending_date, PE.Physical_examination_code," +
-                " PE.Result\r\nFROM            Visit AS V LEFT OUTER JOIN\r\n                        " +
-                " Physical_examination AS PE ON V.visit_id = PE.visit_id";
+            this._commandCollection[0].CommandText = @"SELECT        Visit.visit_id, Visit.status AS 'Status', Visit.ending_date AS 'Data wizyty', { fn CONCAT({ fn CONCAT(Worker.First_name, ' ') }, Worker.Last_name) } AS 'Lekarz', Visit.description AS Wywiad, 
+                         Visit.diagnosis AS Diagnoza
+FROM            Visit LEFT OUTER JOIN
+                         Worker ON Visit.doctor_id = Worker.Worker_id";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -8256,7 +9410,7 @@ SELECT Worker_id, Role, First_name, Last_name, NPWZ, [E-mail_Address], Phone_num
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(BD_2DataSet.VisitsWithExaminationsDataTable dataTable) {
+        public virtual int Fill(BD_2DataSet.ShortVisitDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -8269,9 +9423,358 @@ SELECT Worker_id, Role, First_name, Last_name, NPWZ, [E-mail_Address], Phone_num
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual BD_2DataSet.VisitsWithExaminationsDataTable GetData() {
+        public virtual BD_2DataSet.ShortVisitDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            BD_2DataSet.VisitsWithExaminationsDataTable dataTable = new BD_2DataSet.VisitsWithExaminationsDataTable();
+            BD_2DataSet.ShortVisitDataTable dataTable = new BD_2DataSet.ShortVisitDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class ShortLABExaminationsTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public ShortLABExaminationsTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "ShortLABExaminations";
+            tableMapping.ColumnMappings.Add("Kod badania", "Kod badania");
+            tableMapping.ColumnMappings.Add("Nazwa badania", "Nazwa badania");
+            tableMapping.ColumnMappings.Add("Notatki", "Notatki");
+            tableMapping.ColumnMappings.Add("Data badania", "Data badania");
+            tableMapping.ColumnMappings.Add("Wynik", "Wynik");
+            tableMapping.ColumnMappings.Add("Wykonał", "Wykonał");
+            tableMapping.ColumnMappings.Add("visit_id", "visit_id");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::BD2_demaOkien.Properties.Settings.Default.BD_2ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT        LE.visit_id, LE.LAB_examination_code AS 'Kod badania', ED.Examination_name AS 'Nazwa badania', LE.doctor_notes AS 'Notatki', LE.LAB_examination_date AS 'Data badania', LE.LAB_examination_result AS 'Wynik', 
+                         { fn CONCAT(Worker.First_name, Worker.Last_name) } AS 'Wykonał'
+FROM            LAB_examination AS LE LEFT OUTER JOIN
+                         Worker ON LE.LAB_worker_id = Worker.Worker_id LEFT OUTER JOIN
+                         Examination_dictionary AS ED ON LE.LAB_examination_code = ED.Examination_code";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(BD_2DataSet.ShortLABExaminationsDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual BD_2DataSet.ShortLABExaminationsDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            BD_2DataSet.ShortLABExaminationsDataTable dataTable = new BD_2DataSet.ShortLABExaminationsDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class ShortPhysicalExaminationsTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public ShortPhysicalExaminationsTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "ShortPhysicalExaminations";
+            tableMapping.ColumnMappings.Add("Kod badania", "Kod badania");
+            tableMapping.ColumnMappings.Add("Nazwa badania", "Nazwa badania");
+            tableMapping.ColumnMappings.Add("Wynik", "Wynik");
+            tableMapping.ColumnMappings.Add("visit_id", "visit_id");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::BD2_demaOkien.Properties.Settings.Default.BD_2ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT        PE.Physical_examination_code AS [Kod badania], ED.Examination_name AS [Nazwa badania], PE.Result AS Wynik, PE.visit_id
+FROM            Physical_examination AS PE INNER JOIN
+                         Examination_dictionary AS ED ON ED.Examination_code = PE.Physical_examination_code";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(BD_2DataSet.ShortPhysicalExaminationsDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual BD_2DataSet.ShortPhysicalExaminationsDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            BD_2DataSet.ShortPhysicalExaminationsDataTable dataTable = new BD_2DataSet.ShortPhysicalExaminationsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

@@ -5,19 +5,33 @@ Public Class MasterControl
     Inherits DataGridView
 #Region "Variables"
     Friend rowCurrent As New List(Of Integer)
+    Private _childView As New detailControl
+    Private _myForeignKey As String
+    Public Property childView As detailControl
+        Get
+            Return _childView
+        End Get
+        Set(value As detailControl)
+            RemoveHandler _childView.SizeChanged, AddressOf Me.ResizeCurrentRow
+            Me.Controls.Remove(_childView)
+            value.Parent = Me
+            _childView = value
+            Me.Controls.Add(value)
+            AddHandler value.SizeChanged, AddressOf Me.ResizeCurrentRow
+        End Set
+    End Property
     Friend rowDefaultHeight = 22
     Friend rowExpandedHeight = 300
     Friend rowDefaultDivider = 0
     Friend rowExpandedDivider = 300 - 22
     Friend rowDividerMargin = 5
     Friend collapseRow As Boolean
-    Public childView As New detailControl With {.Height = rowExpandedDivider - rowDividerMargin * 2, .Visible = False}
+    'Public childView As New detailControl With {.Height = rowExpandedDivider - rowDividerMargin * 2, .Visible = False}
     '
     Friend WithEvents RowHeaderIconList As System.Windows.Forms.ImageList
     Private components As System.ComponentModel.IContainer
     '
     Dim _cDataset As DataSet
-    Dim _foreignKey As String
     Dim _filterFormat As String
     Enum rowHeaderIcons
         expand = 0
@@ -26,9 +40,25 @@ Public Class MasterControl
 #End Region
 #Region "Initialze and Display"
     Sub New()
+        childView.Visible = False
         Me.Controls.Add(childView)
         InitializeComponent()
+        AddHandler Me.DataBindingComplete, AddressOf Me.Handler_DataSourceChanged
+        AddHandler childView.SizeChanged, AddressOf Me.ResizeCurrentRow
+        Debug.Print("I'm alive!!!")
     End Sub
+
+    Private Sub ResizeCurrentRow(sender As Object, e As EventArgs)
+        If Me.CurrentRow IsNot Nothing Then
+            Me.CurrentRow.Height = childView.Size.Height + rowDefaultHeight + 10
+            Me.CurrentRow.DividerHeight = childView.Size.Height
+        End If
+    End Sub
+
+    Private Sub Handler_DataSourceChanged(sender As Object, e As DataGridViewBindingCompleteEventArgs)
+        RefreshFilters()
+    End Sub
+
     Public Property dataset() As DataSet
         Get
             Return _cDataset
@@ -60,18 +90,38 @@ Public Class MasterControl
     End Sub
 #End Region
 #Region "DataControl"
-    Public Sub setParentSource(ByVal tableName As String, ByVal foreignKey As String)
-        Me.DataSource = New DataView(_cDataset.Tables(tableName))
-        setGridRowHeader(Me)
-        _foreignKey = foreignKey
-        If _cDataset.Tables(tableName).Columns(foreignKey).GetType.ToString = GetType(Integer).ToString _
-        Or _cDataset.Tables(tableName).Columns(foreignKey).GetType.ToString = GetType(Double).ToString _
-        Or _cDataset.Tables(tableName).Columns(foreignKey).GetType.ToString = GetType(Decimal).ToString _
+    Public Property foreignKey() As String
+        Get
+            Return _myForeignKey
+        End Get
+        Set(ByVal value As String)
+            _myForeignKey = value
+        End Set
+    End Property
+    Private Sub RefreshFilters()
+        Debug.Print("RefreshFilters")
+        Dim dataset As DataSet
+        Dim table As DataTable
+        If TypeOf Me.DataSource Is BindingSource Then
+            dataset = Me.DataSource.DataSource
+            table = dataset.Tables.Item(Me.DataSource.DataMember)
+            '        ElseIf TypeOf Me.DataSource Is DataView Then
+            '            dataview = Me.DataSource
+        Else
+            Return
+        End If
+        Debug.Print("RefreshFilters 2" & table.Columns(foreignKey).GetType.ToString)
+        If table.Columns(foreignKey).DataType.Equals(GetType(Integer)) _
+        Or table.Columns(foreignKey).DataType.Equals(GetType(Double)) _
+        Or table.Columns(foreignKey).DataType.Equals(GetType(Decimal)) _
         Then
             _filterFormat = foreignKey & "={0}"
+            Debug.Print("RefreshFilters 3")
         Else
             _filterFormat = foreignKey & "='{0}'"
+            Debug.Print("RefreshFilters 4")
         End If
+        childView.RefreshTabs()
     End Sub
 #End Region
 #Region "GridEvents"
@@ -93,8 +143,8 @@ Public Class MasterControl
                     Me.Rows(eRow).Selected = True
                 End If
                 rowCurrent.Add(e.RowIndex)
-                Me.Rows(e.RowIndex).Height = rowExpandedHeight
-                Me.Rows(e.RowIndex).DividerHeight = rowExpandedDivider
+                'Me.Rows(e.RowIndex).Height = rowExpandedHeight
+                'Me.Rows(e.RowIndex).DividerHeight = rowExpandedDivider
             End If
             Me.ClearSelection()
             collapseRow = True
@@ -112,7 +162,7 @@ Public Class MasterControl
                 e.Graphics.DrawImage(RowHeaderIconList.Images(rowHeaderIcons.collapse), rect)
                 childView.Location = New Point(e.RowBounds.Left + sender.RowHeadersWidth, e.RowBounds.Top + rowDefaultHeight + 5)
                 childView.Width = e.RowBounds.Right - sender.rowheaderswidth
-                childView.Height = sender.Rows(e.RowIndex).DividerHeight - 10
+                'childView.Height = sender.Rows(e.RowIndex).DividerHeight - 10
                 childView.Visible = True
             Else
                 childView.Visible = False
@@ -125,7 +175,7 @@ Public Class MasterControl
                 e.Graphics.DrawImage(RowHeaderIconList.Images(rowHeaderIcons.collapse), rect)
                 childView.Location = New Point(e.RowBounds.Left + sender.RowHeadersWidth, e.RowBounds.Top + rowDefaultHeight + 5)
                 childView.Width = e.RowBounds.Right - sender.rowheaderswidth
-                childView.Height = sender.Rows(e.RowIndex).DividerHeight - 10
+                'childView.Height = sender.Rows(e.RowIndex).DividerHeight - 10
                 childView.Visible = True
             Else
                 e.Graphics.DrawImage(RowHeaderIconList.Images(rowHeaderIcons.expand), rect)
@@ -141,11 +191,17 @@ Public Class MasterControl
         End If
     End Sub
     Private Sub MasterControl_SelectionChanged(sender As Object, e As EventArgs) Handles MyBase.SelectionChanged
+        Debug.Print("In selectionChanged")
         If Not Me.RowCount = 0 Then
             If rowCurrent.Contains(Me.CurrentRow.Index) Then
+                '''''''''' childGrid - to jest puste!!! - tu jest pies pogrzebany...
                 For Each cGrid As DataGridView In childView.childGrid
-                    CType(cGrid.DataSource, DataView).RowFilter = String.Format(_filterFormat, Me(_foreignKey, Me.CurrentRow.Index).Value)
+                    CType(cGrid.DataSource, BindingSource).Filter = String.Format(_filterFormat, Me(_myForeignKey, Me.CurrentRow.Index).Value)
+                    Debug.Print("Set filter to " & String.Format(_filterFormat, Me(_myForeignKey, Me.CurrentRow.Index).Value))
                 Next
+                childView.RecalcHeight()
+                'Me.CurrentRow.Height = childView.Size.Height + rowDefaultHeight
+                'Me.CurrentRow.DividerHeight = childView.Size.Height
             End If
         End If
     End Sub

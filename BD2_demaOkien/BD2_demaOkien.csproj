@@ -52,6 +52,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BD_2DataSet.cs">
+      <DependentUpon>BD_2DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="BD_2DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -175,7 +178,6 @@
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MasterControl.resx" />
     <EmbeddedResource Include="PatientDetailsWindow.resx">
       <DependentUpon>PatientDetailsWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -231,11 +233,6 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="cModule.vb" />
-    <Content Include="DetailControl.vb" />
-    <Content Include="MasterControl.vb" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MasterDetailGrid\MasterDetailGrid.vbproj">

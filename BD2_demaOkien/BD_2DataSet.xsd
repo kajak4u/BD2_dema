@@ -546,25 +546,74 @@ Where Role='Doctor'</CommandText>
               </DbSource>
             </Sources>
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VisitsWithExaminationsTableAdapter" GeneratorDataComponentClassName="VisitsWithExaminationsTableAdapter" Name="VisitsWithExaminations" UserDataComponentName="VisitsWithExaminationsTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ShortVisitTableAdapter" GeneratorDataComponentClassName="ShortVisitTableAdapter" Name="ShortVisit" UserDataComponentName="ShortVisitTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="BD_2ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="BD_2ConnectionString (Settings)" DbObjectName="BD_2.dbo.Visit" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        V.status, V.diagnosis, V.ending_date, PE.Physical_examination_code, PE.Result
-FROM            Visit AS V LEFT OUTER JOIN
-                         Physical_examination AS PE ON V.visit_id = PE.visit_id</CommandText>
+                    <CommandText>SELECT        Visit.visit_id, Visit.status AS 'Status', Visit.ending_date AS 'Data wizyty', { fn CONCAT({ fn CONCAT(Worker.First_name, ' ') }, Worker.Last_name) } AS 'Lekarz', Visit.description AS Wywiad, 
+                         Visit.diagnosis AS Diagnoza
+FROM            Visit LEFT OUTER JOIN
+                         Worker ON Visit.doctor_id = Worker.Worker_id</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="status" DataSetColumn="status" />
-              <Mapping SourceColumn="diagnosis" DataSetColumn="diagnosis" />
-              <Mapping SourceColumn="ending_date" DataSetColumn="ending_date" />
-              <Mapping SourceColumn="Physical_examination_code" DataSetColumn="Physical_examination_code" />
-              <Mapping SourceColumn="Result" DataSetColumn="Result" />
+              <Mapping SourceColumn="visit_id" DataSetColumn="visit_id" />
+              <Mapping SourceColumn="Status" DataSetColumn="Status" />
+              <Mapping SourceColumn="Data wizyty" DataSetColumn="Data wizyty" />
+              <Mapping SourceColumn="Lekarz" DataSetColumn="Lekarz" />
+              <Mapping SourceColumn="Wywiad" DataSetColumn="Wywiad" />
+              <Mapping SourceColumn="Diagnoza" DataSetColumn="Diagnoza" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ShortLABExaminationsTableAdapter" GeneratorDataComponentClassName="ShortLABExaminationsTableAdapter" Name="ShortLABExaminations" UserDataComponentName="ShortLABExaminationsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="BD_2ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        LE.visit_id, LE.LAB_examination_code AS 'Kod badania', ED.Examination_name AS 'Nazwa badania', LE.doctor_notes AS 'Notatki', LE.LAB_examination_date AS 'Data badania', LE.LAB_examination_result AS 'Wynik', 
+                         { fn CONCAT(Worker.First_name, Worker.Last_name) } AS 'Wykonał'
+FROM            LAB_examination AS LE LEFT OUTER JOIN
+                         Worker ON LE.LAB_worker_id = Worker.Worker_id LEFT OUTER JOIN
+                         Examination_dictionary AS ED ON LE.LAB_examination_code = ED.Examination_code</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Kod badania" DataSetColumn="Kod badania" />
+              <Mapping SourceColumn="Nazwa badania" DataSetColumn="Nazwa badania" />
+              <Mapping SourceColumn="Notatki" DataSetColumn="Notatki" />
+              <Mapping SourceColumn="Data badania" DataSetColumn="Data badania" />
+              <Mapping SourceColumn="Wynik" DataSetColumn="Wynik" />
+              <Mapping SourceColumn="Wykonał" DataSetColumn="Wykonał" />
+              <Mapping SourceColumn="visit_id" DataSetColumn="visit_id" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ShortPhysicalExaminationsTableAdapter" GeneratorDataComponentClassName="ShortPhysicalExaminationsTableAdapter" Name="ShortPhysicalExaminations" UserDataComponentName="ShortPhysicalExaminationsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="BD_2ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        PE.Physical_examination_code AS [Kod badania], ED.Examination_name AS [Nazwa badania], PE.Result AS Wynik, PE.visit_id
+FROM            Physical_examination AS PE INNER JOIN
+                         Examination_dictionary AS ED ON ED.Examination_code = PE.Physical_examination_code</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Kod badania" DataSetColumn="Kod badania" />
+              <Mapping SourceColumn="Nazwa badania" DataSetColumn="Nazwa badania" />
+              <Mapping SourceColumn="Wynik" DataSetColumn="Wynik" />
+              <Mapping SourceColumn="visit_id" DataSetColumn="visit_id" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -576,7 +625,7 @@ FROM            Visit AS V LEFT OUTER JOIN
   <xs:element name="BD_2DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="BD_2DataSet" msprop:Generator_UserDSName="BD_2DataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Address" msprop:Generator_TableClassName="AddressDataTable" msprop:Generator_TableVarName="tableAddress" msprop:Generator_TablePropName="Address" msprop:Generator_RowDeletingName="AddressRowDeleting" msprop:Generator_RowChangingName="AddressRowChanging" msprop:Generator_RowEvHandlerName="AddressRowChangeEventHandler" msprop:Generator_RowDeletedName="AddressRowDeleted" msprop:Generator_UserTableName="Address" msprop:Generator_RowChangedName="AddressRowChanged" msprop:Generator_RowEvArgName="AddressRowChangeEvent" msprop:Generator_RowClassName="AddressRow">
+        <xs:element name="Address" msprop:Generator_TableClassName="AddressDataTable" msprop:Generator_TableVarName="tableAddress" msprop:Generator_RowChangedName="AddressRowChanged" msprop:Generator_TablePropName="Address" msprop:Generator_RowDeletingName="AddressRowDeleting" msprop:Generator_RowChangingName="AddressRowChanging" msprop:Generator_RowEvHandlerName="AddressRowChangeEventHandler" msprop:Generator_RowDeletedName="AddressRowDeleted" msprop:Generator_RowClassName="AddressRow" msprop:Generator_UserTableName="Address" msprop:Generator_RowEvArgName="AddressRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Address_id" msprop:Generator_ColumnVarNameInTable="columnAddress_id" msprop:Generator_ColumnPropNameInRow="Address_id" msprop:Generator_ColumnPropNameInTable="Address_idColumn" msprop:Generator_UserColumnName="Address_id" type="xs:int" />
@@ -599,7 +648,7 @@ FROM            Visit AS V LEFT OUTER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Examination_dictionary" msprop:Generator_TableClassName="Examination_dictionaryDataTable" msprop:Generator_TableVarName="tableExamination_dictionary" msprop:Generator_TablePropName="Examination_dictionary" msprop:Generator_RowDeletingName="Examination_dictionaryRowDeleting" msprop:Generator_RowChangingName="Examination_dictionaryRowChanging" msprop:Generator_RowEvHandlerName="Examination_dictionaryRowChangeEventHandler" msprop:Generator_RowDeletedName="Examination_dictionaryRowDeleted" msprop:Generator_UserTableName="Examination_dictionary" msprop:Generator_RowChangedName="Examination_dictionaryRowChanged" msprop:Generator_RowEvArgName="Examination_dictionaryRowChangeEvent" msprop:Generator_RowClassName="Examination_dictionaryRow">
+        <xs:element name="Examination_dictionary" msprop:Generator_TableClassName="Examination_dictionaryDataTable" msprop:Generator_TableVarName="tableExamination_dictionary" msprop:Generator_RowChangedName="Examination_dictionaryRowChanged" msprop:Generator_TablePropName="Examination_dictionary" msprop:Generator_RowDeletingName="Examination_dictionaryRowDeleting" msprop:Generator_RowChangingName="Examination_dictionaryRowChanging" msprop:Generator_RowEvHandlerName="Examination_dictionaryRowChangeEventHandler" msprop:Generator_RowDeletedName="Examination_dictionaryRowDeleted" msprop:Generator_RowClassName="Examination_dictionaryRow" msprop:Generator_UserTableName="Examination_dictionary" msprop:Generator_RowEvArgName="Examination_dictionaryRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Examination_code" msprop:Generator_ColumnVarNameInTable="columnExamination_code" msprop:Generator_ColumnPropNameInRow="Examination_code" msprop:Generator_ColumnPropNameInTable="Examination_codeColumn" msprop:Generator_UserColumnName="Examination_code">
@@ -626,7 +675,7 @@ FROM            Visit AS V LEFT OUTER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="LAB_examination" msprop:Generator_TableClassName="LAB_examinationDataTable" msprop:Generator_TableVarName="tableLAB_examination" msprop:Generator_TablePropName="LAB_examination" msprop:Generator_RowDeletingName="LAB_examinationRowDeleting" msprop:Generator_RowChangingName="LAB_examinationRowChanging" msprop:Generator_RowEvHandlerName="LAB_examinationRowChangeEventHandler" msprop:Generator_RowDeletedName="LAB_examinationRowDeleted" msprop:Generator_UserTableName="LAB_examination" msprop:Generator_RowChangedName="LAB_examinationRowChanged" msprop:Generator_RowEvArgName="LAB_examinationRowChangeEvent" msprop:Generator_RowClassName="LAB_examinationRow">
+        <xs:element name="LAB_examination" msprop:Generator_TableClassName="LAB_examinationDataTable" msprop:Generator_TableVarName="tableLAB_examination" msprop:Generator_RowChangedName="LAB_examinationRowChanged" msprop:Generator_TablePropName="LAB_examination" msprop:Generator_RowDeletingName="LAB_examinationRowDeleting" msprop:Generator_RowChangingName="LAB_examinationRowChanging" msprop:Generator_RowEvHandlerName="LAB_examinationRowChangeEventHandler" msprop:Generator_RowDeletedName="LAB_examinationRowDeleted" msprop:Generator_RowClassName="LAB_examinationRow" msprop:Generator_UserTableName="LAB_examination" msprop:Generator_RowEvArgName="LAB_examinationRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="LAB_examination_id" msprop:Generator_ColumnVarNameInTable="columnLAB_examination_id" msprop:Generator_ColumnPropNameInRow="LAB_examination_id" msprop:Generator_ColumnPropNameInTable="LAB_examination_idColumn" msprop:Generator_UserColumnName="LAB_examination_id" type="xs:int" />
@@ -653,7 +702,7 @@ FROM            Visit AS V LEFT OUTER JOIN
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="LAB_examination_date" msprop:Generator_ColumnVarNameInTable="columnLAB_examination_date" msprop:Generator_ColumnPropNameInRow="LAB_examination_date" msprop:Generator_ColumnPropNameInTable="LAB_examination_dateColumn" msprop:Generator_UserColumnName="LAB_examination_date" type="xs:duration" minOccurs="0" />
+              <xs:element name="LAB_examination_date" msprop:Generator_ColumnVarNameInTable="columnLAB_examination_date" msprop:Generator_ColumnPropNameInRow="LAB_examination_date" msprop:Generator_ColumnPropNameInTable="LAB_examination_dateColumn" msprop:Generator_UserColumnName="LAB_examination_date" type="xs:dateTime" minOccurs="0" />
               <xs:element name="LAB_manager_id" msprop:Generator_ColumnVarNameInTable="columnLAB_manager_id" msprop:Generator_ColumnPropNameInRow="LAB_manager_id" msprop:Generator_ColumnPropNameInTable="LAB_manager_idColumn" msprop:Generator_UserColumnName="LAB_manager_id" type="xs:int" minOccurs="0" />
               <xs:element name="LAB_manager_notes" msprop:Generator_ColumnVarNameInTable="columnLAB_manager_notes" msprop:Generator_ColumnPropNameInRow="LAB_manager_notes" msprop:Generator_ColumnPropNameInTable="LAB_manager_notesColumn" msprop:Generator_UserColumnName="LAB_manager_notes" minOccurs="0">
                 <xs:simpleType>
@@ -674,7 +723,7 @@ FROM            Visit AS V LEFT OUTER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Patient" msprop:Generator_TableClassName="PatientDataTable" msprop:Generator_TableVarName="tablePatient" msprop:Generator_TablePropName="Patient" msprop:Generator_RowDeletingName="PatientRowDeleting" msprop:Generator_RowChangingName="PatientRowChanging" msprop:Generator_RowEvHandlerName="PatientRowChangeEventHandler" msprop:Generator_RowDeletedName="PatientRowDeleted" msprop:Generator_UserTableName="Patient" msprop:Generator_RowChangedName="PatientRowChanged" msprop:Generator_RowEvArgName="PatientRowChangeEvent" msprop:Generator_RowClassName="PatientRow">
+        <xs:element name="Patient" msprop:Generator_TableClassName="PatientDataTable" msprop:Generator_TableVarName="tablePatient" msprop:Generator_RowChangedName="PatientRowChanged" msprop:Generator_TablePropName="Patient" msprop:Generator_RowDeletingName="PatientRowDeleting" msprop:Generator_RowChangingName="PatientRowChanging" msprop:Generator_RowEvHandlerName="PatientRowChangeEventHandler" msprop:Generator_RowDeletedName="PatientRowDeleted" msprop:Generator_RowClassName="PatientRow" msprop:Generator_UserTableName="Patient" msprop:Generator_RowEvArgName="PatientRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Patient_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnPatient_id" msprop:Generator_ColumnPropNameInRow="Patient_id" msprop:Generator_ColumnPropNameInTable="Patient_idColumn" msprop:Generator_UserColumnName="Patient_id" type="xs:int" />
@@ -698,7 +747,7 @@ FROM            Visit AS V LEFT OUTER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Physical_examination" msprop:Generator_TableClassName="Physical_examinationDataTable" msprop:Generator_TableVarName="tablePhysical_examination" msprop:Generator_TablePropName="Physical_examination" msprop:Generator_RowDeletingName="Physical_examinationRowDeleting" msprop:Generator_RowChangingName="Physical_examinationRowChanging" msprop:Generator_RowEvHandlerName="Physical_examinationRowChangeEventHandler" msprop:Generator_RowDeletedName="Physical_examinationRowDeleted" msprop:Generator_UserTableName="Physical_examination" msprop:Generator_RowChangedName="Physical_examinationRowChanged" msprop:Generator_RowEvArgName="Physical_examinationRowChangeEvent" msprop:Generator_RowClassName="Physical_examinationRow">
+        <xs:element name="Physical_examination" msprop:Generator_TableClassName="Physical_examinationDataTable" msprop:Generator_TableVarName="tablePhysical_examination" msprop:Generator_RowChangedName="Physical_examinationRowChanged" msprop:Generator_TablePropName="Physical_examination" msprop:Generator_RowDeletingName="Physical_examinationRowDeleting" msprop:Generator_RowChangingName="Physical_examinationRowChanging" msprop:Generator_RowEvHandlerName="Physical_examinationRowChangeEventHandler" msprop:Generator_RowDeletedName="Physical_examinationRowDeleted" msprop:Generator_RowClassName="Physical_examinationRow" msprop:Generator_UserTableName="Physical_examination" msprop:Generator_RowEvArgName="Physical_examinationRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Physical_examination_id" msprop:Generator_ColumnVarNameInTable="columnPhysical_examination_id" msprop:Generator_ColumnPropNameInRow="Physical_examination_id" msprop:Generator_ColumnPropNameInTable="Physical_examination_idColumn" msprop:Generator_UserColumnName="Physical_examination_id" type="xs:int" />
@@ -720,7 +769,7 @@ FROM            Visit AS V LEFT OUTER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Visit" msprop:Generator_TableClassName="VisitDataTable" msprop:Generator_TableVarName="tableVisit" msprop:Generator_TablePropName="Visit" msprop:Generator_RowDeletingName="VisitRowDeleting" msprop:Generator_RowChangingName="VisitRowChanging" msprop:Generator_RowEvHandlerName="VisitRowChangeEventHandler" msprop:Generator_RowDeletedName="VisitRowDeleted" msprop:Generator_UserTableName="Visit" msprop:Generator_RowChangedName="VisitRowChanged" msprop:Generator_RowEvArgName="VisitRowChangeEvent" msprop:Generator_RowClassName="VisitRow">
+        <xs:element name="Visit" msprop:Generator_TableClassName="VisitDataTable" msprop:Generator_TableVarName="tableVisit" msprop:Generator_RowChangedName="VisitRowChanged" msprop:Generator_TablePropName="Visit" msprop:Generator_RowDeletingName="VisitRowDeleting" msprop:Generator_RowChangingName="VisitRowChanging" msprop:Generator_RowEvHandlerName="VisitRowChangeEventHandler" msprop:Generator_RowDeletedName="VisitRowDeleted" msprop:Generator_RowClassName="VisitRow" msprop:Generator_UserTableName="Visit" msprop:Generator_RowEvArgName="VisitRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="visit_id" msprop:Generator_ColumnVarNameInTable="columnvisit_id" msprop:Generator_ColumnPropNameInRow="visit_id" msprop:Generator_ColumnPropNameInTable="visit_idColumn" msprop:Generator_UserColumnName="visit_id" type="xs:int" />
@@ -753,7 +802,7 @@ FROM            Visit AS V LEFT OUTER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Worker" msprop:Generator_TableClassName="WorkerDataTable" msprop:Generator_TableVarName="tableWorker" msprop:Generator_TablePropName="Worker" msprop:Generator_RowDeletingName="WorkerRowDeleting" msprop:Generator_RowChangingName="WorkerRowChanging" msprop:Generator_RowEvHandlerName="WorkerRowChangeEventHandler" msprop:Generator_RowDeletedName="WorkerRowDeleted" msprop:Generator_UserTableName="Worker" msprop:Generator_RowChangedName="WorkerRowChanged" msprop:Generator_RowEvArgName="WorkerRowChangeEvent" msprop:Generator_RowClassName="WorkerRow">
+        <xs:element name="Worker" msprop:Generator_TableClassName="WorkerDataTable" msprop:Generator_TableVarName="tableWorker" msprop:Generator_RowChangedName="WorkerRowChanged" msprop:Generator_TablePropName="Worker" msprop:Generator_RowDeletingName="WorkerRowDeleting" msprop:Generator_RowChangingName="WorkerRowChanging" msprop:Generator_RowEvHandlerName="WorkerRowChangeEventHandler" msprop:Generator_RowDeletedName="WorkerRowDeleted" msprop:Generator_RowClassName="WorkerRow" msprop:Generator_UserTableName="Worker" msprop:Generator_RowEvArgName="WorkerRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Worker_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnWorker_id" msprop:Generator_ColumnPropNameInRow="Worker_id" msprop:Generator_ColumnPropNameInTable="Worker_idColumn" msprop:Generator_UserColumnName="Worker_id" type="xs:int" />
@@ -792,38 +841,110 @@ FROM            Visit AS V LEFT OUTER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="VisitsWithExaminations" msprop:Generator_TableClassName="VisitsWithExaminationsDataTable" msprop:Generator_TableVarName="tableVisitsWithExaminations" msprop:Generator_TablePropName="VisitsWithExaminations" msprop:Generator_RowDeletingName="VisitsWithExaminationsRowDeleting" msprop:Generator_RowChangingName="VisitsWithExaminationsRowChanging" msprop:Generator_RowEvHandlerName="VisitsWithExaminationsRowChangeEventHandler" msprop:Generator_RowDeletedName="VisitsWithExaminationsRowDeleted" msprop:Generator_UserTableName="VisitsWithExaminations" msprop:Generator_RowChangedName="VisitsWithExaminationsRowChanged" msprop:Generator_RowEvArgName="VisitsWithExaminationsRowChangeEvent" msprop:Generator_RowClassName="VisitsWithExaminationsRow">
+        <xs:element name="ShortVisit" msprop:Generator_TableClassName="ShortVisitDataTable" msprop:Generator_TableVarName="tableShortVisit" msprop:Generator_TablePropName="ShortVisit" msprop:Generator_RowDeletingName="ShortVisitRowDeleting" msprop:Generator_RowChangingName="ShortVisitRowChanging" msprop:Generator_RowEvHandlerName="ShortVisitRowChangeEventHandler" msprop:Generator_RowDeletedName="ShortVisitRowDeleted" msprop:Generator_UserTableName="ShortVisit" msprop:Generator_RowChangedName="ShortVisitRowChanged" msprop:Generator_RowEvArgName="ShortVisitRowChangeEvent" msprop:Generator_RowClassName="ShortVisitRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="status" msprop:Generator_ColumnVarNameInTable="columnstatus" msprop:Generator_ColumnPropNameInRow="status" msprop:Generator_ColumnPropNameInTable="statusColumn" msprop:Generator_UserColumnName="status">
+              <xs:element name="visit_id" msprop:Generator_ColumnVarNameInTable="columnvisit_id" msprop:Generator_ColumnPropNameInRow="visit_id" msprop:Generator_ColumnPropNameInTable="visit_idColumn" msprop:Generator_UserColumnName="visit_id" type="xs:int" />
+              <xs:element name="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_UserColumnName="Status">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="15" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="diagnosis" msprop:Generator_ColumnVarNameInTable="columndiagnosis" msprop:Generator_ColumnPropNameInRow="diagnosis" msprop:Generator_ColumnPropNameInTable="diagnosisColumn" msprop:Generator_UserColumnName="diagnosis" minOccurs="0">
+              <xs:element name="Data_x0020_wizyty" msprop:Generator_ColumnVarNameInTable="columnData_wizyty" msprop:Generator_ColumnPropNameInRow="Data_wizyty" msprop:Generator_ColumnPropNameInTable="Data_wizytyColumn" msprop:Generator_UserColumnName="Data wizyty" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Lekarz" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnLekarz" msprop:Generator_ColumnPropNameInRow="Lekarz" msprop:Generator_ColumnPropNameInTable="LekarzColumn" msprop:Generator_UserColumnName="Lekarz" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Wywiad" msprop:Generator_ColumnVarNameInTable="columnWywiad" msprop:Generator_ColumnPropNameInRow="Wywiad" msprop:Generator_ColumnPropNameInTable="WywiadColumn" msprop:Generator_UserColumnName="Wywiad" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Diagnoza" msprop:Generator_ColumnVarNameInTable="columnDiagnoza" msprop:Generator_ColumnPropNameInRow="Diagnoza" msprop:Generator_ColumnPropNameInTable="DiagnozaColumn" msprop:Generator_UserColumnName="Diagnoza" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="ending_date" msprop:Generator_ColumnVarNameInTable="columnending_date" msprop:Generator_ColumnPropNameInRow="ending_date" msprop:Generator_ColumnPropNameInTable="ending_dateColumn" msprop:Generator_UserColumnName="ending_date" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Physical_examination_code" msprop:Generator_ColumnVarNameInTable="columnPhysical_examination_code" msprop:Generator_ColumnPropNameInRow="Physical_examination_code" msprop:Generator_ColumnPropNameInTable="Physical_examination_codeColumn" msprop:Generator_UserColumnName="Physical_examination_code" minOccurs="0">
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ShortLABExaminations" msprop:Generator_TableClassName="ShortLABExaminationsDataTable" msprop:Generator_TableVarName="tableShortLABExaminations" msprop:Generator_TablePropName="ShortLABExaminations" msprop:Generator_RowDeletingName="ShortLABExaminationsRowDeleting" msprop:Generator_RowChangingName="ShortLABExaminationsRowChanging" msprop:Generator_RowEvHandlerName="ShortLABExaminationsRowChangeEventHandler" msprop:Generator_RowDeletedName="ShortLABExaminationsRowDeleted" msprop:Generator_UserTableName="ShortLABExaminations" msprop:Generator_RowChangedName="ShortLABExaminationsRowChanged" msprop:Generator_RowEvArgName="ShortLABExaminationsRowChangeEvent" msprop:Generator_RowClassName="ShortLABExaminationsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Kod_x0020_badania" msprop:Generator_ColumnVarNameInTable="columnKod_badania" msprop:Generator_ColumnPropNameInRow="Kod_badania" msprop:Generator_ColumnPropNameInTable="Kod_badaniaColumn" msprop:Generator_UserColumnName="Kod badania">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="30" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Result" msprop:Generator_ColumnVarNameInTable="columnResult" msprop:Generator_ColumnPropNameInRow="Result" msprop:Generator_ColumnPropNameInTable="ResultColumn" msprop:Generator_UserColumnName="Result" minOccurs="0">
+              <xs:element name="Nazwa_x0020_badania" msprop:Generator_ColumnVarNameInTable="columnNazwa_badania" msprop:Generator_ColumnPropNameInRow="Nazwa_badania" msprop:Generator_ColumnPropNameInTable="Nazwa_badaniaColumn" msprop:Generator_UserColumnName="Nazwa badania" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="Notatki" msprop:Generator_ColumnVarNameInTable="columnNotatki" msprop:Generator_ColumnPropNameInRow="Notatki" msprop:Generator_ColumnPropNameInTable="NotatkiColumn" msprop:Generator_UserColumnName="Notatki" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Data_x0020_badania" msprop:Generator_ColumnVarNameInTable="columnData_badania" msprop:Generator_ColumnPropNameInRow="Data_badania" msprop:Generator_ColumnPropNameInTable="Data_badaniaColumn" msprop:Generator_UserColumnName="Data badania" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Wynik" msprop:Generator_ColumnVarNameInTable="columnWynik" msprop:Generator_ColumnPropNameInRow="Wynik" msprop:Generator_ColumnPropNameInTable="WynikColumn" msprop:Generator_UserColumnName="Wynik" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Wykonał" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnWykonał" msprop:Generator_ColumnPropNameInRow="Wykonał" msprop:Generator_ColumnPropNameInTable="WykonałColumn" msprop:Generator_UserColumnName="Wykonał" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="visit_id" msprop:Generator_ColumnVarNameInTable="columnvisit_id" msprop:Generator_ColumnPropNameInRow="visit_id" msprop:Generator_ColumnPropNameInTable="visit_idColumn" msprop:Generator_UserColumnName="visit_id" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ShortPhysicalExaminations" msprop:Generator_TableClassName="ShortPhysicalExaminationsDataTable" msprop:Generator_TableVarName="tableShortPhysicalExaminations" msprop:Generator_RowChangedName="ShortPhysicalExaminationsRowChanged" msprop:Generator_TablePropName="ShortPhysicalExaminations" msprop:Generator_RowDeletingName="ShortPhysicalExaminationsRowDeleting" msprop:Generator_RowChangingName="ShortPhysicalExaminationsRowChanging" msprop:Generator_RowEvHandlerName="ShortPhysicalExaminationsRowChangeEventHandler" msprop:Generator_RowDeletedName="ShortPhysicalExaminationsRowDeleted" msprop:Generator_RowClassName="ShortPhysicalExaminationsRow" msprop:Generator_UserTableName="ShortPhysicalExaminations" msprop:Generator_RowEvArgName="ShortPhysicalExaminationsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Kod_x0020_badania" msprop:Generator_ColumnVarNameInTable="columnKod_badania" msprop:Generator_ColumnPropNameInRow="Kod_badania" msprop:Generator_ColumnPropNameInTable="Kod_badaniaColumn" msprop:Generator_UserColumnName="Kod badania">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nazwa_x0020_badania" msprop:Generator_ColumnVarNameInTable="columnNazwa_badania" msprop:Generator_ColumnPropNameInRow="Nazwa_badania" msprop:Generator_ColumnPropNameInTable="Nazwa_badaniaColumn" msprop:Generator_UserColumnName="Nazwa badania" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Wynik" msprop:Generator_ColumnVarNameInTable="columnWynik" msprop:Generator_ColumnPropNameInRow="Wynik" msprop:Generator_ColumnPropNameInTable="WynikColumn" msprop:Generator_UserColumnName="Wynik">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="visit_id" msprop:Generator_ColumnVarNameInTable="columnvisit_id" msprop:Generator_ColumnPropNameInRow="visit_id" msprop:Generator_ColumnPropNameInTable="visit_idColumn" msprop:Generator_UserColumnName="visit_id" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -857,21 +978,28 @@ FROM            Visit AS V LEFT OUTER JOIN
       <xs:selector xpath=".//mstns:Worker" />
       <xs:field xpath="mstns:Worker_id" />
     </xs:unique>
+    <xs:unique name="ShortVisit_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ShortVisit" />
+      <xs:field xpath="mstns:visit_id" />
+    </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_LAB_examination_Examination_dictionary" msdata:parent="Examination_dictionary" msdata:child="LAB_examination" msdata:parentkey="Examination_code" msdata:childkey="LAB_examination_code" msprop:Generator_UserChildTable="LAB_examination" msprop:Generator_ChildPropName="GetLAB_examinationRows" msprop:Generator_UserRelationName="FK_LAB_examination_Examination_dictionary" msprop:Generator_ParentPropName="Examination_dictionaryRow" msprop:Generator_RelationVarName="relationFK_LAB_examination_Examination_dictionary" msprop:Generator_UserParentTable="Examination_dictionary" />
-      <msdata:Relationship name="FK_LAB_examination_Visit" msdata:parent="Visit" msdata:child="LAB_examination" msdata:parentkey="visit_id" msdata:childkey="visit_id" msprop:Generator_UserChildTable="LAB_examination" msprop:Generator_ChildPropName="GetLAB_examinationRows" msprop:Generator_UserRelationName="FK_LAB_examination_Visit" msprop:Generator_RelationVarName="relationFK_LAB_examination_Visit" msprop:Generator_UserParentTable="Visit" msprop:Generator_ParentPropName="VisitRow" />
-      <msdata:Relationship name="FK_LAB_examination_Worker" msdata:parent="Worker" msdata:child="LAB_examination" msdata:parentkey="Worker_id" msdata:childkey="LAB_worker_id" msprop:Generator_UserChildTable="LAB_examination" msprop:Generator_ChildPropName="GetLAB_examinationRowsByFK_LAB_examination_Worker" msprop:Generator_UserRelationName="FK_LAB_examination_Worker" msprop:Generator_RelationVarName="relationFK_LAB_examination_Worker" msprop:Generator_UserParentTable="Worker" msprop:Generator_ParentPropName="WorkerRowByFK_LAB_examination_Worker" />
-      <msdata:Relationship name="FK_LAB_examination_Worker1" msdata:parent="Worker" msdata:child="LAB_examination" msdata:parentkey="Worker_id" msdata:childkey="LAB_manager_id" msprop:Generator_UserChildTable="LAB_examination" msprop:Generator_ChildPropName="GetLAB_examinationRowsByFK_LAB_examination_Worker1" msprop:Generator_UserRelationName="FK_LAB_examination_Worker1" msprop:Generator_RelationVarName="relationFK_LAB_examination_Worker1" msprop:Generator_UserParentTable="Worker" msprop:Generator_ParentPropName="WorkerRowByFK_LAB_examination_Worker1" />
-      <msdata:Relationship name="FK_Patient_Address" msdata:parent="Address" msdata:child="Patient" msdata:parentkey="Address_id" msdata:childkey="address_id" msprop:Generator_UserChildTable="Patient" msprop:Generator_ChildPropName="GetPatientRows" msprop:Generator_UserRelationName="FK_Patient_Address" msprop:Generator_ParentPropName="AddressRow" msprop:Generator_RelationVarName="relationFK_Patient_Address" msprop:Generator_UserParentTable="Address" />
-      <msdata:Relationship name="FK_Physical_examination_Examination_dictionary" msdata:parent="Examination_dictionary" msdata:child="Physical_examination" msdata:parentkey="Examination_code" msdata:childkey="Physical_examination_code" msprop:Generator_UserChildTable="Physical_examination" msprop:Generator_ChildPropName="GetPhysical_examinationRows" msprop:Generator_UserRelationName="FK_Physical_examination_Examination_dictionary" msprop:Generator_ParentPropName="Examination_dictionaryRow" msprop:Generator_RelationVarName="relationFK_Physical_examination_Examination_dictionary" msprop:Generator_UserParentTable="Examination_dictionary" />
-      <msdata:Relationship name="FK_Physical_examination_Visit" msdata:parent="Visit" msdata:child="Physical_examination" msdata:parentkey="visit_id" msdata:childkey="visit_id" msprop:Generator_UserChildTable="Physical_examination" msprop:Generator_ChildPropName="GetPhysical_examinationRows" msprop:Generator_UserRelationName="FK_Physical_examination_Visit" msprop:Generator_RelationVarName="relationFK_Physical_examination_Visit" msprop:Generator_UserParentTable="Visit" msprop:Generator_ParentPropName="VisitRow" />
-      <msdata:Relationship name="FK_Visit_Patient" msdata:parent="Patient" msdata:child="Visit" msdata:parentkey="Patient_id" msdata:childkey="patient_id" msprop:Generator_UserChildTable="Visit" msprop:Generator_ChildPropName="GetVisitRows" msprop:Generator_UserRelationName="FK_Visit_Patient" msprop:Generator_ParentPropName="PatientRow" msprop:Generator_RelationVarName="relationFK_Visit_Patient" msprop:Generator_UserParentTable="Patient" />
-      <msdata:Relationship name="FK_Visit_Worker" msdata:parent="Worker" msdata:child="Visit" msdata:parentkey="Worker_id" msdata:childkey="doctor_id" msprop:Generator_UserChildTable="Visit" msprop:Generator_ChildPropName="GetVisitRowsByFK_Visit_Worker" msprop:Generator_UserRelationName="FK_Visit_Worker" msprop:Generator_RelationVarName="relationFK_Visit_Worker" msprop:Generator_UserParentTable="Worker" msprop:Generator_ParentPropName="WorkerRowByFK_Visit_Worker" />
-      <msdata:Relationship name="FK_Visit_Worker1" msdata:parent="Worker" msdata:child="Visit" msdata:parentkey="Worker_id" msdata:childkey="registerer_id" msprop:Generator_UserChildTable="Visit" msprop:Generator_ChildPropName="GetVisitRowsByFK_Visit_Worker1" msprop:Generator_UserRelationName="FK_Visit_Worker1" msprop:Generator_RelationVarName="relationFK_Visit_Worker1" msprop:Generator_UserParentTable="Worker" msprop:Generator_ParentPropName="WorkerRowByFK_Visit_Worker1" />
-      <msdata:Relationship name="FK_Worker_Address" msdata:parent="Address" msdata:child="Worker" msdata:parentkey="Address_id" msdata:childkey="address_id" msprop:Generator_UserChildTable="Worker" msprop:Generator_ChildPropName="GetWorkerRows" msprop:Generator_UserRelationName="FK_Worker_Address" msprop:Generator_ParentPropName="AddressRow" msprop:Generator_RelationVarName="relationFK_Worker_Address" msprop:Generator_UserParentTable="Address" />
-      <msdata:Relationship name="FK_Physical_examination_Examination_dictionary1" msdata:parent="Examination_dictionary" msdata:child="VisitsWithExaminations" msdata:parentkey="Examination_code" msdata:childkey="Physical_examination_code" msprop:Generator_UserChildTable="VisitsWithExaminations" msprop:Generator_ChildPropName="GetVisitsWithExaminationsRows" msprop:Generator_UserRelationName="FK_Physical_examination_Examination_dictionary1" msprop:Generator_ParentPropName="Examination_dictionaryRow" msprop:Generator_RelationVarName="relationFK_Physical_examination_Examination_dictionary1" msprop:Generator_UserParentTable="Examination_dictionary" />
+      <msdata:Relationship name="FK_LAB_examination_Examination_dictionary" msdata:parent="Examination_dictionary" msdata:child="LAB_examination" msdata:parentkey="Examination_code" msdata:childkey="LAB_examination_code" msprop:Generator_UserChildTable="LAB_examination" msprop:Generator_ChildPropName="GetLAB_examinationRows" msprop:Generator_UserRelationName="FK_LAB_examination_Examination_dictionary" msprop:Generator_RelationVarName="relationFK_LAB_examination_Examination_dictionary" msprop:Generator_UserParentTable="Examination_dictionary" msprop:Generator_ParentPropName="Examination_dictionaryRow" />
+      <msdata:Relationship name="FK_LAB_examination_Visit" msdata:parent="Visit" msdata:child="LAB_examination" msdata:parentkey="visit_id" msdata:childkey="visit_id" msprop:Generator_UserChildTable="LAB_examination" msprop:Generator_ChildPropName="GetLAB_examinationRows" msprop:Generator_UserRelationName="FK_LAB_examination_Visit" msprop:Generator_ParentPropName="VisitRow" msprop:Generator_RelationVarName="relationFK_LAB_examination_Visit" msprop:Generator_UserParentTable="Visit" />
+      <msdata:Relationship name="FK_LAB_examination_Worker" msdata:parent="Worker" msdata:child="LAB_examination" msdata:parentkey="Worker_id" msdata:childkey="LAB_worker_id" msprop:Generator_UserChildTable="LAB_examination" msprop:Generator_ChildPropName="GetLAB_examinationRowsByFK_LAB_examination_Worker" msprop:Generator_UserRelationName="FK_LAB_examination_Worker" msprop:Generator_ParentPropName="WorkerRowByFK_LAB_examination_Worker" msprop:Generator_RelationVarName="relationFK_LAB_examination_Worker" msprop:Generator_UserParentTable="Worker" />
+      <msdata:Relationship name="FK_LAB_examination_Worker1" msdata:parent="Worker" msdata:child="LAB_examination" msdata:parentkey="Worker_id" msdata:childkey="LAB_manager_id" msprop:Generator_UserChildTable="LAB_examination" msprop:Generator_ChildPropName="GetLAB_examinationRowsByFK_LAB_examination_Worker1" msprop:Generator_UserRelationName="FK_LAB_examination_Worker1" msprop:Generator_ParentPropName="WorkerRowByFK_LAB_examination_Worker1" msprop:Generator_RelationVarName="relationFK_LAB_examination_Worker1" msprop:Generator_UserParentTable="Worker" />
+      <msdata:Relationship name="FK_Patient_Address" msdata:parent="Address" msdata:child="Patient" msdata:parentkey="Address_id" msdata:childkey="address_id" msprop:Generator_UserChildTable="Patient" msprop:Generator_ChildPropName="GetPatientRows" msprop:Generator_UserRelationName="FK_Patient_Address" msprop:Generator_RelationVarName="relationFK_Patient_Address" msprop:Generator_UserParentTable="Address" msprop:Generator_ParentPropName="AddressRow" />
+      <msdata:Relationship name="FK_Physical_examination_Examination_dictionary" msdata:parent="Examination_dictionary" msdata:child="Physical_examination" msdata:parentkey="Examination_code" msdata:childkey="Physical_examination_code" msprop:Generator_UserChildTable="Physical_examination" msprop:Generator_ChildPropName="GetPhysical_examinationRows" msprop:Generator_UserRelationName="FK_Physical_examination_Examination_dictionary" msprop:Generator_RelationVarName="relationFK_Physical_examination_Examination_dictionary" msprop:Generator_UserParentTable="Examination_dictionary" msprop:Generator_ParentPropName="Examination_dictionaryRow" />
+      <msdata:Relationship name="FK_Physical_examination_Visit" msdata:parent="Visit" msdata:child="Physical_examination" msdata:parentkey="visit_id" msdata:childkey="visit_id" msprop:Generator_UserChildTable="Physical_examination" msprop:Generator_ChildPropName="GetPhysical_examinationRows" msprop:Generator_UserRelationName="FK_Physical_examination_Visit" msprop:Generator_ParentPropName="VisitRow" msprop:Generator_RelationVarName="relationFK_Physical_examination_Visit" msprop:Generator_UserParentTable="Visit" />
+      <msdata:Relationship name="FK_Visit_Patient" msdata:parent="Patient" msdata:child="Visit" msdata:parentkey="Patient_id" msdata:childkey="patient_id" msprop:Generator_UserChildTable="Visit" msprop:Generator_ChildPropName="GetVisitRows" msprop:Generator_UserRelationName="FK_Visit_Patient" msprop:Generator_RelationVarName="relationFK_Visit_Patient" msprop:Generator_UserParentTable="Patient" msprop:Generator_ParentPropName="PatientRow" />
+      <msdata:Relationship name="FK_Visit_Worker" msdata:parent="Worker" msdata:child="Visit" msdata:parentkey="Worker_id" msdata:childkey="doctor_id" msprop:Generator_UserChildTable="Visit" msprop:Generator_ChildPropName="GetVisitRowsByFK_Visit_Worker" msprop:Generator_UserRelationName="FK_Visit_Worker" msprop:Generator_ParentPropName="WorkerRowByFK_Visit_Worker" msprop:Generator_RelationVarName="relationFK_Visit_Worker" msprop:Generator_UserParentTable="Worker" />
+      <msdata:Relationship name="FK_Visit_Worker1" msdata:parent="Worker" msdata:child="Visit" msdata:parentkey="Worker_id" msdata:childkey="registerer_id" msprop:Generator_UserChildTable="Visit" msprop:Generator_ChildPropName="GetVisitRowsByFK_Visit_Worker1" msprop:Generator_UserRelationName="FK_Visit_Worker1" msprop:Generator_ParentPropName="WorkerRowByFK_Visit_Worker1" msprop:Generator_RelationVarName="relationFK_Visit_Worker1" msprop:Generator_UserParentTable="Worker" />
+      <msdata:Relationship name="FK_Worker_Address" msdata:parent="Address" msdata:child="Worker" msdata:parentkey="Address_id" msdata:childkey="address_id" msprop:Generator_UserChildTable="Worker" msprop:Generator_ChildPropName="GetWorkerRows" msprop:Generator_UserRelationName="FK_Worker_Address" msprop:Generator_RelationVarName="relationFK_Worker_Address" msprop:Generator_UserParentTable="Address" msprop:Generator_ParentPropName="AddressRow" />
+      <msdata:Relationship name="FK_LAB_examination_Visit1" msdata:parent="ShortVisit" msdata:child="LAB_examination" msdata:parentkey="visit_id" msdata:childkey="visit_id" msprop:Generator_UserChildTable="LAB_examination" msprop:Generator_ChildPropName="GetLAB_examinationRows" msprop:Generator_UserRelationName="FK_LAB_examination_Visit1" msprop:Generator_RelationVarName="relationFK_LAB_examination_Visit1" msprop:Generator_UserParentTable="ShortVisit" msprop:Generator_ParentPropName="ShortVisitRow" />
+      <msdata:Relationship name="FK_Physical_examination_Visit1" msdata:parent="ShortVisit" msdata:child="Physical_examination" msdata:parentkey="visit_id" msdata:childkey="visit_id" msprop:Generator_UserChildTable="Physical_examination" msprop:Generator_ChildPropName="GetPhysical_examinationRows" msprop:Generator_UserRelationName="FK_Physical_examination_Visit1" msprop:Generator_RelationVarName="relationFK_Physical_examination_Visit1" msprop:Generator_UserParentTable="ShortVisit" msprop:Generator_ParentPropName="ShortVisitRow" />
+      <msdata:Relationship name="ShortVisit_ShortLABExaminations" msdata:parent="ShortVisit" msdata:child="ShortLABExaminations" msdata:parentkey="visit_id" msdata:childkey="visit_id" msprop:Generator_UserChildTable="ShortLABExaminations" msprop:Generator_ChildPropName="GetShortLABExaminationsRows" msprop:Generator_UserRelationName="ShortVisit_ShortLABExaminations" msprop:Generator_ParentPropName="ShortVisitRow" msprop:Generator_RelationVarName="relationShortVisit_ShortLABExaminations" msprop:Generator_UserParentTable="ShortVisit" />
+      <msdata:Relationship name="ShortVisit_ShortPhysicalExaminations" msdata:parent="ShortVisit" msdata:child="ShortPhysicalExaminations" msdata:parentkey="visit_id" msdata:childkey="visit_id" msprop:Generator_UserChildTable="ShortPhysicalExaminations" msprop:Generator_ChildPropName="GetShortPhysicalExaminationsRows" msprop:Generator_UserRelationName="ShortVisit_ShortPhysicalExaminations" msprop:Generator_RelationVarName="relationShortVisit_ShortPhysicalExaminations" msprop:Generator_UserParentTable="ShortVisit" msprop:Generator_ParentPropName="ShortVisitRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

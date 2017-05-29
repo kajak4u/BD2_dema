@@ -72,8 +72,8 @@ Module cModule
         centerFormat.LineAlignment = StringAlignment.Center
         Dim headerBounds As Rectangle = New Rectangle(e.RowBounds.Left, e.RowBounds.Top,
             grid.RowHeadersWidth, e.RowBounds.Height - sender.rows(e.RowIndex).DividerHeight)
-        e.Graphics.DrawString(rowIdx, grid.Font, SystemBrushes.ControlText,
-            headerBounds, centerFormat)
+        REM        e.Graphics.DrawString(rowIdx, grid.Font, SystemBrushes.ControlText,
+        REM            headerBounds, centerFormat)
     End Sub
 #End Region
 End Module
