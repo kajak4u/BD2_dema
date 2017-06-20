@@ -43,6 +43,7 @@
             this.badaniaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.użytkownicyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.słownikBadańToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -157,7 +158,8 @@
             // adminToolStripMenuItem
             // 
             this.adminToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.użytkownicyToolStripMenuItem});
+            this.użytkownicyToolStripMenuItem,
+            this.słownikBadańToolStripMenuItem});
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
             this.adminToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.adminToolStripMenuItem.Text = "&Admin";
@@ -165,8 +167,15 @@
             // użytkownicyToolStripMenuItem
             // 
             this.użytkownicyToolStripMenuItem.Name = "użytkownicyToolStripMenuItem";
-            this.użytkownicyToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.użytkownicyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.użytkownicyToolStripMenuItem.Text = "&Użytkownicy";
+            // 
+            // słownikBadańToolStripMenuItem
+            // 
+            this.słownikBadańToolStripMenuItem.Name = "słownikBadańToolStripMenuItem";
+            this.słownikBadańToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.słownikBadańToolStripMenuItem.Text = "&Słownik badań";
+            this.słownikBadańToolStripMenuItem.Click += new System.EventHandler(this.słownikBadańToolStripMenuItem_Click);
             // 
             // MainWindow
             // 
@@ -200,5 +209,6 @@
         private System.Windows.Forms.ToolStripMenuItem badaniaToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem użytkownicyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem słownikBadańToolStripMenuItem;
     }
 }

@@ -20,60 +20,55 @@ namespace BD2_demaOkien
             InitializeComponent();
         }
 
+        private void OpenMDIWindow<_T>(_T window) where _T: Form
+        {
+            window.MdiParent = this;
+            window.Show();
+        }
+
         private void pacjenciToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PatientsWindow patients = new PatientsWindow();
-            patients.MdiParent = this;
-            patients.Show();
+            OpenMDIWindow(new PatientsWindow());
         }
 
         private void wizytyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            VisitsWindow visits = new VisitsWindow(Role.REGISTRAR);
-            visits.MdiParent = this;
-            visits.Show();
+            OpenMDIWindow(new VisitsWindow(Role.REGISTRAR));
         }
 
         private void wynikibadańToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ExaminationsWindow examinations = new ExaminationsWindow(Role.REGISTRAR);
-            examinations.MdiParent = this;
-            examinations.Show();
+            OpenMDIWindow(new ExaminationsWindow(Role.REGISTRAR));
         }
 
         private void wizytyToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            VisitsWindow visits = new VisitsWindow(Role.DOCTOR);
-            visits.MdiParent = this;
-            visits.Show();
+            OpenMDIWindow(new VisitsWindow(Role.DOCTOR));
         }
 
         private void przeglądMoichWizytToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            VisitsWindow_Doctor visits = new VisitsWindow_Doctor();
-            visits.MdiParent = this;
-            visits.Show();
+            OpenMDIWindow(new VisitsWindow_Doctor());
         }
 
         private void badaniaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ExaminationsWindow visits = new ExaminationsWindow(Role.DOCTOR);
-            visits.MdiParent = this;
-            visits.Show();
+            OpenMDIWindow(new ExaminationsWindow(Role.DOCTOR));
         }
 
         private void badaniaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            ExaminationsWindowLabguy visits = new ExaminationsWindowLabguy();
-            visits.MdiParent = this;
-            visits.Show();
+            OpenMDIWindow(new ExaminationsWindowLabguy());
         }
 
         private void badaniaToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            ExaminationsWindowLabmaster visits = new ExaminationsWindowLabmaster();
-            visits.MdiParent = this;
-            visits.Show();
+            OpenMDIWindow(new ExaminationsWindowLabmaster());
+        }
+
+        private void słownikBadańToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenMDIWindow(new ExaminationsDictionariesWindow());
         }
     }
 }

@@ -67,6 +67,12 @@
       <DependentUpon>ChooseDoctorModal.cs</DependentUpon>
     </Compile>
     <Compile Include="DayScheduler.cs" />
+    <Compile Include="ExaminationsDictionariesDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExaminationsDictionariesDetails.Designer.cs">
+      <DependentUpon>ExaminationsDictionariesDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExaminationsAddWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,12 @@
     </Compile>
     <Compile Include="ExaminationsDetailWindow.Designer.cs">
       <DependentUpon>ExaminationsDetailWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExaminationsDictionariesWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExaminationsDictionariesWindow.Designer.cs">
+      <DependentUpon>ExaminationsDictionariesWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="ExaminationsWindow.cs">
       <SubType>Form</SubType>
@@ -154,6 +166,9 @@
     <Compile Include="VisitsWindow_Doctor.Designer.cs">
       <DependentUpon>VisitsWindow_Doctor.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ExaminationsDictionariesDetails.resx">
+      <DependentUpon>ExaminationsDictionariesDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExaminationsAddWindow.resx">
       <DependentUpon>ExaminationsAddWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChooseDoctorModal.resx">
       <DependentUpon>ChooseDoctorModal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExaminationsDictionariesWindow.resx">
+      <DependentUpon>ExaminationsDictionariesWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExaminationsWindow.resx">
       <DependentUpon>ExaminationsWindow.cs</DependentUpon>
