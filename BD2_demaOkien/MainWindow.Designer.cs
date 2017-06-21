@@ -71,11 +71,12 @@
             this.rejestratorkaToolStripMenuItem.Name = "rejestratorkaToolStripMenuItem";
             this.rejestratorkaToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.rejestratorkaToolStripMenuItem.Text = "&Rejestratorka";
+            this.rejestratorkaToolStripMenuItem.Visible = false;
             // 
             // pacjenciToolStripMenuItem
             // 
             this.pacjenciToolStripMenuItem.Name = "pacjenciToolStripMenuItem";
-            this.pacjenciToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.pacjenciToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.pacjenciToolStripMenuItem.Text = "&Pacjenci";
             this.pacjenciToolStripMenuItem.Click += new System.EventHandler(this.pacjenciToolStripMenuItem_Click);
             // 
@@ -83,14 +84,14 @@
             // 
             this.wizytyToolStripMenuItem.Enabled = false;
             this.wizytyToolStripMenuItem.Name = "wizytyToolStripMenuItem";
-            this.wizytyToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.wizytyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.wizytyToolStripMenuItem.Text = "&Wizyty";
             this.wizytyToolStripMenuItem.Click += new System.EventHandler(this.wizytyToolStripMenuItem_Click);
             // 
             // wynikibadańToolStripMenuItem
             // 
             this.wynikibadańToolStripMenuItem.Name = "wynikibadańToolStripMenuItem";
-            this.wynikibadańToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.wynikibadańToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.wynikibadańToolStripMenuItem.Text = "Wyniki &badań";
             this.wynikibadańToolStripMenuItem.Click += new System.EventHandler(this.wynikibadańToolStripMenuItem_Click);
             // 
@@ -103,6 +104,7 @@
             this.lekarzToolStripMenuItem.Name = "lekarzToolStripMenuItem";
             this.lekarzToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.lekarzToolStripMenuItem.Text = "&Lekarz";
+            this.lekarzToolStripMenuItem.Visible = false;
             // 
             // wizytyToolStripMenuItem1
             // 
@@ -132,6 +134,7 @@
             this.laborantToolStripMenuItem.Name = "laborantToolStripMenuItem";
             this.laborantToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
             this.laborantToolStripMenuItem.Text = "&Pracownik Lab";
+            this.laborantToolStripMenuItem.Visible = false;
             // 
             // badaniaToolStripMenuItem1
             // 
@@ -147,6 +150,7 @@
             this.kierLabToolStripMenuItem.Name = "kierLabToolStripMenuItem";
             this.kierLabToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.kierLabToolStripMenuItem.Text = "&Kier Lab";
+            this.kierLabToolStripMenuItem.Visible = false;
             // 
             // badaniaToolStripMenuItem2
             // 
@@ -163,17 +167,18 @@
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
             this.adminToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.adminToolStripMenuItem.Text = "&Admin";
+            this.adminToolStripMenuItem.Visible = false;
             // 
             // użytkownicyToolStripMenuItem
             // 
             this.użytkownicyToolStripMenuItem.Name = "użytkownicyToolStripMenuItem";
-            this.użytkownicyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.użytkownicyToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.użytkownicyToolStripMenuItem.Text = "&Użytkownicy";
             // 
             // słownikBadańToolStripMenuItem
             // 
             this.słownikBadańToolStripMenuItem.Name = "słownikBadańToolStripMenuItem";
-            this.słownikBadańToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.słownikBadańToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.słownikBadańToolStripMenuItem.Text = "&Słownik badań";
             this.słownikBadańToolStripMenuItem.Click += new System.EventHandler(this.słownikBadańToolStripMenuItem_Click);
             // 

@@ -12,12 +12,55 @@ namespace BD2_demaOkien
 {
     public partial class MainWindow : Form
     {
+        string userLogin;
+        Role userRole;
         public MainWindow()
         {
             this.Hide();
             Login login = new Login();
-            login.ShowDialog();
-            InitializeComponent();
+            if (login.ShowDialog() == DialogResult.OK)
+            {
+                InitializeComponent();
+                userLogin = login.userLogin;
+                userRole = login.userRole;
+                SetVisibility(userRole);
+            }
+            else
+                throw new Exception("Permission denied");
+        }
+        private void BringMenuToFront(ToolStripMenuItem menu)
+        {
+            var menuitems = new List<ToolStripMenuItem>();
+            foreach (ToolStripMenuItem item in menu.DropDown.Items)
+                menuitems.Add(item);
+            menuitems.ForEach(item => item.Owner = item.OwnerItem.Owner);
+        }
+        private void SetVisibility(Role role)
+        {
+            switch (role)
+            {
+                case Role.REGISTRAR:
+                    BringMenuToFront(rejestratorkaToolStripMenuItem);
+                    break;
+                case Role.DOCTOR:
+                    BringMenuToFront(lekarzToolStripMenuItem);
+                    break;
+                case Role.LAB:
+                    BringMenuToFront(laborantToolStripMenuItem);
+                    break;
+                case Role.KLAB:
+                    BringMenuToFront(kierLabToolStripMenuItem);
+                    break;
+                case Role.ADMIN:
+                    rejestratorkaToolStripMenuItem.Visible = true;
+                    lekarzToolStripMenuItem.Visible = true;
+                    laborantToolStripMenuItem.Visible = true;
+                    kierLabToolStripMenuItem.Visible = true;
+                    adminToolStripMenuItem.Visible = true;
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void OpenMDIWindow<_T>(_T window) where _T: Form
