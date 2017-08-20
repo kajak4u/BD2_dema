@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BD2_demaOkien.Data;
+//using BD2_demaOkien.BizzLayer;
 
 namespace BD2_demaOkien
 {
@@ -31,11 +32,12 @@ namespace BD2_demaOkien
             // ... bla bla bla ...
             // jeżeli poprawne poświadczenia, to uzupelniamy rolę
 
-            using (var Db = new BD2_2Db())
-            {
-                var worker = Db.Worker.ToList()
+            //using (var Db = new BD2_2Db())
+           // {
+                var worker = Worker.getWorker(userLogin, userPassword);
+                /*var worker = Db.Worker.ToList()
                     .Where(w => w.Login == userLogin && w.Password == userPassword)
-                    .FirstOrDefault();
+                    .FirstOrDefault();*/
 
                 //var userAdress = from workerTmp in Db.Worker
                 //                 join adress in Db.Address
@@ -77,7 +79,6 @@ namespace BD2_demaOkien
                 //}
                 //else
                 //    return false;
-            }
         }
 
         private void button1_Click(object sender, EventArgs e)

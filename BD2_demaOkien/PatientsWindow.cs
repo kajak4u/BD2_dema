@@ -33,6 +33,7 @@ namespace BD2_demaOkien
             // TODO: This line of code loads data into the 'bD_2DataSet.Patient' table. You can move, or remove it, as needed.
             //this.patientTableAdapter.Fill(this.bD_2DataSet.Patient);
 
+
         }
 
         private void fillByToolStripButton_Click(object sender, EventArgs e)
