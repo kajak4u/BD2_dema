@@ -263,6 +263,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BD2_demaOkien.BizzLayer\BD2_demaOkien.BizzLayer.csproj">
+      <Project>{39923980-11f9-44a8-81da-8bba47605b95}</Project>
+      <Name>BD2_demaOkien.BizzLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BD2_demaOkien.Data\BD2_demaOkien.Data.csproj">
       <Project>{33c82726-70c8-4199-a9ea-22d7c7f7f6c0}</Project>
       <Name>BD2_demaOkien.Data</Name>
