@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BD2_2ModelStoreContainer" CdmEntityContainer="BD2_2Db">
+    <EntitySetMapping Name="Address">
+      <EntityTypeMapping TypeName="BD2_2Model.Address">
+        <MappingFragment StoreEntitySet="Address">
+          <ScalarProperty Name="Address_id" ColumnName="Address_id" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="House_number" ColumnName="House_number" />
+          <ScalarProperty Name="Flat_number" ColumnName="Flat_number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Examination_dictionary">
+      <EntityTypeMapping TypeName="BD2_2Model.Examination_dictionary">
+        <MappingFragment StoreEntitySet="Examination_dictionary">
+          <ScalarProperty Name="Examination_code" ColumnName="Examination_code" />
+          <ScalarProperty Name="Examiantion_type" ColumnName="Examiantion_type" />
+          <ScalarProperty Name="Examination_name" ColumnName="Examination_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LAB_examination">
+      <EntityTypeMapping TypeName="BD2_2Model.LAB_examination">
+        <MappingFragment StoreEntitySet="LAB_examination">
+          <ScalarProperty Name="LAB_examination_id" ColumnName="LAB_examination_id" />
+          <ScalarProperty Name="LAB_examination_code" ColumnName="LAB_examination_code" />
+          <ScalarProperty Name="doctor_notes" ColumnName="doctor_notes" />
+          <ScalarProperty Name="LAB_worker_id" ColumnName="LAB_worker_id" />
+          <ScalarProperty Name="commission_examination_date" ColumnName="commission_examination_date" />
+          <ScalarProperty Name="LAB_examination_result" ColumnName="LAB_examination_result" />
+          <ScalarProperty Name="LAB_examination_date" ColumnName="LAB_examination_date" />
+          <ScalarProperty Name="LAB_manager_id" ColumnName="LAB_manager_id" />
+          <ScalarProperty Name="LAB_manager_notes" ColumnName="LAB_manager_notes" />
+          <ScalarProperty Name="ending_examination_date" ColumnName="ending_examination_date" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="visit_id" ColumnName="visit_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patient">
+      <EntityTypeMapping TypeName="BD2_2Model.Patient">
+        <MappingFragment StoreEntitySet="Patient">
+          <ScalarProperty Name="Patient_id" ColumnName="Patient_id" />
+          <ScalarProperty Name="First_name" ColumnName="First_name" />
+          <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+          <ScalarProperty Name="Phone_number" ColumnName="Phone_number" />
+          <ScalarProperty Name="PESEL" ColumnName="PESEL" />
+          <ScalarProperty Name="address_id" ColumnName="address_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Physical_examination">
+      <EntityTypeMapping TypeName="BD2_2Model.Physical_examination">
+        <MappingFragment StoreEntitySet="Physical_examination">
+          <ScalarProperty Name="Physical_examination_id" ColumnName="Physical_examination_id" />
+          <ScalarProperty Name="Physical_examination_code" ColumnName="Physical_examination_code" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="visit_id" ColumnName="visit_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Visit">
+      <EntityTypeMapping TypeName="BD2_2Model.Visit">
+        <MappingFragment StoreEntitySet="Visit">
+          <ScalarProperty Name="visit_id" ColumnName="visit_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="diagnosis" ColumnName="diagnosis" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="registration_date" ColumnName="registration_date" />
+          <ScalarProperty Name="ending_date" ColumnName="ending_date" />
+          <ScalarProperty Name="patient_id" ColumnName="patient_id" />
+          <ScalarProperty Name="doctor_id" ColumnName="doctor_id" />
+          <ScalarProperty Name="registerer_id" ColumnName="registerer_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Worker">
+      <EntityTypeMapping TypeName="BD2_2Model.Worker">
+        <MappingFragment StoreEntitySet="Worker">
+          <ScalarProperty Name="Worker_id" ColumnName="Worker_id" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="First_name" ColumnName="First_name" />
+          <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+          <ScalarProperty Name="NPWZ" ColumnName="NPWZ" />
+          <ScalarProperty Name="E_mail_Address" ColumnName="E-mail_Address" />
+          <ScalarProperty Name="Phone_number" ColumnName="Phone_number" />
+          <ScalarProperty Name="PESEL" ColumnName="PESEL" />
+          <ScalarProperty Name="address_id" ColumnName="address_id" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BD2_demaOkien.Data;
 
 namespace BD2_demaOkien
 {
@@ -15,6 +16,7 @@ namespace BD2_demaOkien
         public string userLogin {get; private set;}
         public Role userRole { get; private set; }
         private string userPassword { get; set; }
+
         public Login()
         {
             InitializeComponent();
@@ -24,30 +26,58 @@ namespace BD2_demaOkien
         {
             userLogin = loginBox.Text;
             userPassword = passwordBox.Text;
+
             // tutaj łączenie z bazą i sprawdzanie poświadczeń
             // ... bla bla bla ...
             // jeżeli poprawne poświadczenia, to uzupelniamy rolę
-            switch(userLogin.ToLower())
+
+            using (var Db = new BD2_2Db())
             {
-                case "registrar":
-                    userRole = Role.REGISTRAR;
-                    break;
-                case "doctor":
-                    userRole = Role.DOCTOR;
-                    break;
-                case "lab":
-                    userRole = Role.LAB;
-                    break;
-                case "klab":
-                    userRole = Role.KLAB;
-                    break;
-                case "admin":
-                    userRole = Role.ADMIN;
-                    break;
-                default:
-                    return false;
+                var worker = Db.Worker.ToList()
+                    .Where(w => w.Login == userLogin && w.Password == userPassword)
+                    .FirstOrDefault();
+
+                //var userAdress = from workerTmp in Db.Worker
+                //                 join adress in Db.Address
+                //                 on workerTmp.address_id equals adress.Address_id
+                //                 where workerTmp.Worker_id == 1
+                //                 select new
+                //                 {
+                //                     workerTmp.First_name,
+                //                     workerTmp.Last_name,
+                //                     adress.City,
+                //                     adress.Street
+                //                 };
+
+                //var user = userAdress.FirstOrDefault()?.Last_name;//Zabezpiecznie przed null pointer exception
+
+                //if (worker != null)
+                //{
+                    switch (userLogin.ToLower())
+                    {
+                        case "registrar":
+                            userRole = Role.REGISTRAR;
+                            break;
+                        case "doctor":
+                            userRole = Role.DOCTOR;
+                            break;
+                        case "lab":
+                            userRole = Role.LAB;
+                            break;
+                        case "klab":
+                            userRole = Role.KLAB;
+                            break;
+                        case "admin":
+                            userRole = Role.ADMIN;
+                            break;
+                        default:
+                            return false;
+                    }
+                    return true;
+                //}
+                //else
+                //    return false;
             }
-            return true;
         }
 
         private void button1_Click(object sender, EventArgs e)

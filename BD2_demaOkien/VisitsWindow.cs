@@ -30,6 +30,38 @@ namespace BD2_demaOkien
                 this.Text = "Wizyty dla: ";
                 bindingNavigatorItemPerform.Visible = false;
             }
+
+            using (var Db = new BD2_demaOkien.Data.BD2_2Db())
+            {
+                var visits = from visit in Db.Visit
+                             join doctor in Db.Worker
+                             on visit.doctor_id equals doctor.Worker_id
+                             where visit.visit_id == 1
+                             join patient in Db.Patient
+                             on visit.patient_id equals patient.Patient_id
+                             join register in Db.Worker
+                             on visit.registerer_id equals register.Worker_id
+                             select new
+                             {
+                                 visit.status,
+                                 visit.registration_date,
+                                 visit.ending_date,
+                                 Patient = patient.First_name,
+                                 Doctor = doctor.First_name,
+                                 Register = register.First_name
+                             };
+
+                var worker = Db.Visit.ToList().Where(v => v.visit_id == 1)
+                    .Select(v => v.Worker).FirstOrDefault();
+
+                // zapis
+                worker.First_name = "Zenek";
+                Db.SaveChanges();
+
+                var workerName = worker.Address.Street;
+
+                dataGridView1.DataSource = visits.ToList();
+            }
         }
 
         private void VisitsWindow_Load(object sender, EventArgs e)
