@@ -190,4 +190,11 @@ values ('Y90','Jestem lekarzem',9,CAST(N'2017-07-30 10:00:00.000' AS DateTime),'
 insert into [BD_2].[dbo].[LAB_examination] (LAB_examination_code, doctor_notes, LAB_worker_id, commission_examination_date, LAB_examination_result, LAB_examination_date, LAB_manager_id, LAB_manager_notes, ending_examination_date, status, visit_id) 
 values ('W29','Brzmi w porz¹dku.',11,CAST(N'2017-07-31 15:07:00.000' AS DateTime),'Fszystko jes POZYTYWNE.',CAST(N'2017-08-12 15:15:15.000' AS DateTime),null,null,null,'WYK',5)
 GO
-
+insert into [BD_2].[dbo].[Physical_examination] (Physical_examination_code, Result, visit_id) values ('89.00','Nale¿y siê 250 z³.',5)
+insert into [BD_2].[dbo].[Physical_examination] (Physical_examination_code, Result, visit_id) values ('89.00','Nale¿y siê 50 z³.',6)
+insert into [BD_2].[dbo].[Physical_examination] (Physical_examination_code, Result, visit_id) values ('89.00','Nale¿y siê 150 z³.',7)
+insert into [BD_2].[dbo].[Physical_examination] (Physical_examination_code, Result, visit_id) values ('79','Nastawiono, ale z ma³ymi komplikacjami...',6)
+insert into [BD_2].[dbo].[Physical_examination] (Physical_examination_code, Result, visit_id) values ('87.5','Coœ ju¿ widaæ.',5)
+insert into [BD_2].[dbo].[Physical_examination] (Physical_examination_code, Result, visit_id) values ('89.01','Doradzono, gdzie najlepiej sprzedaæ nerkê wraz z j¹drami.',7)
+insert into [BD_2].[dbo].[Physical_examination] (Physical_examination_code, Result, visit_id) values ('89.01','Przekazano bardzo cenne uwagi.',5)
+GO
