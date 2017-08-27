@@ -32,8 +32,8 @@ namespace BD2_demaOkien
             // ... bla bla bla ...
             // jeżeli poprawne poświadczenia, to uzupelniamy rolę
 
-            //using (var Db = new BD2_2Db())
-           // {
+            using (var Db = new BD2_2Db())
+            {
                 var worker = Worker.getWorker(userLogin, userPassword);
                 /*var worker = Db.Worker.ToList()
                     .Where(w => w.Login == userLogin && w.Password == userPassword)
@@ -53,9 +53,9 @@ namespace BD2_demaOkien
 
                 //var user = userAdress.FirstOrDefault()?.Last_name;//Zabezpiecznie przed null pointer exception
 
-                //if (worker != null)
-                //{
-                    switch (userLogin.ToLower())
+                if (worker != null)
+                {
+                    switch (worker.Role.ToLower())
                     {
                         case "registrar":
                             userRole = Role.REGISTRAR;
@@ -76,9 +76,10 @@ namespace BD2_demaOkien
                             return false;
                     }
                     return true;
-                //}
-                //else
-                //    return false;
+                }
+                else
+                    return false;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

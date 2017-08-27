@@ -4,12 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BD2_2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BD2_2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="Address_id" />
           </Key>
-          <Property Name="Address_id" Type="int" Nullable="false" />
+          <Property Name="Address_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Street" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="House_number" Type="int" Nullable="false" />
@@ -21,22 +21,22 @@
           </Key>
           <Property Name="Examination_code" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Examiantion_type" Type="char" MaxLength="1" Nullable="false" />
-          <Property Name="Examination_name" Type="varchar" MaxLength="50" />
+          <Property Name="Examination_name" Type="varchar" MaxLength="80" />
         </EntityType>
         <EntityType Name="LAB_examination">
           <Key>
             <PropertyRef Name="LAB_examination_id" />
           </Key>
-          <Property Name="LAB_examination_id" Type="int" Nullable="false" />
+          <Property Name="LAB_examination_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LAB_examination_code" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="doctor_notes" Type="varchar(max)" />
           <Property Name="LAB_worker_id" Type="int" />
-          <Property Name="commission_examination_date" Type="time" Precision="7" Nullable="false" />
+          <Property Name="commission_examination_date" Type="datetime" Nullable="false" />
           <Property Name="LAB_examination_result" Type="varchar" MaxLength="50" />
-          <Property Name="LAB_examination_date" Type="time" Precision="7" />
+          <Property Name="LAB_examination_date" Type="datetime" />
           <Property Name="LAB_manager_id" Type="int" />
           <Property Name="LAB_manager_notes" Type="varchar(max)" />
-          <Property Name="ending_examination_date" Type="time" Precision="7" />
+          <Property Name="ending_examination_date" Type="datetime" />
           <Property Name="status" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="visit_id" Type="int" Nullable="false" />
         </EntityType>
@@ -44,32 +44,32 @@
           <Key>
             <PropertyRef Name="Patient_id" />
           </Key>
-          <Property Name="Patient_id" Type="int" Nullable="false" />
+          <Property Name="Patient_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="First_name" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Last_name" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="Phone_number" Type="int" Nullable="false" />
-          <Property Name="PESEL" Type="int" Nullable="false" />
+          <Property Name="Phone_number" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="PESEL" Type="varchar" MaxLength="11" Nullable="false" />
           <Property Name="address_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Physical_examination">
           <Key>
             <PropertyRef Name="Physical_examination_id" />
           </Key>
-          <Property Name="Physical_examination_id" Type="int" Nullable="false" />
+          <Property Name="Physical_examination_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Physical_examination_code" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="Result" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Result" Type="varchar(max)" Nullable="false" />
           <Property Name="visit_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Visit">
           <Key>
             <PropertyRef Name="visit_id" />
           </Key>
-          <Property Name="visit_id" Type="int" Nullable="false" />
+          <Property Name="visit_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="description" Type="varchar(max)" />
           <Property Name="diagnosis" Type="varchar" MaxLength="50" />
           <Property Name="status" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="registration_date" Type="time" Precision="7" Nullable="false" />
-          <Property Name="ending_date" Type="time" Precision="7" Nullable="false" />
+          <Property Name="registration_date" Type="datetime" />
+          <Property Name="ending_date" Type="datetime" />
           <Property Name="patient_id" Type="int" Nullable="false" />
           <Property Name="doctor_id" Type="int" Nullable="false" />
           <Property Name="registerer_id" Type="int" Nullable="false" />
@@ -78,14 +78,14 @@
           <Key>
             <PropertyRef Name="Worker_id" />
           </Key>
-          <Property Name="Worker_id" Type="int" Nullable="false" />
+          <Property Name="Worker_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Role" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="First_name" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Last_name" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="NPWZ" Type="int" />
           <Property Name="E-mail_Address" Type="varchar" MaxLength="75" Nullable="false" />
-          <Property Name="Phone_number" Type="int" Nullable="false" />
-          <Property Name="PESEL" Type="int" Nullable="false" />
+          <Property Name="Phone_number" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="PESEL" Type="varchar" MaxLength="11" Nullable="false" />
           <Property Name="address_id" Type="int" Nullable="false" />
           <Property Name="Login" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="30" Nullable="false" />
@@ -111,6 +111,30 @@
             </Principal>
             <Dependent Role="LAB_examination">
               <PropertyRef Name="visit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LAB_examination_Worker">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+          <End Role="LAB_examination" Type="Self.LAB_examination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="Worker_id" />
+            </Principal>
+            <Dependent Role="LAB_examination">
+              <PropertyRef Name="LAB_worker_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LAB_examination_Worker1">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+          <End Role="LAB_examination" Type="Self.LAB_examination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="Worker_id" />
+            </Principal>
+            <Dependent Role="LAB_examination">
+              <PropertyRef Name="LAB_manager_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -214,6 +238,14 @@
             <End Role="Visit" EntitySet="Visit" />
             <End Role="LAB_examination" EntitySet="LAB_examination" />
           </AssociationSet>
+          <AssociationSet Name="FK_LAB_examination_Worker" Association="Self.FK_LAB_examination_Worker">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="LAB_examination" EntitySet="LAB_examination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LAB_examination_Worker1" Association="Self.FK_LAB_examination_Worker1">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="LAB_examination" EntitySet="LAB_examination" />
+          </AssociationSet>
           <AssociationSet Name="FK_Patient_Address" Association="Self.FK_Patient_Address">
             <End Role="Address" EntitySet="Address" />
             <End Role="Patient" EntitySet="Patient" />
@@ -243,8 +275,7 @@
             <End Role="Worker" EntitySet="Worker" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BD2_2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -266,7 +297,7 @@
           </Key>
           <Property Name="Examination_code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Examiantion_type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Examination_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Examination_name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="LAB_examination" Relationship="Self.FK_LAB_examination_Examination_dictionary" FromRole="Examination_dictionary" ToRole="LAB_examination" />
           <NavigationProperty Name="Physical_examination" Relationship="Self.FK_Physical_examination_Examination_dictionary" FromRole="Examination_dictionary" ToRole="Physical_examination" />
         </EntityType>
@@ -278,16 +309,18 @@
           <Property Name="LAB_examination_code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="doctor_notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="LAB_worker_id" Type="Int32" />
-          <Property Name="commission_examination_date" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="commission_examination_date" Type="DateTime" Nullable="false" />
           <Property Name="LAB_examination_result" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LAB_examination_date" Type="Time" Precision="7" />
+          <Property Name="LAB_examination_date" Type="DateTime" />
           <Property Name="LAB_manager_id" Type="Int32" />
           <Property Name="LAB_manager_notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ending_examination_date" Type="Time" Precision="7" />
+          <Property Name="ending_examination_date" Type="DateTime" />
           <Property Name="status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="visit_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Examination_dictionary" Relationship="Self.FK_LAB_examination_Examination_dictionary" FromRole="LAB_examination" ToRole="Examination_dictionary" />
           <NavigationProperty Name="Visit" Relationship="Self.FK_LAB_examination_Visit" FromRole="LAB_examination" ToRole="Visit" />
+          <NavigationProperty Name="Worker" Relationship="BD2_2Model.FK_LAB_examination_Worker" FromRole="LAB_examination" ToRole="Worker" />
+          <NavigationProperty Name="Worker1" Relationship="BD2_2Model.FK_LAB_examination_Worker1" FromRole="LAB_examination" ToRole="Worker" />
         </EntityType>
         <EntityType Name="Patient">
           <Key>
@@ -296,8 +329,8 @@
           <Property Name="Patient_id" Type="Int32" Nullable="false" />
           <Property Name="First_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Last_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Phone_number" Type="Int32" Nullable="false" />
-          <Property Name="PESEL" Type="Int32" Nullable="false" />
+          <Property Name="Phone_number" Type="String" Nullable="false" />
+          <Property Name="PESEL" Type="String" Nullable="false" />
           <Property Name="address_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Address" Relationship="Self.FK_Patient_Address" FromRole="Patient" ToRole="Address" />
           <NavigationProperty Name="Visit" Relationship="Self.FK_Visit_Patient" FromRole="Patient" ToRole="Visit" />
@@ -308,7 +341,7 @@
           </Key>
           <Property Name="Physical_examination_id" Type="Int32" Nullable="false" />
           <Property Name="Physical_examination_code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Result" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Result" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="visit_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Examination_dictionary" Relationship="Self.FK_Physical_examination_Examination_dictionary" FromRole="Physical_examination" ToRole="Examination_dictionary" />
           <NavigationProperty Name="Visit" Relationship="Self.FK_Physical_examination_Visit" FromRole="Physical_examination" ToRole="Visit" />
@@ -321,8 +354,8 @@
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="diagnosis" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="registration_date" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="ending_date" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="registration_date" Type="DateTime" />
+          <Property Name="ending_date" Type="DateTime" />
           <Property Name="patient_id" Type="Int32" Nullable="false" />
           <Property Name="doctor_id" Type="Int32" Nullable="false" />
           <Property Name="registerer_id" Type="Int32" Nullable="false" />
@@ -342,14 +375,16 @@
           <Property Name="Last_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NPWZ" Type="Int32" />
           <Property Name="E_mail_Address" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Phone_number" Type="Int32" Nullable="false" />
-          <Property Name="PESEL" Type="Int32" Nullable="false" />
+          <Property Name="Phone_number" Type="String" Nullable="false" />
+          <Property Name="PESEL" Type="String" Nullable="false" />
           <Property Name="address_id" Type="Int32" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Address" Relationship="Self.FK_Worker_Address" FromRole="Worker" ToRole="Address" />
           <NavigationProperty Name="Visit" Relationship="Self.FK_Visit_Worker" FromRole="Worker" ToRole="Visit" />
           <NavigationProperty Name="Visit1" Relationship="Self.FK_Visit_Worker1" FromRole="Worker" ToRole="Visit" />
+          <NavigationProperty Name="LAB_examination" Relationship="BD2_2Model.FK_LAB_examination_Worker" FromRole="Worker" ToRole="LAB_examination" />
+          <NavigationProperty Name="LAB_examination1" Relationship="BD2_2Model.FK_LAB_examination_Worker1" FromRole="Worker" ToRole="LAB_examination" />
         </EntityType>
         <Association Name="FK_Patient_Address">
           <End Role="Address" Type="Self.Address" Multiplicity="1" />
@@ -503,7 +538,39 @@
             <End Role="Worker" EntitySet="Worker" />
             <End Role="Visit" EntitySet="Visit" />
           </AssociationSet>
+          <AssociationSet Name="FK_LAB_examination_Worker" Association="BD2_2Model.FK_LAB_examination_Worker">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="LAB_examination" EntitySet="LAB_examination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LAB_examination_Worker1" Association="BD2_2Model.FK_LAB_examination_Worker1">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="LAB_examination" EntitySet="LAB_examination" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_LAB_examination_Worker">
+          <End Type="BD2_2Model.Worker" Role="Worker" Multiplicity="0..1" />
+          <End Type="BD2_2Model.LAB_examination" Role="LAB_examination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="Worker_id" />
+            </Principal>
+            <Dependent Role="LAB_examination">
+              <PropertyRef Name="LAB_worker_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LAB_examination_Worker1">
+          <End Type="BD2_2Model.Worker" Role="Worker" Multiplicity="0..1" />
+          <End Type="BD2_2Model.LAB_examination" Role="LAB_examination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="Worker_id" />
+            </Principal>
+            <Dependent Role="LAB_examination">
+              <PropertyRef Name="LAB_manager_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

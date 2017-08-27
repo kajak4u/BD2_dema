@@ -19,6 +19,8 @@ namespace BD2_demaOkien.Data
         {
             this.Visit = new HashSet<Visit>();
             this.Visit1 = new HashSet<Visit>();
+            this.LAB_examination = new HashSet<LAB_examination>();
+            this.LAB_examination1 = new HashSet<LAB_examination>();
         }
     
         public int Worker_id { get; set; }
@@ -27,8 +29,8 @@ namespace BD2_demaOkien.Data
         public string Last_name { get; set; }
         public Nullable<int> NPWZ { get; set; }
         public string E_mail_Address { get; set; }
-        public int Phone_number { get; set; }
-        public int PESEL { get; set; }
+        public string Phone_number { get; set; }
+        public string PESEL { get; set; }
         public int address_id { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
@@ -38,5 +40,9 @@ namespace BD2_demaOkien.Data
         public virtual ICollection<Visit> Visit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Visit> Visit1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LAB_examination> LAB_examination { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LAB_examination> LAB_examination1 { get; set; }
     }
 }

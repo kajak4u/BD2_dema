@@ -25,8 +25,8 @@ namespace BD2_demaOkien.Data
         public string description { get; set; }
         public string diagnosis { get; set; }
         public string status { get; set; }
-        public System.TimeSpan registration_date { get; set; }
-        public System.TimeSpan ending_date { get; set; }
+        public Nullable<System.DateTime> registration_date { get; set; }
+        public Nullable<System.DateTime> ending_date { get; set; }
         public int patient_id { get; set; }
         public int doctor_id { get; set; }
         public int registerer_id { get; set; }

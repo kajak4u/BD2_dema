@@ -4,5 +4,8 @@
 
     partial class BD_2DataSet
     {
+        partial class WorkerDataTable
+        {
+        }
     }
 }

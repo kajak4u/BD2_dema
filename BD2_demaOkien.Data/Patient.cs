@@ -23,8 +23,8 @@ namespace BD2_demaOkien.Data
         public int Patient_id { get; set; }
         public string First_name { get; set; }
         public string Last_name { get; set; }
-        public int Phone_number { get; set; }
-        public int PESEL { get; set; }
+        public string Phone_number { get; set; }
+        public string PESEL { get; set; }
         public int address_id { get; set; }
     
         public virtual Address Address { get; set; }
