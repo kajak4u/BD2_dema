@@ -13,9 +13,11 @@ namespace BD2_demaOkien
     public partial class PatientDetailsWindow : Form
     {
         private ViewMode viewMode;
-        public PatientDetailsWindow(ViewMode mode)
+        private int patientId;
+        public PatientDetailsWindow(ViewMode mode, int id)
         {
             InitializeComponent();
+            patientId = id;
             this.viewMode = mode;
             SetEnabledControls();
         }
@@ -39,7 +41,9 @@ namespace BD2_demaOkien
 
         private void PatientDataWindow_Load(object sender, EventArgs e)
         {
-
+            PatientData patient = Visit.getPatientById(patientId);
+            
+            textBoxName.Text = patient?.First_name;
         }
 
         private void buttonApply_Click(object sender, EventArgs e)

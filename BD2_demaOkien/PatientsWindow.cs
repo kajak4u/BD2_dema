@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+//using BD2_demaOkien.BizzLayer;
 
 namespace BD2_demaOkien
 {
     public partial class PatientsWindow : Form
     {
+
+        private int selectedPatientId = 0;
+
         public PatientsWindow()
         {
             InitializeComponent();
@@ -19,7 +23,7 @@ namespace BD2_demaOkien
 
         private void bindingNavigator1_RefreshItems(object sender, EventArgs e)
         {
-            bool currentExists = (bindingNavigator1.BindingSource!=null && bindingNavigator1.BindingSource.Current != null);
+            bool currentExists = (bindingNavigator1.BindingSource != null && bindingNavigator1.BindingSource.Current != null);
 
             bindingNavigatorEditItem.Enabled = currentExists;
             bindingNavigatorItemData.Enabled = currentExists;
@@ -30,8 +34,35 @@ namespace BD2_demaOkien
 
         private void Patients_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'bD_2DataSet.Visit' table. You can move, or remove it, as needed.
+            //this.visitTableAdapter.Fill(this.bD_2DataSet.Visit);
             // TODO: This line of code loads data into the 'bD_2DataSet.Patient' table. You can move, or remove it, as needed.
             //this.patientTableAdapter.Fill(this.bD_2DataSet.Patient);
+            //var bindingList = new BindingList<AllPatientsData>(Visit.getAllPatients().ToList());
+            //var source = new BindingSource(bindingList, null);
+            //grid.DataSource = source
+            using (var Db = new Data.BD2_2Db())
+            {
+                var patients = from patient in Db.Patient
+                               join address in Db.Address
+                               on patient.address_id equals address.Address_id
+                               select new
+                               {
+                                   Patient_id = patient.Patient_id,
+                                   First_name = patient.First_name,
+                                   Last_name = patient.Last_name,
+                                   PESEL = patient.PESEL,
+                                   Phone_number = patient.Phone_number,
+                                   Address = address.Flat_number != null ? address.City + " " + address.Street + " " + address.House_number + " " + address.Flat_number : address.City + " " + address.Street + " " + address.House_number
+                               };
+                dataGridView1.DataSource = patients.ToList();//Visit.getAllPatients();//.ToList();
+                //var patients = Db.Patient.ToList();
+            }
+
+            //List<AllPatientsData> patients = Visit.getAllPatients();
+            //dataGridView1.DataSource = patients.ToList();
+
+
 
 
         }
@@ -40,7 +71,7 @@ namespace BD2_demaOkien
         {
             try
             {
-                this.patientTableAdapter.Fill(this.bD_2DataSet.Patient);
+                //this.patientTableAdapter.Fill(this.bD_2DataSet.Patient);
             }
             catch (System.Exception ex)
             {
@@ -51,12 +82,12 @@ namespace BD2_demaOkien
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            new PatientDetailsWindow(ViewMode.CREATE).ShowDialog();
+            new PatientDetailsWindow(ViewMode.CREATE, 0).ShowDialog();
         }
 
         private void bindingNavigatorEditItem_Click(object sender, EventArgs e)
         {
-            new PatientDetailsWindow(ViewMode.EDIT).ShowDialog();
+            new PatientDetailsWindow(ViewMode.EDIT, 0).ShowDialog();
         }
 
         private void bindingNavigatorItemVisits_Click(object sender, EventArgs e)
@@ -68,7 +99,9 @@ namespace BD2_demaOkien
 
         private void bindingNavigatorItemData_Click(object sender, EventArgs e)
         {
-            new PatientDetailsWindow(ViewMode.VIEW).ShowDialog();
+            int id = (int) dataGridView1.SelectedRows[0].Cells["patientidDataGridViewTextBoxColumn"].Value;
+            new PatientDetailsWindow(ViewMode.VIEW, id).ShowDialog();
+           
         }
 
         private void bindingNavigatorItemTests_Click(object sender, EventArgs e)
@@ -82,5 +115,88 @@ namespace BD2_demaOkien
         {
             new VisitsAddWindow(ViewMode.CREATE).ShowDialog();
         }
-    }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            /* if (IsANonHeaderLinkCell(e))
+             {
+                 MoveToLinked(e);
+             }
+             else if (IsANonHeaderButtonCell(e))
+             {
+                 PopulateSales(e);
+             }*/
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+
+            using (var Db = new Data.BD2_2Db())
+            {
+                var patient = from patients in Db.Patient
+                              join address in Db.Address
+                              on patients.address_id equals address.Address_id
+                              where patients.First_name.Contains(textBox1.Text) && patients.Last_name.Contains(textBox2.Text) && patients.PESEL.Contains(textBox3.Text)//FirstName == patients.First_name && LastName == patients.Last_name //&& Pesel == patients.PESEL
+                              select new
+                              {
+                                  Patient_id = patients.Patient_id,
+                                  First_name = patients.First_name,
+                                  Last_name = patients.Last_name,
+                                  Phone_number = patients.Phone_number,
+                                  PESEL = patients.PESEL,
+                                  Address = address.Flat_number != null ? address.City + " " + address.Street + " " + address.House_number + " " + address.Flat_number : address.City + " " + address.Street + " " + address.House_number
+                              };
+                //var patients = Db.Patient.ToList();
+                dataGridView1.DataSource =  patient.ToList();
+            }
+        }
+
+
+        /* private void MoveToLinked(DataGridViewCellEventArgs e)
+         {
+             string employeeId;
+             object value = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+             if (value is DBNull) { return; }
+
+             employeeId = value.ToString();
+             DataGridViewCell boss = RetrieveSuperiorsLastNameCell(employeeId);
+             if (boss != null)
+             {
+                 dataGridView1.CurrentCell = boss;
+             }
+         }
+
+         private bool IsANonHeaderLinkCell(DataGridViewCellEventArgs cellEvent)
+         {
+             if (dataGridView1.Columns[cellEvent.ColumnIndex] is
+                 DataGridViewLinkColumn &&
+                 cellEvent.RowIndex != -1)
+             { return true; }
+             else { return false; }
+         }
+
+         private bool IsANonHeaderButtonCell(DataGridViewCellEventArgs cellEvent)
+         {
+             if (dataGridView1.Columns[cellEvent.ColumnIndex] is
+                 DataGridViewButtonColumn &&
+                 cellEvent.RowIndex != -1)
+             { return true; }
+             else { return (false); }
+         }
+
+         private DataGridViewCell RetrieveSuperiorsLastNameCell(string employeeId)
+         {
+
+             foreach (DataGridViewRow row in DataGridView1.Rows)
+             {
+                 if (row.IsNewRow) { return null; }
+                 if (row.Cells[ColumnName.EmployeeId.ToString()].Value.ToString().Equals(employeeId))
+                 {
+                     return row.Cells[ColumnName.LastName.ToString()];
+                 }
+             }
+             return null;
+         }*/
+    } 
 }

@@ -247,6 +247,14 @@
       <DependentUpon>BD_2DataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\BD2_demaOkien.Data.Address.datasource" />
+    <None Include="Properties\DataSources\BD2_demaOkien.Data.BD2_2Db.datasource" />
+    <None Include="Properties\DataSources\BD2_demaOkien.Data.Examination_dictionary.datasource" />
+    <None Include="Properties\DataSources\BD2_demaOkien.Data.LAB_examination.datasource" />
+    <None Include="Properties\DataSources\BD2_demaOkien.Data.Patient.datasource" />
+    <None Include="Properties\DataSources\BD2_demaOkien.Data.Physical_examination.datasource" />
+    <None Include="Properties\DataSources\BD2_demaOkien.Data.Visit.datasource" />
+    <None Include="Properties\DataSources\BD2_demaOkien.Data.Worker.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
