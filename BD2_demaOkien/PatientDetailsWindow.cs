@@ -17,7 +17,7 @@ namespace BD2_demaOkien
         public PatientDetailsWindow(ViewMode mode, int id)
         {
             InitializeComponent();
-            patientId = id;
+            this.patientId = id;
             this.viewMode = mode;
             SetEnabledControls();
         }
@@ -41,9 +41,20 @@ namespace BD2_demaOkien
 
         private void PatientDataWindow_Load(object sender, EventArgs e)
         {
-            PatientData patient = Visit.getPatientById(patientId);
-            
-            textBoxName.Text = patient?.First_name;
+            if (this.viewMode == ViewMode.VIEW)
+            {
+                PatientData patient = Visit.getPatientById(patientId);
+                textBoxName.Text = patient?.First_name;
+                textBoxSurname.Text = patient?.Last_name;
+                textBoxPESEL.Text = patient?.PESEL;
+                textBoxPhone.Text = patient?.Phone_number;
+                textBoxCity.Text = patient?.City;
+                textBoxStreet.Text = patient?.Street;
+                textBoxHouseNo.Text = patient?.HouseNo.ToString();
+                textBoxFlatNo.Text = patient?.FlatNo.ToString();
+
+            }
+           
         }
 
         private void buttonApply_Click(object sender, EventArgs e)

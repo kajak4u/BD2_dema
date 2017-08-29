@@ -56,6 +56,7 @@ namespace BD2_demaOkien
                                    Address = address.Flat_number != null ? address.City + " " + address.Street + " " + address.House_number + " " + address.Flat_number : address.City + " " + address.Street + " " + address.House_number
                                };
                 dataGridView1.DataSource = patients.ToList();//Visit.getAllPatients();//.ToList();
+               // dataGridView1.Rows[1].Selected = true;
                 //var patients = Db.Patient.ToList();
             }
 
@@ -99,9 +100,9 @@ namespace BD2_demaOkien
 
         private void bindingNavigatorItemData_Click(object sender, EventArgs e)
         {
-            int id = (int) dataGridView1.SelectedRows[0].Cells["patientidDataGridViewTextBoxColumn"].Value;
-            new PatientDetailsWindow(ViewMode.VIEW, id).ShowDialog();
-           
+                int id = (int)dataGridView1.SelectedRows[0].Cells["patientidDataGridViewTextBoxColumn"].Value;
+                //if (id != null)
+                new PatientDetailsWindow(ViewMode.VIEW, id).ShowDialog();
         }
 
         private void bindingNavigatorItemTests_Click(object sender, EventArgs e)

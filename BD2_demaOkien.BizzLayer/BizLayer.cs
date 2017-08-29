@@ -23,10 +23,15 @@ namespace BD2_demaOkien
 
     public class PatientData
     {
+        public int Patient_id;
         public string First_name;
         public string Last_name;
         public string PESEL;
-        public string address;
+        public string Phone_number;
+        public string Street;
+        public string City;
+        public int HouseNo;
+        public int? FlatNo;
     }
 
     static public class Worker {
@@ -97,10 +102,16 @@ namespace BD2_demaOkien
                               where patients.Patient_id == id
                               select new PatientData
                               {
+                                  Patient_id = patients.Patient_id,
                                   First_name = patients.First_name,
                                   Last_name = patients.Last_name,
                                   PESEL = patients.PESEL,
-                                  address = address.Flat_number != null ? address.City + " " + address.Street + " " + address.House_number + " " + address.Flat_number : address.City + " " + address.Street + " " + address.House_number
+                                  Phone_number = patients.Phone_number,
+                                  City = address.City,
+                                  Street = address.Street,
+                                  HouseNo = address.House_number,
+                                  FlatNo = address.Flat_number
+                                  //address = address.Flat_number != null ? address.City + " " + address.Street + " " + address.House_number + " " + address.Flat_number : address.City + " " + address.Street + " " + address.House_number
                               };
                 //var patients = Db.Patient.ToList();
                 return patient.FirstOrDefault();
