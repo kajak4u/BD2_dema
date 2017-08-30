@@ -22,7 +22,10 @@ namespace BD2_demaOkien
             }
             catch(Exception e)
             {
-
+                string message = e.Message;
+                for (Exception e1 = e.InnerException; e1 != null; e1 = e1.InnerException)
+                    message += "\n\n" + e1.Message;
+                MessageBox.Show(message, "Wyjątek!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

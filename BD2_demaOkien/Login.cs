@@ -55,27 +55,16 @@ namespace BD2_demaOkien
 
                 if (worker != null)
                 {
-                    switch (worker.Role.ToLower())
+                    try
                     {
-                        case "registrar":
-                            userRole = Role.REGISTRAR;
-                            break;
-                        case "doctor":
-                            userRole = Role.DOCTOR;
-                            break;
-                        case "lab":
-                            userRole = Role.LAB;
-                            break;
-                        case "klab":
-                            userRole = Role.KLAB;
-                            break;
-                        case "admin":
-                            userRole = Role.ADMIN;
-                            break;
-                        default:
-                            return false;
+                        userRole = (Role)Enum.Parse(typeof(Role), worker.Role.ToUpper());
+                        return true;
                     }
-                    return true;
+                    catch(Exception e)
+                    {
+                        MessageBox.Show("Nieznana rola!", "Błąd logowania", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
                 }
                 else
                     return false;

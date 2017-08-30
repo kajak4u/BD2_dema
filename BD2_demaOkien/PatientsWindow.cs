@@ -55,7 +55,7 @@ namespace BD2_demaOkien
                                    Phone_number = patient.Phone_number,
                                    Address = address.Flat_number != null ? address.City + " " + address.Street + " " + address.House_number + " " + address.Flat_number : address.City + " " + address.Street + " " + address.House_number
                                };
-                dataGridView1.DataSource = patients.ToList();//Visit.getAllPatients();//.ToList();
+                patientBindingSource.DataSource = patients.ToList();//Visit.getAllPatients();//.ToList();
                // dataGridView1.Rows[1].Selected = true;
                 //var patients = Db.Patient.ToList();
             }
