@@ -309,12 +309,12 @@
           <Property Name="LAB_examination_code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="doctor_notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="LAB_worker_id" Type="Int32" />
-          <Property Name="commission_examination_date" Type="DateTime" Nullable="false" />
+          <Property Name="commission_examination_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="LAB_examination_result" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LAB_examination_date" Type="DateTime" />
+          <Property Name="LAB_examination_date" Type="DateTime" Precision="3" />
           <Property Name="LAB_manager_id" Type="Int32" />
           <Property Name="LAB_manager_notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ending_examination_date" Type="DateTime" />
+          <Property Name="ending_examination_date" Type="DateTime" Precision="3" />
           <Property Name="status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="visit_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Examination_dictionary" Relationship="Self.FK_LAB_examination_Examination_dictionary" FromRole="LAB_examination" ToRole="Examination_dictionary" />
@@ -329,8 +329,8 @@
           <Property Name="Patient_id" Type="Int32" Nullable="false" />
           <Property Name="First_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Last_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Phone_number" Type="String" Nullable="false" />
-          <Property Name="PESEL" Type="String" Nullable="false" />
+          <Property Name="Phone_number" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="PESEL" Type="String" Nullable="false" MaxLength="11" Unicode="false" FixedLength="false" />
           <Property Name="address_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Address" Relationship="Self.FK_Patient_Address" FromRole="Patient" ToRole="Address" />
           <NavigationProperty Name="Visit" Relationship="Self.FK_Visit_Patient" FromRole="Patient" ToRole="Visit" />
@@ -354,8 +354,8 @@
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="diagnosis" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="registration_date" Type="DateTime" />
-          <Property Name="ending_date" Type="DateTime" />
+          <Property Name="registration_date" Type="DateTime" Precision="3" />
+          <Property Name="ending_date" Type="DateTime" Precision="3" />
           <Property Name="patient_id" Type="Int32" Nullable="false" />
           <Property Name="doctor_id" Type="Int32" Nullable="false" />
           <Property Name="registerer_id" Type="Int32" Nullable="false" />
@@ -375,8 +375,8 @@
           <Property Name="Last_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NPWZ" Type="Int32" />
           <Property Name="E_mail_Address" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Phone_number" Type="String" Nullable="false" />
-          <Property Name="PESEL" Type="String" Nullable="false" />
+          <Property Name="Phone_number" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="PESEL" Type="String" Nullable="false" MaxLength="11" Unicode="false" FixedLength="false" />
           <Property Name="address_id" Type="Int32" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
