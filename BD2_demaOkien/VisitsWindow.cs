@@ -29,6 +29,18 @@ namespace BD2_demaOkien
                 textBox3.Text = "/**current patient**/";
                 this.Text = "Wizyty dla: ";
                 bindingNavigatorItemPerform.Visible = false;
+                using (var Db = new BD2_demaOkien.Data.BD2_2Db())
+                {
+                    var doctors = from doctor in Db.Worker
+                                  where doctor.Role.ToUpper() == "DOCTOR"
+                                  select new
+                                  {
+                                      id = doctor.Worker_id,
+                                      name = doctor.First_name.ToString() + " " + doctor.Last_name.ToString(),
+                                  };
+                    //zmienić tak, żeby tylko imięi nazwisko się wyświetlało
+                    comboBox2.DataSource = doctors.ToList();
+                }
             }
 
             using (var Db = new BD2_demaOkien.Data.BD2_2Db())
@@ -36,31 +48,36 @@ namespace BD2_demaOkien
                 var visits = from visit in Db.Visit
                              join doctor in Db.Worker
                              on visit.doctor_id equals doctor.Worker_id
-                             where visit.visit_id == 1
                              join patient in Db.Patient
                              on visit.patient_id equals patient.Patient_id
                              join register in Db.Worker
                              on visit.registerer_id equals register.Worker_id
                              select new
                              {
-                                 visit.status,
-                                 visit.registration_date,
-                                 visit.ending_date,
-                                 Patient = patient.First_name,
-                                 Doctor = doctor.First_name,
-                                 Register = register.First_name
+                                 visit_id = visit.visit_id,
+                                 status = visit.status,
+                                 description = visit.description,
+                                 diagnosis = visit.diagnosis,
+                                 registration_date = visit.registration_date,
+                                 ending_date = visit.ending_date,
+                                 patientId = patient.Patient_id,
+                                 patient_id = patient.First_name + " " + patient.Last_name,
+                                 doctorId = doctor.Worker_id,
+                                 doctor_id = doctor.First_name + " " + doctor.Last_name,
+                                 registerId = register.Worker_id,
+                                 registerer_id = register.First_name + " " + register.Last_name
                              };
 
                 var worker = Db.Visit.ToList().Where(v => v.visit_id == 1)
                     .Select(v => v.Worker).FirstOrDefault();
 
                 // zapis
-                worker.First_name = "Zenek";
-                Db.SaveChanges();
+                //worker.First_name = "Zenek";
+                //Db.SaveChanges();
 
-                var workerName = worker.Address.Street;
+                //var workerName = worker.Address.Street;
 
-                dataGridView1.DataSource = visits.ToList();
+                visitBindingSource.DataSource = visits.ToList();
             }
         }
 
@@ -99,6 +116,11 @@ namespace BD2_demaOkien
         private void bindingNavigatorItemPerform_Click(object sender, EventArgs e)
         {
             new VisitsPerformWindow().ShowDialog();
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

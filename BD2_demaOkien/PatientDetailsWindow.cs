@@ -41,7 +41,7 @@ namespace BD2_demaOkien
 
         private void PatientDataWindow_Load(object sender, EventArgs e)
         {
-            if (this.viewMode == ViewMode.VIEW)
+            if (this.viewMode == ViewMode.VIEW || this.viewMode == ViewMode.EDIT)
             {
                 PatientData patient = Visit.getPatientById(patientId);
                 textBoxName.Text = patient?.First_name;
@@ -60,7 +60,15 @@ namespace BD2_demaOkien
         private void buttonApply_Click(object sender, EventArgs e)
         {
             if (viewMode == ViewMode.CREATE)
+            {
+                Visit.setPatientData(textBoxName.Text, textBoxSurname.Text, textBoxPESEL.Text, textBoxPhone.Text, textBoxCity.Text, textBoxStreet.Text, textBoxHouseNo.Text, textBoxFlatNo.Text, null);
                 Close();
+            }
+            else if (viewMode == ViewMode.EDIT)
+            {
+                Visit.setPatientData(textBoxName.Text, textBoxSurname.Text, textBoxPESEL.Text, textBoxPhone.Text, textBoxCity.Text, textBoxStreet.Text, textBoxHouseNo.Text, textBoxFlatNo.Text, patientId);
+                Close();
+            }
             else
             {
                 viewMode = ViewMode.VIEW;

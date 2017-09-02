@@ -72,8 +72,8 @@
             this.bindingNavigatorItemData = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorItemCancel = new System.Windows.Forms.ToolStripButton();
-            this.visitTableAdapter = new BD2_demaOkien.BD_2DataSetTableAdapters.VisitTableAdapter();
             this.bindingNavigatorItemPerform = new System.Windows.Forms.ToolStripButton();
+            this.visitTableAdapter = new BD2_demaOkien.BD_2DataSetTableAdapters.VisitTableAdapter();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.visitBindingSource)).BeginInit();
@@ -160,6 +160,7 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(152, 21);
             this.comboBox2.TabIndex = 8;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -510,10 +511,6 @@
             this.bindingNavigatorItemCancel.Size = new System.Drawing.Size(55, 22);
             this.bindingNavigatorItemCancel.Text = "Odwołaj";
             // 
-            // visitTableAdapter
-            // 
-            this.visitTableAdapter.ClearBeforeFill = true;
-            // 
             // bindingNavigatorItemPerform
             // 
             this.bindingNavigatorItemPerform.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -523,6 +520,10 @@
             this.bindingNavigatorItemPerform.Size = new System.Drawing.Size(78, 22);
             this.bindingNavigatorItemPerform.Text = "Przeprowadź";
             this.bindingNavigatorItemPerform.Click += new System.EventHandler(this.bindingNavigatorItemPerform_Click);
+            // 
+            // visitTableAdapter
+            // 
+            this.visitTableAdapter.ClearBeforeFill = true;
             // 
             // VisitsWindow
             // 

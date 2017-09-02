@@ -118,6 +118,15 @@ namespace BD2_demaOkien
             }
         }
 
+        
+        public static void setPatientData(String name, String surname, String pesel, String phone, String city, String street, String houseNo, String flatNo, int? id) {
+            using (var Db = new BD2_2Db()) {
+                //dodać dodawanie danych do bazy - ta sama funkcja będzie służyła do zapisywania zedytowanych pól
+
+            }
+
+        }
+
     }
 
     static public class Patient {

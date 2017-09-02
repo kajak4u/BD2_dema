@@ -88,7 +88,16 @@ namespace BD2_demaOkien
 
         private void bindingNavigatorEditItem_Click(object sender, EventArgs e)
         {
-            new PatientDetailsWindow(ViewMode.EDIT, 0).ShowDialog();
+            int id;
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                id = (int)dataGridView1.SelectedRows[0].Cells["patientidDataGridViewTextBoxColumn"].Value;
+            }
+            else
+            {
+                id = (int)dataGridView1.CurrentRow.Cells["patientidDataGridViewTextBoxColumn"].Value;
+            }
+            new PatientDetailsWindow(ViewMode.EDIT, id).ShowDialog();
         }
 
         private void bindingNavigatorItemVisits_Click(object sender, EventArgs e)
@@ -100,7 +109,15 @@ namespace BD2_demaOkien
 
         private void bindingNavigatorItemData_Click(object sender, EventArgs e)
         {
-                int id = (int)dataGridView1.SelectedRows[0].Cells["patientidDataGridViewTextBoxColumn"].Value;
+            int id;
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                id = (int)dataGridView1.SelectedRows[0].Cells["patientidDataGridViewTextBoxColumn"].Value;
+            }
+            else
+            {
+                id = (int)dataGridView1.CurrentRow.Cells["patientidDataGridViewTextBoxColumn"].Value;
+            }
                 //if (id != null)
                 new PatientDetailsWindow(ViewMode.VIEW, id).ShowDialog();
         }
