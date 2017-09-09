@@ -121,6 +121,29 @@ namespace BD2_demaOkien
             }
         }
 
+        public static void deleteUser(int id) {
+            using (var Db = new BD2_2Db())
+            {
+                var add = from patients in Db.Patient
+                              join address in Db.Address
+                              on patients.address_id equals address.Address_id
+                              where patients.Patient_id == id
+                              select new Address
+                              {
+                                  Address_id = address.Address_id,
+                                  City = address.City,
+                                  Street = address.Street,
+                                  House_number = address.House_number,
+                                  Flat_number = address.Flat_number
+                                  //address = address.Flat_number != null ? address.City + " " + address.Street + " " + address.House_number + " " + address.Flat_number : address.City + " " + address.Street + " " + address.House_number
+                              };
+
+                Db.Address.Remove(add.FirstOrDefault());
+                Db.Patient.Remove(Db.Patient.Where(a => a.Patient_id == id).FirstOrDefault());
+            }
+
+        }
+
 
         public static void setPatientData(String name, String surname, String pesel, String phone, String city, String street, int houseNo, int? flatNo, int? id)
         {
