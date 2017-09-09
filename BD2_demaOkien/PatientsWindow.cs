@@ -34,6 +34,7 @@ namespace BD2_demaOkien
 
         private void Patients_Load(object sender, EventArgs e)
         {
+            this.LoadPatients();
             // TODO: This line of code loads data into the 'bD_2DataSet.Visit' table. You can move, or remove it, as needed.
             //this.visitTableAdapter.Fill(this.bD_2DataSet.Visit);
             // TODO: This line of code loads data into the 'bD_2DataSet.Patient' table. You can move, or remove it, as needed.
@@ -41,6 +42,16 @@ namespace BD2_demaOkien
             //var bindingList = new BindingList<AllPatientsData>(Visit.getAllPatients().ToList());
             //var source = new BindingSource(bindingList, null);
             //grid.DataSource = source
+            //Visit.getAllPatients();//.ToList();
+               // dataGridView1.Rows[1].Selected = true;
+                //var patients = Db.Patient.ToList();
+
+            //List<AllPatientsData> patients = Visit.getAllPatients();
+            //dataGridView1.DataSource = patients.ToList();
+        }
+
+        private void LoadPatients()
+        {
             using (var Db = new Data.BD2_2Db())
             {
                 var patients = from patient in Db.Patient
@@ -55,17 +66,8 @@ namespace BD2_demaOkien
                                    Phone_number = patient.Phone_number,
                                    Address = address.Flat_number != null ? address.City + " " + address.Street + " " + address.House_number + " " + address.Flat_number : address.City + " " + address.Street + " " + address.House_number
                                };
-                patientBindingSource.DataSource = patients.ToList();//Visit.getAllPatients();//.ToList();
-               // dataGridView1.Rows[1].Selected = true;
-                //var patients = Db.Patient.ToList();
+                patientBindingSource.DataSource = patients.ToList();
             }
-
-            //List<AllPatientsData> patients = Visit.getAllPatients();
-            //dataGridView1.DataSource = patients.ToList();
-
-
-
-
         }
 
         private void fillByToolStripButton_Click(object sender, EventArgs e)
@@ -98,6 +100,8 @@ namespace BD2_demaOkien
                 id = (int)dataGridView1.CurrentRow.Cells["patientidDataGridViewTextBoxColumn"].Value;
             }
             new PatientDetailsWindow(ViewMode.EDIT, id).ShowDialog();
+            this.LoadPatients();
+
         }
 
         private void bindingNavigatorItemVisits_Click(object sender, EventArgs e)
@@ -118,7 +122,6 @@ namespace BD2_demaOkien
             {
                 id = (int)dataGridView1.CurrentRow.Cells["patientidDataGridViewTextBoxColumn"].Value;
             }
-                //if (id != null)
                 new PatientDetailsWindow(ViewMode.VIEW, id).ShowDialog();
         }
 
@@ -136,14 +139,6 @@ namespace BD2_demaOkien
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            /* if (IsANonHeaderLinkCell(e))
-             {
-                 MoveToLinked(e);
-             }
-             else if (IsANonHeaderButtonCell(e))
-             {
-                 PopulateSales(e);
-             }*/
         }
 
         private void button1_Click(object sender, EventArgs e)

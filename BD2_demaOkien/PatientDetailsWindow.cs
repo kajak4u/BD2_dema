@@ -54,19 +54,42 @@ namespace BD2_demaOkien
                 textBoxFlatNo.Text = patient?.FlatNo.ToString();
 
             }
-           
+
         }
 
         private void buttonApply_Click(object sender, EventArgs e)
         {
             if (viewMode == ViewMode.CREATE)
             {
-                Visit.setPatientData(textBoxName.Text, textBoxSurname.Text, textBoxPESEL.Text, textBoxPhone.Text, textBoxCity.Text, textBoxStreet.Text, textBoxHouseNo.Text, textBoxFlatNo.Text, null);
-                Close();
+                int? flatNo = null;
+                try
+                {
+                    int houseNo = Convert.ToInt32(textBoxHouseNo.Text);
+
+                    try
+                    {
+                        flatNo = Convert.ToInt32(textBoxFlatNo.Text);
+                    }
+                    catch (Exception) //ignore improper flat number
+                    {
+                    }
+
+                    Visit.setPatientData(textBoxName.Text, textBoxSurname.Text, textBoxPESEL.Text, textBoxPhone.Text, textBoxCity.Text, textBoxStreet.Text, houseNo, flatNo, null);
+                    Close();
+                }
+                catch (Exception exx)
+                {
+                    MessageBox.Show(exx.Message
+                        + Environment.NewLine + Environment.NewLine + exx.StackTrace);
+                       // + Environment.NewLine + Environment.NewLine + exx.InnerException.ToString());
+                }
+
             }
             else if (viewMode == ViewMode.EDIT)
             {
-                Visit.setPatientData(textBoxName.Text, textBoxSurname.Text, textBoxPESEL.Text, textBoxPhone.Text, textBoxCity.Text, textBoxStreet.Text, textBoxHouseNo.Text, textBoxFlatNo.Text, patientId);
+                int houseNo = Convert.ToInt32(textBoxHouseNo.Text);
+                int flatNo = Convert.ToInt32(textBoxFlatNo.Text);
+                Visit.editPatientData(textBoxName.Text, textBoxSurname.Text, textBoxPESEL.Text, textBoxPhone.Text, textBoxCity.Text, textBoxStreet.Text, houseNo, flatNo, patientId);
                 Close();
             }
             else

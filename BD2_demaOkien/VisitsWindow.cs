@@ -12,6 +12,9 @@ namespace BD2_demaOkien
 {
     public partial class VisitsWindow : Form
     {
+
+        String visitStatus = "";
+
         public VisitsWindow(Role openedRole)
         {
             InitializeComponent();
@@ -36,10 +39,10 @@ namespace BD2_demaOkien
                                   select new
                                   {
                                       id = doctor.Worker_id,
-                                      name = doctor.First_name.ToString() + " " + doctor.Last_name.ToString(),
+                                      name = doctor.First_name.ToString() + " " + doctor.Last_name.ToString()
                                   };
                     //zmienić tak, żeby tylko imięi nazwisko się wyświetlało
-                    comboBox2.DataSource = doctors.ToList();
+                    comboBox2.DataSource = doctors.Select(a=> a.name).ToList();
                 }
             }
 
@@ -119,6 +122,13 @@ namespace BD2_demaOkien
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String doctor_name = comboBox2.SelectedItem.ToString();
+            MessageBox.Show(doctor_name, "Wyjątek!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
