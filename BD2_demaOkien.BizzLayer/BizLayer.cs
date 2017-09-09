@@ -138,8 +138,8 @@ namespace BD2_demaOkien
                                   //address = address.Flat_number != null ? address.City + " " + address.Street + " " + address.House_number + " " + address.Flat_number : address.City + " " + address.Street + " " + address.House_number
                               };
 
-                Db.Address.Remove(add.FirstOrDefault());
-                Db.Patient.Remove(Db.Patient.Where(a => a.Patient_id == id).FirstOrDefault());
+                Db.Address.Remove(add.First());
+                Db.Patient.Remove(Db.Patient.Where(a => a.Patient_id == id).First());
             }
 
         }

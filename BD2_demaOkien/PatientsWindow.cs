@@ -86,6 +86,7 @@ namespace BD2_demaOkien
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
             new PatientDetailsWindow(ViewMode.CREATE, 0).ShowDialog();
+            LoadPatients();
         }
 
         private void bindingNavigatorEditItem_Click(object sender, EventArgs e)
@@ -123,6 +124,7 @@ namespace BD2_demaOkien
                 id = (int)dataGridView1.CurrentRow.Cells["patientidDataGridViewTextBoxColumn"].Value;
             }
                 new PatientDetailsWindow(ViewMode.VIEW, id).ShowDialog();
+            LoadPatients();
         }
 
         private void bindingNavigatorItemTests_Click(object sender, EventArgs e)
@@ -180,6 +182,7 @@ namespace BD2_demaOkien
                     id = (int)dataGridView1.CurrentRow.Cells["patientidDataGridViewTextBoxColumn"].Value;
                 }
                 Visit.deleteUser(id);
+                LoadPatients();
             }
         }
 
