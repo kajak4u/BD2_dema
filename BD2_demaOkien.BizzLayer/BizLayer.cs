@@ -147,51 +147,29 @@ namespace BD2_demaOkien
 
         public static void setPatientData(String name, String surname, String pesel, String phone, String city, String street, int houseNo, int? flatNo, int? id)
         {
-            Address address = new Address();
-            address.City = city;
-            address.Street = street;
-            address.House_number = houseNo;
-            address.Flat_number = flatNo;
+            Address address = new Address { City=city, Street=street, House_number=houseNo, Flat_number=flatNo};
 
-            Patient patient = new Patient();
-            patient.First_name = name;
-            patient.Last_name = surname;
-            patient.PESEL = pesel;
-            patient.Phone_number = phone;
+            Patient patient = new Patient { First_name=name, Last_name=surname, PESEL=pesel, Phone_number=phone};
 
             using (var Db = new BD2_2Db())
-            {/*
-                var addressResult = from add in Db.Address
-                                    where add.City.Equals(city) && add.Street.Equals(street) && add.House_number.Equals(houseNo) && add.Flat_number.Equals(flatNo)
-                                    select new List<int?>
-                                    {
-                                        add.Address_id
-                                    };*/
-                // if (addressResult.Count() == 0)
-                // if (!Db.Address.Contains(address))
-                int count = Db.Address.Count(addres => addres.City.Equals(city) && addres.Street.Equals(street) && addres.House_number.Equals(houseNo) && addres.Flat_number.Equals(flatNo));
-                if (count == 0)
-                //var a = Db.Address.Where(addres => addres.City.Equals(city) && addres.Street.Equals(street) && addres.House_number.Equals(houseNo) && addres.Flat_number.Equals(flatNo)).FirstOrDefault();
-                //if (a == null)
+            {
+                var matchAddresses = Db.Address
+                    .Where(add =>
+                         (add.City == null ? address.City == null : add.City.Equals(address.City))
+                            && (add.Street == null ? address.Street == null : add.Street.Equals(address.Street))
+                            && add.House_number == address.House_number
+                            && (!add.Flat_number.HasValue ? !address.Flat_number.HasValue : add.Flat_number.Value == address.Flat_number.Value));
+                if (matchAddresses.Count() == 0)
+                {
                     Db.Address.Add(address);
-                //var address_id= Db.Address
-                //   .Where(ad => ad.City == city && ad.Street == street && ad.House_number == houseNo && ad.Flat_number == flatNo)
-                //    .Select(ad => new
-                //    {
-                //       ad.Address_id
-                //  });
+                    //Db.SaveChanges(); // ważne!
+                }
+                else
+                    address = matchAddresses.First();
 
-                //Db.Address.
-                var address_id = from addres in Db.Address
-                                 where addres.City.Equals(city) && addres.Street.Equals(street) && addres.House_number.Equals(houseNo) && addres.Flat_number.Equals(flatNo)
-                                 select new
-                                 {
-                                     Adress = addres.Address_id
-                                 };
-                patient.address_id = (int)address_id.FirstOrDefault().Adress;
+                patient.Address = address;
                 Db.Patient.Add(patient);
                 Db.SaveChanges();
-
             }
 
         }
