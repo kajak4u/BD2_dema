@@ -76,7 +76,7 @@ namespace BD2_demaOkien
 
         private void wizytyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenMDIWindow(new VisitsWindow(Role.REGISTRAR));
+            OpenMDIWindow(new VisitsWindow(Role.REGISTRAR, null));
         }
 
         private void wynikibadańToolStripMenuItem_Click(object sender, EventArgs e)
@@ -86,7 +86,7 @@ namespace BD2_demaOkien
 
         private void wizytyToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            OpenMDIWindow(new VisitsWindow(Role.DOCTOR));
+            OpenMDIWindow(new VisitsWindow(Role.DOCTOR, null));
         }
 
         private void przeglądMoichWizytToolStripMenuItem_Click(object sender, EventArgs e)

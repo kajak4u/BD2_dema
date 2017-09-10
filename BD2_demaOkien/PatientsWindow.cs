@@ -109,7 +109,16 @@ namespace BD2_demaOkien
 
         private void bindingNavigatorItemVisits_Click(object sender, EventArgs e)
         {
-            VisitsWindow visits = new VisitsWindow(Role.REGISTRAR);
+            int id;
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                id = (int)dataGridView1.SelectedRows[0].Cells["patientidDataGridViewTextBoxColumn"].Value;
+            }
+            else
+            {
+                id = (int)dataGridView1.CurrentRow.Cells["patientidDataGridViewTextBoxColumn"].Value;
+            }
+            VisitsWindow visits = new VisitsWindow(Role.REGISTRAR, id);
             visits.MdiParent = this.MdiParent;
             visits.Show();
         }

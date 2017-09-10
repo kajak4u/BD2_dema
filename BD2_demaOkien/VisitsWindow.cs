@@ -15,7 +15,7 @@ namespace BD2_demaOkien
 
         String visitStatus = "";
 
-        public VisitsWindow(Role openedRole)
+        public VisitsWindow(Role openedRole, int? patient_id)
         {
             InitializeComponent();
             if(openedRole == Role.DOCTOR)
@@ -28,6 +28,9 @@ namespace BD2_demaOkien
             }
             else if(openedRole == Role.REGISTRAR)
             {
+                if (patient_id.HasValue)                    //<- Potrzeby mi int
+                    int pid = patient_id.Value;
+                    PatientData p = Visit.getPatientById((int)patient_id.Value);
                 textBox3.Enabled = false;
                 textBox3.Text = "/**current patient**/";
                 this.Text = "Wizyty dla: ";
@@ -46,43 +49,46 @@ namespace BD2_demaOkien
             }
 
 
-
+         
             using (var Db = new BD2_demaOkien.Data.BD2_2Db())
             {
-                var visits = from visit in Db.Visit
-                             join doctor in Db.Worker
-                             on visit.doctor_id equals doctor.Worker_id
-                             join patient in Db.Patient
-                             on visit.patient_id equals patient.Patient_id
-                             join register in Db.Worker
-                             on visit.registerer_id equals register.Worker_id
-                             where visit.registration_date.Equals(dateTimePicker1.Value)
-                             select new
-                             {
-                                 visit_id = visit.visit_id,
-                                 status = visit.status,
-                                 description = visit.description,
-                                 diagnosis = visit.diagnosis,
-                                 registration_date = visit.registration_date,
-                                 ending_date = visit.ending_date,
-                                 patientId = patient.Patient_id,
-                                 patient_id = patient.First_name + " " + patient.Last_name,
-                                 doctorId = doctor.Worker_id,
-                                 doctor_id = doctor.First_name + " " + doctor.Last_name,
-                                 registerId = register.Worker_id,
-                                 registerer_id = register.First_name + " " + register.Last_name
-                             };
+                if (patient_id != null)
+                {
+                    var visits = from visit in Db.Visit
+                                 join doctor in Db.Worker
+                                 on visit.doctor_id equals doctor.Worker_id
+                                 join patient in Db.Patient
+                                 on visit.patient_id equals patient.Patient_id
+                                 join register in Db.Worker
+                                 on visit.registerer_id equals register.Worker_id
+                                 where patient.Patient_id == patient_id
+                                 select new
+                                 {
+                                     visit_id = visit.visit_id,
+                                     status = visit.status,
+                                     description = visit.description,
+                                     diagnosis = visit.diagnosis,
+                                     registration_date = visit.registration_date,
+                                     ending_date = visit.ending_date,
+                                     patientId = patient.Patient_id,
+                                     patient_id = patient.First_name + " " + patient.Last_name,
+                                     doctorId = doctor.Worker_id,
+                                     doctor_id = doctor.First_name + " " + doctor.Last_name,
+                                     registerId = register.Worker_id,
+                                     registerer_id = register.First_name + " " + register.Last_name
+                                 };
 
-                var worker = Db.Visit.ToList().Where(v => v.visit_id == 1)
-                    .Select(v => v.Worker).FirstOrDefault();
+                    var worker = Db.Visit.ToList().Where(v => v.visit_id == 1)
+                        .Select(v => v.Worker).FirstOrDefault();
 
-                // zapis
-                //worker.First_name = "Zenek";
-                //Db.SaveChanges();
+                    // zapis
+                    //worker.First_name = "Zenek";
+                    //Db.SaveChanges();
 
-                //var workerName = worker.Address.Street;
+                    //var workerName = worker.Address.Street;
 
-                visitBindingSource.DataSource = visits.ToList();
+                    visitBindingSource.DataSource = visits.ToList();
+                }
             }
         }
 
