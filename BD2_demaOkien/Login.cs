@@ -17,6 +17,7 @@ namespace BD2_demaOkien
         public string userLogin {get; private set;}
         public Role userRole { get; private set; }
         private string userPassword { get; set; }
+        public int userId { get; private set; }
 
         public Login()
         {
@@ -58,6 +59,7 @@ namespace BD2_demaOkien
                     try
                     {
                         userRole = (Role)Enum.Parse(typeof(Role), worker.Role.ToUpper());
+                        userId = worker.Worker_id;
                         return true;
                     }
                     catch(Exception e)

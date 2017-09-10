@@ -14,6 +14,7 @@ namespace BD2_demaOkien
     {
         string userLogin;
         Role userRole;
+        int userId;
         public MainWindow()
         {
             this.Hide();
@@ -23,6 +24,7 @@ namespace BD2_demaOkien
                 InitializeComponent();
                 userLogin = login.userLogin;
                 userRole = login.userRole;
+                userId = login.userId;
                 SetVisibility(userRole);
             }
             else
@@ -86,7 +88,7 @@ namespace BD2_demaOkien
 
         private void wizytyToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            OpenMDIWindow(new VisitsWindow(Role.DOCTOR, null));
+            OpenMDIWindow(new VisitsWindow(Role.DOCTOR, userId));
         }
 
         private void przeglądMoichWizytToolStripMenuItem_Click(object sender, EventArgs e)
