@@ -124,22 +124,13 @@ namespace BD2_demaOkien
         public static void deleteUser(int id) {
             using (var Db = new BD2_2Db())
             {
-                var add = from patients in Db.Patient
-                              join address in Db.Address
-                              on patients.address_id equals address.Address_id
-                              where patients.Patient_id == id
-                              select new Address
-                              {
-                                  Address_id = address.Address_id,
-                                  City = address.City,
-                                  Street = address.Street,
-                                  House_number = address.House_number,
-                                  Flat_number = address.Flat_number
-                                  //address = address.Flat_number != null ? address.City + " " + address.Street + " " + address.House_number + " " + address.Flat_number : address.City + " " + address.Street + " " + address.House_number
-                              };
+                var patient = Db.Patient.Where(p => p.Patient_id == id).FirstOrDefault();
+                if (patient == null)
+                    throw new Exception("No such patient!");
 
-                Db.Address.Remove(add.First());
-                Db.Patient.Remove(Db.Patient.Where(a => a.Patient_id == id).First());
+                //Db.Address.Remove(add.First()); - adres zostaje w bazie! - co jeśli ktoś inny też go ma?
+                Db.Patient.Remove(patient);
+                Db.SaveChanges();
             }
 
         }
@@ -178,25 +169,6 @@ namespace BD2_demaOkien
         {
             using (var Db = new BD2_2Db())
             {
-                /*var patient = from patients in Db.Patient
-                              join address in Db.Address
-                              on patients.address_id equals address.Address_id
-                              where patients.Patient_id == id
-                              select new PatientData
-                              {
-                                  Patient_id = patients.Patient_id,
-                                  First_name = patients.First_name,
-                                  Last_name = patients.Last_name,
-                                  PESEL = patients.PESEL,
-                                  Phone_number = patients.Phone_number,
-                                  City = address.City,
-                                  Street = address.Street,
-                                  HouseNo = address.House_number,
-                                  FlatNo = address.Flat_number
-                                  //address = address.Flat_number != null ? address.City + " " + address.Street + " " + address.House_number + " " + address.Flat_number : address.City + " " + address.Street + " " + address.House_number
-                              };*/
-                //var patients = Db.Patient.ToList();
-                //return patient.FirstOrDefault();
                 var patientData = Db.Patient.Where(p => p.Patient_id == id).FirstOrDefault();
                 patientData.First_name = name;
                 patientData.Last_name = surname;
