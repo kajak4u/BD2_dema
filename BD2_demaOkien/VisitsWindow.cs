@@ -28,8 +28,9 @@ namespace BD2_demaOkien
             }
             else if(openedRole == Role.REGISTRAR)
             {
+                int pid;
                 if (patient_id.HasValue)                    //<- Potrzeby mi int
-                    int pid = patient_id.Value;
+                    pid = patient_id.Value;
                     PatientData p = Visit.getPatientById((int)patient_id.Value);
                 textBox3.Enabled = false;
                 textBox3.Text = "/**current patient**/";
