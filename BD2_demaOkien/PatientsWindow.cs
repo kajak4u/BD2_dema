@@ -30,6 +30,8 @@ namespace BD2_demaOkien
             bindingNavigatorItemVisits.Enabled = currentExists;
             bindingNavigatorItemTests.Enabled = currentExists;
             bindingNavigatorItemAddVisit.Enabled = currentExists;
+            var deleteItem = bindingNavigator1.Items.Find("bindingNavigatorDeleteItem", false);
+            deleteItem.First().Enabled = currentExists;
         }
 
         private void Patients_Load(object sender, EventArgs e)
@@ -169,7 +171,6 @@ namespace BD2_demaOkien
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
-            LoadPatients();
             DialogResult result = MessageBox.Show("Jesteś pewny, że chcesz usunąć pacjenta: " + Environment.NewLine + dataGridView1.CurrentRow.Cells[1].Value + " " + dataGridView1.CurrentRow.Cells[2].Value, "Usuwanie użytkownika", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes) {
                 int id;
