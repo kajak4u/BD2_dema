@@ -41,10 +41,11 @@ namespace BD2_demaOkien
                                       id = doctor.Worker_id,
                                       name = doctor.First_name.ToString() + " " + doctor.Last_name.ToString()
                                   };
-                    //zmienić tak, żeby tylko imięi nazwisko się wyświetlało
                     comboBox2.DataSource = doctors.Select(a=> a.name).ToList();
                 }
             }
+
+
 
             using (var Db = new BD2_demaOkien.Data.BD2_2Db())
             {
@@ -55,6 +56,7 @@ namespace BD2_demaOkien
                              on visit.patient_id equals patient.Patient_id
                              join register in Db.Worker
                              on visit.registerer_id equals register.Worker_id
+                             where visit.registration_date.Equals(dateTimePicker1.Value)
                              select new
                              {
                                  visit_id = visit.visit_id,
@@ -129,6 +131,11 @@ namespace BD2_demaOkien
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
 
         }

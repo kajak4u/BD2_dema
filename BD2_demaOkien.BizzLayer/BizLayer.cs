@@ -215,6 +215,10 @@ namespace BD2_demaOkien
 
     }
 
+    static public class Examinations {
+
+    }
+
     static public class Patients
     {
 
