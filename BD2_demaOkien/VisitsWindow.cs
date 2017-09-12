@@ -30,7 +30,7 @@ namespace BD2_demaOkien
             else if(openedRole == Role.REGISTRAR)
             {
                 if (id.HasValue)
-                {               
+                {
                     PatientData p = Visit.getPatientById((int)id.Value);
                 }
                 textBox3.Enabled = false;
