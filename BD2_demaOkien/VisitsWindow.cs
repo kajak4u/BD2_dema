@@ -14,19 +14,25 @@ namespace BD2_demaOkien
     {
         
         private int patientID;
+        private Role userRole;
+        private int doctorID;
+        private String visitStatus = null;
 
         public VisitsWindow(Role openedRole, int? id)
         {
-            patientID = id.Value;
+           
+            userRole = openedRole;
             InitializeComponent();
             if(openedRole == Role.DOCTOR)
             {
+                doctorID = (int)id.Value;
                 label4.Visible = false;
                 comboBox2.Visible = false;
                 comboBox2.SelectedValue = "/**current user**/";
                 bindingNavigatorAddNewItem.Visible = false;
                 this.comboBox1.SelectedText = "Zarejestrowane";
-                LoadVisitDoctor((int)id.Value);
+                LoadVisitDoctor();
+               
             }
             else if(openedRole == Role.REGISTRAR)
             {
@@ -35,6 +41,7 @@ namespace BD2_demaOkien
                 {
                     p = Visit.getPatientById((int)id.Value);
                 }
+                patientID = id.Value;
                 textBox3.Enabled = false;
                 textBox3.Text = p.PESEL;
                 this.Text = "Wizyty dla: " + p.First_name + " "+ p.Last_name;
@@ -51,11 +58,11 @@ namespace BD2_demaOkien
                     comboBox2.DataSource = doctors.Select(a=> a.name).ToList();
                     comboBox2.SelectedItem = null;
                 }
-                LoadVisitRegister((int)id.Value);
+                LoadVisitRegister();
             }
         }
 
-        private void LoadVisitDoctor(int id) {
+        private void LoadVisitDoctor() {
             using (var Db = new BD2_demaOkien.Data.BD2_2Db())
             {
                 var visits = from visit in Db.Visit
@@ -65,7 +72,7 @@ namespace BD2_demaOkien
                              on visit.patient_id equals patient.Patient_id
                              join register in Db.Worker
                              on visit.registerer_id equals register.Worker_id
-                             where doctor.Worker_id== id
+                             where doctor.Worker_id== doctorID
                              select new
                              {
                                  visit_id = visit.visit_id,
@@ -86,7 +93,7 @@ namespace BD2_demaOkien
         }
 
 
-private void LoadVisitRegister(int id) {
+private void LoadVisitRegister() {
     using (var Db = new BD2_demaOkien.Data.BD2_2Db())
     {
             var visits = from visit in Db.Visit
@@ -96,7 +103,7 @@ private void LoadVisitRegister(int id) {
                          on visit.patient_id equals patient.Patient_id
                          join register in Db.Worker
                          on visit.registerer_id equals register.Worker_id
-                         where patient.Patient_id == id
+                         where patient.Patient_id == patientID
                          select new
                          {
                              visit_id = visit.visit_id,
@@ -115,6 +122,37 @@ private void LoadVisitRegister(int id) {
             visitBindingSource.DataSource = visits.ToList();
     }
 }
+
+        private void LoadVisitRegisterWithFilters()
+        {
+            using (var Db = new BD2_demaOkien.Data.BD2_2Db())
+            {
+                var visits = from visit in Db.Visit
+                             join doctor in Db.Worker
+                             on visit.doctor_id equals doctor.Worker_id
+                             join patient in Db.Patient
+                             on visit.patient_id equals patient.Patient_id
+                             join register in Db.Worker
+                             on visit.registerer_id equals register.Worker_id
+                             where patient.Patient_id == patientID
+                             select new
+                             {
+                                 visit_id = visit.visit_id,
+                                 status = visit.status,
+                                 description = visit.description,
+                                 diagnosis = visit.diagnosis,
+                                 registration_date = visit.registration_date,
+                                 ending_date = visit.ending_date,
+                                 patientId = patient.Patient_id,
+                                 patient_id = patient.First_name + " " + patient.Last_name,
+                                 doctorId = doctor.Worker_id,
+                                 doctor_id = doctor.First_name + " " + doctor.Last_name,
+                                 registerId = register.Worker_id,
+                                 registerer_id = register.First_name + " " + register.Last_name
+                             };
+                visitBindingSource.DataSource = visits.ToList();
+            }
+        }
 
         private void VisitsWindow_Load(object sender, EventArgs e)
         {
@@ -137,8 +175,9 @@ private void LoadVisitRegister(int id) {
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.visitTableAdapter.Fill(this.bD_2DataSet.Visit);
+            //this.visitTableAdapter.Fill(this.bD_2DataSet.Visit);
             //TODO: filtry
+
         }
 
         private void bindingNavigator1_RefreshItems(object sender, EventArgs e)
@@ -165,7 +204,21 @@ private void LoadVisitRegister(int id) {
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            switch (comboBox1.SelectedItem.ToString()) {
+                case ("Wszystkie"):
+                    visitStatus = null;
+                    break;
+                case ("Zarejestrowane"):
+                    visitStatus = "REJ";
+                    break;
+                case ("Odbyte"):
+                    visitStatus = "ZAK";
+                    break;
+                case ("Anulowane"):
+                    visitStatus = "ANUL";
+                    break;
+                
+            }
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
