@@ -14,13 +14,17 @@ namespace BD2_demaOkien
 	{
 		private List<String> examCodes;
 		private List<String> examNames;
+		private ExaminationMode mode;
+		int visitId;
 
-		public ExaminationsAddWindow(ExaminationMode mode)
+		public ExaminationsAddWindow(ExaminationMode mode, int visitId)
 		{
 			examCodes = new List<string>();
 			examNames = new List<string>();
 			InitializeComponent();
 			InitControls(mode);
+			this.mode = mode;
+			this.visitId = visitId;
 
 			using (var Db = new BD2_demaOkien.Data.BD2_2Db())
 			{
@@ -45,6 +49,17 @@ namespace BD2_demaOkien
 
 		private void buttonApply_Click(object sender, EventArgs e)
 		{
+			switch (mode)
+			{
+				case ExaminationMode.LAB:
+					Examination.InsertLABExamination(comboBox1.SelectedIndex.ToString(), richTextBox1.Text, visitId);
+					break;
+				case ExaminationMode.PHYSICAL:
+					Examination.InsertPhysicalExamination(comboBox1.SelectedIndex.ToString(), richTextBox1.Text, visitId);
+					break;
+				default:
+					break;
+			}			
 			Close();
 		}
 

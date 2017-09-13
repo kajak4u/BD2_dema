@@ -68,6 +68,7 @@
 			this.textBox1.Name = "textBox1";
 			this.textBox1.Size = new System.Drawing.Size(355, 20);
 			this.textBox1.TabIndex = 58;
+			textBox1.ReadOnly = true;
 			// 
 			// label1
 			// 

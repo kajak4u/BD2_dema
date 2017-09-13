@@ -218,10 +218,26 @@ namespace BD2_demaOkien
 		}
 	}
 
-	static public class Patients
+	static public class Examination
 	{
+		public static void InsertPhysicalExamination(String code, String result, int visitId)
+		{
+			Physical_examination exam = new Physical_examination { Physical_examination_code = code, Result = result, visit_id = visitId };
+			using (var db = new BD2_2Db())
+			{
+				db.Physical_examination.Add(exam);
+				db.SaveChanges();
+			}
+		}
 
+		public static void InsertLABExamination(String code, String notes, int visitId)
+		{
+			LAB_examination exam = new LAB_examination { LAB_examination_code = code, doctor_notes = notes, visit_id = visitId, commission_examination_date = DateTime.Now };
+			using (var db = new BD2_2Db())
+			{
+				db.LAB_examination.Add(exam);
+				db.SaveChanges();
+			}
+		}
 	}
-
-
 }

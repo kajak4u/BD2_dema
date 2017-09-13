@@ -10,6 +10,16 @@ using System.Windows.Forms;
 
 namespace BD2_demaOkien
 {
+	/// <summary>
+	/// Muszą być przekazane z wyboru dokonanego w Gridzie.
+	/// </summary>
+	public struct ParametersForExamDetails
+	{
+		public int visitId;
+		public int labExamId;
+		public int phyExamId;
+	}
+
 	public partial class ExaminationsDetailWindow : Form
 	{
 		private struct DBdataResult
@@ -29,7 +39,7 @@ namespace BD2_demaOkien
 			public DateTime? klabDate;
 		}
 
-		public ExaminationsDetailWindow(/*var*/ param, bool isLabExam)
+		public ExaminationsDetailWindow(ParametersForExamDetails param, bool isLabExam)//potrzebny jakiś param do określenia we frazie WHERE poniżej
 		{
 			InitializeComponent();
 			using (var Db = new BD2_demaOkien.Data.BD2_2Db())
