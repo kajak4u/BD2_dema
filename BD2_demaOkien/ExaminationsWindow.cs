@@ -30,7 +30,7 @@ namespace BD2_demaOkien
 		{
 			if (userType == Role.REGISTRAR)
 			{
-				bindingNavigatorAddNewItem.Visible = false;
+				//bindingNavigatorAddNewItem.Visible = false;
 			}
 		}
 
@@ -56,7 +56,7 @@ namespace BD2_demaOkien
 
 		private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
 		{
-			//new ExaminationsAddWindow().ShowDialog();
+			//new ExaminationsAddWindow(ExaminationMode.).ShowDialog();
 		}
 	}
 }

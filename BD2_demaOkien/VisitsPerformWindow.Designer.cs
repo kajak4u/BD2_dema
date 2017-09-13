@@ -58,6 +58,9 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Physical_examination_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExaminationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Result = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.physicalexaminationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.visitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bD_2DataSet = new BD2_demaOkien.BD_2DataSet();
@@ -75,6 +78,8 @@
             this.bindingNavigatorSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorAddNewItem1 = new System.Windows.Forms.ToolStripButton();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.lABexaminationcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lABexaminationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.masterControl1 = new MasterDetailGrid.MasterControl();
@@ -124,11 +129,10 @@
             this.shortLABExaminationsTableAdapter = new BD2_demaOkien.BD_2DataSetTableAdapters.ShortLABExaminationsTableAdapter();
             this.shortVisitBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.shortPhysicalExaminationsTableAdapter = new BD2_demaOkien.BD_2DataSetTableAdapters.ShortPhysicalExaminationsTableAdapter();
-            this.lABexaminationcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Physical_examination_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExaminationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Result = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.physicalexaminationidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.physicalexaminationcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resultDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.visitidDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -460,7 +464,11 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Physical_examination_code,
             this.ExaminationName,
-            this.Result});
+            this.Result,
+            this.physicalexaminationidDataGridViewTextBoxColumn,
+            this.physicalexaminationcodeDataGridViewTextBoxColumn,
+            this.resultDataGridViewTextBoxColumn,
+            this.visitidDataGridViewTextBoxColumn1});
             this.dataGridView1.DataSource = this.physicalexaminationBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
@@ -468,6 +476,33 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(770, 410);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Physical_examination_code
+            // 
+            this.Physical_examination_code.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Physical_examination_code.DataPropertyName = "Physical_examination_code";
+            this.Physical_examination_code.HeaderText = "Kod badania";
+            this.Physical_examination_code.Name = "Physical_examination_code";
+            this.Physical_examination_code.ReadOnly = true;
+            this.Physical_examination_code.Width = 85;
+            // 
+            // ExaminationName
+            // 
+            this.ExaminationName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ExaminationName.HeaderText = "Nazwa badania";
+            this.ExaminationName.MinimumWidth = 120;
+            this.ExaminationName.Name = "ExaminationName";
+            this.ExaminationName.ReadOnly = true;
+            this.ExaminationName.Width = 120;
+            // 
+            // Result
+            // 
+            this.Result.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Result.DataPropertyName = "Result";
+            this.Result.HeaderText = "Wynik";
+            this.Result.Name = "Result";
+            this.Result.ReadOnly = true;
             // 
             // physicalexaminationBindingSource
             // 
@@ -628,6 +663,22 @@
             this.dataGridView2.Size = new System.Drawing.Size(770, 410);
             this.dataGridView2.TabIndex = 3;
             // 
+            // lABexaminationcodeDataGridViewTextBoxColumn
+            // 
+            this.lABexaminationcodeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.lABexaminationcodeDataGridViewTextBoxColumn.DataPropertyName = "LAB_examination_code";
+            this.lABexaminationcodeDataGridViewTextBoxColumn.HeaderText = "Kod badania";
+            this.lABexaminationcodeDataGridViewTextBoxColumn.Name = "lABexaminationcodeDataGridViewTextBoxColumn";
+            this.lABexaminationcodeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lABexaminationcodeDataGridViewTextBoxColumn.Width = 85;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Nazwa badania";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
             // lABexaminationBindingSource
             // 
             this.lABexaminationBindingSource.DataMember = "LAB_examination";
@@ -675,7 +726,7 @@
             this.detailControl1.Location = new System.Drawing.Point(3, 30);
             this.detailControl1.Name = "detailControl1";
             this.detailControl1.SelectedIndex = 0;
-            this.detailControl1.Size = new System.Drawing.Size(770, 74);
+            this.detailControl1.Size = new System.Drawing.Size(770, 61);
             this.detailControl1.TabIndex = 32;
             this.detailControl1.Visible = false;
             // 
@@ -786,7 +837,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(762, 48);
+            this.tabPage6.Size = new System.Drawing.Size(762, 35);
             this.tabPage6.TabIndex = 1;
             this.tabPage6.Text = "Badania fizykalne";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -809,7 +860,7 @@
             this.dataGridView6.ReadOnly = true;
             this.dataGridView6.RowHeadersVisible = false;
             this.dataGridView6.ShowEditingIcon = false;
-            this.dataGridView6.Size = new System.Drawing.Size(756, 42);
+            this.dataGridView6.Size = new System.Drawing.Size(756, 29);
             this.dataGridView6.TabIndex = 0;
             // 
             // kodBadaniaDataGridViewTextBoxColumn2
@@ -1068,47 +1119,33 @@
             // 
             this.shortPhysicalExaminationsTableAdapter.ClearBeforeFill = true;
             // 
-            // lABexaminationcodeDataGridViewTextBoxColumn
+            // physicalexaminationidDataGridViewTextBoxColumn
             // 
-            this.lABexaminationcodeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.lABexaminationcodeDataGridViewTextBoxColumn.DataPropertyName = "LAB_examination_code";
-            this.lABexaminationcodeDataGridViewTextBoxColumn.HeaderText = "Kod badania";
-            this.lABexaminationcodeDataGridViewTextBoxColumn.Name = "lABexaminationcodeDataGridViewTextBoxColumn";
-            this.lABexaminationcodeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lABexaminationcodeDataGridViewTextBoxColumn.Width = 92;
+            this.physicalexaminationidDataGridViewTextBoxColumn.DataPropertyName = "Physical_examination_id";
+            this.physicalexaminationidDataGridViewTextBoxColumn.HeaderText = "Physical_examination_id";
+            this.physicalexaminationidDataGridViewTextBoxColumn.Name = "physicalexaminationidDataGridViewTextBoxColumn";
+            this.physicalexaminationidDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn2
+            // physicalexaminationcodeDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Nazwa badania";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.physicalexaminationcodeDataGridViewTextBoxColumn.DataPropertyName = "Physical_examination_code";
+            this.physicalexaminationcodeDataGridViewTextBoxColumn.HeaderText = "Physical_examination_code";
+            this.physicalexaminationcodeDataGridViewTextBoxColumn.Name = "physicalexaminationcodeDataGridViewTextBoxColumn";
+            this.physicalexaminationcodeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // Physical_examination_code
+            // resultDataGridViewTextBoxColumn
             // 
-            this.Physical_examination_code.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Physical_examination_code.DataPropertyName = "Physical_examination_code";
-            this.Physical_examination_code.HeaderText = "Kod badania";
-            this.Physical_examination_code.Name = "Physical_examination_code";
-            this.Physical_examination_code.ReadOnly = true;
-            this.Physical_examination_code.Width = 92;
+            this.resultDataGridViewTextBoxColumn.DataPropertyName = "Result";
+            this.resultDataGridViewTextBoxColumn.HeaderText = "Result";
+            this.resultDataGridViewTextBoxColumn.Name = "resultDataGridViewTextBoxColumn";
+            this.resultDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // ExaminationName
+            // visitidDataGridViewTextBoxColumn1
             // 
-            this.ExaminationName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ExaminationName.HeaderText = "Nazwa badania";
-            this.ExaminationName.MinimumWidth = 120;
-            this.ExaminationName.Name = "ExaminationName";
-            this.ExaminationName.ReadOnly = true;
-            this.ExaminationName.Width = 120;
-            // 
-            // Result
-            // 
-            this.Result.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Result.DataPropertyName = "Result";
-            this.Result.HeaderText = "Wynik";
-            this.Result.Name = "Result";
-            this.Result.ReadOnly = true;
+            this.visitidDataGridViewTextBoxColumn1.DataPropertyName = "visit_id";
+            this.visitidDataGridViewTextBoxColumn1.HeaderText = "visit_id";
+            this.visitidDataGridViewTextBoxColumn1.Name = "visitidDataGridViewTextBoxColumn1";
+            this.visitidDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // VisitsPerformWindow
             // 
@@ -1269,5 +1306,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Physical_examination_code;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExaminationName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Result;
+        private System.Windows.Forms.DataGridViewTextBoxColumn physicalexaminationidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn physicalexaminationcodeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resultDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn visitidDataGridViewTextBoxColumn1;
     }
 }

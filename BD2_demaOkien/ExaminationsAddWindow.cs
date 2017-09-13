@@ -74,5 +74,10 @@ namespace BD2_demaOkien
 			int index = examCodes.IndexOf(temp);
 			textBox1.Text = examNames[index];
 		}
-	}
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

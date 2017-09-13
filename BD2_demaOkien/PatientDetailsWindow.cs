@@ -145,5 +145,10 @@ namespace BD2_demaOkien
         {
             Close();
         }
+
+        private void panelAddEdit_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
