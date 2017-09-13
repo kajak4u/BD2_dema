@@ -285,8 +285,10 @@ namespace BD2_demaOkien
         private void button2_Click(object sender, EventArgs e)
         {
             //@Krzysztof ratuj
-            //comboBox2.SelectedValue = null;
-            //comboBox1.SelectedValue = "Wszystkie";
+            if (comboBox2.SelectedItem != null)
+                comboBox2.SelectedIndex = -1;
+            if (comboBox1.SelectedItem != null)
+                comboBox1.SelectedIndex = -1;
         }
     }
 }
