@@ -115,8 +115,11 @@ namespace BD2_demaOkien
         protected override void OnMouseClick(MouseEventArgs e)
         {
             base.OnMouseClick(e);
-            if(ItemFocusChanged != null)
-                ItemFocusChanged(this, new CalendarTimeEventArgs(this.SelectedElementStart.Date));
+            if (ItemFocusChanged != null)
+            {
+                if (this.SelectedElementStart != null)
+                    ItemFocusChanged(this, new CalendarTimeEventArgs(this.SelectedElementStart.Date));
+            }
         }
     }
 }

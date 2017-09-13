@@ -283,12 +283,14 @@ namespace BD2_demaOkien
             // dayScheduler
             // 
             this.dayScheduler.AllowItemEdit = false;
+            this.dayScheduler.AllowItemResize = false;
             this.dayScheduler.AllowNew = false;
             this.dayScheduler.CalendarTimeFormat = WindowsFormsCalendar.CalendarTimeFormat.TwentyFourHour;
             this.dayScheduler.dayBegin = System.TimeSpan.Parse("08:00:00");
             this.dayScheduler.dayEnd = System.TimeSpan.Parse("16:00:00");
+            this.dayScheduler.Enabled = false;
             this.dayScheduler.FirstDayOfWeek = System.DayOfWeek.Monday;
-            this.dayScheduler.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.dayScheduler.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dayScheduler.ItemsBackgroundColor = System.Drawing.Color.RoyalBlue;
             this.dayScheduler.ItemsFont = null;
             this.dayScheduler.ItemsForeColor = System.Drawing.Color.Black;
@@ -299,7 +301,9 @@ namespace BD2_demaOkien
             this.dayScheduler.Text = "dayScheduler";
             this.dayScheduler.TimeScale = WindowsFormsCalendar.CalendarTimeScale.FifteenMinutes;
             this.dayScheduler.ItemFocusChanged += new BD2_demaOkien.DayScheduler.CalendarTimeEventHandler(this.dayScheduler_ItemFocusChanged);
-            this.dayScheduler.Click += new System.EventHandler(this.buttonSetScheduler);
+            this.dayScheduler.ItemCreating += new WindowsFormsCalendar.Calendar.CalendarItemCancelEventHandler(this.dayScheduler_ItemCreating);
+            this.dayScheduler.ItemDoubleClick += new WindowsFormsCalendar.Calendar.CalendarItemEventHandler(this.dayScheduler_ItemDoubleClick);
+            this.dayScheduler.ItemSelected += new WindowsFormsCalendar.Calendar.CalendarItemEventHandler(this.dayScheduler_ItemSelected);
             // 
             // VisitsAddWindow
             // 

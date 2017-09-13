@@ -54,6 +54,21 @@ namespace BD2_demaOkien.BizzLayer
             }
         }
 
+        public static IEnumerable<Data.Visit> ForDoctor(int doctorID, DateTime date)
+        {
+            using (var Db = new BD2_2Db())
+            {
+                var res = Db.Visit
+                    .Where(v => v.doctor_id == doctorID)
+                    .Include(v => v.Patient)
+                    .ToList() // because LINQ
+                    .Where(v => v.ending_date.HasValue
+                        && DateTime.Compare(date.Date, v.ending_date.Value.Date) == 0)
+                    .ToList();
+                return res;
+            }
+        }
+
         public static PatientData getPatientById(int id)
         {
             using (var Db = new BD2_2Db())
