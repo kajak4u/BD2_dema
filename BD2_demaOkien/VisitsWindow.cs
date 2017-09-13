@@ -55,7 +55,9 @@ namespace BD2_demaOkien
                                       id = doctor.Worker_id,
                                       name = doctor.First_name.ToString() + " " + doctor.Last_name.ToString()
                                   };
-                    comboBox2.DataSource = doctors.Select(a=> a.name).ToList();
+                    comboBox2.DataSource = doctors.ToList();
+                    comboBox2.DisplayMember = "name";
+                    comboBox2.ValueMember = "id";
                     comboBox2.SelectedItem = null;
                 }
                 LoadVisitRegister();
@@ -103,7 +105,7 @@ namespace BD2_demaOkien
                              on visit.patient_id equals patient.Patient_id
                              join register in Db.Worker
                              on visit.registerer_id equals register.Worker_id
-                             where (doctor.Worker_id == doctorID) && ((visitStatus == null ? visitStatus == null : visit.status.Equals(visitStatus)))
+                             where (doctor.Worker_id == doctorID) && ((visitStatus == null ? visitStatus == null : visit.status.Equals(visitStatus))) 
                              select new
                              {
                                  visit_id = visit.visit_id,
@@ -167,6 +169,7 @@ namespace BD2_demaOkien
                              on visit.registerer_id equals register.Worker_id
                              where (patient.Patient_id == patientID) 
                                 && ((visitStatus == null ? visitStatus== null : visit.status.Equals(visitStatus)))
+                                && ((int)comboBox2.SelectedValue == doctor.Worker_id)
                              select new
                              {
                                  visit_id = visit.visit_id,
@@ -277,6 +280,13 @@ namespace BD2_demaOkien
         private void bindingNavigatorEditItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //@Krzysztof ratuj
+            //comboBox2.SelectedValue = null;
+            //comboBox1.SelectedValue = "Wszystkie";
         }
     }
 }
