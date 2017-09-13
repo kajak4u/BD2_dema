@@ -165,7 +165,7 @@ namespace BD2_demaOkien
 			}
 		}
 
-		public static void editPatientData(String name, String surname, String pesel, String phone, String city, String street, int houseNo, int flatNo, int id)
+		public static void editPatientData(String name, String surname, String pesel, String phone, String city, String street, int houseNo, int? flatNo, int id)
 		{
 			using (var Db = new BD2_2Db())
 			{
