@@ -15,7 +15,7 @@ namespace BD2_demaOkien
     {
         private int visitId;
         private ViewMode openMode;
-        public VisitsAddWindow(ViewMode openMode, int patientId, int? visitId)
+        public VisitsAddWindow(ViewMode openMode, int patientId, int? visitId=null)
         {
             this.visitId = visitId.HasValue ? visitId.Value : -1;
             this.openMode = openMode;

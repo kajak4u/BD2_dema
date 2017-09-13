@@ -362,8 +362,8 @@
           <NavigationProperty Name="LAB_examination" Relationship="Self.FK_LAB_examination_Visit" FromRole="Visit" ToRole="LAB_examination" />
           <NavigationProperty Name="Patient" Relationship="Self.FK_Visit_Patient" FromRole="Visit" ToRole="Patient" />
           <NavigationProperty Name="Physical_examination" Relationship="Self.FK_Physical_examination_Visit" FromRole="Visit" ToRole="Physical_examination" />
-          <NavigationProperty Name="Worker" Relationship="Self.FK_Visit_Worker" FromRole="Visit" ToRole="Worker" />
-          <NavigationProperty Name="Worker1" Relationship="Self.FK_Visit_Worker1" FromRole="Visit" ToRole="Worker" />
+          <NavigationProperty Name="Registerer" Relationship="BD2_2Model.FK_Visit_Registrar" FromRole="Visit" ToRole="Worker" />
+          <NavigationProperty Name="Doctor" Relationship="BD2_2Model.FK_Visit_Doctor" FromRole="Visit" ToRole="Worker" />
         </EntityType>
         <EntityType Name="Worker">
           <Key>
@@ -381,8 +381,8 @@
           <Property Name="Login" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Address" Relationship="Self.FK_Worker_Address" FromRole="Worker" ToRole="Address" />
-          <NavigationProperty Name="Visit" Relationship="Self.FK_Visit_Worker" FromRole="Worker" ToRole="Visit" />
-          <NavigationProperty Name="Visit1" Relationship="Self.FK_Visit_Worker1" FromRole="Worker" ToRole="Visit" />
+          <NavigationProperty Name="RegisteredVisits" Relationship="BD2_2Model.FK_Visit_Registrar" FromRole="Worker" ToRole="Visit" />
+          <NavigationProperty Name="PerformedVisits" Relationship="BD2_2Model.FK_Visit_Doctor" FromRole="Worker" ToRole="Visit" />
           <NavigationProperty Name="LAB_examination" Relationship="BD2_2Model.FK_LAB_examination_Worker" FromRole="Worker" ToRole="LAB_examination" />
           <NavigationProperty Name="LAB_examination1" Relationship="BD2_2Model.FK_LAB_examination_Worker1" FromRole="Worker" ToRole="LAB_examination" />
         </EntityType>
@@ -470,7 +470,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Visit_Worker">
+        <Association Name="FK_Visit_Registrar">
           <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
           <End Role="Visit" Type="Self.Visit" Multiplicity="*" />
           <ReferentialConstraint>
@@ -482,7 +482,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Visit_Worker1">
+        <Association Name="FK_Visit_Doctor">
           <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
           <End Role="Visit" Type="Self.Visit" Multiplicity="*" />
           <ReferentialConstraint>
@@ -530,11 +530,11 @@
             <End Role="Visit" EntitySet="Visit" />
             <End Role="Physical_examination" EntitySet="Physical_examination" />
           </AssociationSet>
-          <AssociationSet Name="FK_Visit_Worker" Association="Self.FK_Visit_Worker">
+          <AssociationSet Name="FK_Visit_Worker" Association="BD2_2Model.FK_Visit_Registrar">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="Visit" EntitySet="Visit" />
           </AssociationSet>
-          <AssociationSet Name="FK_Visit_Worker1" Association="Self.FK_Visit_Worker1">
+          <AssociationSet Name="FK_Visit_Worker1" Association="BD2_2Model.FK_Visit_Doctor">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="Visit" EntitySet="Visit" />
           </AssociationSet>

@@ -127,7 +127,16 @@ private void LoadVisitRegister(int id) {
 
         private void bindingNavigatorItemData_Click(object sender, EventArgs e)
         {
-            new VisitsAddWindow(ViewMode.VIEW, patientID).ShowDialog();
+            int id;
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                id = (int)dataGridView1.SelectedRows[0].Cells["visitidDataGridViewTextBoxColumn"].Value;
+            }
+            else
+            {
+                id = (int)dataGridView1.CurrentRow.Cells["visitidDataGridViewTextBoxColumn"].Value;
+            }
+            new VisitsAddWindow(ViewMode.VIEW, patientID, id).ShowDialog();
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
