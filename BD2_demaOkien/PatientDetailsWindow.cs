@@ -64,14 +64,22 @@ namespace BD2_demaOkien
                 int? flatNo = null;
                 try
                 {
-                    int houseNo = Convert.ToInt32(textBoxHouseNo.Text);
-
-                    try
+                    int houseNo;
+                    if(!int.TryParse(textBoxHouseNo.Text, out houseNo))
                     {
-                        flatNo = Convert.ToInt32(textBoxFlatNo.Text);
+                        MessageBox.Show("Nieprawidłowy nr domu");
+                        return;
                     }
-                    catch (Exception) //ignore improper flat number
+
+                    if(textBoxFlatNo.Text!=null && textBoxFlatNo.Text!="")
                     {
+                        int NonNullFlatNo;
+                        if(!int.TryParse(textBoxFlatNo.Text, out NonNullFlatNo))
+                        {
+                            MessageBox.Show("Nieprawidłowy nr mieszkania");
+                            return;
+                        }
+                        flatNo = NonNullFlatNo;
                     }
 
                     Visit.setPatientData(textBoxName.Text, textBoxSurname.Text, textBoxPESEL.Text, textBoxPhone.Text, textBoxCity.Text, textBoxStreet.Text, houseNo, flatNo, null);

@@ -55,7 +55,7 @@ namespace BD2_demaOkien
 								   join lab_work in Db.Worker on lab_exam.LAB_worker_id equals lab_work.Worker_id
 								   join klab in Db.Worker on lab_exam.LAB_manager_id equals klab.Worker_id
 								   where param.visitId == vis.visit_id && param.labExamId == lab_exam.LAB_examination_id
-								   select new
+								   select new DBdataResult
 								   {
 									   examType = exam.Examiantion_type,
 									   examName = exam.Examination_name,

@@ -196,6 +196,7 @@
             // 
             // dateTimePicker2
             // 
+            this.dateTimePicker2.Checked = false;
             this.dateTimePicker2.CustomFormat = " dd - MM - yyyy";
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker2.Location = new System.Drawing.Point(41, 33);
@@ -217,6 +218,7 @@
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Checked = false;
             this.dateTimePicker1.CustomFormat = " dd - MM - yyyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(41, 7);

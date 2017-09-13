@@ -12,8 +12,7 @@ namespace BD2_demaOkien
 {
     public partial class VisitsWindow : Form
     {
-
-        String visitStatus = "";
+        
         private int patientID;
 
         public VisitsWindow(Role openedRole, int? id)

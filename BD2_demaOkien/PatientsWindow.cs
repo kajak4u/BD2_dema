@@ -14,8 +14,6 @@ namespace BD2_demaOkien
     public partial class PatientsWindow : Form
     {
 
-        private int selectedPatientId = 0;
-
         public PatientsWindow()
         {
             InitializeComponent();

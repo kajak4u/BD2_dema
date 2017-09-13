@@ -62,7 +62,7 @@ namespace BD2_demaOkien
                         userId = worker.Worker_id;
                         return true;
                     }
-                    catch(Exception e)
+                    catch(Exception)
                     {
                         MessageBox.Show("Nieznana rola!", "Błąd logowania", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;

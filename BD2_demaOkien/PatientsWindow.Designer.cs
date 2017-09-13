@@ -539,7 +539,6 @@
         private BD_2DataSetTableAdapters.PatientTableAdapter patientTableAdapter;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton bindingNavigatorItemAddVisit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn addressidDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource fKVisitPatientBindingSource;
         private BD_2DataSetTableAdapters.VisitTableAdapter visitTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn patientidDataGridViewTextBoxColumn;
