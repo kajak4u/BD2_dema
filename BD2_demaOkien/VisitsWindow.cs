@@ -14,9 +14,11 @@ namespace BD2_demaOkien
     {
 
         String visitStatus = "";
+        private int patientID;
 
         public VisitsWindow(Role openedRole, int? id)
         {
+            patientID = id.Value;
             InitializeComponent();
             if(openedRole == Role.DOCTOR)
             {
@@ -48,7 +50,7 @@ namespace BD2_demaOkien
                                       name = doctor.First_name.ToString() + " " + doctor.Last_name.ToString()
                                   };
                     comboBox2.DataSource = doctors.Select(a=> a.name).ToList();
-                    comboBox2.SelectedIndex = -1;
+                    comboBox2.SelectedItem = null;
                 }
                 LoadVisitRegister((int)id.Value);
             }
@@ -122,12 +124,12 @@ private void LoadVisitRegister(int id) {
 
         private void bindingNavigatorItemData_Click(object sender, EventArgs e)
         {
-            new VisitsAddWindow(ViewMode.VIEW, -1).ShowDialog();
+            new VisitsAddWindow(ViewMode.VIEW, patientID).ShowDialog();
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            new VisitsAddWindow(ViewMode.CREATE, -1).ShowDialog();
+            new VisitsAddWindow(ViewMode.CREATE, patientID).ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -154,9 +156,8 @@ private void LoadVisitRegister(int id) {
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            String doctor_name = comboBox2.SelectedItem.ToString();
-            MessageBox.Show(doctor_name, "Wyjątek!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+            //String doctor_name = comboBox2.SelectedItem.ToString();
+            //MessageBox.Show("doctoridDataGridViewTextBoxColumn:", "Wyjątek!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
