@@ -95,8 +95,24 @@ namespace BD2_demaOkien
             }
             else if (viewMode == ViewMode.EDIT)
             {
-                int houseNo = Convert.ToInt32(textBoxHouseNo.Text);
-                int flatNo = Convert.ToInt32(textBoxFlatNo.Text);
+                int? flatNo = null;
+                int houseNo;
+                if (!int.TryParse(textBoxHouseNo.Text, out houseNo))
+                {
+                    MessageBox.Show("Nieprawidłowy nr domu");
+                    return;
+                }
+
+                if (textBoxFlatNo.Text != null && textBoxFlatNo.Text != "")
+                {
+                    int NonNullFlatNo;
+                    if (!int.TryParse(textBoxFlatNo.Text, out NonNullFlatNo))
+                    {
+                        MessageBox.Show("Nieprawidłowy nr mieszkania");
+                        return;
+                    }
+                    flatNo = NonNullFlatNo;
+                }
                 Visit.editPatientData(textBoxName.Text, textBoxSurname.Text, textBoxPESEL.Text, textBoxPhone.Text, textBoxCity.Text, textBoxStreet.Text, houseNo, flatNo, patientId);
                 Close();
             }
