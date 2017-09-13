@@ -14,14 +14,27 @@ namespace BD2_demaOkien
     public partial class VisitsAddWindow : Form
     {
         private ViewMode openMode;
-        public VisitsAddWindow(ViewMode openMode)
+        public VisitsAddWindow(ViewMode openMode, int patientId)
         {
+            PatientData p = Visit.getPatientById((int)patientId);
             InitializeComponent();
             this.dateTimeVisitDate.Value = DateTime.Now;
             this.openMode = openMode;
-            textBoxPatientPESEL.Text = "01234567890";
-            textBoxPatientName.Text = "/**przekazane z okna nadrzędnego**/";
+            textBoxPatientPESEL.Text = p.PESEL;
+            textBoxPatientName.Text = p.First_name + " " + p.Last_name;
             SetEnabledControls();
+            using (var Db = new BD2_demaOkien.Data.BD2_2Db())
+            {
+                var doctors = from doctor in Db.Worker
+                              where doctor.Role.ToUpper() == "DOCTOR"
+                              select new
+                              {
+                                  id = doctor.Worker_id,
+                                  name = doctor.First_name.ToString() + " " + doctor.Last_name.ToString()
+                              };
+                comboBoxDoctor.DataSource = doctors.Select(a => a.name).ToList();
+                comboBoxDoctor.SelectedIndex = -1;
+            }
         }
 
         private void buttonSetScheduler(object sender, EventArgs e)
@@ -86,6 +99,16 @@ namespace BD2_demaOkien
             ChooseDoctorModal modal = new ChooseDoctorModal();
             if (modal.ShowDialog() == DialogResult.OK)
                 comboBoxDoctor.Text = modal.ChosenDoctor;
+        }
+
+        private void textBoxPatientPESEL_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxDoctor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

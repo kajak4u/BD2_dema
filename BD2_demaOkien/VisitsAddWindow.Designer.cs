@@ -35,7 +35,6 @@ namespace BD2_demaOkien
         private void InitializeComponent()
         {
             this.CalendarPanel = new System.Windows.Forms.Panel();
-            this.dayScheduler = new BD2_demaOkien.DayScheduler();
             this.ResultPanel = new System.Windows.Forms.Panel();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonApply = new System.Windows.Forms.Button();
@@ -54,6 +53,7 @@ namespace BD2_demaOkien
             this.ViewPanel = new System.Windows.Forms.Panel();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
+            this.dayScheduler = new BD2_demaOkien.DayScheduler();
             this.CalendarPanel.SuspendLayout();
             this.ResultPanel.SuspendLayout();
             this.DataPanel.SuspendLayout();
@@ -70,27 +70,6 @@ namespace BD2_demaOkien
             this.CalendarPanel.Name = "CalendarPanel";
             this.CalendarPanel.Size = new System.Drawing.Size(456, 273);
             this.CalendarPanel.TabIndex = 0;
-            // 
-            // dayScheduler
-            // 
-            this.dayScheduler.AllowItemEdit = false;
-            this.dayScheduler.AllowNew = false;
-            this.dayScheduler.CalendarTimeFormat = WindowsFormsCalendar.CalendarTimeFormat.TwentyFourHour;
-            this.dayScheduler.dayBegin = System.TimeSpan.Parse("08:00:00");
-            this.dayScheduler.dayEnd = System.TimeSpan.Parse("16:00:00");
-            this.dayScheduler.FirstDayOfWeek = System.DayOfWeek.Monday;
-            this.dayScheduler.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dayScheduler.ItemsBackgroundColor = System.Drawing.Color.RoyalBlue;
-            this.dayScheduler.ItemsFont = null;
-            this.dayScheduler.ItemsForeColor = System.Drawing.Color.Black;
-            this.dayScheduler.Location = new System.Drawing.Point(0, -780);
-            this.dayScheduler.Name = "dayScheduler";
-            this.dayScheduler.Size = new System.Drawing.Size(435, 1518);
-            this.dayScheduler.TabIndex = 24;
-            this.dayScheduler.Text = "dayScheduler";
-            this.dayScheduler.TimeScale = WindowsFormsCalendar.CalendarTimeScale.FifteenMinutes;
-            this.dayScheduler.ItemFocusChanged += new BD2_demaOkien.DayScheduler.CalendarTimeEventHandler(this.dayScheduler_ItemFocusChanged);
-            this.dayScheduler.Click += new System.EventHandler(this.buttonSetScheduler);
             // 
             // ResultPanel
             // 
@@ -220,6 +199,7 @@ namespace BD2_demaOkien
             this.comboBoxDoctor.Name = "comboBoxDoctor";
             this.comboBoxDoctor.Size = new System.Drawing.Size(322, 21);
             this.comboBoxDoctor.TabIndex = 27;
+            this.comboBoxDoctor.SelectedIndexChanged += new System.EventHandler(this.comboBoxDoctor_SelectedIndexChanged);
             // 
             // buttonChooseDoctor
             // 
@@ -253,6 +233,7 @@ namespace BD2_demaOkien
             this.textBoxPatientPESEL.Name = "textBoxPatientPESEL";
             this.textBoxPatientPESEL.Size = new System.Drawing.Size(75, 20);
             this.textBoxPatientPESEL.TabIndex = 24;
+            this.textBoxPatientPESEL.TextChanged += new System.EventHandler(this.textBoxPatientPESEL_TextChanged);
             // 
             // label1
             // 
@@ -299,7 +280,28 @@ namespace BD2_demaOkien
             this.buttonClose.Text = "Powrót";
             this.buttonClose.UseVisualStyleBackColor = true;
             // 
-            // VisitDetailsWindow_Register
+            // dayScheduler
+            // 
+            this.dayScheduler.AllowItemEdit = false;
+            this.dayScheduler.AllowNew = false;
+            this.dayScheduler.CalendarTimeFormat = WindowsFormsCalendar.CalendarTimeFormat.TwentyFourHour;
+            this.dayScheduler.dayBegin = System.TimeSpan.Parse("08:00:00");
+            this.dayScheduler.dayEnd = System.TimeSpan.Parse("16:00:00");
+            this.dayScheduler.FirstDayOfWeek = System.DayOfWeek.Monday;
+            this.dayScheduler.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.dayScheduler.ItemsBackgroundColor = System.Drawing.Color.RoyalBlue;
+            this.dayScheduler.ItemsFont = null;
+            this.dayScheduler.ItemsForeColor = System.Drawing.Color.Black;
+            this.dayScheduler.Location = new System.Drawing.Point(0, -780);
+            this.dayScheduler.Name = "dayScheduler";
+            this.dayScheduler.Size = new System.Drawing.Size(435, 1518);
+            this.dayScheduler.TabIndex = 24;
+            this.dayScheduler.Text = "dayScheduler";
+            this.dayScheduler.TimeScale = WindowsFormsCalendar.CalendarTimeScale.FifteenMinutes;
+            this.dayScheduler.ItemFocusChanged += new BD2_demaOkien.DayScheduler.CalendarTimeEventHandler(this.dayScheduler_ItemFocusChanged);
+            this.dayScheduler.Click += new System.EventHandler(this.buttonSetScheduler);
+            // 
+            // VisitsAddWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -310,7 +312,7 @@ namespace BD2_demaOkien
             this.Controls.Add(this.ViewPanel);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "VisitDetailsWindow_Register";
+            this.Name = "VisitsAddWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Nowa wizyta";
             this.Load += new System.EventHandler(this.VisitDetailsWindow_Register_Load);

@@ -122,12 +122,12 @@ private void LoadVisitRegister(int id) {
 
         private void bindingNavigatorItemData_Click(object sender, EventArgs e)
         {
-            new VisitsAddWindow(ViewMode.VIEW).ShowDialog();
+            new VisitsAddWindow(ViewMode.VIEW, -1).ShowDialog();
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            new VisitsAddWindow(ViewMode.CREATE).ShowDialog();
+            new VisitsAddWindow(ViewMode.CREATE, -1).ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
