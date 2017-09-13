@@ -16,7 +16,7 @@ namespace BD2_demaOkien
         private ViewMode openMode;
         public VisitsAddWindow(ViewMode openMode, int patientId)
         {
-            PatientData p = Visit.getPatientById((int)patientId);
+            PatientData p = BizzLayer.Visits.getPatientById((int)patientId);
             InitializeComponent();
             this.dateTimeVisitDate.Value = DateTime.Now;
             this.openMode = openMode;
@@ -32,7 +32,9 @@ namespace BD2_demaOkien
                                   id = doctor.Worker_id,
                                   name = doctor.First_name.ToString() + " " + doctor.Last_name.ToString()
                               };
-                comboBoxDoctor.DataSource = doctors.Select(a => a.name).ToList();
+                comboBoxDoctor.DataSource = doctors.ToList();
+                comboBoxDoctor.DisplayMember = "name";
+                comboBoxDoctor.ValueMember = "id";
                 comboBoxDoctor.SelectedIndex = -1;
             }
         }
@@ -71,7 +73,30 @@ namespace BD2_demaOkien
         private void buttonApply_Click(object sender, EventArgs e)
         {
             if (this.openMode == ViewMode.CREATE)
+            {
+                Data.Patient patient = BizzLayer.Patients.getByPESEL(textBoxPatientPESEL.Text);
+                if(patient == null)
+                {
+                    MessageBox.Show("Nieprawidłowy pacjent");
+                    return;
+                }
+                Data.Worker doctor = Worker.getByID((int)comboBoxDoctor.SelectedValue);
+                if(doctor == null)
+                {
+                    MessageBox.Show("Nieprawidłowy lekarz");
+                    return;
+                }
+                DateTime visitTime = dateTimeVisitDate.Value.Date + dateTimeVisitTime.Value.TimeOfDay;
+                Data.Visit visit = new Data.Visit
+                {
+                    Patient = patient,
+                    Doctor = doctor,
+                    registration_date = DateTime.Now,
+                    ending_date = visitTime  
+                };
+                BizzLayer.Visits.Add(visit);
                 Close();
+            }
             else
             {
                 this.openMode = ViewMode.VIEW;

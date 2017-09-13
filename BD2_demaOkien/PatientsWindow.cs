@@ -198,7 +198,7 @@ namespace BD2_demaOkien
                 {
                     id = (int)dataGridView1.CurrentRow.Cells["patientidDataGridViewTextBoxColumn"].Value;
                 }
-                Visit.deleteUser(id);
+                BizzLayer.Visits.deleteUser(id);
                 LoadPatients();
             }
         }
