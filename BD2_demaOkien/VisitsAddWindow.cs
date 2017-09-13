@@ -62,23 +62,21 @@ namespace BD2_demaOkien
 
         private void buttonSetScheduler(object sender, EventArgs e)
         {
-            if(comboBoxDoctor.SelectedIndex == -1)
-            {
-                MessageBox.Show("Wybierz doktora!");
-                return;
-            }
             this.dayScheduler.SetViewRange(this.dateTimeVisitDate.Value, dateTimeVisitDate.Value);
             dayScheduler.AllowItemEdit = false;
             dayScheduler.AllowItemResize = false;
             dayScheduler.AllowNew = false;
-            var visits = BizzLayer.Visits.ForDoctor((int)comboBoxDoctor.SelectedValue, dateTimeVisitDate.Value.Date);
-            var items = visits
-                .Select(visit => new CalendarItem(dayScheduler) { Text = visit.Patient.First_name + " " + visit.Patient.Last_name, StartDate = visit.ending_date.Value, EndDate = visit.ending_date.Value.Add(new TimeSpan(0, 15, 0)) })
-                .ToList();
+            if (comboBoxDoctor.SelectedIndex != -1)
+            {
+                var visits = BizzLayer.Visits.ForDoctor((int)comboBoxDoctor.SelectedValue, dateTimeVisitDate.Value.Date);
+                var items = visits
+                    .Select(visit => new CalendarItem(dayScheduler) { Text = visit.Patient.First_name + " " + visit.Patient.Last_name, StartDate = visit.ending_date.Value, EndDate = visit.ending_date.Value.Add(new TimeSpan(0, 15, 0)) })
+                    .ToList();
 
-            dayScheduler.Items.Clear();
-            dayScheduler.Items.AddRange(items);
-            dayScheduler.Enabled = true;
+                dayScheduler.Items.Clear();
+                dayScheduler.Items.AddRange(items);
+                dayScheduler.Enabled = true;
+            }
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
