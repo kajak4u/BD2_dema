@@ -118,7 +118,11 @@ private void LoadVisitRegister(int id) {
 
         private void VisitsWindow_Load(object sender, EventArgs e)
         {
+            bool ch1 = dateTimePicker1.Checked,
+                ch2 = dateTimePicker2.Checked;
             dateTimePicker1.Value = dateTimePicker2.Value = DateTime.Now;
+            dateTimePicker1.Checked = ch1;
+            dateTimePicker2.Checked = ch2;
         }
 
         private void bindingNavigatorItemData_Click(object sender, EventArgs e)
