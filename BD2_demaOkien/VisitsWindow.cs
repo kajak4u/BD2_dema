@@ -167,9 +167,9 @@ namespace BD2_demaOkien
                              on visit.patient_id equals patient.Patient_id
                              join register in Db.Worker
                              on visit.registerer_id equals register.Worker_id
-                             where (patient.Patient_id == patientID) 
+                             where (patient.Patient_id == patientID
                                 && ((visitStatus == null ? visitStatus== null : visit.status.Equals(visitStatus)))
-                                && ((int)comboBox2.SelectedValue == doctor.Worker_id)
+                                && (comboBox2.SelectedValue==null ? true : (int)comboBox2.SelectedValue == doctor.Worker_id))
                              select new
                              {
                                  visit_id = visit.visit_id,
@@ -251,6 +251,11 @@ namespace BD2_demaOkien
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if(comboBox1.SelectedItem == null)
+            {
+                visitStatus = null;
+                return;
+            }
             switch (comboBox1.SelectedItem.ToString()) {
                 case ("Wszystkie"):
                     visitStatus = null;
