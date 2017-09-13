@@ -196,6 +196,13 @@ namespace BD2_demaOkien
             }
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+        }
+
 
         /* private void MoveToLinked(DataGridViewCellEventArgs e)
          {

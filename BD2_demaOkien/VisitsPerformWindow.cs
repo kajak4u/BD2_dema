@@ -36,12 +36,12 @@ namespace BD2_demaOkien
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            new ExaminationsAddWindow(ExaminationMode.PHYSICAL).ShowDialog(); //potrzebne jest ID_wizyty jako drugi param
+            new ExaminationsAddWindow(ExaminationMode.PHYSICAL, 0).ShowDialog(); //potrzebne jest ID_wizyty jako drugi param
         }
 
         private void bindingNavigatorAddNewItem1_Click(object sender, EventArgs e)
         {
-            new ExaminationsAddWindow(ExaminationMode.LAB).ShowDialog();
+            new ExaminationsAddWindow(ExaminationMode.LAB, 0).ShowDialog();
         }
 
         private void buttonPatientData_Click(object sender, EventArgs e)

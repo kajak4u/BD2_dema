@@ -37,7 +37,7 @@ namespace BD2_demaOkien
 		private void bindingNavigatorItemData_Click(object sender, EventArgs e)
 		{
 			ParametersForExamDetails para = new ParametersForExamDetails();
-			para.visitId = ;//znaleźć i przypisać
+			/*para.visitId = ;//znaleźć i przypisać
 
 			String stat = ;//znaleźć i przypisać
 			bool isLab = stat == "L";
@@ -49,9 +49,9 @@ namespace BD2_demaOkien
 			else
 			{
 				para.phyExamId = ;//znaleźć i przypisać
-			}
+			}*/
 
-			new ExaminationsDetailWindow(para, isLab).ShowDialog();
+			new ExaminationsDetailWindow(para, /*isLab*/true).ShowDialog();
 		}
 
 		private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)

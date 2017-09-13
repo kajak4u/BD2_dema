@@ -29,13 +29,14 @@ namespace BD2_demaOkien
             }
             else if(openedRole == Role.REGISTRAR)
             {
+                PatientData p = null;
                 if (id.HasValue)
                 {
-                    PatientData p = Visit.getPatientById((int)id.Value);
+                    p = Visit.getPatientById((int)id.Value);
                 }
                 textBox3.Enabled = false;
-                textBox3.Text = "/**current patient**/";
-                this.Text = "Wizyty dla: ";
+                textBox3.Text = p.PESEL;
+                this.Text = "Wizyty dla: " + p.First_name + " "+ p.Last_name;
                 bindingNavigatorItemPerform.Visible = false;
                 using (var Db = new BD2_demaOkien.Data.BD2_2Db())
                 {
@@ -47,6 +48,7 @@ namespace BD2_demaOkien
                                       name = doctor.First_name.ToString() + " " + doctor.Last_name.ToString()
                                   };
                     comboBox2.DataSource = doctors.Select(a=> a.name).ToList();
+                    comboBox2.SelectedIndex = -1;
                 }
                 LoadVisitRegister((int)id.Value);
             }
