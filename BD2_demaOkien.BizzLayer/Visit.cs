@@ -150,6 +150,22 @@ namespace BD2_demaOkien.BizzLayer
                 Db.SaveChanges();
             }
         }
+
+        static public Data.Visit GetByID(int id)
+        {
+            using (var Db = new BD2_2Db())
+            {
+                return Db.Visit.Where(v => v.visit_id == id).FirstOrDefault();
+            }
+        }
+        static public void Modify(Visit newVisit)
+        {
+            using (var Db = new BD2_2Db())
+            {
+                Db.Entry<Visit>(newVisit).State = System.Data.Entity.EntityState.Modified;
+                Db.SaveChanges();
+            }
+        }
     }
 
 }

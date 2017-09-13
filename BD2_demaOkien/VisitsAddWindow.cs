@@ -13,16 +13,13 @@ namespace BD2_demaOkien
     [Description("Okno wizyty widziane przez rejestratorkę")]
     public partial class VisitsAddWindow : Form
     {
+        private int visitId;
         private ViewMode openMode;
-        public VisitsAddWindow(ViewMode openMode, int patientId)
+        public VisitsAddWindow(ViewMode openMode, int patientId, int? visitId)
         {
-            PatientData p = BizzLayer.Visits.getPatientById((int)patientId);
-            InitializeComponent();
-            this.dateTimeVisitDate.Value = DateTime.Now;
+            this.visitId = visitId.HasValue ? visitId.Value : -1;
             this.openMode = openMode;
-            textBoxPatientPESEL.Text = p.PESEL;
-            textBoxPatientName.Text = p.First_name + " " + p.Last_name;
-            SetEnabledControls();
+            InitializeComponent();
             using (var Db = new BD2_demaOkien.Data.BD2_2Db())
             {
                 var doctors = from doctor in Db.Worker
@@ -35,8 +32,31 @@ namespace BD2_demaOkien
                 comboBoxDoctor.DataSource = doctors.ToList();
                 comboBoxDoctor.DisplayMember = "name";
                 comboBoxDoctor.ValueMember = "id";
+            }
+            if (openMode == ViewMode.CREATE)
+            {
+                PatientData p = BizzLayer.Visits.getPatientById((int)patientId);
+                this.dateTimeVisitDate.Value = DateTime.Now;
+                textBoxPatientPESEL.Text = p.PESEL;
+                textBoxPatientName.Text = p.First_name + " " + p.Last_name;
                 comboBoxDoctor.SelectedIndex = -1;
             }
+            else
+            {
+                Data.Visit visit = BizzLayer.Visits.GetByID(this.visitId);
+                if(visit==null)
+                {
+                    MessageBox.Show("Nie znaleziono wizyty!");
+                    Close();
+                    return;
+                }
+                dateTimeVisitDate.Value = visit.ending_date.Value;
+                dateTimeVisitTime.Value = visit.ending_date.Value;
+                textBoxPatientPESEL.Text = visit.Patient.PESEL;
+                textBoxPatientName.Text = visit.Patient.First_name + " " + visit.Patient.Last_name;
+                comboBoxDoctor.SelectedValue = visit.Doctor.Worker_id;
+            }
+            SetEnabledControls();
         }
 
         private void buttonSetScheduler(object sender, EventArgs e)
@@ -72,33 +92,39 @@ namespace BD2_demaOkien
 
         private void buttonApply_Click(object sender, EventArgs e)
         {
+            Data.Patient patient = BizzLayer.Patients.getByPESEL(textBoxPatientPESEL.Text);
+            if (patient == null)
+            {
+                MessageBox.Show("Nieprawidłowy pacjent");
+                return;
+            }
+            Data.Worker doctor = Worker.getByID((int)comboBoxDoctor.SelectedValue);
+            if (doctor == null)
+            {
+                MessageBox.Show("Nieprawidłowy lekarz");
+                return;
+            }
+            DateTime visitTime = dateTimeVisitDate.Value.Date + dateTimeVisitTime.Value.TimeOfDay;
+
             if (this.openMode == ViewMode.CREATE)
             {
-                Data.Patient patient = BizzLayer.Patients.getByPESEL(textBoxPatientPESEL.Text);
-                if(patient == null)
-                {
-                    MessageBox.Show("Nieprawidłowy pacjent");
-                    return;
-                }
-                Data.Worker doctor = Worker.getByID((int)comboBoxDoctor.SelectedValue);
-                if(doctor == null)
-                {
-                    MessageBox.Show("Nieprawidłowy lekarz");
-                    return;
-                }
-                DateTime visitTime = dateTimeVisitDate.Value.Date + dateTimeVisitTime.Value.TimeOfDay;
                 Data.Visit visit = new Data.Visit
                 {
                     Patient = patient,
                     Doctor = doctor,
                     registration_date = DateTime.Now,
-                    ending_date = visitTime  
+                    ending_date = visitTime
                 };
                 BizzLayer.Visits.Add(visit);
                 Close();
             }
             else
             {
+                Data.Visit visit = BizzLayer.Visits.GetByID(visitId);
+                visit.Patient = patient;
+                visit.Doctor = doctor;
+                visit.ending_date = visitTime;
+                BizzLayer.Visits.Modify(visit);
                 this.openMode = ViewMode.VIEW;
                 SetEnabledControls();
             }
