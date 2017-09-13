@@ -174,7 +174,9 @@ private void LoadVisitRegister(int id) {
 
         }
 
+        private void bindingNavigatorEditItem_Click(object sender, EventArgs e)
+        {
 
-
+        }
     }
 }
