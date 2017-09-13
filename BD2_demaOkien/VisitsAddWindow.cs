@@ -110,8 +110,8 @@ namespace BD2_demaOkien
             {
                 Data.Visit visit = new Data.Visit
                 {
-                    Patient = patient,
-                    Doctor = doctor,
+                    patient_id = patient.Patient_id,
+                    doctor_id = doctor.Worker_id,
                     registration_date = DateTime.Now,
                     ending_date = visitTime
                 };
@@ -121,8 +121,8 @@ namespace BD2_demaOkien
             else
             {
                 Data.Visit visit = BizzLayer.Visits.GetByID(visitId);
-                visit.Patient = patient;
-                visit.Doctor = doctor;
+                visit.patient_id = patient.Patient_id;
+                visit.doctor_id = doctor.Worker_id;
                 visit.ending_date = visitTime;
                 BizzLayer.Visits.Modify(visit);
                 this.openMode = ViewMode.VIEW;

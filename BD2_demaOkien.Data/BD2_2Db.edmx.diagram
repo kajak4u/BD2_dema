@@ -19,8 +19,8 @@
         <AssociationConnector Association="BD2_2Model.FK_LAB_examination_Visit" ManuallyRouted="false" />
         <AssociationConnector Association="BD2_2Model.FK_Visit_Patient" ManuallyRouted="false" />
         <AssociationConnector Association="BD2_2Model.FK_Physical_examination_Visit" ManuallyRouted="false" />
-        <AssociationConnector Association="BD2_2Model.FK_Visit_Registrar" ManuallyRouted="false" />
         <AssociationConnector Association="BD2_2Model.FK_Visit_Doctor" ManuallyRouted="false" />
+        <AssociationConnector Association="BD2_2Model.FK_Visit_Registrar" ManuallyRouted="false" />
         <AssociationConnector Association="BD2_2Model.FK_LAB_examination_Worker" />
         <AssociationConnector Association="BD2_2Model.FK_LAB_examination_Worker1" />
       </Diagram>

@@ -1,6 +1,7 @@
 ﻿using BD2_demaOkien.Data;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -155,7 +156,11 @@ namespace BD2_demaOkien.BizzLayer
         {
             using (var Db = new BD2_2Db())
             {
-                return Db.Visit.Where(v => v.visit_id == id).FirstOrDefault();
+                return Db.Visit
+                    .Where(v => v.visit_id == id)
+                    .Include(visit => visit.Patient)
+                    .Include(visit => visit.Doctor)
+                    .FirstOrDefault();
             }
         }
         static public void Modify(Visit newVisit)
