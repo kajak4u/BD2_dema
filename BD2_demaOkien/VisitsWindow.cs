@@ -92,8 +92,39 @@ namespace BD2_demaOkien
             }
         }
 
+        private void LoadVisitDoctorWithFilters()
+        {
+            using (var Db = new BD2_demaOkien.Data.BD2_2Db())
+            {
+                var visits = from visit in Db.Visit
+                             join doctor in Db.Worker
+                             on visit.doctor_id equals doctor.Worker_id
+                             join patient in Db.Patient
+                             on visit.patient_id equals patient.Patient_id
+                             join register in Db.Worker
+                             on visit.registerer_id equals register.Worker_id
+                             where (doctor.Worker_id == doctorID) && ((visitStatus == null ? visitStatus == null : visit.status.Equals(visitStatus)))
+                             select new
+                             {
+                                 visit_id = visit.visit_id,
+                                 status = visit.status,
+                                 description = visit.description,
+                                 diagnosis = visit.diagnosis,
+                                 registration_date = visit.registration_date,
+                                 ending_date = visit.ending_date,
+                                 patientId = patient.Patient_id,
+                                 patient_id = patient.First_name + " " + patient.Last_name,
+                                 doctorId = doctor.Worker_id,
+                                 doctor_id = doctor.First_name + " " + doctor.Last_name,
+                                 registerId = register.Worker_id,
+                                 registerer_id = register.First_name + " " + register.Last_name
+                             };
+                visitBindingSource.DataSource = visits.ToList();
+            }
+        }
 
-private void LoadVisitRegister() {
+
+        private void LoadVisitRegister() {
     using (var Db = new BD2_demaOkien.Data.BD2_2Db())
     {
             var visits = from visit in Db.Visit
@@ -187,7 +218,10 @@ private void LoadVisitRegister() {
         {
             //this.visitTableAdapter.Fill(this.bD_2DataSet.Visit);
             //TODO: filtry
-            LoadVisitRegisterWithFilters();
+            if (userRole == Role.REGISTRAR)
+                LoadVisitRegisterWithFilters();
+            else if (userRole == Role.DOCTOR)
+                LoadVisitDoctorWithFilters();
         }
 
         private void bindingNavigator1_RefreshItems(object sender, EventArgs e)
