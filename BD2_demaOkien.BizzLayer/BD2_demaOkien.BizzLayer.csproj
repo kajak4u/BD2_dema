@@ -37,6 +37,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BizLayer.cs" />
+    <Compile Include="Patient.cs" />
+    <Compile Include="Visit.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">

@@ -12,10 +12,11 @@
 namespace BD2_demaOkien.Data
 {
 
-using System;
+    using System;
     using System.Collections.Generic;
-    
-public partial class Visit
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    public partial class Visit
 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -59,9 +60,11 @@ public partial class Visit
 
     public virtual ICollection<Physical_examination> Physical_examination { get; set; }
 
-    public virtual Worker Worker { get; set; }
+    [ForeignKey("registerer_id")]
+    public virtual Worker Registrar { get; set; }
 
-    public virtual Worker Worker1 { get; set; }
+    [ForeignKey("doctor_id")]
+    public virtual Worker Doctor { get; set; }
 
 }
 

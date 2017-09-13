@@ -33,7 +33,7 @@ namespace BD2_demaOkien
                 PatientData p = null;
                 if (id.HasValue)
                 {
-                    p = Visit.getPatientById((int)id.Value);
+                    p = BizzLayer.Visits.getPatientById((int)id.Value);
                 }
                 textBox3.Enabled = false;
                 textBox3.Text = p.PESEL;

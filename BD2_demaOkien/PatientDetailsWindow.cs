@@ -43,7 +43,7 @@ namespace BD2_demaOkien
         {
             if (this.viewMode == ViewMode.VIEW || this.viewMode == ViewMode.EDIT)
             {
-                PatientData patient = Visit.getPatientById(patientId);
+                PatientData patient = BizzLayer.Visits.getPatientById(patientId);
                 textBoxName.Text = patient?.First_name;
                 textBoxSurname.Text = patient?.Last_name;
                 textBoxPESEL.Text = patient?.PESEL;
@@ -82,7 +82,7 @@ namespace BD2_demaOkien
                         flatNo = NonNullFlatNo;
                     }
 
-                    Visit.setPatientData(textBoxName.Text, textBoxSurname.Text, textBoxPESEL.Text, textBoxPhone.Text, textBoxCity.Text, textBoxStreet.Text, houseNo, flatNo, null);
+                    BizzLayer.Visits.setPatientData(textBoxName.Text, textBoxSurname.Text, textBoxPESEL.Text, textBoxPhone.Text, textBoxCity.Text, textBoxStreet.Text, houseNo, flatNo, null);
                     Close();
                 }
                 catch (Exception exx)
@@ -113,7 +113,7 @@ namespace BD2_demaOkien
                     }
                     flatNo = NonNullFlatNo;
                 }
-                Visit.editPatientData(textBoxName.Text, textBoxSurname.Text, textBoxPESEL.Text, textBoxPhone.Text, textBoxCity.Text, textBoxStreet.Text, houseNo, flatNo, patientId);
+                BizzLayer.Visits.editPatientData(textBoxName.Text, textBoxSurname.Text, textBoxPESEL.Text, textBoxPhone.Text, textBoxCity.Text, textBoxStreet.Text, houseNo, flatNo, patientId);
                 Close();
             }
             else
