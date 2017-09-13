@@ -481,6 +481,7 @@
             this.bindingNavigatorEditItem.Name = "bindingNavigatorEditItem";
             this.bindingNavigatorEditItem.Size = new System.Drawing.Size(44, 22);
             this.bindingNavigatorEditItem.Text = "Edytuj";
+            this.bindingNavigatorEditItem.Click += new System.EventHandler(this.bindingNavigatorEditItem_Click);
             // 
             // toolStripSeparator1
             // 
