@@ -134,7 +134,8 @@ private void LoadVisitRegister() {
                              on visit.patient_id equals patient.Patient_id
                              join register in Db.Worker
                              on visit.registerer_id equals register.Worker_id
-                             where patient.Patient_id == patientID
+                             where (patient.Patient_id == patientID) 
+                                && ((visitStatus == null ? visitStatus== null : visit.status.Equals(visitStatus)))
                              select new
                              {
                                  visit_id = visit.visit_id,
@@ -177,7 +178,7 @@ private void LoadVisitRegister() {
         {
             //this.visitTableAdapter.Fill(this.bD_2DataSet.Visit);
             //TODO: filtry
-
+            LoadVisitRegisterWithFilters();
         }
 
         private void bindingNavigator1_RefreshItems(object sender, EventArgs e)
@@ -217,7 +218,6 @@ private void LoadVisitRegister() {
                 case ("Anulowane"):
                     visitStatus = "ANUL";
                     break;
-                
             }
         }
 
