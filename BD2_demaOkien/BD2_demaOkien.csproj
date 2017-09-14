@@ -69,6 +69,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BD_2DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="BizzLayer\Examinations.cs" />
     <Compile Include="ChooseDoctorModal.cs">
       <SubType>Form</SubType>
     </Compile>

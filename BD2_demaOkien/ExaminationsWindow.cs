@@ -32,6 +32,7 @@ namespace BD2_demaOkien
 			{
 				//bindingNavigatorAddNewItem.Visible = false;
 			}
+            bindingSource1.DataSource = BizzLayer.Examinations.GetAll().ToList();
 		}
 
 		private void bindingNavigatorItemData_Click(object sender, EventArgs e)

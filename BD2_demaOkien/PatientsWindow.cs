@@ -120,8 +120,7 @@ namespace BD2_demaOkien
             visits.MdiParent = this.MdiParent;
             visits.Show();
         }
-
-        private void bindingNavigatorItemData_Click(object sender, EventArgs e)
+        private int CurrentRecordID()
         {
             int id;
             if (dataGridView1.SelectedRows.Count > 0)
@@ -132,7 +131,13 @@ namespace BD2_demaOkien
             {
                 id = (int)dataGridView1.CurrentRow.Cells["patientidDataGridViewTextBoxColumn"].Value;
             }
-                new PatientDetailsWindow(ViewMode.VIEW, id).ShowDialog();
+            return id;
+        }
+
+        private void bindingNavigatorItemData_Click(object sender, EventArgs e)
+        {
+            int id = CurrentRecordID();
+            new PatientDetailsWindow(ViewMode.VIEW, id).ShowDialog();
             LoadPatients();
         }
 

@@ -76,7 +76,7 @@
             // pacjenciToolStripMenuItem
             // 
             this.pacjenciToolStripMenuItem.Name = "pacjenciToolStripMenuItem";
-            this.pacjenciToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pacjenciToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.pacjenciToolStripMenuItem.Text = "&Pacjenci";
             this.pacjenciToolStripMenuItem.Click += new System.EventHandler(this.pacjenciToolStripMenuItem_Click);
             // 
@@ -84,14 +84,14 @@
             // 
             this.wizytyToolStripMenuItem.Enabled = false;
             this.wizytyToolStripMenuItem.Name = "wizytyToolStripMenuItem";
-            this.wizytyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.wizytyToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.wizytyToolStripMenuItem.Text = "&Wizyty";
             this.wizytyToolStripMenuItem.Click += new System.EventHandler(this.wizytyToolStripMenuItem_Click);
             // 
             // wynikibadańToolStripMenuItem
             // 
             this.wynikibadańToolStripMenuItem.Name = "wynikibadańToolStripMenuItem";
-            this.wynikibadańToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.wynikibadańToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.wynikibadańToolStripMenuItem.Text = "Wyniki &badań";
             this.wynikibadańToolStripMenuItem.Click += new System.EventHandler(this.wynikibadańToolStripMenuItem_Click);
             // 
