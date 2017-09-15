@@ -13,12 +13,6 @@ namespace BD2_demaOkien
 	/// <summary>
 	/// Muszą być przekazane z wyboru dokonanego w Gridzie.
 	/// </summary>
-	public struct ParametersForExamDetails
-	{
-		public int visitId;
-		public int labExamId;
-		public int phyExamId;
-	}
 
 	public partial class ExaminationsDetailWindow : Form
 	{
@@ -119,15 +113,73 @@ namespace BD2_demaOkien
                 richTextBox3.Text = data.klabNotes;
                 textBox7.Text = data.klabDate.HasValue ? data.klabDate.Value.ToString() : "";
 
-                if (!isLabExam)
-				{
-					textBox4.Enabled = false;
-					richTextBox2.Enabled = false;
-					textBox6.Enabled = false;
-					textBox8.Enabled = false;
-					richTextBox3.Enabled = false;
-					textBox7.Enabled = false;
-				}
+			Role role = MainWindow.userRole;
+			switch (role)
+			{
+				case Role.DOCTOR:
+					textBox5.ReadOnly = false;
+					textBox1.ReadOnly = false;
+					textBox3.ReadOnly = false;
+
+					textBoxPatient.ReadOnly = false;
+					richTextBox1.ReadOnly = false;
+
+					textBox4.ReadOnly = true;
+					richTextBox2.ReadOnly = true;
+					textBox6.ReadOnly = true;
+
+					textBox8.ReadOnly = true;
+					richTextBox3.ReadOnly = true;
+					textBox7.ReadOnly = true;
+					break;
+				case Role.LAB:
+					textBox5.ReadOnly = true;
+					textBox1.ReadOnly = true;
+					textBox3.ReadOnly = true;
+
+					textBoxPatient.ReadOnly = true;
+					richTextBox1.ReadOnly = true;
+
+					textBox4.ReadOnly = false;
+					richTextBox2.ReadOnly = false;
+					textBox6.ReadOnly = false;
+
+					textBox8.ReadOnly = true;
+					richTextBox3.ReadOnly = true;
+					textBox7.ReadOnly = true;
+					break;
+				case Role.KLAB:
+					textBox5.ReadOnly = true;
+					textBox1.ReadOnly = true;
+					textBox3.ReadOnly = true;
+
+					textBoxPatient.ReadOnly = true;
+					richTextBox1.ReadOnly = true;
+
+					textBox4.ReadOnly = true;
+					richTextBox2.ReadOnly = true;
+					textBox6.ReadOnly = true;
+
+					textBox8.ReadOnly = false;
+					richTextBox3.ReadOnly = false;
+					textBox7.ReadOnly = false;
+					break;
+				default:
+					textBox5.ReadOnly = true;
+					textBox1.ReadOnly = true;
+					textBox3.ReadOnly = true;
+
+					textBoxPatient.ReadOnly = true;
+					richTextBox1.ReadOnly = true;
+
+					textBox4.ReadOnly = true;
+					richTextBox2.ReadOnly = true;
+					textBox6.ReadOnly = true;
+
+					textBox8.ReadOnly = true;
+					richTextBox3.ReadOnly = true;
+					textBox7.ReadOnly = true;
+					break;
 			}
 		}
 	}
