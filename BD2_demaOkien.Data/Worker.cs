@@ -34,6 +34,7 @@ namespace BD2_demaOkien.Data
         public int address_id { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
+        public Nullable<System.DateTime> Expiration_date { get; set; }
     
         public virtual Address Address { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -58,7 +58,7 @@ namespace BD2_demaOkien
 				{
 					try
 					{
-						if (worker.Expiration_date != null && DateTime.Compare(worker.Expiration_date, DateTime.Now) <= 0)
+						if (worker.Expiration_date != null && DateTime.Compare(worker.Expiration_date.Value, DateTime.Now) <= 0)
 						{
 							MessageBox.Show("Konto wygasło!", "Błąd logowania", MessageBoxButtons.OK, MessageBoxIcon.Hand);
 							return false;

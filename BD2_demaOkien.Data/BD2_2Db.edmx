@@ -385,6 +385,7 @@
           <NavigationProperty Name="PerformedVisits" Relationship="BD2_2Model.FK_Visit_Registrar" FromRole="Worker" ToRole="Visit" />
           <NavigationProperty Name="LAB_examination" Relationship="BD2_2Model.FK_LAB_examination_Worker" FromRole="Worker" ToRole="LAB_examination" />
           <NavigationProperty Name="LAB_examination1" Relationship="BD2_2Model.FK_LAB_examination_Worker1" FromRole="Worker" ToRole="LAB_examination" />
+          <Property Name="Expiration_date" Type="DateTime" Nullable="true" />
         </EntityType>
         <Association Name="FK_Patient_Address">
           <End Role="Address" Type="Self.Address" Multiplicity="1" />

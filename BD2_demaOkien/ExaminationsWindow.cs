@@ -37,7 +37,6 @@ namespace BD2_demaOkien
 
 		private void bindingNavigatorItemData_Click(object sender, EventArgs e)
 		{
-			ParametersForExamDetails para = new ParametersForExamDetails();
 			/*para.visitId = ;//znaleźć i przypisać
 
 			String stat = ;//znaleźć i przypisać
@@ -51,9 +50,9 @@ namespace BD2_demaOkien
 			{
 				para.phyExamId = ;//znaleźć i przypisać
 			}*/
-            para.labExamId = (int)dataGridView1.CurrentRow.Cells["Column7"].Value;
+            int labExamId = (int)dataGridView1.CurrentRow.Cells["Column7"].Value;
 
-            new ExaminationsDetailWindow(para,true).ShowDialog();
+            new ExaminationsDetailWindow(labExamId).ShowDialog();
 		}
 
 		private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
