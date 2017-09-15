@@ -16,22 +16,6 @@ namespace BD2_demaOkien
 
     public partial class ExaminationsDetailWindow : Form
     {
-        private struct DBdataResult
-        {
-            public string examType;
-            public string examName;
-            public DateTime? dateZle;
-            public string patientName;
-            public string examStatus;
-            public string doctor;
-            public string notes;
-            public string labWorker;
-            public string labResult;
-            public DateTime? labDate;
-            public string klabWorker;
-            public string klabNotes;
-            public DateTime? klabDate;
-        }
 
         public ExaminationsDetailWindow(int examinationId)
         {

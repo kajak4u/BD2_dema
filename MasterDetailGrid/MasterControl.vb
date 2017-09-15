@@ -100,28 +100,44 @@ Public Class MasterControl
     End Property
     Private Sub RefreshFilters()
         Debug.Print("RefreshFilters")
-        Dim dataset As DataSet
+        Dim ds As DataSet
         Dim table As DataTable
+        Dim runtimeTable As Boolean
+        Dim runtimeIntField As Boolean
+        runtimeTable = False
+        table = Nothing
         If TypeOf Me.DataSource Is BindingSource Then
-            dataset = Me.DataSource.DataSource
-            table = dataset.Tables.Item(Me.DataSource.DataMember)
+            If TypeOf Me.DataSource.DataSource Is DataSet Then
+                ds = Me.DataSource.DataSource
+                table = ds.Tables.Item(Me.DataSource.DataMember)
+            ElseIf TypeName(Me.DataSource.DataSource) = "RuntimeType" Then
+                runtimeTable = True
+                For Each field As System.Reflection.PropertyInfo In Me.DataSource.DataSource.DeclaredProperties
+                    If field.Name = foreignKey Then
+                        runtimeIntField = field.PropertyType.FullName = "System.Int32"
+                    End If
+                Next
+
+            Else
+                'table = Me.DataSource.DataSource
+            End If
             '        ElseIf TypeOf Me.DataSource Is DataView Then
             '            dataview = Me.DataSource
         Else
-            Return
+            table = Me.DataSource
         End If
-        Debug.Print("RefreshFilters 2" & table.Columns(foreignKey).GetType.ToString)
-        If table.Columns(foreignKey).DataType.Equals(GetType(Integer)) _
-        Or table.Columns(foreignKey).DataType.Equals(GetType(Double)) _
-        Or table.Columns(foreignKey).DataType.Equals(GetType(Decimal)) _
+        MessageBox.Show("Refresh Filters" & (table Is Nothing) & runtimeTable & runtimeIntField)
+        If (runtimeTable AndAlso runtimeIntField) _
+        OrElse (table IsNot Nothing AndAlso table.Columns(foreignKey).DataType.Equals(GetType(Integer))) _
+        OrElse (table IsNot Nothing AndAlso table.Columns(foreignKey).DataType.Equals(GetType(Double))) _
+        OrElse (table IsNot Nothing AndAlso table.Columns(foreignKey).DataType.Equals(GetType(Decimal))) _
         Then
             _filterFormat = foreignKey & "={0}"
-            Debug.Print("RefreshFilters 3")
         Else
             _filterFormat = foreignKey & "='{0}'"
-            Debug.Print("RefreshFilters 4")
         End If
         childView.RefreshTabs()
+        MessageBox.Show("FINITO")
     End Sub
 #End Region
 #Region "GridEvents"

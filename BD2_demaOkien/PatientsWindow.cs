@@ -34,20 +34,7 @@ namespace BD2_demaOkien
 
         private void Patients_Load(object sender, EventArgs e)
         {
-            this.LoadPatients();
-            // TODO: This line of code loads data into the 'bD_2DataSet.Visit' table. You can move, or remove it, as needed.
-            //this.visitTableAdapter.Fill(this.bD_2DataSet.Visit);
-            // TODO: This line of code loads data into the 'bD_2DataSet.Patient' table. You can move, or remove it, as needed.
-            //this.patientTableAdapter.Fill(this.bD_2DataSet.Patient);
-            //var bindingList = new BindingList<AllPatientsData>(Visit.getAllPatients().ToList());
-            //var source = new BindingSource(bindingList, null);
-            //grid.DataSource = source
-            //Visit.getAllPatients();//.ToList();
-               // dataGridView1.Rows[1].Selected = true;
-                //var patients = Db.Patient.ToList();
-
-            //List<AllPatientsData> patients = Visit.getAllPatients();
-            //dataGridView1.DataSource = patients.ToList();
+            LoadPatients();
         }
 
         private void LoadPatients()
@@ -72,15 +59,6 @@ namespace BD2_demaOkien
 
         private void fillByToolStripButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //this.patientTableAdapter.Fill(this.bD_2DataSet.Patient);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
@@ -91,15 +69,7 @@ namespace BD2_demaOkien
 
         private void bindingNavigatorEditItem_Click(object sender, EventArgs e)
         {
-            int id;
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-                id = (int)dataGridView1.SelectedRows[0].Cells["patientidDataGridViewTextBoxColumn"].Value;
-            }
-            else
-            {
-                id = (int)dataGridView1.CurrentRow.Cells["patientidDataGridViewTextBoxColumn"].Value;
-            }
+            int id = CurrentRecordID();
             new PatientDetailsWindow(ViewMode.EDIT, id).ShowDialog();
             this.LoadPatients();
 
@@ -107,15 +77,7 @@ namespace BD2_demaOkien
 
         private void bindingNavigatorItemVisits_Click(object sender, EventArgs e)
         {
-            int id;
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-                id = (int)dataGridView1.SelectedRows[0].Cells["patientidDataGridViewTextBoxColumn"].Value;
-            }
-            else
-            {
-                id = (int)dataGridView1.CurrentRow.Cells["patientidDataGridViewTextBoxColumn"].Value;
-            }
+            int id = CurrentRecordID();
             VisitsWindow visits = new VisitsWindow(Role.REGISTRAR, id);
             visits.MdiParent = this.MdiParent;
             visits.Show();
@@ -150,15 +112,7 @@ namespace BD2_demaOkien
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            int id;
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-                id = (int)dataGridView1.SelectedRows[0].Cells["patientidDataGridViewTextBoxColumn"].Value;
-            }
-            else
-            {
-                id = (int)dataGridView1.CurrentRow.Cells["patientidDataGridViewTextBoxColumn"].Value;
-            }
+            int id = CurrentRecordID();
             new VisitsAddWindow(ViewMode.CREATE, id).ShowDialog();
         }
 
@@ -193,16 +147,9 @@ namespace BD2_demaOkien
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Jesteś pewny, że chcesz usunąć pacjenta: " + Environment.NewLine + dataGridView1.CurrentRow.Cells[1].Value + " " + dataGridView1.CurrentRow.Cells[2].Value, "Usuwanie użytkownika", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes) {
-                int id;
-                if (dataGridView1.SelectedRows.Count > 0)
-                {
-                    id = (int)dataGridView1.SelectedRows[0].Cells["patientidDataGridViewTextBoxColumn"].Value;
-                }
-                else
-                {
-                    id = (int)dataGridView1.CurrentRow.Cells["patientidDataGridViewTextBoxColumn"].Value;
-                }
+            if (result == DialogResult.Yes)
+            {
+                int id = CurrentRecordID();
                 BizzLayer.Visits.deleteUser(id);
                 LoadPatients();
             }

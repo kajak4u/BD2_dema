@@ -61,14 +61,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BD_2DataSet.cs">
-      <DependentUpon>BD_2DataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="BD_2DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BD_2DataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="ChooseDoctorModal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,7 +98,6 @@
     <Compile Include="ExaminationsWindow.Designer.cs">
       <DependentUpon>ExaminationsWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Enums.cs" />
     <Compile Include="ExaminationsWindowLabguy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +201,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PatientsWindow.resx">
       <DependentUpon>PatientsWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -235,17 +227,6 @@
     <EmbeddedResource Include="VisitsWindow_Doctor.resx">
       <DependentUpon>VisitsWindow_Doctor.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="BD_2DataSet.xsc">
-      <DependentUpon>BD_2DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="BD_2DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BD_2DataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="BD_2DataSet.xss">
-      <DependentUpon>BD_2DataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\BD2_demaOkien.Data.Address.datasource" />
     <None Include="Properties\DataSources\BD2_demaOkien.Data.BD2_2Db.datasource" />

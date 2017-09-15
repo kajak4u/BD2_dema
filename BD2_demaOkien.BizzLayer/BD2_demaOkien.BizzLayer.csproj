@@ -37,15 +37,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BizLayer.cs" />
+    <Compile Include="Enums.cs" />
     <Compile Include="Examinations.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="Visit.cs" />
+    <Compile Include="Workers.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BD2_demaOkien.Data\BD2_demaOkien.Data.csproj">

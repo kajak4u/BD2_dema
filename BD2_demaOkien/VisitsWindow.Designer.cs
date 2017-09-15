@@ -54,7 +54,6 @@
             this.doctoridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.registereridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.visitBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bD_2DataSet = new BD2_demaOkien.BD_2DataSet();
             this.panel2 = new System.Windows.Forms.Panel();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
@@ -73,11 +72,23 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorItemCancel = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorItemPerform = new System.Windows.Forms.ToolStripButton();
-            this.visitTableAdapter = new BD2_demaOkien.BD_2DataSetTableAdapters.VisitTableAdapter();
+            /*this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lABexaminationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.physicalexaminationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.registererDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.doctorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();*/
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.visitBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bD_2DataSet)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
@@ -134,7 +145,6 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(89, 20);
             this.textBox3.TabIndex = 12;
-            this.textBox3.Text = "96030604910";
             // 
             // label5
             // 
@@ -228,7 +238,6 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(129, 20);
             this.dateTimePicker1.TabIndex = 2;
             this.dateTimePicker1.Value = new System.DateTime(2017, 4, 25, 16, 45, 55, 0);
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // label1
             // 
@@ -264,7 +273,6 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(539, 265);
             this.dataGridView1.TabIndex = 12;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // visitidDataGridViewTextBoxColumn
             // 
@@ -340,16 +348,11 @@
             this.registereridDataGridViewTextBoxColumn.HeaderText = "Rejestrator";
             this.registereridDataGridViewTextBoxColumn.Name = "registereridDataGridViewTextBoxColumn";
             this.registereridDataGridViewTextBoxColumn.ReadOnly = true;
+
             // 
             // visitBindingSource
             // 
-            this.visitBindingSource.DataMember = "Visit";
-            this.visitBindingSource.DataSource = this.bD_2DataSet;
-            // 
-            // bD_2DataSet
-            // 
-            this.bD_2DataSet.DataSetName = "BD_2DataSet";
-            this.bD_2DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.visitBindingSource.DataSource = typeof(BD2_demaOkien.Data.Visit);
             // 
             // panel2
             // 
@@ -482,7 +485,6 @@
             this.bindingNavigatorEditItem.Name = "bindingNavigatorEditItem";
             this.bindingNavigatorEditItem.Size = new System.Drawing.Size(44, 22);
             this.bindingNavigatorEditItem.Text = "Edytuj";
-            this.bindingNavigatorEditItem.Click += new System.EventHandler(this.bindingNavigatorEditItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -523,10 +525,6 @@
             this.bindingNavigatorItemPerform.Text = "Przeprowadź";
             this.bindingNavigatorItemPerform.Click += new System.EventHandler(this.bindingNavigatorItemPerform_Click);
             // 
-            // visitTableAdapter
-            // 
-            this.visitTableAdapter.ClearBeforeFill = true;
-            // 
             // VisitsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -542,7 +540,6 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.visitBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bD_2DataSet)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
@@ -569,9 +566,9 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel2;
-        private BD_2DataSet bD_2DataSet;
+      //  private BD_2DataSet bD_2DataSet;
         private System.Windows.Forms.BindingSource visitBindingSource;
-        private BD_2DataSetTableAdapters.VisitTableAdapter visitTableAdapter;
+      //  private BD_2DataSetTableAdapters.VisitTableAdapter visitTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn visitidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn diagnosisDataGridViewTextBoxColumn;
@@ -598,5 +595,19 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton bindingNavigatorItemCancel;
         private System.Windows.Forms.ToolStripButton bindingNavigatorItemPerform;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lABexaminationDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn patientDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn physicalexaminationDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn registererDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn doctorDataGridViewTextBoxColumn;
     }
 }

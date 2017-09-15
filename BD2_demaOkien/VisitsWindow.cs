@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BD2_demaOkien.BizzLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,174 +21,12 @@ namespace BD2_demaOkien
 
         public VisitsWindow(Role openedRole, int? id)
         {
-           
             userRole = openedRole;
             InitializeComponent();
-            if(openedRole == Role.DOCTOR)
-            {
+            if (openedRole == Role.DOCTOR)
                 doctorID = (int)id.Value;
-                label4.Visible = false;
-                comboBox2.Visible = false;
-                comboBox2.SelectedValue = "/**current user**/";
-                bindingNavigatorAddNewItem.Visible = false;
-                this.comboBox1.SelectedText = "Zarejestrowane";
-                LoadVisitDoctor();
-               
-            }
-            else if(openedRole == Role.REGISTRAR)
-            {
-                PatientData p = null;
-                if (id.HasValue)
-                {
-                    p = BizzLayer.Visits.getPatientById((int)id.Value);
-                }
-                patientID = id.Value;
-                textBox3.Enabled = false;
-                textBox3.Text = p.PESEL;
-                this.Text = "Wizyty dla: " + p.First_name + " "+ p.Last_name;
-                bindingNavigatorItemPerform.Visible = false;
-                using (var Db = new BD2_demaOkien.Data.BD2_2Db())
-                {
-                    var doctors = from doctor in Db.Worker
-                                  where doctor.Role.ToUpper() == "DOCTOR"
-                                  select new
-                                  {
-                                      id = doctor.Worker_id,
-                                      name = doctor.First_name.ToString() + " " + doctor.Last_name.ToString()
-                                  };
-                    comboBox2.DataSource = doctors.ToList();
-                    comboBox2.DisplayMember = "name";
-                    comboBox2.ValueMember = "id";
-                    comboBox2.SelectedItem = null;
-                }
-                LoadVisitRegister();
-            }
-        }
-
-        private void LoadVisitDoctor() {
-            using (var Db = new BD2_demaOkien.Data.BD2_2Db())
-            {
-                var visits = from visit in Db.Visit
-                             join doctor in Db.Worker
-                             on visit.doctor_id equals doctor.Worker_id
-                             join patient in Db.Patient
-                             on visit.patient_id equals patient.Patient_id
-                             join register in Db.Worker
-                             on visit.registerer_id equals register.Worker_id
-                             where doctor.Worker_id== doctorID
-                             select new
-                             {
-                                 visit_id = visit.visit_id,
-                                 status = visit.status,
-                                 description = visit.description,
-                                 diagnosis = visit.diagnosis,
-                                 registration_date = visit.registration_date,
-                                 ending_date = visit.ending_date,
-                                 patientId = patient.Patient_id,
-                                 patient_id = patient.First_name + " " + patient.Last_name,
-                                 doctorId = doctor.Worker_id,
-                                 doctor_id = doctor.First_name + " " + doctor.Last_name,
-                                 registerId = register.Worker_id,
-                                 registerer_id = register.First_name + " " + register.Last_name
-                             };
-                visitBindingSource.DataSource = visits.ToList();
-            }
-        }
-
-        private void LoadVisitDoctorWithFilters()
-        {
-            using (var Db = new BD2_demaOkien.Data.BD2_2Db())
-            {
-                var visits = from visit in Db.Visit
-                             join doctor in Db.Worker
-                             on visit.doctor_id equals doctor.Worker_id
-                             join patient in Db.Patient
-                             on visit.patient_id equals patient.Patient_id
-                             join register in Db.Worker
-                             on visit.registerer_id equals register.Worker_id
-                             where (doctor.Worker_id == doctorID) && ((visitStatus == null ? visitStatus == null : visit.status.Equals(visitStatus))) 
-                             select new
-                             {
-                                 visit_id = visit.visit_id,
-                                 status = visit.status,
-                                 description = visit.description,
-                                 diagnosis = visit.diagnosis,
-                                 registration_date = visit.registration_date,
-                                 ending_date = visit.ending_date,
-                                 patientId = patient.Patient_id,
-                                 patient_id = patient.First_name + " " + patient.Last_name,
-                                 doctorId = doctor.Worker_id,
-                                 doctor_id = doctor.First_name + " " + doctor.Last_name,
-                                 registerId = register.Worker_id,
-                                 registerer_id = register.First_name + " " + register.Last_name
-                             };
-                visitBindingSource.DataSource = visits.ToList();
-            }
-        }
-
-
-        private void LoadVisitRegister()
-        {
-            using (var Db = new BD2_demaOkien.Data.BD2_2Db())
-            {
-                var visits = from visit in Db.Visit
-                             join doctor in Db.Worker
-                             on visit.doctor_id equals doctor.Worker_id
-                             join patient in Db.Patient
-                             on visit.patient_id equals patient.Patient_id
-                             join register in Db.Worker
-                             on visit.registerer_id equals register.Worker_id
-                             where patient.Patient_id == patientID
-                             select new
-                             {
-                                 visit_id = visit.visit_id,
-                                 status = visit.status,
-                                 description = visit.description,
-                                 diagnosis = visit.diagnosis,
-                                 registration_date = visit.registration_date,
-                                 ending_date = visit.ending_date,
-                                 patientId = patient.Patient_id,
-                                 patient_id = patient.First_name + " " + patient.Last_name,
-                                 doctorId = doctor.Worker_id,
-                                 doctor_id = doctor.First_name + " " + doctor.Last_name,
-                                 registerId = register.Worker_id,
-                                 registerer_id = register.First_name + " " + register.Last_name
-                             };
-                visitBindingSource.DataSource = visits.ToList();
-            }
-        }
-
-        private void LoadVisitRegisterWithFilters()
-        {
-            using (var Db = new BD2_demaOkien.Data.BD2_2Db())
-            {
-                var visits = from visit in Db.Visit
-                             join doctor in Db.Worker
-                             on visit.doctor_id equals doctor.Worker_id
-                             join patient in Db.Patient
-                             on visit.patient_id equals patient.Patient_id
-                             join register in Db.Worker
-                             on visit.registerer_id equals register.Worker_id
-                             where (patient.Patient_id == patientID
-                                && ((visitStatus == null ? visitStatus== null : visit.status.Equals(visitStatus)))
-                                && (comboBox2.SelectedValue==null ? true : (int)comboBox2.SelectedValue == doctor.Worker_id))
-                             select new
-                             {
-                                 visit_id = visit.visit_id,
-                                 status = visit.status,
-                                 description = visit.description,
-                                 diagnosis = visit.diagnosis,
-                                 registration_date = visit.registration_date,
-                                 ending_date = visit.ending_date,
-                                 patientId = patient.Patient_id,
-                                 patient_id = patient.First_name + " " + patient.Last_name,
-                                 doctorId = doctor.Worker_id,
-                                 doctor_id = doctor.First_name + " " + doctor.Last_name,
-                                 registerId = register.Worker_id,
-                                 registerer_id = register.First_name + " " + register.Last_name
-                             };
-                visitBindingSource.DataSource = visits.ToList();
-            }
+            else
+                patientID = (int)id.Value;
         }
 
         private void VisitsWindow_Load(object sender, EventArgs e)
@@ -197,6 +36,44 @@ namespace BD2_demaOkien
             dateTimePicker1.Value = dateTimePicker2.Value = DateTime.Now;
             dateTimePicker1.Checked = ch1;
             dateTimePicker2.Checked = ch2;
+
+            comboBox2.DataSource = BizzLayer.Workers
+                .GetAll(Role.DOCTOR)
+                .Select(doctor => new
+                {
+                    id = doctor.Worker_id,
+                    name = doctor.First_name + " " + doctor.Last_name
+                })
+                .ToList();
+            comboBox2.DisplayMember = "name";
+            comboBox2.ValueMember = "id";
+            if(userRole == Role.DOCTOR)
+            {
+                comboBox2.Visible = false;
+                label4.Visible = false;
+                comboBox2.SelectedValue = doctorID;
+            }
+            else
+                comboBox2.SelectedItem = null;
+
+            if (userRole == Role.DOCTOR)
+            {
+                bindingNavigatorAddNewItem.Visible = false;
+                comboBox1.SelectedText = "Zarejestrowane";
+            }
+            else if(userRole == Role.REGISTRAR)
+            {
+                bindingNavigatorItemPerform.Visible = false;
+            }
+
+            if(patientID!=0)
+            {
+                PatientData p = BizzLayer.Visits.getPatientById(patientID);
+                textBox3.Enabled = false;
+                textBox3.Text = p.PESEL;
+                this.Text = "Wizyty dla: " + p.First_name + " " + p.Last_name;
+            }
+            LoadVisits();
         }
 
         private void bindingNavigatorItemData_Click(object sender, EventArgs e)
@@ -220,12 +97,30 @@ namespace BD2_demaOkien
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //this.visitTableAdapter.Fill(this.bD_2DataSet.Visit);
-            //TODO: filtry
-            if (userRole == Role.REGISTRAR)
-                LoadVisitRegisterWithFilters();
-            else if (userRole == Role.DOCTOR)
-                LoadVisitDoctorWithFilters();
+            LoadVisits();
+        }
+
+        private void LoadVisits()
+        {
+            visitBindingSource.DataSource = BizzLayer.Visits.Get(new VisitFilterParams
+            {
+                doctorID = (int?)comboBox2.SelectedValue,
+                patientPESEL = textBox3.Text,
+                status = visitStatus,
+                dateFrom = dateTimePicker1.Checked ? dateTimePicker1.Value : (DateTime?)null,
+                dateTo = dateTimePicker2.Checked ? dateTimePicker2.Value : (DateTime?)null
+            }).Select(v => new
+            {
+                visit_id = v.visit_id,
+                description = v.description,
+                diagnosis = v.diagnosis,
+                status = v.status,
+                registration_date = v.registration_date,
+                ending_date = v.ending_date,
+                patient_id = v.patient_id,
+                doctor_id = v.doctor_id,
+                registrer_id = v.registerer_id
+            }).ToList();
         }
 
         private void bindingNavigator1_RefreshItems(object sender, EventArgs e)
@@ -246,20 +141,18 @@ namespace BD2_demaOkien
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //String doctor_name = comboBox2.SelectedItem.ToString();
-            //MessageBox.Show("doctoridDataGridViewTextBoxColumn:", "Wyjątek!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(comboBox1.SelectedItem == null)
             {
-                visitStatus = null;
+                visitStatus = "";
                 return;
             }
             switch (comboBox1.SelectedItem.ToString()) {
                 case ("Wszystkie"):
-                    visitStatus = null;
+                    visitStatus = "";
                     break;
                 case ("Zarejestrowane"):
                     visitStatus = "REJ";
@@ -273,24 +166,8 @@ namespace BD2_demaOkien
             }
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bindingNavigatorEditItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
-            //@Krzysztof ratuj
             if (comboBox2.SelectedItem != null)
                 comboBox2.SelectedIndex = -1;
             if (comboBox1.SelectedItem != null)

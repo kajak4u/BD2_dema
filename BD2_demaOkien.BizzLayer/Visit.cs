@@ -8,6 +8,15 @@ using System.Threading.Tasks;
 
 namespace BD2_demaOkien.BizzLayer
 {
+    public class VisitFilterParams
+    {
+        public DateTime? dateFrom { get; set; }
+        public DateTime? dateTo { get; set; }
+        public int? doctorID { get; set; }
+        public string patientPESEL { get; set; }
+        public string status { get; set; }
+    }
+
     static public class Visits
     {
         //takes all patients from db
@@ -51,6 +60,56 @@ namespace BD2_demaOkien.BizzLayer
                               };
                 //var patients = Db.Patient.ToList();
                 return patient.ToList();
+            }
+        }
+
+        public static IEnumerable<VisitData> GetAll()
+        {
+            using (var Db = new BD2_demaOkien.Data.BD2_2Db())
+            {
+                return
+                    Db.Visit
+                    .Select(visit => new VisitData
+                    {
+                        visit_id = visit.visit_id,
+                        status = visit.status,
+                        description = visit.description,
+                        diagnosis = visit.diagnosis,
+                        registration_date = visit.registration_date,
+                        ending_date = visit.ending_date,
+                        patientId = visit.Patient.Patient_id,
+                        patientName = visit.Patient.First_name + " " + visit.Patient.Last_name,
+                        doctorId = visit.Doctor.Worker_id,
+                        doctorName = visit.Doctor.First_name + " " + visit.Doctor.Last_name,
+                        registerId = visit.Registerer.Worker_id,
+                        registererName = visit.Registerer.First_name + " " + visit.Registerer.Last_name
+                    })
+                    .ToList();
+            }
+        }
+
+        public static List<Visit> Get(VisitFilterParams filter)
+        {
+            using (var Db = new BD2_demaOkien.Data.BD2_2Db())
+            {
+                IQueryable<Visit> result = Db.Visit
+                    .Include(v => v.Patient)
+                    .Include(v => v.Registerer)
+                    .Include(v => v.Doctor);
+                if (filter.doctorID.HasValue)
+                    result = result.Where(v => v.Doctor.Worker_id == filter.doctorID.Value);
+                if (filter.status != null && filter.status != "")
+                    result = result.Where(v => v.status.Equals(filter.status));
+                if (filter.patientPESEL != null && filter.patientPESEL != "")
+                    result = result.Where(v => v.Patient.PESEL.Equals(filter.patientPESEL));
+                if (filter.dateFrom.HasValue)
+                    result = result.Where(v => v.ending_date >= filter.dateFrom.Value);
+                if (filter.dateTo.HasValue)
+                {
+                    DateTime endingDate = filter.dateTo.Value.AddDays(1); //bo inaczej bedzie porownywac z np. 01.01.2017 00:00:00 i godzina spieprzy wszystko
+                    result = result.Where(v => v.ending_date < endingDate);
+                }
+                return result.ToList();
             }
         }
 
@@ -188,4 +247,19 @@ namespace BD2_demaOkien.BizzLayer
         }
     }
 
+    public class VisitData
+    {
+        public string description { get; set; }
+        public string diagnosis { get; set; }
+        public int doctorId { get; set; }
+        public string doctorName { get; set; }
+        public DateTime? ending_date { get; set; }
+        public int patientId { get; set; }
+        public string patientName { get; set; }
+        public string registererName { get; set; }
+        public int registerId { get; set; }
+        public DateTime? registration_date { get; set; }
+        public string status { get; set; }
+        public int visit_id { get; set; }
+    }
 }

@@ -53,15 +53,12 @@
             this.examiantiontypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.examinationnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.examinationdictionaryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bD_2DataSet = new BD2_demaOkien.BD_2DataSet();
-            this.examination_dictionaryTableAdapter = new BD2_demaOkien.BD_2DataSetTableAdapters.Examination_dictionaryTableAdapter();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.examinationdictionaryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.examinationdictionaryBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bD_2DataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -287,17 +284,7 @@
             // 
             // examinationdictionaryBindingSource
             // 
-            this.examinationdictionaryBindingSource.DataMember = "Examination_dictionary";
-            this.examinationdictionaryBindingSource.DataSource = this.bD_2DataSet;
-            // 
-            // bD_2DataSet
-            // 
-            this.bD_2DataSet.DataSetName = "BD_2DataSet";
-            this.bD_2DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // examination_dictionaryTableAdapter
-            // 
-            this.examination_dictionaryTableAdapter.ClearBeforeFill = true;
+            this.examinationdictionaryBindingSource.DataSource = typeof(BD2_demaOkien.Data.Examination_dictionary);
             // 
             // ExaminationsDictionariesWindow
             // 
@@ -314,11 +301,10 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.examinationdictionaryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.examinationdictionaryBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bD_2DataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -344,9 +330,7 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorEditItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ComboBox comboBox2;
-        private BD_2DataSet bD_2DataSet;
         private System.Windows.Forms.BindingSource examinationdictionaryBindingSource;
-        private BD_2DataSetTableAdapters.Examination_dictionaryTableAdapter examination_dictionaryTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn examinationcodeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn examiantiontypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn examinationnameDataGridViewTextBoxColumn;

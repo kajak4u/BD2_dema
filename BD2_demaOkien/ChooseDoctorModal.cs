@@ -30,8 +30,7 @@ namespace BD2_demaOkien
 
         private void ChooseDoctorModal_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'bD_2DataSet.Worker' table. You can move, or remove it, as needed.
-            this.workerTableAdapter.Fill(this.bD_2DataSet.Worker);//.Where(w => w.Role.Equals("Doctor")));
+            //this.workerBindingSource
         }
 
         private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -43,6 +42,11 @@ namespace BD2_demaOkien
         {
             SetCurrentRow(e.RowIndex);
             DialogResult = DialogResult.OK;
+            Close();
+        }
+
+        private void buttonApply_Click(object sender, EventArgs e)
+        {
             Close();
         }
     }

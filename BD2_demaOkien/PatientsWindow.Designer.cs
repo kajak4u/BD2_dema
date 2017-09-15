@@ -49,7 +49,6 @@
             this.pESELDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bD_2DataSet = new BD2_demaOkien.BD_2DataSet();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -69,18 +68,13 @@
             this.bindingNavigatorItemAddVisit = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorItemTests = new System.Windows.Forms.ToolStripButton();
-            this.patientTableAdapter = new BD2_demaOkien.BD_2DataSetTableAdapters.PatientTableAdapter();
-            this.fKVisitPatientBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.visitTableAdapter = new BD2_demaOkien.BD_2DataSetTableAdapters.VisitTableAdapter();
             bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bD_2DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fKVisitPatientBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // bindingNavigatorDeleteItem
@@ -276,13 +270,7 @@
             // 
             // patientBindingSource
             // 
-            this.patientBindingSource.DataMember = "Patient";
-            this.patientBindingSource.DataSource = this.bD_2DataSet;
-            // 
-            // bD_2DataSet
-            // 
-            this.bD_2DataSet.DataSetName = "BD_2DataSet";
-            this.bD_2DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.patientBindingSource.DataSource = typeof(BD2_demaOkien.Data.Patient);
             // 
             // bindingNavigator1
             // 
@@ -465,19 +453,6 @@
             this.bindingNavigatorItemTests.Text = "Badania";
             this.bindingNavigatorItemTests.Click += new System.EventHandler(this.bindingNavigatorItemTests_Click);
             // 
-            // patientTableAdapter
-            // 
-            this.patientTableAdapter.ClearBeforeFill = true;
-            // 
-            // fKVisitPatientBindingSource
-            // 
-            this.fKVisitPatientBindingSource.DataMember = "FK_Visit_Patient";
-            this.fKVisitPatientBindingSource.DataSource = this.patientBindingSource;
-            // 
-            // visitTableAdapter
-            // 
-            this.visitTableAdapter.ClearBeforeFill = true;
-            // 
             // PatientsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -495,11 +470,9 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bD_2DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fKVisitPatientBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -534,13 +507,9 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorItemTests;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private BD_2DataSet bD_2DataSet;
         private System.Windows.Forms.BindingSource patientBindingSource;
-        private BD_2DataSetTableAdapters.PatientTableAdapter patientTableAdapter;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton bindingNavigatorItemAddVisit;
-        private System.Windows.Forms.BindingSource fKVisitPatientBindingSource;
-        private BD_2DataSetTableAdapters.VisitTableAdapter visitTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn patientidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastnameDataGridViewTextBoxColumn;

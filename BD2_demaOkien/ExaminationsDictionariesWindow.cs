@@ -20,7 +20,7 @@ namespace BD2_demaOkien
         private void ExaminationsDictionariesWindow_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'bD_2DataSet.Examination_dictionary' table. You can move, or remove it, as needed.
-            this.examination_dictionaryTableAdapter.Fill(this.bD_2DataSet.Examination_dictionary);
+     //       this.examination_dictionaryTableAdapter.Fill(this.bD_2DataSet.Examination_dictionary);
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)

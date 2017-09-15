@@ -30,19 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.First_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Last_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NPWZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.workerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bD_2DataSet = new BD2_demaOkien.BD_2DataSet();
-            this.workerTableAdapter = new BD2_demaOkien.BD_2DataSetTableAdapters.WorkerTableAdapter();
             this.panelView = new System.Windows.Forms.Panel();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonApply = new System.Windows.Forms.Button();
+            this.workerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.workeridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.workerBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bD_2DataSet)).BeginInit();
             this.panelView.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.workerBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -52,10 +49,10 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.First_Name,
-            this.Last_Name,
-            this.NPWZ});
-            this.dataGridView1.DataSource = this.workerBindingSource;
+            this.workeridDataGridViewTextBoxColumn,
+            this.firstnameDataGridViewTextBoxColumn,
+            this.lastnameDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.workerBindingSource1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.MultiSelect = false;
@@ -68,42 +65,6 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
             this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
-            // 
-            // First_Name
-            // 
-            this.First_Name.DataPropertyName = "First_name";
-            this.First_Name.HeaderText = "Imię";
-            this.First_Name.Name = "First_Name";
-            this.First_Name.ReadOnly = true;
-            // 
-            // Last_Name
-            // 
-            this.Last_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Last_Name.DataPropertyName = "Last_name";
-            this.Last_Name.HeaderText = "Nazwisko";
-            this.Last_Name.Name = "Last_Name";
-            this.Last_Name.ReadOnly = true;
-            // 
-            // NPWZ
-            // 
-            this.NPWZ.DataPropertyName = "NPWZ";
-            this.NPWZ.HeaderText = "NPWZ";
-            this.NPWZ.Name = "NPWZ";
-            this.NPWZ.ReadOnly = true;
-            // 
-            // workerBindingSource
-            // 
-            this.workerBindingSource.DataMember = "Worker";
-            this.workerBindingSource.DataSource = this.bD_2DataSet;
-            // 
-            // bD_2DataSet
-            // 
-            this.bD_2DataSet.DataSetName = "BD_2DataSet";
-            this.bD_2DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // workerTableAdapter
-            // 
-            this.workerTableAdapter.ClearBeforeFill = true;
             // 
             // panelView
             // 
@@ -139,6 +100,36 @@
             this.buttonApply.TabIndex = 18;
             this.buttonApply.Text = "Zatwierdź";
             this.buttonApply.UseVisualStyleBackColor = true;
+            this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
+            // 
+            // workerBindingSource1
+            // 
+            this.workerBindingSource1.DataSource = typeof(BD2_demaOkien.Data.Worker);
+            // 
+            // workeridDataGridViewTextBoxColumn
+            // 
+            this.workeridDataGridViewTextBoxColumn.DataPropertyName = "Worker_id";
+            this.workeridDataGridViewTextBoxColumn.HeaderText = "Worker_id";
+            this.workeridDataGridViewTextBoxColumn.Name = "workeridDataGridViewTextBoxColumn";
+            this.workeridDataGridViewTextBoxColumn.ReadOnly = true;
+            this.workeridDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // firstnameDataGridViewTextBoxColumn
+            // 
+            this.firstnameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.firstnameDataGridViewTextBoxColumn.DataPropertyName = "First_name";
+            this.firstnameDataGridViewTextBoxColumn.HeaderText = "Imię";
+            this.firstnameDataGridViewTextBoxColumn.Name = "firstnameDataGridViewTextBoxColumn";
+            this.firstnameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.firstnameDataGridViewTextBoxColumn.Width = 51;
+            // 
+            // lastnameDataGridViewTextBoxColumn
+            // 
+            this.lastnameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.lastnameDataGridViewTextBoxColumn.DataPropertyName = "Last_name";
+            this.lastnameDataGridViewTextBoxColumn.HeaderText = "Nazwisko";
+            this.lastnameDataGridViewTextBoxColumn.Name = "lastnameDataGridViewTextBoxColumn";
+            this.lastnameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // ChooseDoctorModal
             // 
@@ -151,9 +142,8 @@
             this.Text = "ChooseDoctorModal";
             this.Load += new System.EventHandler(this.ChooseDoctorModal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.workerBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bD_2DataSet)).EndInit();
             this.panelView.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.workerBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,14 +152,12 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private BD_2DataSet bD_2DataSet;
-        private System.Windows.Forms.BindingSource workerBindingSource;
-        private BD_2DataSetTableAdapters.WorkerTableAdapter workerTableAdapter;
         private System.Windows.Forms.Panel panelView;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonApply;
-        private System.Windows.Forms.DataGridViewTextBoxColumn First_Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Last_Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NPWZ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn workeridDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstnameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastnameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource workerBindingSource1;
     }
 }
