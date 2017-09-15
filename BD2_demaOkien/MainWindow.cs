@@ -13,7 +13,7 @@ namespace BD2_demaOkien
     public partial class MainWindow : Form
     {
         string userLogin;
-        Role userRole;
+        public static Role userRole { get; private set; }
         public static int userId { get; private set; }
         public MainWindow()
         {
