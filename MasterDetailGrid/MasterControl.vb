@@ -6,6 +6,16 @@ Public Class MasterControl
 #Region "Variables"
     Friend rowCurrent As New List(Of Integer)
     Private _childView As New detailControl
+    Private _numericKey As Boolean
+    Public Event ApplyDetailFilter(key As Object)
+    Public Property numericKey As Boolean
+        Get
+            Return _numericKey
+        End Get
+        Set(value As Boolean)
+            _numericKey = value
+        End Set
+    End Property
     Private _myForeignKey As String
     Public Property childView As detailControl
         Get
@@ -100,44 +110,44 @@ Public Class MasterControl
     End Property
     Private Sub RefreshFilters()
         Debug.Print("RefreshFilters")
-        Dim ds As DataSet
-        Dim table As DataTable
-        Dim runtimeTable As Boolean
-        Dim runtimeIntField As Boolean
-        runtimeTable = False
-        table = Nothing
-        If TypeOf Me.DataSource Is BindingSource Then
-            If TypeOf Me.DataSource.DataSource Is DataSet Then
-                ds = Me.DataSource.DataSource
-                table = ds.Tables.Item(Me.DataSource.DataMember)
-            ElseIf TypeName(Me.DataSource.DataSource) = "RuntimeType" Then
-                runtimeTable = True
-                For Each field As System.Reflection.PropertyInfo In Me.DataSource.DataSource.DeclaredProperties
-                    If field.Name = foreignKey Then
-                        runtimeIntField = field.PropertyType.FullName = "System.Int32"
-                    End If
-                Next
+        If numericKey Then
+            'Dim ds As DataSet
+            'Dim table As DataTable
+            'Dim runtimeTable As Boolean
+            'Dim runtimeIntField As Boolean
+            'runtimeTable = False
+            'table = Nothing
+            'If TypeOf Me.DataSource Is BindingSource Then
+            '    If TypeOf Me.DataSource.DataSource Is DataSet Then
+            '        ds = Me.DataSource.DataSource
+            '        table = ds.Tables.Item(Me.DataSource.DataMember)
+            '    ElseIf TypeName(Me.DataSource.DataSource) = "RuntimeType" Then
+            '        runtimeTable = True
+            '        For Each field As System.Reflection.PropertyInfo In Me.DataSource.DataSource.DeclaredProperties
+            '            If field.Name = foreignKey Then
+            '                runtimeIntField = field.PropertyType.FullName = "System.Int32"
+            '            End If
+            '        Next
 
-            Else
-                'table = Me.DataSource.DataSource
-            End If
-            '        ElseIf TypeOf Me.DataSource Is DataView Then
-            '            dataview = Me.DataSource
-        Else
-            table = Me.DataSource
-        End If
-        MessageBox.Show("Refresh Filters" & (table Is Nothing) & runtimeTable & runtimeIntField)
-        If (runtimeTable AndAlso runtimeIntField) _
-        OrElse (table IsNot Nothing AndAlso table.Columns(foreignKey).DataType.Equals(GetType(Integer))) _
-        OrElse (table IsNot Nothing AndAlso table.Columns(foreignKey).DataType.Equals(GetType(Double))) _
-        OrElse (table IsNot Nothing AndAlso table.Columns(foreignKey).DataType.Equals(GetType(Decimal))) _
-        Then
+            '    ElseIf TypeName(Me.DataSource.DataSource).Substring(0, 4) = "List" Then
+
+            '        'table = Me.DataSource.DataSource
+            '    End If
+            '    '        ElseIf TypeOf Me.DataSource Is DataView Then
+            '    '            dataview = Me.DataSource
+            'Else
+            '    table = Me.DataSource
+            'End If
+            'If (runtimeTable AndAlso runtimeIntField) _
+            'OrElse (table IsNot Nothing AndAlso table.Columns(foreignKey).DataType.Equals(GetType(Integer))) _
+            'OrElse (table IsNot Nothing AndAlso table.Columns(foreignKey).DataType.Equals(GetType(Double))) _
+            'OrElse (table IsNot Nothing AndAlso table.Columns(foreignKey).DataType.Equals(GetType(Decimal))) _
+            'Then
             _filterFormat = foreignKey & "={0}"
         Else
             _filterFormat = foreignKey & "='{0}'"
         End If
         childView.RefreshTabs()
-        MessageBox.Show("FINITO")
     End Sub
 #End Region
 #Region "GridEvents"
@@ -210,11 +220,13 @@ Public Class MasterControl
         Debug.Print("In selectionChanged")
         If Not Me.RowCount = 0 Then
             If rowCurrent.Contains(Me.CurrentRow.Index) Then
+                RaiseEvent ApplyDetailFilter(Me(_myForeignKey, Me.CurrentRow.Index).Value)
+
                 '''''''''' childGrid - to jest puste!!! - tu jest pies pogrzebany...
-                For Each cGrid As DataGridView In childView.childGrid
-                    CType(cGrid.DataSource, BindingSource).Filter = String.Format(_filterFormat, Me(_myForeignKey, Me.CurrentRow.Index).Value)
-                    Debug.Print("Set filter to " & String.Format(_filterFormat, Me(_myForeignKey, Me.CurrentRow.Index).Value))
-                Next
+                'For Each cGrid As DataGridView In childView.childGrid
+                '    CType(cGrid.DataSource, BindingSource).Filter = String.Format(_filterFormat, Me(_myForeignKey, Me.CurrentRow.Index).Value)
+                '    Debug.Print("Set filter to " & String.Format(_filterFormat, Me(_myForeignKey, Me.CurrentRow.Index).Value))
+                'Next
                 childView.RecalcHeight()
                 'Me.CurrentRow.Height = childView.Size.Height + rowDefaultHeight
                 'Me.CurrentRow.DividerHeight = childView.Size.Height

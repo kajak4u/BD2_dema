@@ -595,19 +595,5 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton bindingNavigatorItemCancel;
         private System.Windows.Forms.ToolStripButton bindingNavigatorItemPerform;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lABexaminationDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn patientDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn physicalexaminationDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn registererDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn doctorDataGridViewTextBoxColumn;
     }
 }

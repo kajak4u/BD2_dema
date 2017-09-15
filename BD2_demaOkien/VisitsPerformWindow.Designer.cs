@@ -30,6 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VisitsPerformWindow));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBoxPESEL = new System.Windows.Forms.TextBox();
             this.textBoxSurname = new System.Windows.Forms.TextBox();
@@ -77,24 +87,10 @@
             this.bindingNavigatorAddNewItem1 = new System.Windows.Forms.ToolStripButton();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.doctornotesDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.shortLabBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.shortPhBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.shortVisitBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.kodBadaniaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nazwaBadaniaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.notatkiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataBadaniaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wynikDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wykonałDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.visitidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonPatientData = new System.Windows.Forms.Button();
-            this.buttonCancel = new System.Windows.Forms.Button();
-            this.buttonApply = new System.Windows.Forms.Button();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.masterControl1 = new MasterDetailGrid.MasterControl();
             this.detailControl1 = new MasterDetailGrid.detailControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
@@ -112,10 +108,7 @@
             this.endingexaminationdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.visitidDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.examinationdictionaryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.visitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.workerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.worker1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shortLabBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.dataGridView6 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -125,6 +118,7 @@
             this.visitidDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.examinationdictionaryDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.visitDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shortPhBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.visit_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.visitidDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -140,6 +134,20 @@
             this.physicalexaminationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.registererDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.doctorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shortVisitBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.kodBadaniaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nazwaBadaniaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.notatkiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataBadaniaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wynikDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wykonałDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.visitidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonPatientData = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonApply = new System.Windows.Forms.Button();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -157,19 +165,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.labBindingSource)).BeginInit();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.shortLabBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.shortPhBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.shortVisitBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterControl1)).BeginInit();
             this.masterControl1.SuspendLayout();
             this.detailControl1.SuspendLayout();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shortLabBindingSource)).BeginInit();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shortPhBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shortVisitBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -462,12 +470,28 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Physical_examination_code,
             this.ExaminationName,
             this.Result});
             this.dataGridView1.DataSource = this.phBindingSource;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
@@ -483,11 +507,12 @@
             this.Physical_examination_code.HeaderText = "Kod badania";
             this.Physical_examination_code.Name = "Physical_examination_code";
             this.Physical_examination_code.ReadOnly = true;
-            this.Physical_examination_code.Width = 92;
+            this.Physical_examination_code.Width = 85;
             // 
             // ExaminationName
             // 
             this.ExaminationName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ExaminationName.DataPropertyName = "Nazwa";
             this.ExaminationName.HeaderText = "Nazwa badania";
             this.ExaminationName.MinimumWidth = 120;
             this.ExaminationName.Name = "ExaminationName";
@@ -634,10 +659,28 @@
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.AutoGenerateColumns = false;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn2});
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn5,
+            this.doctornotesDataGridViewTextBoxColumn1});
             this.dataGridView2.DataSource = this.labBindingSource;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.Location = new System.Drawing.Point(3, 3);
             this.dataGridView2.Name = "dataGridView2";
@@ -648,13 +691,28 @@
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Nazwa";
             this.dataGridViewTextBoxColumn2.HeaderText = "Nazwa badania";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "LAB_examination_code";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Kod";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // doctornotesDataGridViewTextBoxColumn1
+            // 
+            this.doctornotesDataGridViewTextBoxColumn1.DataPropertyName = "doctor_notes";
+            this.doctornotesDataGridViewTextBoxColumn1.HeaderText = "Notatki";
+            this.doctornotesDataGridViewTextBoxColumn1.Name = "doctornotesDataGridViewTextBoxColumn1";
+            this.doctornotesDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
             // labBindingSource
             // 
-            this.labBindingSource.DataMember = "LAB_examination";
+            this.labBindingSource.DataSource = typeof(BD2_demaOkien.Data.LAB_examination);
             // 
             // tabPage4
             // 
@@ -667,13 +725,433 @@
             this.tabPage4.Text = "Historia";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // masterControl1
+            // 
+            this.masterControl1.AllowUserToAddRows = false;
+            this.masterControl1.AllowUserToDeleteRows = false;
+            this.masterControl1.AutoGenerateColumns = false;
+            this.masterControl1.childView = this.detailControl1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.masterControl1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.masterControl1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.masterControl1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.visit_id,
+            this.visitidDataGridViewTextBoxColumn4,
+            this.descriptionDataGridViewTextBoxColumn,
+            this.diagnosisDataGridViewTextBoxColumn,
+            this.statusDataGridViewTextBoxColumn1,
+            this.registrationdateDataGridViewTextBoxColumn,
+            this.endingdateDataGridViewTextBoxColumn,
+            this.patientidDataGridViewTextBoxColumn,
+            this.doctoridDataGridViewTextBoxColumn,
+            this.registereridDataGridViewTextBoxColumn,
+            this.lABexaminationDataGridViewTextBoxColumn,
+            this.patientDataGridViewTextBoxColumn,
+            this.physicalexaminationDataGridViewTextBoxColumn,
+            this.registererDataGridViewTextBoxColumn,
+            this.doctorDataGridViewTextBoxColumn});
+            this.masterControl1.Controls.Add(this.detailControl1);
+            this.masterControl1.dataset = null;
+            this.masterControl1.DataSource = this.shortVisitBindingSource;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.masterControl1.DefaultCellStyle = dataGridViewCellStyle10;
+            this.masterControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.masterControl1.foreignKey = "visit_id";
+            this.masterControl1.Location = new System.Drawing.Point(3, 3);
+            this.masterControl1.Name = "masterControl1";
+            this.masterControl1.numericKey = true;
+            this.masterControl1.ReadOnly = true;
+            this.masterControl1.Size = new System.Drawing.Size(770, 410);
+            this.masterControl1.TabIndex = 31;
+            this.masterControl1.ApplyDetailFilter += new MasterDetailGrid.MasterControl.ApplyDetailFilterEventHandler(this.masterControl1_ApplyDetailFilter);
+            // 
+            // detailControl1
+            // 
+            this.detailControl1.Controls.Add(this.tabPage5);
+            this.detailControl1.Controls.Add(this.tabPage6);
+            this.detailControl1.Location = new System.Drawing.Point(3, 30);
+            this.detailControl1.Name = "detailControl1";
+            this.detailControl1.SelectedIndex = 0;
+            this.detailControl1.Size = new System.Drawing.Size(770, 61);
+            this.detailControl1.TabIndex = 32;
+            this.detailControl1.Visible = false;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.dataGridView5);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(762, 35);
+            this.tabPage5.TabIndex = 0;
+            this.tabPage5.Text = "Badania laboratoryjne";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView5
+            // 
+            this.dataGridView5.AllowUserToAddRows = false;
+            this.dataGridView5.AllowUserToDeleteRows = false;
+            this.dataGridView5.AutoGenerateColumns = false;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView5.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView5.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.lABexaminationidDataGridViewTextBoxColumn,
+            this.dataGridViewTextBoxColumn4,
+            this.doctornotesDataGridViewTextBoxColumn,
+            this.lABworkeridDataGridViewTextBoxColumn,
+            this.commissionexaminationdateDataGridViewTextBoxColumn,
+            this.lABexaminationresultDataGridViewTextBoxColumn,
+            this.lABexaminationdateDataGridViewTextBoxColumn,
+            this.lABmanageridDataGridViewTextBoxColumn,
+            this.lABmanagernotesDataGridViewTextBoxColumn,
+            this.endingexaminationdateDataGridViewTextBoxColumn,
+            this.statusDataGridViewTextBoxColumn,
+            this.visitidDataGridViewTextBoxColumn2});
+            this.dataGridView5.DataSource = this.shortLabBindingSource;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView5.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridView5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView5.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView5.MultiSelect = false;
+            this.dataGridView5.Name = "dataGridView5";
+            this.dataGridView5.ReadOnly = true;
+            this.dataGridView5.RowHeadersVisible = false;
+            this.dataGridView5.ShowEditingIcon = false;
+            this.dataGridView5.Size = new System.Drawing.Size(756, 29);
+            this.dataGridView5.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "visit_id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "visit_id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // lABexaminationidDataGridViewTextBoxColumn
+            // 
+            this.lABexaminationidDataGridViewTextBoxColumn.DataPropertyName = "LAB_examination_id";
+            this.lABexaminationidDataGridViewTextBoxColumn.HeaderText = "LAB_examination_id";
+            this.lABexaminationidDataGridViewTextBoxColumn.Name = "lABexaminationidDataGridViewTextBoxColumn";
+            this.lABexaminationidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "LAB_examination_code";
+            this.dataGridViewTextBoxColumn4.HeaderText = "LAB_examination_code";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // doctornotesDataGridViewTextBoxColumn
+            // 
+            this.doctornotesDataGridViewTextBoxColumn.DataPropertyName = "doctor_notes";
+            this.doctornotesDataGridViewTextBoxColumn.HeaderText = "doctor_notes";
+            this.doctornotesDataGridViewTextBoxColumn.Name = "doctornotesDataGridViewTextBoxColumn";
+            this.doctornotesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lABworkeridDataGridViewTextBoxColumn
+            // 
+            this.lABworkeridDataGridViewTextBoxColumn.DataPropertyName = "LAB_worker_id";
+            this.lABworkeridDataGridViewTextBoxColumn.HeaderText = "LAB_worker_id";
+            this.lABworkeridDataGridViewTextBoxColumn.Name = "lABworkeridDataGridViewTextBoxColumn";
+            this.lABworkeridDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // commissionexaminationdateDataGridViewTextBoxColumn
+            // 
+            this.commissionexaminationdateDataGridViewTextBoxColumn.DataPropertyName = "commission_examination_date";
+            this.commissionexaminationdateDataGridViewTextBoxColumn.HeaderText = "commission_examination_date";
+            this.commissionexaminationdateDataGridViewTextBoxColumn.Name = "commissionexaminationdateDataGridViewTextBoxColumn";
+            this.commissionexaminationdateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lABexaminationresultDataGridViewTextBoxColumn
+            // 
+            this.lABexaminationresultDataGridViewTextBoxColumn.DataPropertyName = "LAB_examination_result";
+            this.lABexaminationresultDataGridViewTextBoxColumn.HeaderText = "LAB_examination_result";
+            this.lABexaminationresultDataGridViewTextBoxColumn.Name = "lABexaminationresultDataGridViewTextBoxColumn";
+            this.lABexaminationresultDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lABexaminationdateDataGridViewTextBoxColumn
+            // 
+            this.lABexaminationdateDataGridViewTextBoxColumn.DataPropertyName = "LAB_examination_date";
+            this.lABexaminationdateDataGridViewTextBoxColumn.HeaderText = "LAB_examination_date";
+            this.lABexaminationdateDataGridViewTextBoxColumn.Name = "lABexaminationdateDataGridViewTextBoxColumn";
+            this.lABexaminationdateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lABmanageridDataGridViewTextBoxColumn
+            // 
+            this.lABmanageridDataGridViewTextBoxColumn.DataPropertyName = "LAB_manager_id";
+            this.lABmanageridDataGridViewTextBoxColumn.HeaderText = "LAB_manager_id";
+            this.lABmanageridDataGridViewTextBoxColumn.Name = "lABmanageridDataGridViewTextBoxColumn";
+            this.lABmanageridDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lABmanagernotesDataGridViewTextBoxColumn
+            // 
+            this.lABmanagernotesDataGridViewTextBoxColumn.DataPropertyName = "LAB_manager_notes";
+            this.lABmanagernotesDataGridViewTextBoxColumn.HeaderText = "LAB_manager_notes";
+            this.lABmanagernotesDataGridViewTextBoxColumn.Name = "lABmanagernotesDataGridViewTextBoxColumn";
+            this.lABmanagernotesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // endingexaminationdateDataGridViewTextBoxColumn
+            // 
+            this.endingexaminationdateDataGridViewTextBoxColumn.DataPropertyName = "ending_examination_date";
+            this.endingexaminationdateDataGridViewTextBoxColumn.HeaderText = "ending_examination_date";
+            this.endingexaminationdateDataGridViewTextBoxColumn.Name = "endingexaminationdateDataGridViewTextBoxColumn";
+            this.endingexaminationdateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // visitidDataGridViewTextBoxColumn2
+            // 
+            this.visitidDataGridViewTextBoxColumn2.DataPropertyName = "visit_id";
+            this.visitidDataGridViewTextBoxColumn2.HeaderText = "visit_id";
+            this.visitidDataGridViewTextBoxColumn2.Name = "visitidDataGridViewTextBoxColumn2";
+            this.visitidDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
             // shortLabBindingSource
             // 
             this.shortLabBindingSource.DataSource = typeof(BD2_demaOkien.Data.LAB_examination);
             // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.dataGridView6);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(762, 35);
+            this.tabPage6.TabIndex = 1;
+            this.tabPage6.Text = "Badania fizykalne";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView6
+            // 
+            this.dataGridView6.AllowUserToAddRows = false;
+            this.dataGridView6.AllowUserToDeleteRows = false;
+            this.dataGridView6.AutoGenerateColumns = false;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView6.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView6.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn3,
+            this.physicalexaminationidDataGridViewTextBoxColumn1,
+            this.physicalexaminationcodeDataGridViewTextBoxColumn1,
+            this.resultDataGridViewTextBoxColumn1,
+            this.visitidDataGridViewTextBoxColumn3,
+            this.examinationdictionaryDataGridViewTextBoxColumn1,
+            this.visitDataGridViewTextBoxColumn1});
+            this.dataGridView6.DataSource = this.shortPhBindingSource;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView6.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGridView6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView6.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView6.Name = "dataGridView6";
+            this.dataGridView6.ReadOnly = true;
+            this.dataGridView6.RowHeadersVisible = false;
+            this.dataGridView6.ShowEditingIcon = false;
+            this.dataGridView6.Size = new System.Drawing.Size(756, 29);
+            this.dataGridView6.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "visit_id";
+            this.dataGridViewTextBoxColumn3.HeaderText = "visit_id";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Visible = false;
+            // 
+            // physicalexaminationidDataGridViewTextBoxColumn1
+            // 
+            this.physicalexaminationidDataGridViewTextBoxColumn1.DataPropertyName = "Physical_examination_id";
+            this.physicalexaminationidDataGridViewTextBoxColumn1.HeaderText = "Physical_examination_id";
+            this.physicalexaminationidDataGridViewTextBoxColumn1.Name = "physicalexaminationidDataGridViewTextBoxColumn1";
+            this.physicalexaminationidDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // physicalexaminationcodeDataGridViewTextBoxColumn1
+            // 
+            this.physicalexaminationcodeDataGridViewTextBoxColumn1.DataPropertyName = "Physical_examination_code";
+            this.physicalexaminationcodeDataGridViewTextBoxColumn1.HeaderText = "Physical_examination_code";
+            this.physicalexaminationcodeDataGridViewTextBoxColumn1.Name = "physicalexaminationcodeDataGridViewTextBoxColumn1";
+            this.physicalexaminationcodeDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // resultDataGridViewTextBoxColumn1
+            // 
+            this.resultDataGridViewTextBoxColumn1.DataPropertyName = "Result";
+            this.resultDataGridViewTextBoxColumn1.HeaderText = "Result";
+            this.resultDataGridViewTextBoxColumn1.Name = "resultDataGridViewTextBoxColumn1";
+            this.resultDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // visitidDataGridViewTextBoxColumn3
+            // 
+            this.visitidDataGridViewTextBoxColumn3.DataPropertyName = "visit_id";
+            this.visitidDataGridViewTextBoxColumn3.HeaderText = "visit_id";
+            this.visitidDataGridViewTextBoxColumn3.Name = "visitidDataGridViewTextBoxColumn3";
+            this.visitidDataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // examinationdictionaryDataGridViewTextBoxColumn1
+            // 
+            this.examinationdictionaryDataGridViewTextBoxColumn1.DataPropertyName = "Examination_dictionary";
+            this.examinationdictionaryDataGridViewTextBoxColumn1.HeaderText = "Examination_dictionary";
+            this.examinationdictionaryDataGridViewTextBoxColumn1.Name = "examinationdictionaryDataGridViewTextBoxColumn1";
+            this.examinationdictionaryDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // visitDataGridViewTextBoxColumn1
+            // 
+            this.visitDataGridViewTextBoxColumn1.DataPropertyName = "Visit";
+            this.visitDataGridViewTextBoxColumn1.HeaderText = "Visit";
+            this.visitDataGridViewTextBoxColumn1.Name = "visitDataGridViewTextBoxColumn1";
+            this.visitDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
             // shortPhBindingSource
             // 
             this.shortPhBindingSource.DataSource = typeof(BD2_demaOkien.Data.Physical_examination);
+            // 
+            // visit_id
+            // 
+            this.visit_id.DataPropertyName = "visit_id";
+            this.visit_id.HeaderText = "visit_id";
+            this.visit_id.Name = "visit_id";
+            this.visit_id.ReadOnly = true;
+            this.visit_id.Visible = false;
+            // 
+            // visitidDataGridViewTextBoxColumn4
+            // 
+            this.visitidDataGridViewTextBoxColumn4.DataPropertyName = "visit_id";
+            this.visitidDataGridViewTextBoxColumn4.HeaderText = "visit_id";
+            this.visitidDataGridViewTextBoxColumn4.Name = "visitidDataGridViewTextBoxColumn4";
+            this.visitidDataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // diagnosisDataGridViewTextBoxColumn
+            // 
+            this.diagnosisDataGridViewTextBoxColumn.DataPropertyName = "diagnosis";
+            this.diagnosisDataGridViewTextBoxColumn.HeaderText = "diagnosis";
+            this.diagnosisDataGridViewTextBoxColumn.Name = "diagnosisDataGridViewTextBoxColumn";
+            this.diagnosisDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // statusDataGridViewTextBoxColumn1
+            // 
+            this.statusDataGridViewTextBoxColumn1.DataPropertyName = "status";
+            this.statusDataGridViewTextBoxColumn1.HeaderText = "status";
+            this.statusDataGridViewTextBoxColumn1.Name = "statusDataGridViewTextBoxColumn1";
+            this.statusDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // registrationdateDataGridViewTextBoxColumn
+            // 
+            this.registrationdateDataGridViewTextBoxColumn.DataPropertyName = "registration_date";
+            this.registrationdateDataGridViewTextBoxColumn.HeaderText = "registration_date";
+            this.registrationdateDataGridViewTextBoxColumn.Name = "registrationdateDataGridViewTextBoxColumn";
+            this.registrationdateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // endingdateDataGridViewTextBoxColumn
+            // 
+            this.endingdateDataGridViewTextBoxColumn.DataPropertyName = "ending_date";
+            this.endingdateDataGridViewTextBoxColumn.HeaderText = "ending_date";
+            this.endingdateDataGridViewTextBoxColumn.Name = "endingdateDataGridViewTextBoxColumn";
+            this.endingdateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // patientidDataGridViewTextBoxColumn
+            // 
+            this.patientidDataGridViewTextBoxColumn.DataPropertyName = "patient_id";
+            this.patientidDataGridViewTextBoxColumn.HeaderText = "patient_id";
+            this.patientidDataGridViewTextBoxColumn.Name = "patientidDataGridViewTextBoxColumn";
+            this.patientidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // doctoridDataGridViewTextBoxColumn
+            // 
+            this.doctoridDataGridViewTextBoxColumn.DataPropertyName = "doctor_id";
+            this.doctoridDataGridViewTextBoxColumn.HeaderText = "doctor_id";
+            this.doctoridDataGridViewTextBoxColumn.Name = "doctoridDataGridViewTextBoxColumn";
+            this.doctoridDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // registereridDataGridViewTextBoxColumn
+            // 
+            this.registereridDataGridViewTextBoxColumn.DataPropertyName = "registerer_id";
+            this.registereridDataGridViewTextBoxColumn.HeaderText = "registerer_id";
+            this.registereridDataGridViewTextBoxColumn.Name = "registereridDataGridViewTextBoxColumn";
+            this.registereridDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lABexaminationDataGridViewTextBoxColumn
+            // 
+            this.lABexaminationDataGridViewTextBoxColumn.DataPropertyName = "LAB_examination";
+            this.lABexaminationDataGridViewTextBoxColumn.HeaderText = "LAB_examination";
+            this.lABexaminationDataGridViewTextBoxColumn.Name = "lABexaminationDataGridViewTextBoxColumn";
+            this.lABexaminationDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // patientDataGridViewTextBoxColumn
+            // 
+            this.patientDataGridViewTextBoxColumn.DataPropertyName = "Patient";
+            this.patientDataGridViewTextBoxColumn.HeaderText = "Patient";
+            this.patientDataGridViewTextBoxColumn.Name = "patientDataGridViewTextBoxColumn";
+            this.patientDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // physicalexaminationDataGridViewTextBoxColumn
+            // 
+            this.physicalexaminationDataGridViewTextBoxColumn.DataPropertyName = "Physical_examination";
+            this.physicalexaminationDataGridViewTextBoxColumn.HeaderText = "Physical_examination";
+            this.physicalexaminationDataGridViewTextBoxColumn.Name = "physicalexaminationDataGridViewTextBoxColumn";
+            this.physicalexaminationDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // registererDataGridViewTextBoxColumn
+            // 
+            this.registererDataGridViewTextBoxColumn.DataPropertyName = "Registerer";
+            this.registererDataGridViewTextBoxColumn.HeaderText = "Registerer";
+            this.registererDataGridViewTextBoxColumn.Name = "registererDataGridViewTextBoxColumn";
+            this.registererDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // doctorDataGridViewTextBoxColumn
+            // 
+            this.doctorDataGridViewTextBoxColumn.DataPropertyName = "Doctor";
+            this.doctorDataGridViewTextBoxColumn.HeaderText = "Doctor";
+            this.doctorDataGridViewTextBoxColumn.Name = "doctorDataGridViewTextBoxColumn";
+            this.doctorDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // shortVisitBindingSource
             // 
@@ -809,408 +1287,6 @@
             this.dataGridView3.Size = new System.Drawing.Size(240, 150);
             this.dataGridView3.TabIndex = 0;
             // 
-            // masterControl1
-            // 
-            this.masterControl1.AllowUserToAddRows = false;
-            this.masterControl1.AllowUserToDeleteRows = false;
-            this.masterControl1.AutoGenerateColumns = false;
-            this.masterControl1.childView = this.detailControl1;
-            this.masterControl1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.masterControl1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.visit_id,
-            this.visitidDataGridViewTextBoxColumn4,
-            this.descriptionDataGridViewTextBoxColumn,
-            this.diagnosisDataGridViewTextBoxColumn,
-            this.statusDataGridViewTextBoxColumn1,
-            this.registrationdateDataGridViewTextBoxColumn,
-            this.endingdateDataGridViewTextBoxColumn,
-            this.patientidDataGridViewTextBoxColumn,
-            this.doctoridDataGridViewTextBoxColumn,
-            this.registereridDataGridViewTextBoxColumn,
-            this.lABexaminationDataGridViewTextBoxColumn,
-            this.patientDataGridViewTextBoxColumn,
-            this.physicalexaminationDataGridViewTextBoxColumn,
-            this.registererDataGridViewTextBoxColumn,
-            this.doctorDataGridViewTextBoxColumn});
-            this.masterControl1.Controls.Add(this.detailControl1);
-            this.masterControl1.dataset = null;
-            this.masterControl1.DataSource = this.shortVisitBindingSource;
-            this.masterControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.masterControl1.foreignKey = "visit_id";
-            this.masterControl1.Location = new System.Drawing.Point(3, 3);
-            this.masterControl1.Name = "masterControl1";
-            this.masterControl1.ReadOnly = true;
-            this.masterControl1.Size = new System.Drawing.Size(770, 410);
-            this.masterControl1.TabIndex = 31;
-            // 
-            // detailControl1
-            // 
-            this.detailControl1.Controls.Add(this.tabPage5);
-            this.detailControl1.Controls.Add(this.tabPage6);
-            this.detailControl1.Location = new System.Drawing.Point(3, 30);
-            this.detailControl1.Name = "detailControl1";
-            this.detailControl1.SelectedIndex = 0;
-            this.detailControl1.Size = new System.Drawing.Size(770, 61);
-            this.detailControl1.TabIndex = 32;
-            this.detailControl1.Visible = false;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Controls.Add(this.dataGridView5);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(762, 35);
-            this.tabPage5.TabIndex = 0;
-            this.tabPage5.Text = "Badania laboratoryjne";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView5
-            // 
-            this.dataGridView5.AllowUserToAddRows = false;
-            this.dataGridView5.AllowUserToDeleteRows = false;
-            this.dataGridView5.AutoGenerateColumns = false;
-            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView5.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.lABexaminationidDataGridViewTextBoxColumn,
-            this.dataGridViewTextBoxColumn4,
-            this.doctornotesDataGridViewTextBoxColumn,
-            this.lABworkeridDataGridViewTextBoxColumn,
-            this.commissionexaminationdateDataGridViewTextBoxColumn,
-            this.lABexaminationresultDataGridViewTextBoxColumn,
-            this.lABexaminationdateDataGridViewTextBoxColumn,
-            this.lABmanageridDataGridViewTextBoxColumn,
-            this.lABmanagernotesDataGridViewTextBoxColumn,
-            this.endingexaminationdateDataGridViewTextBoxColumn,
-            this.statusDataGridViewTextBoxColumn,
-            this.visitidDataGridViewTextBoxColumn2,
-            this.examinationdictionaryDataGridViewTextBoxColumn,
-            this.visitDataGridViewTextBoxColumn,
-            this.workerDataGridViewTextBoxColumn,
-            this.worker1DataGridViewTextBoxColumn});
-            this.dataGridView5.DataSource = this.shortLabBindingSource;
-            this.dataGridView5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView5.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView5.MultiSelect = false;
-            this.dataGridView5.Name = "dataGridView5";
-            this.dataGridView5.ReadOnly = true;
-            this.dataGridView5.RowHeadersVisible = false;
-            this.dataGridView5.ShowEditingIcon = false;
-            this.dataGridView5.Size = new System.Drawing.Size(756, 29);
-            this.dataGridView5.TabIndex = 0;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "visit_id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "visit_id";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // lABexaminationidDataGridViewTextBoxColumn
-            // 
-            this.lABexaminationidDataGridViewTextBoxColumn.DataPropertyName = "LAB_examination_id";
-            this.lABexaminationidDataGridViewTextBoxColumn.HeaderText = "LAB_examination_id";
-            this.lABexaminationidDataGridViewTextBoxColumn.Name = "lABexaminationidDataGridViewTextBoxColumn";
-            this.lABexaminationidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "LAB_examination_code";
-            this.dataGridViewTextBoxColumn4.HeaderText = "LAB_examination_code";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // doctornotesDataGridViewTextBoxColumn
-            // 
-            this.doctornotesDataGridViewTextBoxColumn.DataPropertyName = "doctor_notes";
-            this.doctornotesDataGridViewTextBoxColumn.HeaderText = "doctor_notes";
-            this.doctornotesDataGridViewTextBoxColumn.Name = "doctornotesDataGridViewTextBoxColumn";
-            this.doctornotesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lABworkeridDataGridViewTextBoxColumn
-            // 
-            this.lABworkeridDataGridViewTextBoxColumn.DataPropertyName = "LAB_worker_id";
-            this.lABworkeridDataGridViewTextBoxColumn.HeaderText = "LAB_worker_id";
-            this.lABworkeridDataGridViewTextBoxColumn.Name = "lABworkeridDataGridViewTextBoxColumn";
-            this.lABworkeridDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // commissionexaminationdateDataGridViewTextBoxColumn
-            // 
-            this.commissionexaminationdateDataGridViewTextBoxColumn.DataPropertyName = "commission_examination_date";
-            this.commissionexaminationdateDataGridViewTextBoxColumn.HeaderText = "commission_examination_date";
-            this.commissionexaminationdateDataGridViewTextBoxColumn.Name = "commissionexaminationdateDataGridViewTextBoxColumn";
-            this.commissionexaminationdateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lABexaminationresultDataGridViewTextBoxColumn
-            // 
-            this.lABexaminationresultDataGridViewTextBoxColumn.DataPropertyName = "LAB_examination_result";
-            this.lABexaminationresultDataGridViewTextBoxColumn.HeaderText = "LAB_examination_result";
-            this.lABexaminationresultDataGridViewTextBoxColumn.Name = "lABexaminationresultDataGridViewTextBoxColumn";
-            this.lABexaminationresultDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lABexaminationdateDataGridViewTextBoxColumn
-            // 
-            this.lABexaminationdateDataGridViewTextBoxColumn.DataPropertyName = "LAB_examination_date";
-            this.lABexaminationdateDataGridViewTextBoxColumn.HeaderText = "LAB_examination_date";
-            this.lABexaminationdateDataGridViewTextBoxColumn.Name = "lABexaminationdateDataGridViewTextBoxColumn";
-            this.lABexaminationdateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lABmanageridDataGridViewTextBoxColumn
-            // 
-            this.lABmanageridDataGridViewTextBoxColumn.DataPropertyName = "LAB_manager_id";
-            this.lABmanageridDataGridViewTextBoxColumn.HeaderText = "LAB_manager_id";
-            this.lABmanageridDataGridViewTextBoxColumn.Name = "lABmanageridDataGridViewTextBoxColumn";
-            this.lABmanageridDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lABmanagernotesDataGridViewTextBoxColumn
-            // 
-            this.lABmanagernotesDataGridViewTextBoxColumn.DataPropertyName = "LAB_manager_notes";
-            this.lABmanagernotesDataGridViewTextBoxColumn.HeaderText = "LAB_manager_notes";
-            this.lABmanagernotesDataGridViewTextBoxColumn.Name = "lABmanagernotesDataGridViewTextBoxColumn";
-            this.lABmanagernotesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // endingexaminationdateDataGridViewTextBoxColumn
-            // 
-            this.endingexaminationdateDataGridViewTextBoxColumn.DataPropertyName = "ending_examination_date";
-            this.endingexaminationdateDataGridViewTextBoxColumn.HeaderText = "ending_examination_date";
-            this.endingexaminationdateDataGridViewTextBoxColumn.Name = "endingexaminationdateDataGridViewTextBoxColumn";
-            this.endingexaminationdateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "status";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // visitidDataGridViewTextBoxColumn2
-            // 
-            this.visitidDataGridViewTextBoxColumn2.DataPropertyName = "visit_id";
-            this.visitidDataGridViewTextBoxColumn2.HeaderText = "visit_id";
-            this.visitidDataGridViewTextBoxColumn2.Name = "visitidDataGridViewTextBoxColumn2";
-            this.visitidDataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // examinationdictionaryDataGridViewTextBoxColumn
-            // 
-            this.examinationdictionaryDataGridViewTextBoxColumn.DataPropertyName = "Examination_dictionary";
-            this.examinationdictionaryDataGridViewTextBoxColumn.HeaderText = "Examination_dictionary";
-            this.examinationdictionaryDataGridViewTextBoxColumn.Name = "examinationdictionaryDataGridViewTextBoxColumn";
-            this.examinationdictionaryDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // visitDataGridViewTextBoxColumn
-            // 
-            this.visitDataGridViewTextBoxColumn.DataPropertyName = "Visit";
-            this.visitDataGridViewTextBoxColumn.HeaderText = "Visit";
-            this.visitDataGridViewTextBoxColumn.Name = "visitDataGridViewTextBoxColumn";
-            this.visitDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // workerDataGridViewTextBoxColumn
-            // 
-            this.workerDataGridViewTextBoxColumn.DataPropertyName = "Worker";
-            this.workerDataGridViewTextBoxColumn.HeaderText = "Worker";
-            this.workerDataGridViewTextBoxColumn.Name = "workerDataGridViewTextBoxColumn";
-            this.workerDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // worker1DataGridViewTextBoxColumn
-            // 
-            this.worker1DataGridViewTextBoxColumn.DataPropertyName = "Worker1";
-            this.worker1DataGridViewTextBoxColumn.HeaderText = "Worker1";
-            this.worker1DataGridViewTextBoxColumn.Name = "worker1DataGridViewTextBoxColumn";
-            this.worker1DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.Controls.Add(this.dataGridView6);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(762, 35);
-            this.tabPage6.TabIndex = 1;
-            this.tabPage6.Text = "Badania fizykalne";
-            this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView6
-            // 
-            this.dataGridView6.AllowUserToAddRows = false;
-            this.dataGridView6.AllowUserToDeleteRows = false;
-            this.dataGridView6.AutoGenerateColumns = false;
-            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView6.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn3,
-            this.physicalexaminationidDataGridViewTextBoxColumn1,
-            this.physicalexaminationcodeDataGridViewTextBoxColumn1,
-            this.resultDataGridViewTextBoxColumn1,
-            this.visitidDataGridViewTextBoxColumn3,
-            this.examinationdictionaryDataGridViewTextBoxColumn1,
-            this.visitDataGridViewTextBoxColumn1});
-            this.dataGridView6.DataSource = this.shortPhBindingSource;
-            this.dataGridView6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView6.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView6.Name = "dataGridView6";
-            this.dataGridView6.ReadOnly = true;
-            this.dataGridView6.RowHeadersVisible = false;
-            this.dataGridView6.ShowEditingIcon = false;
-            this.dataGridView6.Size = new System.Drawing.Size(756, 29);
-            this.dataGridView6.TabIndex = 0;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "visit_id";
-            this.dataGridViewTextBoxColumn3.HeaderText = "visit_id";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Visible = false;
-            // 
-            // physicalexaminationidDataGridViewTextBoxColumn1
-            // 
-            this.physicalexaminationidDataGridViewTextBoxColumn1.DataPropertyName = "Physical_examination_id";
-            this.physicalexaminationidDataGridViewTextBoxColumn1.HeaderText = "Physical_examination_id";
-            this.physicalexaminationidDataGridViewTextBoxColumn1.Name = "physicalexaminationidDataGridViewTextBoxColumn1";
-            this.physicalexaminationidDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // physicalexaminationcodeDataGridViewTextBoxColumn1
-            // 
-            this.physicalexaminationcodeDataGridViewTextBoxColumn1.DataPropertyName = "Physical_examination_code";
-            this.physicalexaminationcodeDataGridViewTextBoxColumn1.HeaderText = "Physical_examination_code";
-            this.physicalexaminationcodeDataGridViewTextBoxColumn1.Name = "physicalexaminationcodeDataGridViewTextBoxColumn1";
-            this.physicalexaminationcodeDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // resultDataGridViewTextBoxColumn1
-            // 
-            this.resultDataGridViewTextBoxColumn1.DataPropertyName = "Result";
-            this.resultDataGridViewTextBoxColumn1.HeaderText = "Result";
-            this.resultDataGridViewTextBoxColumn1.Name = "resultDataGridViewTextBoxColumn1";
-            this.resultDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // visitidDataGridViewTextBoxColumn3
-            // 
-            this.visitidDataGridViewTextBoxColumn3.DataPropertyName = "visit_id";
-            this.visitidDataGridViewTextBoxColumn3.HeaderText = "visit_id";
-            this.visitidDataGridViewTextBoxColumn3.Name = "visitidDataGridViewTextBoxColumn3";
-            this.visitidDataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // examinationdictionaryDataGridViewTextBoxColumn1
-            // 
-            this.examinationdictionaryDataGridViewTextBoxColumn1.DataPropertyName = "Examination_dictionary";
-            this.examinationdictionaryDataGridViewTextBoxColumn1.HeaderText = "Examination_dictionary";
-            this.examinationdictionaryDataGridViewTextBoxColumn1.Name = "examinationdictionaryDataGridViewTextBoxColumn1";
-            this.examinationdictionaryDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // visitDataGridViewTextBoxColumn1
-            // 
-            this.visitDataGridViewTextBoxColumn1.DataPropertyName = "Visit";
-            this.visitDataGridViewTextBoxColumn1.HeaderText = "Visit";
-            this.visitDataGridViewTextBoxColumn1.Name = "visitDataGridViewTextBoxColumn1";
-            this.visitDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // visit_id
-            // 
-            this.visit_id.DataPropertyName = "visit_id";
-            this.visit_id.HeaderText = "visit_id";
-            this.visit_id.Name = "visit_id";
-            this.visit_id.ReadOnly = true;
-            this.visit_id.Visible = false;
-            // 
-            // visitidDataGridViewTextBoxColumn4
-            // 
-            this.visitidDataGridViewTextBoxColumn4.DataPropertyName = "visit_id";
-            this.visitidDataGridViewTextBoxColumn4.HeaderText = "visit_id";
-            this.visitidDataGridViewTextBoxColumn4.Name = "visitidDataGridViewTextBoxColumn4";
-            this.visitidDataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // diagnosisDataGridViewTextBoxColumn
-            // 
-            this.diagnosisDataGridViewTextBoxColumn.DataPropertyName = "diagnosis";
-            this.diagnosisDataGridViewTextBoxColumn.HeaderText = "diagnosis";
-            this.diagnosisDataGridViewTextBoxColumn.Name = "diagnosisDataGridViewTextBoxColumn";
-            this.diagnosisDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // statusDataGridViewTextBoxColumn1
-            // 
-            this.statusDataGridViewTextBoxColumn1.DataPropertyName = "status";
-            this.statusDataGridViewTextBoxColumn1.HeaderText = "status";
-            this.statusDataGridViewTextBoxColumn1.Name = "statusDataGridViewTextBoxColumn1";
-            this.statusDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // registrationdateDataGridViewTextBoxColumn
-            // 
-            this.registrationdateDataGridViewTextBoxColumn.DataPropertyName = "registration_date";
-            this.registrationdateDataGridViewTextBoxColumn.HeaderText = "registration_date";
-            this.registrationdateDataGridViewTextBoxColumn.Name = "registrationdateDataGridViewTextBoxColumn";
-            this.registrationdateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // endingdateDataGridViewTextBoxColumn
-            // 
-            this.endingdateDataGridViewTextBoxColumn.DataPropertyName = "ending_date";
-            this.endingdateDataGridViewTextBoxColumn.HeaderText = "ending_date";
-            this.endingdateDataGridViewTextBoxColumn.Name = "endingdateDataGridViewTextBoxColumn";
-            this.endingdateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // patientidDataGridViewTextBoxColumn
-            // 
-            this.patientidDataGridViewTextBoxColumn.DataPropertyName = "patient_id";
-            this.patientidDataGridViewTextBoxColumn.HeaderText = "patient_id";
-            this.patientidDataGridViewTextBoxColumn.Name = "patientidDataGridViewTextBoxColumn";
-            this.patientidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // doctoridDataGridViewTextBoxColumn
-            // 
-            this.doctoridDataGridViewTextBoxColumn.DataPropertyName = "doctor_id";
-            this.doctoridDataGridViewTextBoxColumn.HeaderText = "doctor_id";
-            this.doctoridDataGridViewTextBoxColumn.Name = "doctoridDataGridViewTextBoxColumn";
-            this.doctoridDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // registereridDataGridViewTextBoxColumn
-            // 
-            this.registereridDataGridViewTextBoxColumn.DataPropertyName = "registerer_id";
-            this.registereridDataGridViewTextBoxColumn.HeaderText = "registerer_id";
-            this.registereridDataGridViewTextBoxColumn.Name = "registereridDataGridViewTextBoxColumn";
-            this.registereridDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lABexaminationDataGridViewTextBoxColumn
-            // 
-            this.lABexaminationDataGridViewTextBoxColumn.DataPropertyName = "LAB_examination";
-            this.lABexaminationDataGridViewTextBoxColumn.HeaderText = "LAB_examination";
-            this.lABexaminationDataGridViewTextBoxColumn.Name = "lABexaminationDataGridViewTextBoxColumn";
-            this.lABexaminationDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // patientDataGridViewTextBoxColumn
-            // 
-            this.patientDataGridViewTextBoxColumn.DataPropertyName = "Patient";
-            this.patientDataGridViewTextBoxColumn.HeaderText = "Patient";
-            this.patientDataGridViewTextBoxColumn.Name = "patientDataGridViewTextBoxColumn";
-            this.patientDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // physicalexaminationDataGridViewTextBoxColumn
-            // 
-            this.physicalexaminationDataGridViewTextBoxColumn.DataPropertyName = "Physical_examination";
-            this.physicalexaminationDataGridViewTextBoxColumn.HeaderText = "Physical_examination";
-            this.physicalexaminationDataGridViewTextBoxColumn.Name = "physicalexaminationDataGridViewTextBoxColumn";
-            this.physicalexaminationDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // registererDataGridViewTextBoxColumn
-            // 
-            this.registererDataGridViewTextBoxColumn.DataPropertyName = "Registerer";
-            this.registererDataGridViewTextBoxColumn.HeaderText = "Registerer";
-            this.registererDataGridViewTextBoxColumn.Name = "registererDataGridViewTextBoxColumn";
-            this.registererDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // doctorDataGridViewTextBoxColumn
-            // 
-            this.doctorDataGridViewTextBoxColumn.DataPropertyName = "Doctor";
-            this.doctorDataGridViewTextBoxColumn.HeaderText = "Doctor";
-            this.doctorDataGridViewTextBoxColumn.Name = "doctorDataGridViewTextBoxColumn";
-            this.doctorDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // VisitsPerformWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1246,20 +1322,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.labBindingSource)).EndInit();
             this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.masterControl1)).EndInit();
+            this.masterControl1.ResumeLayout(false);
+            this.detailControl1.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.shortLabBindingSource)).EndInit();
+            this.tabPage6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.shortPhBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.shortVisitBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.masterControl1)).EndInit();
-            this.masterControl1.ResumeLayout(false);
-            this.detailControl1.ResumeLayout(false);
-            this.tabPage5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
-            this.tabPage6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1335,48 +1411,8 @@
         private System.Windows.Forms.DataGridView dataGridView5;
         private System.Windows.Forms.DataGridView dataGridView6;
         private System.Windows.Forms.BindingSource shortPhBindingSource;
-        //private BD_2DataSetTableAdapters.ShortPhysicalExaminationsTableAdapter shortPhysicalExaminationsTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kodBadaniaDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nazwaBadaniaDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn notatkiDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataBadaniaDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn wynikDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn wykonałDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataWizytyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn visit_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lekarzDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn wywiadDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn diagnozaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kodBadaniaDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nazwaBadaniaDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn wynikDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lABexaminationcodeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Physical_examination_code;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ExaminationName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Result;
-        private System.Windows.Forms.DataGridViewTextBoxColumn physicalexaminationidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn physicalexaminationcodeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn resultDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn visitidDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lABexaminationidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn doctornotesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lABworkeridDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn commissionexaminationdateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lABexaminationresultDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lABexaminationdateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lABmanageridDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lABmanagernotesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn endingexaminationdateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn visitidDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn examinationdictionaryDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn visitDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn workerDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn worker1DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn physicalexaminationidDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn physicalexaminationcodeDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn resultDataGridViewTextBoxColumn1;
@@ -1397,5 +1433,24 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn physicalexaminationDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn registererDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn doctorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Physical_examination_code;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ExaminationName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Result;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn doctornotesDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lABexaminationidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn doctornotesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lABworkeridDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn commissionexaminationdateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lABexaminationresultDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lABexaminationdateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lABmanageridDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lABmanagernotesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn endingexaminationdateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn visitidDataGridViewTextBoxColumn2;
     }
 }
