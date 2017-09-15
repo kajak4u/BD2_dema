@@ -16,7 +16,7 @@ namespace BD2_demaOkien
 
 	public partial class ExaminationsDetailWindow : Form
 	{
-		public ExaminationsDetailWindow(int labExamID)//potrzebny jakiś param do określenia we frazie WHERE poniżej
+		public ExaminationsDetailWindow(int labExamID)
 		{
 			InitializeComponent();
 			using (var Db = new BD2_demaOkien.Data.BD2_2Db())
