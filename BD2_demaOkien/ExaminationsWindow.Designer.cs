@@ -61,6 +61,7 @@
             this.bindingNavigatorItemData = new System.Windows.Forms.ToolStripButton();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -224,10 +225,12 @@
             // 
             // dateTimePicker2
             // 
+            this.dateTimePicker2.Checked = false;
             this.dateTimePicker2.CustomFormat = " dd - MM - yyyy";
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker2.Location = new System.Drawing.Point(124, 33);
             this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.ShowCheckBox = true;
             this.dateTimePicker2.Size = new System.Drawing.Size(109, 20);
             this.dateTimePicker2.TabIndex = 4;
             this.dateTimePicker2.Value = new System.DateTime(2017, 4, 25, 16, 45, 55, 0);
@@ -244,10 +247,12 @@
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Checked = false;
             this.dateTimePicker1.CustomFormat = " dd - MM - yyyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(124, 6);
             this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.ShowCheckBox = true;
             this.dateTimePicker1.Size = new System.Drawing.Size(109, 20);
             this.dateTimePicker1.TabIndex = 2;
             this.dateTimePicker1.Value = new System.DateTime(2017, 4, 25, 16, 45, 55, 0);
@@ -271,6 +276,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
+            this.Column7,
             this.Column2,
             this.Column3,
             this.Column4,
@@ -413,6 +419,14 @@
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "id";
+            this.Column7.HeaderText = "ID";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Visible = false;
+            // 
             // Column2
             // 
             this.Column2.DataPropertyName = "data_zlec";
@@ -503,6 +517,7 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorItemData;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;

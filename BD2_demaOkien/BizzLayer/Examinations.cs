@@ -21,6 +21,7 @@ namespace BD2_demaOkien.BizzLayer
                     .Include(ex => ex.Visit.Patient)
                     .Select(Le => new LabExaminationData
                     {
+                        id = Le.LAB_examination_id,
                         type = Le.Examination_dictionary.Examiantion_type,
                         data_zlec = Le.commission_examination_date,
                         data_wyk = Le.LAB_examination_date,
@@ -37,6 +38,7 @@ namespace BD2_demaOkien.BizzLayer
     {
         public DateTime? data_wyk { get; set; }
         public DateTime? data_zlec { get; set; }
+        public int id { get; internal set; }
         public string lab { get; set; }
         public string patient { get; set; }
         public string status { get; set; }

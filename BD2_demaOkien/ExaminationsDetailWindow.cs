@@ -33,18 +33,20 @@ namespace BD2_demaOkien
 			public string notes;
 			public string labWorker;
 			public string labResult;
-			public DateTime labDate;
+			public DateTime? labDate;
 			public string klabWorker;
 			public string klabNotes;
 			public DateTime? klabDate;
 		}
 
 		public ExaminationsDetailWindow(ParametersForExamDetails param, bool isLabExam)//potrzebny jakiś param do określenia we frazie WHERE poniżej
-		{
-			InitializeComponent();
+        {
+            InitializeComponent();
+            MessageBox.Show("To nie działa!!! :(");
+            return;
 			using (var Db = new BD2_demaOkien.Data.BD2_2Db())
 			{
-				IQueryable<DBdataResult> data;
+				DBdataResult data;
 				if (isLabExam)
 				{
 					var lab_data = from exam in Db.Examination_dictionary
@@ -71,7 +73,7 @@ namespace BD2_demaOkien
 									   klabNotes = lab_exam.LAB_manager_notes,
 									   klabDate = lab_exam.LAB_examination_date
 								   };
-					data = (IQueryable<DBdataResult>)lab_data;
+					data = lab_data.First();
 				}
 				else
 				{
@@ -81,8 +83,8 @@ namespace BD2_demaOkien
 								   join pat in Db.Patient on vis.patient_id equals pat.Patient_id
 								   join doc in Db.Worker on vis.doctor_id equals doc.Worker_id
 								   where param.visitId == vis.visit_id && param.phyExamId == phy_exam.Physical_examination_id
-								   select new
-								   {
+								   select new DBdataResult
+                                   {
 									   examType = exam.Examiantion_type,
 									   examName = exam.Examination_name,
 									   dateZle = vis.ending_date,
@@ -97,27 +99,27 @@ namespace BD2_demaOkien
 									   klabNotes = String.Empty,
 									   klabDate = (DateTime?)null
 								   };
-					data = (IQueryable<DBdataResult>)phy_data;
+                    data = phy_data.First();
 				}
 
-				textBox5.Text = data.Select(a => a.dateZle).ToString();
-				textBox1.Text = data.Select(a => a.patientName).ToString();
-				string examType = data.Select(a => a.examType).ToString();
+                textBox5.Text = data.dateZle.HasValue ? data.dateZle.Value.ToString() : "";
+                textBox1.Text = data.patientName;
+                string examType = data.examType;
 				textBox2.Text = examType == "L" ? "LABORATORYJNE" : "FIZYCZNE";
-				textBox3.Text = data.Select(a => a.examStatus).ToString();
+                textBox3.Text = data.examStatus;
 
-				textBoxPatient.Text = data.Select(a => a.doctor).ToString();
-				richTextBox1.Text = data.Select(a => a.notes).ToString();
+                textBoxPatient.Text = data.doctor;
+                richTextBox1.Text = data.notes;
 
-				textBox4.Text = data.Select(a => a.labWorker).ToString();
-				richTextBox2.Text = data.Select(a => a.labResult).ToString();
-				textBox6.Text = data.Select(a => a.labDate).ToString();
+                textBox4.Text = data.labWorker;
+                richTextBox2.Text = data.labResult;
+                textBox6.Text = data.labDate.HasValue ? data.labDate.Value.ToString() : "";
 
-				textBox8.Text = data.Select(a => a.klabWorker).ToString();
-				richTextBox3.Text = data.Select(a => a.klabNotes).ToString();
-				textBox7.Text = data.Select(a => a.klabDate).ToString();
+                textBox8.Text = data.klabWorker;
+                richTextBox3.Text = data.klabNotes;
+                textBox7.Text = data.klabDate.HasValue ? data.klabDate.Value.ToString() : "";
 
-				if (!isLabExam)
+                if (!isLabExam)
 				{
 					textBox4.Enabled = false;
 					richTextBox2.Enabled = false;

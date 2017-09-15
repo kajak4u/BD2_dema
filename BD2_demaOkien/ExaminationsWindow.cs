@@ -51,8 +51,9 @@ namespace BD2_demaOkien
 			{
 				para.phyExamId = ;//znaleźć i przypisać
 			}*/
+            para.labExamId = (int)dataGridView1.CurrentRow.Cells["Column7"].Value;
 
-			new ExaminationsDetailWindow(para, /*isLab*/true).ShowDialog();
+            new ExaminationsDetailWindow(para,true).ShowDialog();
 		}
 
 		private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
