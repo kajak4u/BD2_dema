@@ -38,10 +38,9 @@ namespace BD2_demaOkien
             InitializeComponent();
             using (var Db = new BD2_demaOkien.Data.BD2_2Db())
             {
-                DBdataResult data;
-                var lab_data = Db.LAB_examination
+                var data = Db.LAB_examination
                     .Where(ex => ex.LAB_examination_id == examinationId)
-                    .Select(ex => new DBdataResult
+                    .Select(ex => new
                     {
                         examType = ex.Examination_dictionary.Examiantion_type,
                         examName = ex.Examination_dictionary.Examination_name,
@@ -52,14 +51,13 @@ namespace BD2_demaOkien
                         notes = ex.doctor_notes,
                         labWorker = ex.Worker.First_name + " " + ex.Worker.Last_name,
                         labResult = ex.LAB_examination_result,
-                        labDate = ex.commission_examination_date,
+                        labDate = ex.LAB_examination_date,
                         klabWorker = ex.Worker1.First_name + " " + ex.Worker1.Last_name,
                         klabNotes = ex.LAB_manager_notes,
                         klabDate = ex.LAB_examination_date
-                    });
-                data = lab_data.First();
+                    }).First();
 
-                textBox5.Text = data.dateZle.HasValue ? data.dateZle.Value.ToString() : "";
+                textBox5.Text = data.dateZle.ToString();
                 textBox1.Text = data.patientName;
                 string examType = data.examType;
                 textBox3.Text = data.examStatus;
@@ -144,6 +142,11 @@ namespace BD2_demaOkien
                         break;
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
