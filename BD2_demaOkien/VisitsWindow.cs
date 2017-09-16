@@ -75,18 +75,17 @@ namespace BD2_demaOkien
             }
             LoadVisits();
         }
+        private int CurrentRowID()
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+                return (int)dataGridView1.SelectedRows[0].Cells["visitidDataGridViewTextBoxColumn"].Value;
+            else
+                return (int)dataGridView1.CurrentRow.Cells["visitidDataGridViewTextBoxColumn"].Value;
+        }
 
         private void bindingNavigatorItemData_Click(object sender, EventArgs e)
         {
-            int id;
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-                id = (int)dataGridView1.SelectedRows[0].Cells["visitidDataGridViewTextBoxColumn"].Value;
-            }
-            else
-            {
-                id = (int)dataGridView1.CurrentRow.Cells["visitidDataGridViewTextBoxColumn"].Value;
-            }
+            int id = CurrentRowID();
             new VisitsAddWindow(ViewMode.VIEW, patientID, id).ShowDialog();
         }
 
@@ -136,7 +135,7 @@ namespace BD2_demaOkien
 
         private void bindingNavigatorItemPerform_Click(object sender, EventArgs e)
         {
-            new VisitsPerformWindow().ShowDialog();
+            new VisitsPerformWindow(CurrentRowID()).ShowDialog();
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)

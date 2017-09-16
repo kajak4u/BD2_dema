@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BD2_demaOkien.BizzLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,7 +33,7 @@ namespace BD2_demaOkien
 			{
 				//bindingNavigatorAddNewItem.Visible = false;
 			}
-            bindingSource1.DataSource = BizzLayer.Examinations.GetAll().ToList();
+            bindingSource1.DataSource = BizzLayer.LabExaminations.Get(new ExaminationFilterParams()).ToList();
 		}
 
 		private void bindingNavigatorItemData_Click(object sender, EventArgs e)

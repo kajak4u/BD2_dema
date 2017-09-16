@@ -35,7 +35,7 @@ namespace BD2_demaOkien
 
         private void buttonPerform_Click(object sender, EventArgs e)
         {
-            new VisitsPerformWindow().ShowDialog();
+            new VisitsPerformWindow(0/*FIX IT!!!*/).ShowDialog();
         }
     }
 }
