@@ -171,6 +171,11 @@
             this.comboBox1.DisplayMember = "Value";
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Wszystkie",
+            "Zarejestrowane",
+            "Odbyte",
+            "Anulowane"});
             this.comboBox1.Location = new System.Drawing.Point(269, 6);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(152, 21);
