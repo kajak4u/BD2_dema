@@ -116,6 +116,12 @@
     <Compile Include="PatientDetailsWindow.Designer.cs">
       <DependentUpon>PatientDetailsWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminMainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminMainWindow.Designer.cs">
+      <DependentUpon>AdminMainWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="PatientsWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +186,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PatientDetailsWindow.resx">
       <DependentUpon>PatientDetailsWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminMainWindow.resx">
+      <DependentUpon>AdminMainWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="PatientsWindow.resx">
       <DependentUpon>PatientsWindow.cs</DependentUpon>

@@ -55,11 +55,12 @@ namespace BD2_demaOkien
                     BringMenuToFront(kierLabToolStripMenuItem);
                     break;
                 case Role.ADMIN:
-                    rejestratorkaToolStripMenuItem.Visible = true;
-                    lekarzToolStripMenuItem.Visible = true;
-                    laborantToolStripMenuItem.Visible = true;
-                    kierLabToolStripMenuItem.Visible = true;
-                    adminToolStripMenuItem.Visible = true;
+                    //rejestratorkaToolStripMenuItem.Visible = true;
+                    //lekarzToolStripMenuItem.Visible = true;
+                    //laborantToolStripMenuItem.Visible = true;
+                    //kierLabToolStripMenuItem.Visible = true;
+                    //adminToolStripMenuItem.Visible = true;
+                    BringMenuToFront(adminToolStripMenuItem);
                     break;
                 default:
                     break;
@@ -97,6 +98,11 @@ namespace BD2_demaOkien
             OpenMDIWindow(new ExaminationsDictionariesWindow());
         }
 
+        private void adminToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenMDIWindow(new AdminMainWindow());
+        }
+
         static public void ShowError(String message, String caption="Błąd")
         {
             MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -104,6 +110,11 @@ namespace BD2_demaOkien
         static public bool ShowQuestion(String message, String caption="Pytanie")
         {
             return MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }
