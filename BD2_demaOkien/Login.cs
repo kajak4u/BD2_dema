@@ -24,7 +24,7 @@ namespace BD2_demaOkien
 			InitializeComponent();
 		}
 
-		private bool PerformLogin()
+		private bool? PerformLogin()
 		{
 			userLogin = loginBox.Text;
 			userPassword = passwordBox.Text;
@@ -60,8 +60,9 @@ namespace BD2_demaOkien
 					{
 						if (worker.Expiration_date != null && DateTime.Compare(worker.Expiration_date.Value, DateTime.Now) <= 0)
 						{
+                            this.DialogResult = DialogResult.None;
                             MainWindow.ShowError("Konto wygasło!", "Błąd logowania");
-							return false;
+							return null;
 						}
 						userRole = (Role)Enum.Parse(typeof(Role), worker.Role.ToUpper());
 						userId = worker.Worker_id;
@@ -69,8 +70,9 @@ namespace BD2_demaOkien
 					}
 					catch (Exception)
                     {
+                        this.DialogResult = DialogResult.None;
                         MainWindow.ShowError("Nieznana rola!", "Błąd logowania");
-                        return false;
+                        return null;
 					}
 				}
 				else
@@ -80,7 +82,8 @@ namespace BD2_demaOkien
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			if (!PerformLogin())
+            bool? temp = PerformLogin();
+            if (temp == false)
 			{
 				this.DialogResult = DialogResult.None;
                 MainWindow.ShowError("Błedny login i/lub hasło!", "Błąd logowania");
