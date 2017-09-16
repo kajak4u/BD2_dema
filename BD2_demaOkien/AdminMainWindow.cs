@@ -39,43 +39,42 @@ namespace BD2_demaOkien
             deleteItem.First().Enabled = currentExists;
         }
 
-        private void Patients_Load(object sender, EventArgs e)
+        private void Workers_Load(object sender, EventArgs e)
         {
-            LoadPatients();
+            LoadWorkers();
         }
 
-        private void LoadPatients()
+        private void LoadWorkers()
         {
             using (var Db = new Data.BD2_2Db())
             {
-                var patient = from patients in Db.Patient
-                              join address in Db.Address
-                              on patients.address_id equals address.Address_id
-                              where patients.First_name.Contains(textBox1.Text) && patients.Last_name.Contains(textBox2.Text) && patients.PESEL.Contains(textBox3.Text)//FirstName == patients.First_name && LastName == patients.Last_name //&& Pesel == patients.PESEL
+                var worker = from workers in Db.Worker
+                              where workers.First_name.Contains(textBox1.Text) && workers.Last_name.Contains(textBox2.Text) && workers.PESEL.Contains(textBox3.Text)//FirstName == patients.First_name && LastName == patients.Last_name //&& Pesel == patients.PESEL
                               select new
                               {
-                                  Patient_id = patients.Patient_id,
-                                  First_name = patients.First_name,
-                                  Last_name = patients.Last_name,
-                                  Phone_number = patients.Phone_number,
-                                  PESEL = patients.PESEL,
-                                  Address = address.Flat_number != null ? address.City + " " + address.Street + " " + address.House_number + " " + address.Flat_number : address.City + " " + address.Street + " " + address.House_number
+                                  WorkerId = workers.Worker_id,
+                                  First_name = workers.First_name,
+                                  Last_name = workers.Last_name,
+                                  Phone_number = workers.Phone_number,
+                                  PESEL = workers.PESEL,
+                                  Role = workers.Role,
+                                  Expiration = workers.Expiration_date
                               };
-                patientBindingSource.DataSource = patient.ToList();
+                patientBindingSource.DataSource = worker.ToList();
             }
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
             new PatientDetailsWindow(ViewMode.CREATE, 0).ShowDialog();
-            LoadPatients();
+            LoadWorkers();
         }
 
         private void bindingNavigatorEditItem_Click(object sender, EventArgs e)
         {
             int id = CurrentRecordID();
             new PatientDetailsWindow(ViewMode.EDIT, id).ShowDialog();
-            this.LoadPatients();
+            this.LoadWorkers();
 
         }
 
@@ -104,7 +103,7 @@ namespace BD2_demaOkien
         {
             int id = CurrentRecordID();
             new PatientDetailsWindow(ViewMode.VIEW, id).ShowDialog();
-            LoadPatients();
+            LoadWorkers();
         }
 
         private void bindingNavigatorItemTests_Click(object sender, EventArgs e)
@@ -121,12 +120,12 @@ namespace BD2_demaOkien
         {
             int id = CurrentRecordID();
             new VisitsAddWindow(ViewMode.CREATE, id).ShowDialog();
-            LoadPatients();
+            LoadWorkers();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            LoadPatients();
+            LoadWorkers();
         }
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
@@ -135,7 +134,7 @@ namespace BD2_demaOkien
             {
                 int id = CurrentRecordID();
                 BizzLayer.Visits.deleteUser(id);
-                LoadPatients();
+                LoadWorkers();
             }
         }
 
@@ -168,6 +167,11 @@ namespace BD2_demaOkien
         {
             if (selectMode)
                 toolStripButtonSelect_Click(sender, e);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     } 
 }
