@@ -15,6 +15,7 @@ namespace BD2_demaOkien
         string userLogin;
         public static Role userRole { get; private set; }
         public static int userId { get; private set; }
+        public static object LastSelectResult { get; set; }
         public MainWindow()
         {
             this.Hide();

@@ -122,5 +122,23 @@ namespace BD2_demaOkien
             comboBoxLab.SelectedIndex = -1;
             comboBoxKlab.SelectedIndex = -1;
         }
+
+        private void buttonChoosePatient_Click(object sender, EventArgs e)
+        {
+            PatientsWindow patients = new PatientsWindow(true);
+            patients.MdiParent = this.MdiParent;
+            patients.Show();
+        }
+
+        private void ExaminationsWindow_Activated(object sender, EventArgs e)
+        {
+            if(buttonChoosePatient.Focused)
+            {
+                if(MainWindow.LastSelectResult != null)
+                {
+                    textBoxPESEL.Text = (string)MainWindow.LastSelectResult;
+                }
+            }
+        }
     }
 }

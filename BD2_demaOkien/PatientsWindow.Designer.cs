@@ -42,13 +42,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.patientidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phonenumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pESELDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -68,13 +61,34 @@
             this.bindingNavigatorItemAddVisit = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorItemTests = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigator_selectMode = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorMoveFirstItem1 = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem1 = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem1 = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorCountItem1 = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveNextItem1 = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem1 = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonSelect = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonNoSelect = new System.Windows.Forms.ToolStripButton();
+            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.patientidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phonenumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pESELDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator_selectMode)).BeginInit();
+            this.bindingNavigator_selectMode.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // bindingNavigatorDeleteItem
@@ -188,6 +202,7 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.bindingNavigator_selectMode);
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Controls.Add(this.bindingNavigator1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -214,63 +229,11 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(539, 240);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // patientidDataGridViewTextBoxColumn
-            // 
-            this.patientidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.patientidDataGridViewTextBoxColumn.DataPropertyName = "Patient_id";
-            this.patientidDataGridViewTextBoxColumn.HeaderText = "PatientId";
-            this.patientidDataGridViewTextBoxColumn.Name = "patientidDataGridViewTextBoxColumn";
-            this.patientidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.patientidDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // firstnameDataGridViewTextBoxColumn
-            // 
-            this.firstnameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.firstnameDataGridViewTextBoxColumn.DataPropertyName = "First_name";
-            this.firstnameDataGridViewTextBoxColumn.HeaderText = "Imię";
-            this.firstnameDataGridViewTextBoxColumn.Name = "firstnameDataGridViewTextBoxColumn";
-            this.firstnameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lastnameDataGridViewTextBoxColumn
-            // 
-            this.lastnameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.lastnameDataGridViewTextBoxColumn.DataPropertyName = "Last_name";
-            this.lastnameDataGridViewTextBoxColumn.HeaderText = "Nazwisko";
-            this.lastnameDataGridViewTextBoxColumn.Name = "lastnameDataGridViewTextBoxColumn";
-            this.lastnameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // phonenumberDataGridViewTextBoxColumn
-            // 
-            this.phonenumberDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.phonenumberDataGridViewTextBoxColumn.DataPropertyName = "Phone_number";
-            this.phonenumberDataGridViewTextBoxColumn.HeaderText = "Nr telefonu";
-            this.phonenumberDataGridViewTextBoxColumn.Name = "phonenumberDataGridViewTextBoxColumn";
-            this.phonenumberDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // pESELDataGridViewTextBoxColumn
-            // 
-            this.pESELDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.pESELDataGridViewTextBoxColumn.DataPropertyName = "PESEL";
-            this.pESELDataGridViewTextBoxColumn.HeaderText = "PESEL";
-            this.pESELDataGridViewTextBoxColumn.Name = "pESELDataGridViewTextBoxColumn";
-            this.pESELDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Address
-            // 
-            this.Address.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Address.DataPropertyName = "Address";
-            this.Address.HeaderText = "Adres";
-            this.Address.Name = "Address";
-            this.Address.ReadOnly = true;
-            // 
-            // patientBindingSource
-            // 
-            this.patientBindingSource.DataSource = typeof(BD2_demaOkien.Data.Patient);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // bindingNavigator1
             // 
@@ -453,6 +416,177 @@
             this.bindingNavigatorItemTests.Text = "Badania";
             this.bindingNavigatorItemTests.Click += new System.EventHandler(this.bindingNavigatorItemTests_Click);
             // 
+            // bindingNavigator_selectMode
+            // 
+            this.bindingNavigator_selectMode.AddNewItem = null;
+            this.bindingNavigator_selectMode.BindingSource = this.patientBindingSource;
+            this.bindingNavigator_selectMode.CountItem = this.bindingNavigatorCountItem1;
+            this.bindingNavigator_selectMode.DeleteItem = null;
+            this.bindingNavigator_selectMode.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bindingNavigator_selectMode.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorMoveFirstItem1,
+            this.bindingNavigatorMovePreviousItem1,
+            this.bindingNavigatorSeparator3,
+            this.bindingNavigatorPositionItem1,
+            this.bindingNavigatorCountItem1,
+            this.bindingNavigatorSeparator4,
+            this.bindingNavigatorMoveNextItem1,
+            this.bindingNavigatorMoveLastItem1,
+            this.bindingNavigatorSeparator5,
+            this.toolStripButtonSelect,
+            this.toolStripButtonNoSelect});
+            this.bindingNavigator_selectMode.Location = new System.Drawing.Point(0, 215);
+            this.bindingNavigator_selectMode.MoveFirstItem = this.bindingNavigatorMoveFirstItem1;
+            this.bindingNavigator_selectMode.MoveLastItem = this.bindingNavigatorMoveLastItem1;
+            this.bindingNavigator_selectMode.MoveNextItem = this.bindingNavigatorMoveNextItem1;
+            this.bindingNavigator_selectMode.MovePreviousItem = this.bindingNavigatorMovePreviousItem1;
+            this.bindingNavigator_selectMode.Name = "bindingNavigator_selectMode";
+            this.bindingNavigator_selectMode.PositionItem = this.bindingNavigatorPositionItem1;
+            this.bindingNavigator_selectMode.Size = new System.Drawing.Size(539, 25);
+            this.bindingNavigator_selectMode.TabIndex = 3;
+            this.bindingNavigator_selectMode.Text = "bindingNavigator_selectMode";
+            this.bindingNavigator_selectMode.Visible = false;
+            // 
+            // bindingNavigatorMoveFirstItem1
+            // 
+            this.bindingNavigatorMoveFirstItem1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem1.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem1.Image")));
+            this.bindingNavigatorMoveFirstItem1.Name = "bindingNavigatorMoveFirstItem";
+            this.bindingNavigatorMoveFirstItem1.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem1.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem1.Text = "Move first";
+            // 
+            // bindingNavigatorMovePreviousItem1
+            // 
+            this.bindingNavigatorMovePreviousItem1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem1.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem1.Image")));
+            this.bindingNavigatorMovePreviousItem1.Name = "bindingNavigatorMovePreviousItem";
+            this.bindingNavigatorMovePreviousItem1.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem1.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem1.Text = "Move previous";
+            // 
+            // bindingNavigatorSeparator3
+            // 
+            this.bindingNavigatorSeparator3.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorPositionItem1
+            // 
+            this.bindingNavigatorPositionItem1.AccessibleName = "Position";
+            this.bindingNavigatorPositionItem1.AutoSize = false;
+            this.bindingNavigatorPositionItem1.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem1.Size = new System.Drawing.Size(50, 23);
+            this.bindingNavigatorPositionItem1.Text = "0";
+            this.bindingNavigatorPositionItem1.ToolTipText = "Current position";
+            // 
+            // bindingNavigatorCountItem1
+            // 
+            this.bindingNavigatorCountItem1.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem1.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem1.Text = "of {0}";
+            this.bindingNavigatorCountItem1.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorSeparator4
+            // 
+            this.bindingNavigatorSeparator4.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorMoveNextItem1
+            // 
+            this.bindingNavigatorMoveNextItem1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem1.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem1.Image")));
+            this.bindingNavigatorMoveNextItem1.Name = "bindingNavigatorMoveNextItem";
+            this.bindingNavigatorMoveNextItem1.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem1.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem1.Text = "Move next";
+            // 
+            // bindingNavigatorMoveLastItem1
+            // 
+            this.bindingNavigatorMoveLastItem1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem1.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem1.Image")));
+            this.bindingNavigatorMoveLastItem1.Name = "bindingNavigatorMoveLastItem";
+            this.bindingNavigatorMoveLastItem1.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem1.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem1.Text = "Move last";
+            // 
+            // bindingNavigatorSeparator5
+            // 
+            this.bindingNavigatorSeparator5.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButtonSelect
+            // 
+            this.toolStripButtonSelect.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonSelect.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSelect.Image")));
+            this.toolStripButtonSelect.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSelect.Name = "toolStripButtonSelect";
+            this.toolStripButtonSelect.Size = new System.Drawing.Size(53, 22);
+            this.toolStripButtonSelect.Text = "Wybierz";
+            this.toolStripButtonSelect.Click += new System.EventHandler(this.toolStripButtonSelect_Click);
+            // 
+            // toolStripButtonNoSelect
+            // 
+            this.toolStripButtonNoSelect.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonNoSelect.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonNoSelect.Image")));
+            this.toolStripButtonNoSelect.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonNoSelect.Name = "toolStripButtonNoSelect";
+            this.toolStripButtonNoSelect.Size = new System.Drawing.Size(49, 22);
+            this.toolStripButtonNoSelect.Text = "Powrót";
+            this.toolStripButtonNoSelect.Click += new System.EventHandler(this.toolStripButtonNoSelect_Click);
+            // 
+            // patientBindingSource
+            // 
+            this.patientBindingSource.DataSource = typeof(BD2_demaOkien.Data.Patient);
+            // 
+            // patientidDataGridViewTextBoxColumn
+            // 
+            this.patientidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.patientidDataGridViewTextBoxColumn.DataPropertyName = "Patient_id";
+            this.patientidDataGridViewTextBoxColumn.HeaderText = "PatientId";
+            this.patientidDataGridViewTextBoxColumn.Name = "patientidDataGridViewTextBoxColumn";
+            this.patientidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.patientidDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // firstnameDataGridViewTextBoxColumn
+            // 
+            this.firstnameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.firstnameDataGridViewTextBoxColumn.DataPropertyName = "First_name";
+            this.firstnameDataGridViewTextBoxColumn.HeaderText = "Imię";
+            this.firstnameDataGridViewTextBoxColumn.Name = "firstnameDataGridViewTextBoxColumn";
+            this.firstnameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastnameDataGridViewTextBoxColumn
+            // 
+            this.lastnameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.lastnameDataGridViewTextBoxColumn.DataPropertyName = "Last_name";
+            this.lastnameDataGridViewTextBoxColumn.HeaderText = "Nazwisko";
+            this.lastnameDataGridViewTextBoxColumn.Name = "lastnameDataGridViewTextBoxColumn";
+            this.lastnameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // phonenumberDataGridViewTextBoxColumn
+            // 
+            this.phonenumberDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.phonenumberDataGridViewTextBoxColumn.DataPropertyName = "Phone_number";
+            this.phonenumberDataGridViewTextBoxColumn.HeaderText = "Nr telefonu";
+            this.phonenumberDataGridViewTextBoxColumn.Name = "phonenumberDataGridViewTextBoxColumn";
+            this.phonenumberDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // pESELDataGridViewTextBoxColumn
+            // 
+            this.pESELDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.pESELDataGridViewTextBoxColumn.DataPropertyName = "PESEL";
+            this.pESELDataGridViewTextBoxColumn.HeaderText = "PESEL";
+            this.pESELDataGridViewTextBoxColumn.Name = "pESELDataGridViewTextBoxColumn";
+            this.pESELDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Address
+            // 
+            this.Address.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Address.DataPropertyName = "Address";
+            this.Address.HeaderText = "Adres";
+            this.Address.Name = "Address";
+            this.Address.ReadOnly = true;
+            // 
             // PatientsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -469,10 +603,13 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator_selectMode)).EndInit();
+            this.bindingNavigator_selectMode.ResumeLayout(false);
+            this.bindingNavigator_selectMode.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -516,5 +653,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn phonenumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pESELDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
+        private System.Windows.Forms.BindingNavigator bindingNavigator_selectMode;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem1;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator3;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem1;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator4;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem1;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator5;
+        private System.Windows.Forms.ToolStripButton toolStripButtonSelect;
+        private System.Windows.Forms.ToolStripButton toolStripButtonNoSelect;
     }
 }

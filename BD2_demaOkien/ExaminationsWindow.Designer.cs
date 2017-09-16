@@ -456,6 +456,7 @@
             this.buttonChoosePatient.Text = "...";
             this.buttonChoosePatient.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonChoosePatient.UseVisualStyleBackColor = true;
+            this.buttonChoosePatient.Click += new System.EventHandler(this.buttonChoosePatient_Click);
             // 
             // Column7
             // 
@@ -530,6 +531,7 @@
             this.Name = "ExaminationsWindow";
             this.Text = "Badania";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Activated += new System.EventHandler(this.ExaminationsWindow_Activated);
             this.Load += new System.EventHandler(this.ExaminationsWindow_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

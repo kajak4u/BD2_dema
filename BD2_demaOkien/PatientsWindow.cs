@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BD2_demaOkien.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,10 +14,16 @@ namespace BD2_demaOkien
 {
     public partial class PatientsWindow : Form
     {
-
-        public PatientsWindow()
+        private bool selectMode;
+        public PatientsWindow(bool selectMode=false)
         {
+            this.selectMode = selectMode;
             InitializeComponent();
+            if(selectMode)
+            {
+                bindingNavigator1.Visible = false;
+                bindingNavigator_selectMode.Visible = true;
+            }
         }
 
         private void bindingNavigator1_RefreshItems(object sender, EventArgs e)
@@ -154,6 +161,30 @@ namespace BD2_demaOkien
             textBox1.Text = "";
             textBox2.Text = "";
             textBox3.Text = "";
+        }
+
+        private void toolStripButtonSelect_Click(object sender, EventArgs e)
+        {
+            Patient patient = BizzLayer.Patients.GetByID(CurrentRecordID());
+            if(patient==null)
+            {
+                MainWindow.ShowError("Nie wybrano pacjenta!");
+                return;
+            }
+            MainWindow.LastSelectResult = patient.PESEL;
+            Close();
+        }
+
+        private void toolStripButtonNoSelect_Click(object sender, EventArgs e)
+        {
+            MainWindow.LastSelectResult = null;
+            Close();
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (selectMode)
+                toolStripButtonSelect_Click(sender, e);
         }
     } 
 }
