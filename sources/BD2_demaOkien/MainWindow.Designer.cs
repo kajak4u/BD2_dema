@@ -61,6 +61,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(701, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // rejestratorkaToolStripMenuItem
             // 
@@ -172,8 +173,9 @@
             // użytkownicyToolStripMenuItem
             // 
             this.użytkownicyToolStripMenuItem.Name = "użytkownicyToolStripMenuItem";
-            this.użytkownicyToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.użytkownicyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.użytkownicyToolStripMenuItem.Text = "&Użytkownicy";
+            this.użytkownicyToolStripMenuItem.Click += new System.EventHandler(this.adminToolStripMenuItem_Click);
             // 
             // słownikBadańToolStripMenuItem
             // 
