@@ -30,7 +30,6 @@ namespace BD2_demaOkien
 			{
 				//bindingNavigatorAddNewItem.Visible = false;
 			}
-            bindingSource1.DataSource = BizzLayer.LabExaminations.Get(new ExaminationFilterParams()).ToList();
 		}
 
 		private void bindingNavigatorItemData_Click(object sender, EventArgs e)
@@ -46,16 +45,16 @@ namespace BD2_demaOkien
 		}
         private void LoadData()
         {
-            comboBoxStatus.DataSource = LabExaminationStatus.statusDictionary;
-            comboBoxDoctor.DataSource = BizzLayer.Workers.GetAll(Role.DOCTOR)
-                .Select(doctor => new
-                {
-                    id = doctor.Worker_id,
-                    name = doctor.First_name + " " + doctor.Last_name
-                })
-                .ToList();
-            comboBoxDoctor.DisplayMember = "name";
-            comboBoxDoctor.ValueMember = "id";
+            bindingSource1.DataSource = BizzLayer.LabExaminations.Get(new ExaminationFilterParams
+            {
+                patient_PESEL = textBoxPESEL.Text,
+                data_zlec = dateTimePicker1.Checked ? dateTimePicker1.Value : (DateTime?)null,
+                data_wyk  = dateTimePicker1.Checked ? dateTimePicker1.Value : (DateTime?)null,
+                status = (string)comboBoxStatus.SelectedValue,
+                doctorId = (int?)comboBoxDoctor.SelectedValue,
+                labId = (int?)comboBoxLab.SelectedValue,
+                klabId = (int?)comboBoxKlab.SelectedValue
+            }).ToList();
         }
 
         private void ExaminationsWindow_Load(object sender, EventArgs e)
@@ -67,18 +66,61 @@ namespace BD2_demaOkien
                 Patient patient = BizzLayer.Patients.GetByID(patientId.Value);
                 textBoxPESEL.Text = patient.PESEL;
             }
-            LoadData();
-            switch(userRole)
+            comboBoxStatus.DataSource = LabExaminationStatus.statusDictionary;
+            comboBoxDoctor.DataSource = BizzLayer.Workers.GetAll(Role.DOCTOR)
+                .Select(doctor => new
+                {
+                    id = doctor.Worker_id,
+                    name = doctor.First_name + " " + doctor.Last_name
+                })
+                .ToList();
+            comboBoxDoctor.SelectedIndex = -1;
+            comboBoxLab.DataSource = BizzLayer.Workers.GetAll(Role.LAB)
+                .Select(doctor => new
+                {
+                    id = doctor.Worker_id,
+                    name = doctor.First_name + " " + doctor.Last_name
+                })
+                .ToList();
+            comboBoxLab.SelectedIndex = -1;
+            comboBoxKlab.DataSource = BizzLayer.Workers.GetAll(Role.KLAB)
+                .Select(doctor => new
+                {
+                    id = doctor.Worker_id,
+                    name = doctor.First_name + " " + doctor.Last_name
+                })
+                .ToList();
+            comboBoxKlab.SelectedIndex = -1;
+            switch (userRole)
             {
                 case Role.DOCTOR:
+                    comboBoxDoctor.SelectedValue = MainWindow.userId;
                     break;
                 case Role.LAB:
+                    comboBoxLab.SelectedValue = MainWindow.userId;
+                    comboBoxStatus.SelectedValue = "COM";
                     break;
                 case Role.KLAB:
+                    comboBoxKlab.SelectedValue = MainWindow.userId;
+                    comboBoxStatus.SelectedValue = "PER";
                     break;
                 case Role.REGISTRAR:
                     break;
             }
+            LoadData();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            comboBoxStatus.SelectedValue = "";
+            comboBoxDoctor.SelectedIndex = -1;
+            comboBoxLab.SelectedIndex = -1;
+            comboBoxKlab.SelectedIndex = -1;
         }
     }
 }

@@ -8,7 +8,14 @@ namespace BD2_demaOkien.BizzLayer
 {
     public class ExaminationFilterParams
     {
+        public DateTime? data_wyk { get; set; }
+        public DateTime? data_zlec { get; set; }
+        public int? doctorId { get; set; }
+        public int? klabId { get; set; }
+        public int? labId { get; set; }
         public int? patient_id { get; set; }
+        public string patient_PESEL { get; set; }
+        public string status { get; set; }
         public int? visit_id { get; set; }
     }
 
@@ -34,6 +41,12 @@ namespace BD2_demaOkien.BizzLayer
                     result = result.Where(ex => ex.Visit.patient_id == filter.patient_id.Value);
                 if (filter.visit_id.HasValue)
                     result = result.Where(ex => ex.visit_id == filter.visit_id.Value);
+                if (filter.data_wyk.HasValue)
+                    result = result.Where(ex => filter.data_wyk.Value.Date == ex.Visit.ending_date.Value.Date);
+                if (filter.doctorId.HasValue)
+                    result = result.Where(ex => ex.Visit.doctor_id == filter.doctorId.Value);
+                if (filter.patient_PESEL != null && filter.patient_PESEL != "")
+                    result = result.Where(ex => ex.Visit.Patient.PESEL.Equals(filter.patient_PESEL));
                 return result.Select(ex => new PhysicalExaminationData
                 {
                     visit_id = ex.visit_id,

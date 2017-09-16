@@ -28,6 +28,20 @@ namespace BD2_demaOkien.BizzLayer
                     result = result.Where(ex => ex.Visit.patient_id == filter.patient_id.Value);
                 if (filter.visit_id.HasValue)
                     result = result.Where(ex => ex.visit_id == filter.visit_id.Value);
+                if (filter.data_wyk.HasValue)
+                    result = result.Where(ex => filter.data_wyk.Value.Date == ex.LAB_examination_date.Value.Date);
+                if (filter.data_zlec.HasValue)
+                    result = result.Where(ex => filter.data_zlec.Value.Date == ex.commission_examination_date.Date);
+                if (filter.doctorId.HasValue)
+                    result = result.Where(ex => ex.Visit.doctor_id == filter.doctorId.Value);
+                if (filter.labId.HasValue)
+                    result = result.Where(ex => ex.LAB_worker_id == filter.labId.Value);
+                if (filter.klabId.HasValue)
+                    result = result.Where(ex => ex.LAB_manager_id == filter.klabId.Value);
+                if (filter.patient_PESEL != null && filter.patient_PESEL != "")
+                    result = result.Where(ex => ex.Visit.Patient.PESEL.Equals(filter.patient_PESEL));
+                if (filter.status != null && filter.status != "")
+                    result = result.Where(ex => ex.status.Equals(filter.status));
                 return result.Select(ex => new LabExaminationData
                 {
                     commission_examination_date = ex.commission_examination_date,

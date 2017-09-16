@@ -43,13 +43,6 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -70,6 +63,13 @@
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxPESEL = new System.Windows.Forms.TextBox();
             this.buttonChoosePatient = new System.Windows.Forms.Button();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -107,6 +107,7 @@
             // 
             this.comboBoxLab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxLab.DisplayMember = "name";
             this.comboBoxLab.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxLab.FormattingEnabled = true;
             this.comboBoxLab.Items.AddRange(new object[] {
@@ -118,6 +119,7 @@
             this.comboBoxLab.Name = "comboBoxLab";
             this.comboBoxLab.Size = new System.Drawing.Size(212, 21);
             this.comboBoxLab.TabIndex = 19;
+            this.comboBoxLab.ValueMember = "id";
             // 
             // label6
             // 
@@ -133,6 +135,7 @@
             // 
             this.comboBoxDoctor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxDoctor.DisplayMember = "name";
             this.comboBoxDoctor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDoctor.FormattingEnabled = true;
             this.comboBoxDoctor.Items.AddRange(new object[] {
@@ -144,6 +147,7 @@
             this.comboBoxDoctor.Name = "comboBoxDoctor";
             this.comboBoxDoctor.Size = new System.Drawing.Size(212, 21);
             this.comboBoxDoctor.TabIndex = 17;
+            this.comboBoxDoctor.ValueMember = "id";
             // 
             // button2
             // 
@@ -155,6 +159,7 @@
             this.button2.TabIndex = 15;
             this.button2.Text = "Wyczyść";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -166,6 +171,7 @@
             this.button1.TabIndex = 14;
             this.button1.Text = "Szukaj";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // comboBoxStatus
             // 
@@ -262,65 +268,6 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(677, 353);
             this.dataGridView1.TabIndex = 13;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "LAB_examination_id";
-            this.Column7.HeaderText = "ID";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column2.DataPropertyName = "commission_examination_date";
-            this.Column2.HeaderText = "Data zlecenia";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 5;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column3.DataPropertyName = "LAB_examination_date";
-            this.Column3.HeaderText = "Data wykonania";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 5;
-            // 
-            // Column4
-            // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column4.DataPropertyName = "status";
-            this.Column4.HeaderText = "Status";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 5;
-            // 
-            // Column6
-            // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column6.DataPropertyName = "Pacjent";
-            this.Column6.HeaderText = "Pacjent";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column5.DataPropertyName = "lab";
-            this.Column5.HeaderText = "Laborant";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.DataPropertyName = "Klab";
-            this.Column1.HeaderText = "Kierownik lab.";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
             // 
             // bindingNavigator1
             // 
@@ -468,6 +415,7 @@
             // 
             this.comboBoxKlab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxKlab.DisplayMember = "name";
             this.comboBoxKlab.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxKlab.FormattingEnabled = true;
             this.comboBoxKlab.Items.AddRange(new object[] {
@@ -479,6 +427,7 @@
             this.comboBoxKlab.Name = "comboBoxKlab";
             this.comboBoxKlab.Size = new System.Drawing.Size(212, 21);
             this.comboBoxKlab.TabIndex = 21;
+            this.comboBoxKlab.ValueMember = "id";
             // 
             // label7
             // 
@@ -496,7 +445,6 @@
             this.textBoxPESEL.Name = "textBoxPESEL";
             this.textBoxPESEL.Size = new System.Drawing.Size(85, 20);
             this.textBoxPESEL.TabIndex = 23;
-            this.textBoxPESEL.Text = "96030604910";
             // 
             // buttonChoosePatient
             // 
@@ -508,6 +456,68 @@
             this.buttonChoosePatient.Text = "...";
             this.buttonChoosePatient.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonChoosePatient.UseVisualStyleBackColor = true;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "LAB_examination_id";
+            this.Column7.HeaderText = "ID";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.Column2.DataPropertyName = "commission_examination_date";
+            this.Column2.HeaderText = "Data zlecenia";
+            this.Column2.MinimumWidth = 80;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 80;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.Column3.DataPropertyName = "LAB_examination_date";
+            this.Column3.HeaderText = "Data wykonania";
+            this.Column3.MinimumWidth = 80;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 80;
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.Column4.DataPropertyName = "status";
+            this.Column4.HeaderText = "Status";
+            this.Column4.MinimumWidth = 50;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 50;
+            // 
+            // Column6
+            // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column6.DataPropertyName = "Pacjent";
+            this.Column6.HeaderText = "Pacjent";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column5.DataPropertyName = "lab";
+            this.Column5.HeaderText = "Laborant";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.DataPropertyName = "Klab";
+            this.Column1.HeaderText = "Kierownik lab.";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // ExaminationsWindow
             // 
@@ -562,6 +572,12 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton bindingNavigatorItemData;
         private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.ComboBox comboBoxKlab;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBoxPESEL;
+        private System.Windows.Forms.Button buttonChoosePatient;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -569,11 +585,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.ComboBox comboBoxKlab;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBoxPESEL;
-        private System.Windows.Forms.Button buttonChoosePatient;
     }
 }
