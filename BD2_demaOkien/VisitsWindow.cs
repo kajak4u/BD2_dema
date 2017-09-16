@@ -37,6 +37,8 @@ namespace BD2_demaOkien
             dateTimePicker1.Checked = ch1;
             dateTimePicker2.Checked = ch2;
 
+            comboBox1.DataSource = VisitStatus.statusDictionary;
+
             comboBox2.DataSource = BizzLayer.Workers
                 .GetAll(Role.DOCTOR)
                 .Select(doctor => new
@@ -59,11 +61,12 @@ namespace BD2_demaOkien
             if (userRole == Role.DOCTOR)
             {
                 bindingNavigatorAddNewItem.Visible = false;
-                comboBox1.SelectedText = "Zarejestrowane";
+                comboBox1.SelectedValue = "REJ";
             }
             else if(userRole == Role.REGISTRAR)
             {
                 bindingNavigatorItemPerform.Visible = false;
+                comboBox1.SelectedValue = "";
             }
 
             if(patientID!=0)
@@ -105,7 +108,7 @@ namespace BD2_demaOkien
             {
                 doctorID = (int?)comboBox2.SelectedValue,
                 patientPESEL = textBox3.Text,
-                status = visitStatus,
+                status = (string)comboBox1.SelectedValue,
                 dateFrom = dateTimePicker1.Checked ? dateTimePicker1.Value : (DateTime?)null,
                 dateTo = dateTimePicker2.Checked ? dateTimePicker2.Value : (DateTime?)null
             }).Select(v => new
@@ -140,29 +143,6 @@ namespace BD2_demaOkien
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(comboBox1.SelectedItem == null)
-            {
-                visitStatus = "";
-                return;
-            }
-            switch (comboBox1.SelectedItem.ToString()) {
-                case ("Wszystkie"):
-                    visitStatus = "";
-                    break;
-                case ("Zarejestrowane"):
-                    visitStatus = "REJ";
-                    break;
-                case ("Odbyte"):
-                    visitStatus = "ZAK";
-                    break;
-                case ("Anulowane"):
-                    visitStatus = "ANUL";
-                    break;
-            }
         }
 
         private void button2_Click(object sender, EventArgs e)

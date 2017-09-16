@@ -1,4 +1,7 @@
-﻿namespace BD2_demaOkien
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace BD2_demaOkien
 {
     public enum ViewMode
     {
@@ -19,5 +22,22 @@
         LAB,
         KLAB,
         ADMIN
+    }
+    public static class VisitStatus
+    {
+        static public List<KeyValuePair<string, string>> statusDictionary
+        {
+            get {
+                return new List<KeyValuePair<string, string>>()
+                {
+                    new KeyValuePair<string,string>("", "Wszystkie"),
+                    new KeyValuePair<string,string>("REJ","Zarejestrowane"),
+                    new KeyValuePair<string,string>("ZAK","Odbyte"),
+                    new KeyValuePair<string,string>("ANUL","Anulowane")
+                };
+            }
+        }
+        static public List<string> statusList { get { return statusDictionary.Select(item => item.Value).ToList(); } }
+        static public List<string> keyList { get { return statusDictionary.Select(item => item.Key).ToList(); } }
     }
 }
