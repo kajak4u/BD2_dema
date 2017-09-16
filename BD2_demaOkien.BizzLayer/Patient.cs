@@ -19,5 +19,16 @@ namespace BD2_demaOkien.BizzLayer
                 return worker;
             }
         }
+
+        public static Patient GetByID(int id)
+        {
+            using (var Db = new BD2_2Db())
+            {
+                var worker = Db.Patient
+                    .Where(p => p.Patient_id == id)
+                    .FirstOrDefault();
+                return worker;
+            }
+        }
     }
 }

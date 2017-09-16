@@ -74,7 +74,7 @@ namespace BD2_demaOkien
         private void bindingNavigatorItemVisits_Click(object sender, EventArgs e)
         {
             int id = CurrentRecordID();
-            VisitsWindow visits = new VisitsWindow(Role.REGISTRAR, id);
+            VisitsWindow visits = new VisitsWindow(id);
             visits.MdiParent = this.MdiParent;
             visits.Show();
         }
@@ -101,7 +101,10 @@ namespace BD2_demaOkien
 
         private void bindingNavigatorItemTests_Click(object sender, EventArgs e)
         {
-            ExaminationsWindow examinations = new ExaminationsWindow();
+            ExaminationsWindow examinations = new ExaminationsWindow
+            {
+                patientId = CurrentRecordID()
+            };
             examinations.MdiParent = this.MdiParent;
             examinations.Show();
         }
