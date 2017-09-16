@@ -89,12 +89,14 @@ namespace BD2_demaOkien.BizzLayer
             }
         }
 
-        public static void Submit(int visitId)
+        public static void Submit(int visitId, string interview, string diagnosis)
         {
             using (var Db = new BD2_2Db())
             {
                 Visit visit = Db.Visit.Where(v => v.visit_id == visitId).FirstOrDefault();
                 visit.status = "ZAK";
+                visit.diagnosis = diagnosis;
+                visit.description = interview;
                 Db.SaveChanges();
             }
         }

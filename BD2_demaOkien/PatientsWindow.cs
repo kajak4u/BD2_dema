@@ -138,8 +138,7 @@ namespace BD2_demaOkien
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
-            DialogResult result = MainWindow.ShowQuestion("Jesteś pewny, że chcesz usunąć pacjenta: " + Environment.NewLine + dataGridView1.CurrentRow.Cells[1].Value + " " + dataGridView1.CurrentRow.Cells[2].Value, "Usuwanie użytkownika");
-            if (result == DialogResult.Yes)
+            if (MainWindow.ShowQuestion("Jesteś pewny, że chcesz usunąć pacjenta: " + Environment.NewLine + dataGridView1.CurrentRow.Cells[1].Value + " " + dataGridView1.CurrentRow.Cells[2].Value, "Usuwanie użytkownika"))
             {
                 int id = CurrentRecordID();
                 BizzLayer.Visits.deleteUser(id);

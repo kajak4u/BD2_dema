@@ -165,8 +165,7 @@ namespace BD2_demaOkien
         private void bindingNavigatorItemCancel_Click(object sender, EventArgs e)
         {
             Visit visit = BizzLayer.Visits.GetByID(CurrentRowID());
-            DialogResult result = MainWindow.ShowQuestion("Jesteś pewny, że chcesz anulować wizytę: " + Environment.NewLine + visit.Patient.First_name+" "+visit.Patient.Last_name, "Anulowanie wizyty");
-            if(result==DialogResult.Yes)
+            if(MainWindow.ShowQuestion("Jesteś pewny, że chcesz anulować wizytę: " + Environment.NewLine + visit.Patient.First_name+" "+visit.Patient.Last_name, "Anulowanie wizyty"))
             {
                 BizzLayer.Visits.Cancel(visit.visit_id);
                 LoadVisits();

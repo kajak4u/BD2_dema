@@ -51,9 +51,9 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxInterview = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxDiagnosis = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.phNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -139,6 +139,7 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonApply = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.buttonReturn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -291,7 +292,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.textBoxInterview);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(6, 6);
             this.groupBox2.Name = "groupBox2";
@@ -300,18 +301,18 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Wywiad";
             // 
-            // textBox2
+            // textBoxInterview
             // 
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Location = new System.Drawing.Point(3, 16);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(752, 175);
-            this.textBox2.TabIndex = 1;
+            this.textBoxInterview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxInterview.Location = new System.Drawing.Point(3, 16);
+            this.textBoxInterview.Multiline = true;
+            this.textBoxInterview.Name = "textBoxInterview";
+            this.textBoxInterview.Size = new System.Drawing.Size(752, 175);
+            this.textBoxInterview.TabIndex = 1;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.textBoxDiagnosis);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(6, 209);
             this.groupBox3.Name = "groupBox3";
@@ -320,14 +321,14 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Diagnoza";
             // 
-            // textBox1
+            // textBoxDiagnosis
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(3, 16);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(752, 176);
-            this.textBox1.TabIndex = 0;
+            this.textBoxDiagnosis.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxDiagnosis.Location = new System.Drawing.Point(3, 16);
+            this.textBoxDiagnosis.Multiline = true;
+            this.textBoxDiagnosis.Name = "textBoxDiagnosis";
+            this.textBoxDiagnosis.Size = new System.Drawing.Size(752, 176);
+            this.textBoxDiagnosis.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -486,8 +487,8 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(770, 410);
             this.dataGridView1.TabIndex = 1;
             // 
@@ -675,8 +676,8 @@
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.Location = new System.Drawing.Point(3, 3);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(770, 410);
             this.dataGridView2.TabIndex = 3;
             // 
@@ -825,9 +826,9 @@
             this.dataGridView5.Location = new System.Drawing.Point(3, 3);
             this.dataGridView5.MultiSelect = false;
             this.dataGridView5.Name = "dataGridView5";
-            this.dataGridView5.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView5.ReadOnly = true;
             this.dataGridView5.RowHeadersVisible = false;
+            this.dataGridView5.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView5.ShowEditingIcon = false;
             this.dataGridView5.Size = new System.Drawing.Size(756, 42);
             this.dataGridView5.TabIndex = 0;
@@ -1009,9 +1010,9 @@
             this.dataGridView6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView6.Location = new System.Drawing.Point(3, 3);
             this.dataGridView6.Name = "dataGridView6";
-            this.dataGridView6.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView6.ReadOnly = true;
             this.dataGridView6.RowHeadersVisible = false;
+            this.dataGridView6.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView6.ShowEditingIcon = false;
             this.dataGridView6.Size = new System.Drawing.Size(756, 42);
             this.dataGridView6.TabIndex = 0;
@@ -1136,8 +1137,8 @@
             this.dataGridView4.DataSource = this.shortLabBindingSource;
             this.dataGridView4.Location = new System.Drawing.Point(124, 16);
             this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView4.ReadOnly = true;
+            this.dataGridView4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView4.Size = new System.Drawing.Size(240, 190);
             this.dataGridView4.TabIndex = 32;
             // 
@@ -1193,6 +1194,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.buttonPatientData);
+            this.panel1.Controls.Add(this.buttonReturn);
             this.panel1.Controls.Add(this.buttonCancel);
             this.panel1.Controls.Add(this.buttonApply);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -1207,7 +1209,7 @@
             this.buttonPatientData.AutoSize = true;
             this.buttonPatientData.Dock = System.Windows.Forms.DockStyle.Left;
             this.buttonPatientData.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonPatientData.Location = new System.Drawing.Point(225, 5);
+            this.buttonPatientData.Location = new System.Drawing.Point(335, 5);
             this.buttonPatientData.Name = "buttonPatientData";
             this.buttonPatientData.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.buttonPatientData.Size = new System.Drawing.Size(120, 31);
@@ -1252,6 +1254,20 @@
             this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView3.Size = new System.Drawing.Size(240, 150);
             this.dataGridView3.TabIndex = 0;
+            // 
+            // buttonReturn
+            // 
+            this.buttonReturn.AutoSize = true;
+            this.buttonReturn.Dock = System.Windows.Forms.DockStyle.Left;
+            this.buttonReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonReturn.Location = new System.Drawing.Point(225, 5);
+            this.buttonReturn.Name = "buttonReturn";
+            this.buttonReturn.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.buttonReturn.Size = new System.Drawing.Size(110, 31);
+            this.buttonReturn.TabIndex = 22;
+            this.buttonReturn.Text = "Powrót";
+            this.buttonReturn.UseVisualStyleBackColor = true;
+            this.buttonReturn.Click += new System.EventHandler(this.buttonReturn_Click);
             // 
             // VisitsPerformWindow
             // 
@@ -1319,9 +1335,9 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxInterview;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxDiagnosis;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabPage tabPage3;
@@ -1410,5 +1426,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn endingdateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn doctoridDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn doctorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button buttonReturn;
     }
 }

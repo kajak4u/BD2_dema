@@ -95,9 +95,9 @@ namespace BD2_demaOkien
 
         private void buttonApply_Click(object sender, EventArgs e)
         {
-            if(MainWindow.ShowQuestion("Zakończyć wizytę?")==DialogResult.Yes)
+            if(MainWindow.ShowQuestion("Zakończyć wizytę?"))
             {
-                BizzLayer.Visits.Submit(VisitId);
+                BizzLayer.Visits.Submit(VisitId, textBoxInterview.Text, textBoxDiagnosis.Text);
                 Close();
             }
         }
@@ -105,8 +105,7 @@ namespace BD2_demaOkien
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             Visit visit = BizzLayer.Visits.GetByID(VisitId);
-            DialogResult result = MainWindow.ShowQuestion("Jesteś pewny, że chcesz anulować wizytę: " + Environment.NewLine + visit.Patient.First_name + " " + visit.Patient.Last_name, "Anulowanie wizyty");
-            if (result == DialogResult.Yes)
+            if(MainWindow.ShowQuestion("Jesteś pewny, że chcesz anulować wizytę: " + Environment.NewLine + visit.Patient.First_name + " " + visit.Patient.Last_name, "Anulowanie wizyty"))
             {
                 BizzLayer.Visits.Cancel(visit.visit_id);
                 Close();
@@ -116,6 +115,16 @@ namespace BD2_demaOkien
         private void buttonPatientData_Click(object sender, EventArgs e)
         {
             new PatientDetailsWindow(ViewMode.VIEW_ONLY, PatientId).ShowDialog();
+        }
+
+        private void buttonReturn_Click(object sender, EventArgs e)
+        {
+            if(MainWindow.ShowQuestion("Czy jesteś pewny, że chcesz porzucić wszystkie zmiany?"+Environment.NewLine+"Dotyczy to także przeprowadzonych i zleconych badań.", "Potwierdzenie"))
+            {
+                BizzLayer.LabExaminations.DeleteFromVisit(VisitId);
+                BizzLayer.PhysicalExaminations.DeleteFromVisit(VisitId);
+                Close();
+            }
         }
     }
 

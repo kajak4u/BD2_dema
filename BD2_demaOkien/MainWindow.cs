@@ -120,9 +120,9 @@ namespace BD2_demaOkien
         {
             MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-        static public DialogResult ShowQuestion(String message, String caption="Pytanie")
+        static public bool ShowQuestion(String message, String caption="Pytanie")
         {
-            return MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            return MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.OK;
         }
     }
 }

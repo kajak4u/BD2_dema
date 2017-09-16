@@ -53,6 +53,16 @@ namespace BD2_demaOkien.BizzLayer
                 db.SaveChanges();
             }
         }
+
+        public static void DeleteFromVisit(int visitId)
+        {
+            using (var db = new BD2_2Db())
+            {
+                var phEx = db.Physical_examination.Where(ex => ex.visit_id == visitId).ToList();
+                db.Physical_examination.RemoveRange(phEx);
+                db.SaveChanges();
+            }
+        }
     }
 
 }

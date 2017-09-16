@@ -67,5 +67,15 @@ namespace BD2_demaOkien.BizzLayer
                 db.SaveChanges();
             }
         }
+
+        public static void DeleteFromVisit(int visitId)
+        {
+            using (var db = new BD2_2Db())
+            {
+                var labEx = db.LAB_examination.Where(ex => ex.visit_id == visitId).ToList();
+                db.LAB_examination.RemoveRange(labEx);
+                db.SaveChanges();
+            }
+        }
     }
 }
