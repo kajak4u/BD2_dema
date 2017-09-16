@@ -13,7 +13,7 @@ namespace BD2_demaOkien
     public partial class PatientDetailsWindow : Form
     {
         private ViewMode viewMode;
-        private int patientId;
+        private int? patientId;
         public PatientDetailsWindow(ViewMode mode, int id)
         {
             InitializeComponent();
@@ -24,9 +24,10 @@ namespace BD2_demaOkien
 
         private void SetEnabledControls()
         {
-            bool readOnly = (viewMode == ViewMode.VIEW);
+            bool readOnly = (viewMode == ViewMode.VIEW || viewMode == ViewMode.VIEW_ONLY);
             panelAddEdit.Visible = readOnly;
             panelView.Visible = !readOnly;
+            buttonEdit.Visible = (viewMode != ViewMode.VIEW_ONLY);
 
             textBoxName.ReadOnly = readOnly;
             textBoxSurname.ReadOnly = readOnly;
@@ -41,9 +42,9 @@ namespace BD2_demaOkien
 
         private void PatientDataWindow_Load(object sender, EventArgs e)
         {
-            if (this.viewMode == ViewMode.VIEW || this.viewMode == ViewMode.EDIT)
+            if (patientId.HasValue)
             {
-                PatientData patient = BizzLayer.Visits.getPatientById(patientId);
+                PatientData patient = BizzLayer.Visits.getPatientById(patientId.Value);
                 textBoxName.Text = patient?.First_name;
                 textBoxSurname.Text = patient?.Last_name;
                 textBoxPESEL.Text = patient?.PESEL;
@@ -113,7 +114,7 @@ namespace BD2_demaOkien
                     }
                     flatNo = NonNullFlatNo;
                 }
-                BizzLayer.Visits.editPatientData(textBoxName.Text, textBoxSurname.Text, textBoxPESEL.Text, textBoxPhone.Text, textBoxCity.Text, textBoxStreet.Text, houseNo, flatNo, patientId);
+                BizzLayer.Visits.editPatientData(textBoxName.Text, textBoxSurname.Text, textBoxPESEL.Text, textBoxPhone.Text, textBoxCity.Text, textBoxStreet.Text, houseNo, flatNo, patientId.Value);
                 Close();
             }
             else

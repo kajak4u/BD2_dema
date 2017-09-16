@@ -7,7 +7,8 @@ namespace BD2_demaOkien
     {
         CREATE,
         EDIT,
-        VIEW
+        VIEW,
+        VIEW_ONLY
     }
     public enum ExaminationMode
     {

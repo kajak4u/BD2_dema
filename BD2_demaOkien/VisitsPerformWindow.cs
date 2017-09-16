@@ -112,6 +112,11 @@ namespace BD2_demaOkien
                 Close();
             }
         }
+
+        private void buttonPatientData_Click(object sender, EventArgs e)
+        {
+            new PatientDetailsWindow(ViewMode.VIEW_ONLY, PatientId).ShowDialog();
+        }
     }
 
 }
