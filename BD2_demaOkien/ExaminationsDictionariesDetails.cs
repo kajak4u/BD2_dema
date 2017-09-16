@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BD2_demaOkien.BizzLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -62,10 +63,10 @@ namespace BD2_demaOkien
 			switch (mode_mode)
 			{
 				case ViewMode.CREATE:
-					BD2_demaOkien.ExaminationDictionary.insertExaminationData(textBox1.Text, textBox2.Text, radioButton1.Checked ? "F" : "L");
+					ExaminationsDictionary.insertExaminationData(textBox1.Text, textBox2.Text, radioButton1.Checked ? "F" : "L");
 					break;
 				case ViewMode.EDIT:
-					BD2_demaOkien.ExaminationDictionary.editExaminationData(textBox1.Text, textBox2.Text, radioButton1.Checked ? "F" : "L");
+					ExaminationsDictionary.editExaminationData(textBox1.Text, textBox2.Text, radioButton1.Checked ? "F" : "L");
 					break;
 				default:
 					break;

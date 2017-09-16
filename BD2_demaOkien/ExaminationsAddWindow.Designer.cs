@@ -82,12 +82,19 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBox1.DisplayMember = "Examination_code";
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(138, 6);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(164, 21);
-            this.comboBox1.TabIndex = 54;
+            this.comboBox1.Sorted = true;
+            this.comboBox1.TabIndex = 1;
+            this.comboBox1.ValueMember = "Examination_code";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox1.Enter += new System.EventHandler(this.comboBox1_Enter);
             // 
             // buttonChooseDoctor
             // 
@@ -95,7 +102,7 @@
             this.buttonChooseDoctor.Location = new System.Drawing.Point(300, 5);
             this.buttonChooseDoctor.Name = "buttonChooseDoctor";
             this.buttonChooseDoctor.Size = new System.Drawing.Size(25, 23);
-            this.buttonChooseDoctor.TabIndex = 56;
+            this.buttonChooseDoctor.TabIndex = 2;
             this.buttonChooseDoctor.Text = "...";
             this.buttonChooseDoctor.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonChooseDoctor.UseVisualStyleBackColor = true;
@@ -108,7 +115,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(138, 53);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(355, 99);
-            this.richTextBox1.TabIndex = 36;
+            this.richTextBox1.TabIndex = 3;
             this.richTextBox1.Text = "";
             // 
             // label7
@@ -149,7 +156,7 @@
             this.buttonCancel.Location = new System.Drawing.Point(111, 2);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(100, 30);
-            this.buttonCancel.TabIndex = 19;
+            this.buttonCancel.TabIndex = 5;
             this.buttonCancel.Text = "Porzuć";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -161,7 +168,7 @@
             this.buttonApply.Location = new System.Drawing.Point(5, 2);
             this.buttonApply.Name = "buttonApply";
             this.buttonApply.Size = new System.Drawing.Size(100, 30);
-            this.buttonApply.TabIndex = 18;
+            this.buttonApply.TabIndex = 4;
             this.buttonApply.Text = "Zatwierdź";
             this.buttonApply.UseVisualStyleBackColor = true;
             this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
@@ -175,6 +182,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "ExaminationsAddWindow";
             this.Text = "ExaminationsAddWindow";
+            this.Load += new System.EventHandler(this.ExaminationsAddWindow_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResultPanel.ResumeLayout(false);

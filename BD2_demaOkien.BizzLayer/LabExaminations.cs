@@ -50,5 +50,22 @@ namespace BD2_demaOkien.BizzLayer
                 }).ToList();
             }
         }
+
+        public static void Add(String code, String notes, int visitId)
+        {
+            LAB_examination exam = new LAB_examination
+            {
+                LAB_examination_code = code,
+                doctor_notes = notes,
+                visit_id = visitId,
+                commission_examination_date = DateTime.Now,
+                status = "COM"
+            };
+            using (var db = new BD2_2Db())
+            {
+                db.LAB_examination.Add(exam);
+                db.SaveChanges();
+            }
+        }
     }
 }

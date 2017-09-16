@@ -13,6 +13,7 @@ namespace BD2_demaOkien.BizzLayer
         public DateTime? dateFrom { get; set; }
         public DateTime? dateTo { get; set; }
         public int? doctorID { get; set; }
+        public int? patientId { get; set; }
         public string patientPESEL { get; set; }
         public string status { get; set; }
     }
@@ -102,6 +103,8 @@ namespace BD2_demaOkien.BizzLayer
                     result = result.Where(v => v.status.Equals(filter.status));
                 if (filter.patientPESEL != null && filter.patientPESEL != "")
                     result = result.Where(v => v.Patient.PESEL.Equals(filter.patientPESEL));
+                if (filter.patientId.HasValue)
+                    result = result.Where(v => v.patient_id == filter.patientId);
                 if (filter.dateFrom.HasValue)
                     result = result.Where(v => v.ending_date >= filter.dateFrom.Value);
                 if (filter.dateTo.HasValue)

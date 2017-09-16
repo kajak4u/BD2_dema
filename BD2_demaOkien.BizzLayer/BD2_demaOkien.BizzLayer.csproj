@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="BizLayer.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="ExaminationsDictionary.cs" />
     <Compile Include="LabExaminations.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="PhysicalExaminations.cs" />

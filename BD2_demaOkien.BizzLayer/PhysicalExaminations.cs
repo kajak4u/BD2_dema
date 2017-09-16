@@ -44,5 +44,15 @@ namespace BD2_demaOkien.BizzLayer
                 }).ToList();
             }
         }
+        public static void Add(String code, String result, int visitId)
+        {
+            Physical_examination exam = new Physical_examination { Physical_examination_code = code, Result = result, visit_id = visitId };
+            using (var db = new BD2_2Db())
+            {
+                db.Physical_examination.Add(exam);
+                db.SaveChanges();
+            }
+        }
     }
+
 }
