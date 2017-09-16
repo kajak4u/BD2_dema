@@ -78,17 +78,7 @@ namespace BD2_demaOkien
 
         private void wizytyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenMDIWindow(new VisitsWindow(Role.REGISTRAR, null));
-        }
-
-        private void wynikibadańToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenMDIWindow(new ExaminationsWindow(Role.REGISTRAR));
-        }
-
-        private void wizytyToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            OpenMDIWindow(new VisitsWindow(Role.DOCTOR, userId));
+            OpenMDIWindow(new VisitsWindow(null));
         }
 
         private void przeglądMoichWizytToolStripMenuItem_Click(object sender, EventArgs e)
@@ -98,17 +88,7 @@ namespace BD2_demaOkien
 
         private void badaniaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenMDIWindow(new ExaminationsWindow(Role.DOCTOR));
-        }
-
-        private void badaniaToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            OpenMDIWindow(new ExaminationsWindowLabguy());
-        }
-
-        private void badaniaToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            OpenMDIWindow(new ExaminationsWindowLabmaster());
+            OpenMDIWindow(new ExaminationsWindow());
         }
 
         private void słownikBadańToolStripMenuItem_Click(object sender, EventArgs e)

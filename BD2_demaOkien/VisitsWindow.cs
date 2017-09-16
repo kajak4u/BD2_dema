@@ -19,11 +19,11 @@ namespace BD2_demaOkien
         private Role userRole;
         private int doctorID;
 
-        public VisitsWindow(Role openedRole, int? id)
+        public VisitsWindow(int? id)
         {
-            userRole = openedRole;
+            userRole = MainWindow.userRole;
             InitializeComponent();
-            if (openedRole == Role.DOCTOR)
+            if (userRole == Role.DOCTOR)
                 doctorID = (int)id.Value;
             else
                 patientID = (int)id.Value;

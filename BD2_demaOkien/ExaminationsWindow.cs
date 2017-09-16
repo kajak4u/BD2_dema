@@ -13,23 +13,18 @@ namespace BD2_demaOkien
 {
 	public partial class ExaminationsWindow : Form
 	{
-		private Role userType;
+		private Role userRole;
 
 		public ExaminationsWindow()
 		{
 			InitializeComponent();
-		}
-
-		public ExaminationsWindow(Role userType)
-		{
-			InitializeComponent();
-			this.userType = userType;
+			this.userRole = MainWindow.userRole;
 			SetBinderControls();
 		}
 
 		private void SetBinderControls()
 		{
-			if (userType == Role.REGISTRAR)
+			if (userRole == Role.REGISTRAR)
 			{
 				//bindingNavigatorAddNewItem.Visible = false;
 			}
@@ -47,5 +42,20 @@ namespace BD2_demaOkien
 		{
 			//new ExaminationsAddWindow(ExaminationMode.).ShowDialog();
 		}
-	}
+
+        private void ExaminationsWindow_Load(object sender, EventArgs e)
+        {
+            switch(userRole)
+            {
+                case Role.DOCTOR:
+                    break;
+                case Role.LAB:
+                    break;
+                case Role.KLAB:
+                    break;
+                case Role.REGISTRAR:
+                    break;
+            }
+        }
+    }
 }
