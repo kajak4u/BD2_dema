@@ -119,8 +119,11 @@ namespace BD2_demaOkien
                 status = v.status,
                 registration_date = v.registration_date,
                 ending_date = v.ending_date,
+                patient_name = v.Patient.First_name+" "+v.Patient.Last_name,
                 patient_id = v.patient_id,
+                doctor_name = v.Doctor.First_name + " " + v.Doctor.Last_name,
                 doctor_id = v.doctor_id,
+                registrer_name = v.Registerer.First_name + " " + v.Registerer.Last_name,
                 registrer_id = v.registerer_id
             }).ToList();
         }
