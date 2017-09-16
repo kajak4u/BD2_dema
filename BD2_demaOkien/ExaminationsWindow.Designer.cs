@@ -115,9 +115,9 @@
             "Zarejestrowane",
             "Odbyte",
             "Anulowane"});
-            this.comboBoxLab.Location = new System.Drawing.Point(345, 59);
+            this.comboBoxLab.Location = new System.Drawing.Point(370, 59);
             this.comboBoxLab.Name = "comboBoxLab";
-            this.comboBoxLab.Size = new System.Drawing.Size(212, 21);
+            this.comboBoxLab.Size = new System.Drawing.Size(187, 21);
             this.comboBoxLab.TabIndex = 19;
             this.comboBoxLab.ValueMember = "id";
             // 
@@ -143,9 +143,9 @@
             "Zarejestrowane",
             "Odbyte",
             "Anulowane"});
-            this.comboBoxDoctor.Location = new System.Drawing.Point(345, 32);
+            this.comboBoxDoctor.Location = new System.Drawing.Point(370, 32);
             this.comboBoxDoctor.Name = "comboBoxDoctor";
-            this.comboBoxDoctor.Size = new System.Drawing.Size(212, 21);
+            this.comboBoxDoctor.Size = new System.Drawing.Size(187, 21);
             this.comboBoxDoctor.TabIndex = 17;
             this.comboBoxDoctor.ValueMember = "id";
             // 
@@ -185,16 +185,16 @@
             "Zarejestrowane",
             "Odbyte",
             "Anulowane"});
-            this.comboBoxStatus.Location = new System.Drawing.Point(345, 5);
+            this.comboBoxStatus.Location = new System.Drawing.Point(370, 5);
             this.comboBoxStatus.Name = "comboBoxStatus";
-            this.comboBoxStatus.Size = new System.Drawing.Size(212, 21);
+            this.comboBoxStatus.Size = new System.Drawing.Size(187, 21);
             this.comboBoxStatus.TabIndex = 6;
             this.comboBoxStatus.ValueMember = "key";
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(239, 6);
+            this.label3.Location = new System.Drawing.Point(255, 6);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(162, 20);
             this.label3.TabIndex = 5;
@@ -209,7 +209,7 @@
             this.dateTimePicker2.Location = new System.Drawing.Point(124, 33);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.ShowCheckBox = true;
-            this.dateTimePicker2.Size = new System.Drawing.Size(109, 20);
+            this.dateTimePicker2.Size = new System.Drawing.Size(125, 20);
             this.dateTimePicker2.TabIndex = 4;
             this.dateTimePicker2.Value = new System.DateTime(2017, 4, 25, 16, 45, 55, 0);
             // 
@@ -231,7 +231,7 @@
             this.dateTimePicker1.Location = new System.Drawing.Point(124, 6);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.ShowCheckBox = true;
-            this.dateTimePicker1.Size = new System.Drawing.Size(109, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(125, 20);
             this.dateTimePicker1.TabIndex = 2;
             this.dateTimePicker1.Value = new System.DateTime(2017, 4, 25, 16, 45, 55, 0);
             // 
@@ -394,7 +394,7 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(239, 33);
+            this.label5.Location = new System.Drawing.Point(255, 33);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(162, 20);
             this.label5.TabIndex = 16;
@@ -404,7 +404,7 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(239, 60);
+            this.label4.Location = new System.Drawing.Point(255, 60);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(162, 20);
             this.label4.TabIndex = 20;
@@ -423,16 +423,16 @@
             "Zarejestrowane",
             "Odbyte",
             "Anulowane"});
-            this.comboBoxKlab.Location = new System.Drawing.Point(345, 86);
+            this.comboBoxKlab.Location = new System.Drawing.Point(370, 86);
             this.comboBoxKlab.Name = "comboBoxKlab";
-            this.comboBoxKlab.Size = new System.Drawing.Size(212, 21);
+            this.comboBoxKlab.Size = new System.Drawing.Size(187, 21);
             this.comboBoxKlab.TabIndex = 21;
             this.comboBoxKlab.ValueMember = "id";
             // 
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label7.Location = new System.Drawing.Point(239, 87);
+            this.label7.Location = new System.Drawing.Point(255, 87);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(162, 20);
             this.label7.TabIndex = 22;
@@ -443,13 +443,13 @@
             // 
             this.textBoxPESEL.Location = new System.Drawing.Point(124, 60);
             this.textBoxPESEL.Name = "textBoxPESEL";
-            this.textBoxPESEL.Size = new System.Drawing.Size(85, 20);
+            this.textBoxPESEL.Size = new System.Drawing.Size(101, 20);
             this.textBoxPESEL.TabIndex = 23;
             // 
             // buttonChoosePatient
             // 
             this.buttonChoosePatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonChoosePatient.Location = new System.Drawing.Point(208, 59);
+            this.buttonChoosePatient.Location = new System.Drawing.Point(224, 59);
             this.buttonChoosePatient.Name = "buttonChoosePatient";
             this.buttonChoosePatient.Size = new System.Drawing.Size(25, 22);
             this.buttonChoosePatient.TabIndex = 24;

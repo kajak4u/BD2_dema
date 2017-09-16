@@ -92,17 +92,18 @@ namespace BD2_demaOkien
                 })
                 .ToList();
             comboBoxKlab.SelectedIndex = -1;
+            comboBoxStatus.SelectedValue = "";
             switch (userRole)
             {
                 case Role.DOCTOR:
                     comboBoxDoctor.SelectedValue = MainWindow.userId;
                     break;
                 case Role.LAB:
-                    comboBoxLab.SelectedValue = MainWindow.userId;
+                    //comboBoxLab.SelectedValue = MainWindow.userId;
                     comboBoxStatus.SelectedValue = "COM";
                     break;
                 case Role.KLAB:
-                    comboBoxKlab.SelectedValue = MainWindow.userId;
+                    //comboBoxKlab.SelectedValue = MainWindow.userId;
                     comboBoxStatus.SelectedValue = "PER";
                     break;
                 case Role.REGISTRAR:
