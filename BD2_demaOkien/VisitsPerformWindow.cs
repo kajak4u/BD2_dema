@@ -71,15 +71,6 @@ namespace BD2_demaOkien
                 RefreshData();
         }
 
-        private void buttonPatientData_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void masterControl1_ApplyDetailFilter(object _key)
         {
             int key = (int)_key;
@@ -100,6 +91,26 @@ namespace BD2_demaOkien
             }
             new ExaminationsDetailWindow(id).ShowDialog();
             
+        }
+
+        private void buttonApply_Click(object sender, EventArgs e)
+        {
+            if(MainWindow.ShowQuestion("Zakończyć wizytę?")==DialogResult.Yes)
+            {
+                BizzLayer.Visits.Submit(VisitId);
+                Close();
+            }
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            Visit visit = BizzLayer.Visits.GetByID(VisitId);
+            DialogResult result = MainWindow.ShowQuestion("Jesteś pewny, że chcesz anulować wizytę: " + Environment.NewLine + visit.Patient.First_name + " " + visit.Patient.Last_name, "Anulowanie wizyty");
+            if (result == DialogResult.Yes)
+            {
+                BizzLayer.Visits.Cancel(visit.visit_id);
+                Close();
+            }
         }
     }
 

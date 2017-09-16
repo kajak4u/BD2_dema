@@ -89,6 +89,16 @@ namespace BD2_demaOkien.BizzLayer
             }
         }
 
+        public static void Submit(int visitId)
+        {
+            using (var Db = new BD2_2Db())
+            {
+                Visit visit = Db.Visit.Where(v => v.visit_id == visitId).FirstOrDefault();
+                visit.status = "ZAK";
+                Db.SaveChanges();
+            }
+        }
+
         public static List<Visit> Get(VisitFilterParams filter)
         {
             using (var Db = new BD2_demaOkien.Data.BD2_2Db())

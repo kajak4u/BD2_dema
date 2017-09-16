@@ -151,10 +151,7 @@ namespace BD2_demaOkien
                     MainWindow.ShowError("Wizyta została zakończona.");
                     break;
             }
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            LoadVisits();
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -66,11 +66,6 @@ namespace BD2_demaOkien
 			textBox1.Text = name==null ? "" : name;
 		}
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void comboBox1_Enter(object sender, EventArgs e)
         {
             comboBox1.DroppedDown = true;

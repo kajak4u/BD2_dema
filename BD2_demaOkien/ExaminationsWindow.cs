@@ -38,19 +38,6 @@ namespace BD2_demaOkien
 
 		private void bindingNavigatorItemData_Click(object sender, EventArgs e)
 		{
-			/*para.visitId = ;//znaleźć i przypisać
-
-			String stat = ;//znaleźć i przypisać
-			bool isLab = stat == "L";
-
-			if (isLab)
-			{
-				para.labExamId = ;//znaleźć i przypisać
-			}
-			else
-			{
-				para.phyExamId = ;//znaleźć i przypisać
-			}*/
             int labExamId = (int)dataGridView1.CurrentRow.Cells["Column7"].Value;
 
             new ExaminationsDetailWindow(labExamId).ShowDialog();

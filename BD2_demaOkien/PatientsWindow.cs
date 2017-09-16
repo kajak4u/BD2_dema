@@ -57,10 +57,6 @@ namespace BD2_demaOkien
             }
         }
 
-        private void fillByToolStripButton_Click(object sender, EventArgs e)
-        {
-        }
-
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
             new PatientDetailsWindow(ViewMode.CREATE, 0).ShowDialog();
@@ -114,10 +110,6 @@ namespace BD2_demaOkien
         {
             int id = CurrentRecordID();
             new VisitsAddWindow(ViewMode.CREATE, id).ShowDialog();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -153,11 +153,6 @@ namespace BD2_demaOkien
             buttonSetScheduler(this, null); // żeby scheduler nie dostał śmieci
         }
 
-        private void ResultPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void dayScheduler_ItemFocusChanged(object sender, CalendarTimeEventArgs e)
         {
             if (openMode != ViewMode.VIEW)
@@ -169,20 +164,6 @@ namespace BD2_demaOkien
             ChooseDoctorModal modal = new ChooseDoctorModal();
             if (modal.ShowDialog() == DialogResult.OK)
                 comboBoxDoctor.Text = modal.ChosenDoctor;
-        }
-
-        private void textBoxPatientPESEL_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxDoctor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dayScheduler_ItemDoubleClick(object sender, WindowsFormsCalendar.CalendarItemEventArgs e)
-        {
         }
 
         private void dayScheduler_ItemCreating(object sender, WindowsFormsCalendar.CalendarItemCancelEventArgs e)

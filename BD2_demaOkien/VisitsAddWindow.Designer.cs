@@ -81,7 +81,6 @@ namespace BD2_demaOkien
             this.ResultPanel.Name = "ResultPanel";
             this.ResultPanel.Size = new System.Drawing.Size(456, 35);
             this.ResultPanel.TabIndex = 23;
-            this.ResultPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ResultPanel_Paint);
             // 
             // buttonCancel
             // 
@@ -199,7 +198,6 @@ namespace BD2_demaOkien
             this.comboBoxDoctor.Name = "comboBoxDoctor";
             this.comboBoxDoctor.Size = new System.Drawing.Size(322, 21);
             this.comboBoxDoctor.TabIndex = 27;
-            this.comboBoxDoctor.SelectedIndexChanged += new System.EventHandler(this.comboBoxDoctor_SelectedIndexChanged);
             // 
             // buttonChooseDoctor
             // 
@@ -233,7 +231,6 @@ namespace BD2_demaOkien
             this.textBoxPatientPESEL.Name = "textBoxPatientPESEL";
             this.textBoxPatientPESEL.Size = new System.Drawing.Size(75, 20);
             this.textBoxPatientPESEL.TabIndex = 24;
-            this.textBoxPatientPESEL.TextChanged += new System.EventHandler(this.textBoxPatientPESEL_TextChanged);
             // 
             // label1
             // 
@@ -302,7 +299,6 @@ namespace BD2_demaOkien
             this.dayScheduler.TimeScale = WindowsFormsCalendar.CalendarTimeScale.FifteenMinutes;
             this.dayScheduler.ItemFocusChanged += new BD2_demaOkien.DayScheduler.CalendarTimeEventHandler(this.dayScheduler_ItemFocusChanged);
             this.dayScheduler.ItemCreating += new WindowsFormsCalendar.Calendar.CalendarItemCancelEventHandler(this.dayScheduler_ItemCreating);
-            this.dayScheduler.ItemDoubleClick += new WindowsFormsCalendar.Calendar.CalendarItemEventHandler(this.dayScheduler_ItemDoubleClick);
             this.dayScheduler.ItemSelected += new WindowsFormsCalendar.Calendar.CalendarItemEventHandler(this.dayScheduler_ItemSelected);
             // 
             // VisitsAddWindow

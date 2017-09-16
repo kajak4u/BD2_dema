@@ -269,7 +269,6 @@
             this.panelAddEdit.Name = "panelAddEdit";
             this.panelAddEdit.Size = new System.Drawing.Size(456, 35);
             this.panelAddEdit.TabIndex = 20;
-            this.panelAddEdit.Paint += new System.Windows.Forms.PaintEventHandler(this.panelAddEdit_Paint);
             // 
             // buttonEdit
             // 
