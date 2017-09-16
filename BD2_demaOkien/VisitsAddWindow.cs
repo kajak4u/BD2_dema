@@ -47,7 +47,7 @@ namespace BD2_demaOkien
                 Data.Visit visit = BizzLayer.Visits.GetByID(this.visitId);
                 if(visit==null)
                 {
-                    MessageBox.Show("Nie znaleziono wizyty!");
+                    MainWindow.ShowError("Nie znaleziono wizyty!");
                     Close();
                     return;
                 }
@@ -111,13 +111,13 @@ namespace BD2_demaOkien
             Data.Patient patient = BizzLayer.Patients.getByPESEL(textBoxPatientPESEL.Text);
             if (patient == null)
             {
-                MessageBox.Show("Nieprawidłowy pacjent");
+                MainWindow.ShowError("Nieprawidłowy pacjent");
                 return;
             }
             Data.Worker doctor = Worker.getByID((int)comboBoxDoctor.SelectedValue);
             if (doctor == null)
             {
-                MessageBox.Show("Nieprawidłowy lekarz");
+                MainWindow.ShowError("Nieprawidłowy lekarz");
                 return;
             }
             DateTime visitTime = dateTimeVisitDate.Value.Date + dateTimeVisitTime.Value.TimeOfDay;

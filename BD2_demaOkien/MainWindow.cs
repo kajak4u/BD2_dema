@@ -115,5 +115,14 @@ namespace BD2_demaOkien
         {
             OpenMDIWindow(new ExaminationsDictionariesWindow());
         }
+
+        static public void ShowError(String message, String caption="Błąd")
+        {
+            MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        static public DialogResult ShowQuestion(String message, String caption="Pytanie")
+        {
+            return MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        }
     }
 }

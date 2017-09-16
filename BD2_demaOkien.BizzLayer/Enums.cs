@@ -50,7 +50,7 @@ namespace BD2_demaOkien
                 return new List<KeyValuePair<string, string>>()
                 {
                     new KeyValuePair<string,string>("", "Wszystkie"),
-                    new KeyValuePair<string,string>("COM","Zarejestrowane"),
+                    new KeyValuePair<string,string>("COM","Zlecone"),
                     new KeyValuePair<string,string>("PER","Wykonane"),
                     new KeyValuePair<string,string>("APP","Zaakceptowane"),
                     new KeyValuePair<string,string>("ANUL","Anulowane (lab)"),

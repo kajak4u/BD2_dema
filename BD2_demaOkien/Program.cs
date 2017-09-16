@@ -25,7 +25,7 @@ namespace BD2_demaOkien
                 string message = e.Message;
                 for (Exception e1 = e.InnerException; e1 != null; e1 = e1.InnerException)
                     message += "\n\n" + e1.Message;
-                MessageBox.Show(message + Environment.NewLine + Environment.NewLine + e.StackTrace, "Wyjątek!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MainWindow.ShowError(message + Environment.NewLine + Environment.NewLine + e.StackTrace, "Wyjątek!");
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using BD2_demaOkien.BizzLayer;
+using BD2_demaOkien.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,7 +18,6 @@ namespace BD2_demaOkien
         private int patientID;
         private Role userRole;
         private int doctorID;
-        private String visitStatus = null;
 
         public VisitsWindow(Role openedRole, int? id)
         {
@@ -138,7 +138,19 @@ namespace BD2_demaOkien
 
         private void bindingNavigatorItemPerform_Click(object sender, EventArgs e)
         {
-            new VisitsPerformWindow(CurrentRowID()).ShowDialog();
+            Visit visit = BizzLayer.Visits.GetByID(CurrentRowID());
+            switch(visit.status)
+            {
+                case "REJ":
+                    new VisitsPerformWindow(visit.visit_id).ShowDialog();
+                    break;
+                case "ANUL":
+                    MainWindow.ShowError("Wizyta została anulowana.");
+                    break;
+                case "ZAK":
+                    MainWindow.ShowError("Wizyta została zakończona.");
+                    break;
+            }
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -151,6 +163,17 @@ namespace BD2_demaOkien
                 comboBox2.SelectedIndex = -1;
             if (comboBox1.SelectedItem != null)
                 comboBox1.SelectedIndex = -1;
+        }
+
+        private void bindingNavigatorItemCancel_Click(object sender, EventArgs e)
+        {
+            Visit visit = BizzLayer.Visits.GetByID(CurrentRowID());
+            DialogResult result = MainWindow.ShowQuestion("Jesteś pewny, że chcesz anulować wizytę: " + Environment.NewLine + visit.Patient.First_name+" "+visit.Patient.Last_name, "Anulowanie wizyty");
+            if(result==DialogResult.Yes)
+            {
+                BizzLayer.Visits.Cancel(visit.visit_id);
+                LoadVisits();
+            }
         }
     }
 }

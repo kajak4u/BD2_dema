@@ -131,6 +131,16 @@ namespace BD2_demaOkien.BizzLayer
             }
         }
 
+        public static void Cancel(int visit_id)
+        {
+            using (var Db = new BD2_2Db())
+            {
+                Visit visit = Db.Visit.Where(v => v.visit_id == visit_id).FirstOrDefault();
+                visit.status = "ANUL";
+                Db.SaveChanges();
+            }
+        }
+
         public static PatientData getPatientById(int id)
         {
             using (var Db = new BD2_2Db())

@@ -67,7 +67,7 @@ namespace BD2_demaOkien
                     int houseNo;
                     if(!int.TryParse(textBoxHouseNo.Text, out houseNo))
                     {
-                        MessageBox.Show("Nieprawidłowy nr domu");
+                        MainWindow.ShowError("Nieprawidłowy nr domu");
                         return;
                     }
 
@@ -76,7 +76,7 @@ namespace BD2_demaOkien
                         int NonNullFlatNo;
                         if(!int.TryParse(textBoxFlatNo.Text, out NonNullFlatNo))
                         {
-                            MessageBox.Show("Nieprawidłowy nr mieszkania");
+                            MainWindow.ShowError("Nieprawidłowy nr mieszkania");
                             return;
                         }
                         flatNo = NonNullFlatNo;
@@ -87,7 +87,7 @@ namespace BD2_demaOkien
                 }
                 catch (Exception exx)
                 {
-                    MessageBox.Show(exx.Message
+                    MainWindow.ShowError(exx.Message
                         + Environment.NewLine + Environment.NewLine + exx.StackTrace);
                        // + Environment.NewLine + Environment.NewLine + exx.InnerException.ToString());
                 }
@@ -99,7 +99,7 @@ namespace BD2_demaOkien
                 int houseNo;
                 if (!int.TryParse(textBoxHouseNo.Text, out houseNo))
                 {
-                    MessageBox.Show("Nieprawidłowy nr domu");
+                    MainWindow.ShowError("Nieprawidłowy nr domu");
                     return;
                 }
 
@@ -108,7 +108,7 @@ namespace BD2_demaOkien
                     int NonNullFlatNo;
                     if (!int.TryParse(textBoxFlatNo.Text, out NonNullFlatNo))
                     {
-                        MessageBox.Show("Nieprawidłowy nr mieszkania");
+                        MainWindow.ShowError("Nieprawidłowy nr mieszkania");
                         return;
                     }
                     flatNo = NonNullFlatNo;

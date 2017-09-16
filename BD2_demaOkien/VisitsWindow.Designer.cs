@@ -256,8 +256,10 @@
             this.dataGridView1.DataSource = this.visitBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(539, 265);
             this.dataGridView1.TabIndex = 12;
             // 
@@ -500,6 +502,7 @@
             this.bindingNavigatorItemCancel.Name = "bindingNavigatorItemCancel";
             this.bindingNavigatorItemCancel.Size = new System.Drawing.Size(55, 22);
             this.bindingNavigatorItemCancel.Text = "Odwołaj";
+            this.bindingNavigatorItemCancel.Click += new System.EventHandler(this.bindingNavigatorItemCancel_Click);
             // 
             // bindingNavigatorItemPerform
             // 
