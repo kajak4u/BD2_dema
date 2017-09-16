@@ -90,11 +90,13 @@ namespace BD2_demaOkien
         {
             int id = CurrentRowID();
             new VisitsAddWindow(ViewMode.VIEW, patientID, id).ShowDialog();
+            LoadVisits();
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
             new VisitsAddWindow(ViewMode.CREATE, patientID).ShowDialog();
+            LoadVisits();
         }
 
         private void button1_Click(object sender, EventArgs e)

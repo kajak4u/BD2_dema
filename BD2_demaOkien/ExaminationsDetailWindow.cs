@@ -16,9 +16,10 @@ namespace BD2_demaOkien
 
     public partial class ExaminationsDetailWindow : Form
     {
-
+        private int examinationId;
         public ExaminationsDetailWindow(int examinationId)
         {
+            this.examinationId = examinationId;
             InitializeComponent();
             using (var Db = new BD2_demaOkien.Data.BD2_2Db())
             {
@@ -28,6 +29,7 @@ namespace BD2_demaOkien
                     {
                         examType = ex.Examination_dictionary.Examiantion_type,
                         examName = ex.Examination_dictionary.Examination_name,
+                        examCode = ex.LAB_examination_code,
                         dateZle = ex.commission_examination_date,
                         patientName = ex.Visit.Patient.First_name + " " + ex.Visit.Patient.Last_name,
                         examStatus = ex.status,
@@ -57,72 +59,45 @@ namespace BD2_demaOkien
                 richTextBox3.Text = data.klabNotes;
                 textBox7.Text = data.klabDate.HasValue ? data.klabDate.Value.ToString() : "";
 
+                textBox2.Text = data.examName;
+                textBox9.Text = data.examCode;
+
                 Role role = MainWindow.userRole;
                 switch (role)
                 {
-                    case Role.DOCTOR:
-                        textBox5.ReadOnly = false;
-                        textBox1.ReadOnly = false;
-                        textBox3.ReadOnly = false;
-
-                        textBoxPatient.ReadOnly = false;
-                        richTextBox1.ReadOnly = false;
-
-                        textBox4.ReadOnly = true;
-                        richTextBox2.ReadOnly = true;
-                        textBox6.ReadOnly = true;
-
-                        textBox8.ReadOnly = true;
-                        richTextBox3.ReadOnly = true;
-                        textBox7.ReadOnly = true;
-                        break;
                     case Role.LAB:
-                        textBox5.ReadOnly = true;
-                        textBox1.ReadOnly = true;
-                        textBox3.ReadOnly = true;
-
-                        textBoxPatient.ReadOnly = true;
-                        richTextBox1.ReadOnly = true;
-
-                        textBox4.ReadOnly = false;
-                        richTextBox2.ReadOnly = false;
-                        textBox6.ReadOnly = false;
-
-                        textBox8.ReadOnly = true;
-                        richTextBox3.ReadOnly = true;
-                        textBox7.ReadOnly = true;
+                        tabControl1.SelectedTab = tabPage3;
                         break;
                     case Role.KLAB:
-                        textBox5.ReadOnly = true;
-                        textBox1.ReadOnly = true;
-                        textBox3.ReadOnly = true;
-
-                        textBoxPatient.ReadOnly = true;
-                        richTextBox1.ReadOnly = true;
-
-                        textBox4.ReadOnly = true;
-                        richTextBox2.ReadOnly = true;
-                        textBox6.ReadOnly = true;
-
-                        textBox8.ReadOnly = false;
-                        richTextBox3.ReadOnly = false;
-                        textBox7.ReadOnly = false;
+                        tabControl1.SelectedTab = tabPage4;
                         break;
-                    default:
-                        textBox5.ReadOnly = true;
-                        textBox1.ReadOnly = true;
-                        textBox3.ReadOnly = true;
+                }
 
-                        textBoxPatient.ReadOnly = true;
-                        richTextBox1.ReadOnly = true;
-
-                        textBox4.ReadOnly = true;
-                        richTextBox2.ReadOnly = true;
-                        textBox6.ReadOnly = true;
-
-                        textBox8.ReadOnly = true;
-                        richTextBox3.ReadOnly = true;
-                        textBox7.ReadOnly = true;
+                switch(data.examStatus)
+                {
+                    case "ZLE":
+                        tabControl1.TabPages.Remove(tabPage4);
+                        if (role == Role.LAB)
+                        {
+                            richTextBox2.ReadOnly = false;
+                            button2.Visible = true;
+                            button3.Visible = true;
+                        }
+                        else
+                            tabControl1.TabPages.Remove(tabPage3);
+                        break;
+                    case "AN_L":
+                        tabControl1.TabPages.Remove(tabPage4);
+                        break;
+                    case "WYK":
+                        if (role == Role.KLAB)
+                        {
+                            richTextBox3.ReadOnly = false;
+                            button2.Visible = true;
+                            button3.Visible = true;
+                        }
+                        else
+                            tabControl1.TabPages.Remove(tabPage4);
                         break;
                 }
             }
@@ -130,6 +105,38 @@ namespace BD2_demaOkien
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (!MainWindow.ShowQuestion("Zatwierdzić badanie?", "Potwierdzenie"))
+                return;
+            switch(MainWindow.userRole)
+            {
+                case Role.LAB:
+                    BizzLayer.LabExaminations.Perform(examinationId, MainWindow.userId, richTextBox2.Text);
+                    break;
+                case Role.KLAB:
+                    BizzLayer.LabExaminations.Accept(examinationId, MainWindow.userId, richTextBox3.Text);
+                    break;
+            }
+            Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (!MainWindow.ShowQuestion("Anulować badanie?", "Potwierdzenie"))
+                return;
+            switch (MainWindow.userRole)
+            {
+                case Role.LAB:
+                    BizzLayer.LabExaminations.CancelLab(examinationId, MainWindow.userId, richTextBox2.Text);
+                    break;
+                case Role.KLAB:
+                    BizzLayer.LabExaminations.CancelKlab(examinationId, MainWindow.userId, richTextBox2.Text);
+                    break;
+            }
             Close();
         }
     }

@@ -60,7 +60,7 @@ namespace BD2_demaOkien.BizzLayer
                     Nazwa = ex.Examination_dictionary.Examination_name,
                     Lab = ex.Worker.First_name + " " + ex.Worker.Last_name,
                     Klab = ex.Worker1.First_name + " " + ex.Worker1.Last_name,
-                    Pacjent = ex.Visit.Patient.First_name+" "+ex.Visit.Patient.Last_name
+                    Pacjent = ex.Visit.Patient.First_name + " " + ex.Visit.Patient.Last_name
                 }).ToList();
             }
         }
@@ -73,11 +73,24 @@ namespace BD2_demaOkien.BizzLayer
                 doctor_notes = notes,
                 visit_id = visitId,
                 commission_examination_date = DateTime.Now,
-                status = "COM"
+                status = "ZLE"
             };
             using (var db = new BD2_2Db())
             {
                 db.LAB_examination.Add(exam);
+                db.SaveChanges();
+            }
+        }
+
+        public static void Perform(int examinationId, int userId, string text)
+        {
+            using (var db = new BD2_2Db())
+            {
+                var labEx = db.LAB_examination.Where(ex => ex.LAB_examination_id == examinationId).First();
+                labEx.LAB_examination_result = text;
+                labEx.LAB_worker_id = userId;
+                labEx.LAB_examination_date = DateTime.Now;
+                labEx.status = "WYK";
                 db.SaveChanges();
             }
         }
@@ -88,6 +101,45 @@ namespace BD2_demaOkien.BizzLayer
             {
                 var labEx = db.LAB_examination.Where(ex => ex.visit_id == visitId).ToList();
                 db.LAB_examination.RemoveRange(labEx);
+                db.SaveChanges();
+            }
+        }
+
+        public static void Accept(int examinationId, int userId, string text)
+        {
+            using (var db = new BD2_2Db())
+            {
+                var labEx = db.LAB_examination.Where(ex => ex.LAB_examination_id == examinationId).First();
+                labEx.LAB_manager_notes = text;
+                labEx.LAB_manager_id = userId;
+                labEx.ending_examination_date = DateTime.Now;
+                labEx.status = "AKC";
+                db.SaveChanges();
+            }
+        }
+
+        public static void CancelKlab(int examinationId, int userId, string text)
+        {
+            using (var db = new BD2_2Db())
+            {
+                var labEx = db.LAB_examination.Where(ex => ex.LAB_examination_id == examinationId).First();
+                labEx.LAB_manager_notes = text;
+                labEx.LAB_manager_id = userId;
+                labEx.ending_examination_date = DateTime.Now;
+                labEx.status = "AN_K";
+                db.SaveChanges();
+            }
+        }
+
+        public static void CancelLab(int examinationId, int userId, string text)
+        {
+            using (var db = new BD2_2Db())
+            {
+                var labEx = db.LAB_examination.Where(ex => ex.LAB_examination_id == examinationId).First();
+                labEx.LAB_examination_result = text;
+                labEx.LAB_worker_id = userId;
+                labEx.LAB_examination_date = DateTime.Now;
+                labEx.status = "AN_L";
                 db.SaveChanges();
             }
         }

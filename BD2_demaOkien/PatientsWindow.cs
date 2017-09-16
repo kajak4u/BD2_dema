@@ -48,19 +48,20 @@ namespace BD2_demaOkien
         {
             using (var Db = new Data.BD2_2Db())
             {
-                var patients = from patient in Db.Patient
-                               join address in Db.Address
-                               on patient.address_id equals address.Address_id
-                               select new
-                               {
-                                   Patient_id = patient.Patient_id,
-                                   First_name = patient.First_name,
-                                   Last_name = patient.Last_name,
-                                   PESEL = patient.PESEL,
-                                   Phone_number = patient.Phone_number,
-                                   Address = address.Flat_number != null ? address.City + " " + address.Street + " " + address.House_number + " " + address.Flat_number : address.City + " " + address.Street + " " + address.House_number
-                               };
-                patientBindingSource.DataSource = patients.ToList();
+                var patient = from patients in Db.Patient
+                              join address in Db.Address
+                              on patients.address_id equals address.Address_id
+                              where patients.First_name.Contains(textBox1.Text) && patients.Last_name.Contains(textBox2.Text) && patients.PESEL.Contains(textBox3.Text)//FirstName == patients.First_name && LastName == patients.Last_name //&& Pesel == patients.PESEL
+                              select new
+                              {
+                                  Patient_id = patients.Patient_id,
+                                  First_name = patients.First_name,
+                                  Last_name = patients.Last_name,
+                                  Phone_number = patients.Phone_number,
+                                  PESEL = patients.PESEL,
+                                  Address = address.Flat_number != null ? address.City + " " + address.Street + " " + address.House_number + " " + address.Flat_number : address.City + " " + address.Street + " " + address.House_number
+                              };
+                patientBindingSource.DataSource = patient.ToList();
             }
         }
 
@@ -120,30 +121,12 @@ namespace BD2_demaOkien
         {
             int id = CurrentRecordID();
             new VisitsAddWindow(ViewMode.CREATE, id).ShowDialog();
+            LoadPatients();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-
-            using (var Db = new Data.BD2_2Db())
-            {
-                var patient = from patients in Db.Patient
-                              join address in Db.Address
-                              on patients.address_id equals address.Address_id
-                              where patients.First_name.Contains(textBox1.Text) && patients.Last_name.Contains(textBox2.Text) && patients.PESEL.Contains(textBox3.Text)//FirstName == patients.First_name && LastName == patients.Last_name //&& Pesel == patients.PESEL
-                              select new
-                              {
-                                  Patient_id = patients.Patient_id,
-                                  First_name = patients.First_name,
-                                  Last_name = patients.Last_name,
-                                  Phone_number = patients.Phone_number,
-                                  PESEL = patients.PESEL,
-                                  Address = address.Flat_number != null ? address.City + " " + address.Street + " " + address.House_number + " " + address.Flat_number : address.City + " " + address.Street + " " + address.House_number
-                              };
-                //var patients = Db.Patient.ToList();
-                dataGridView1.DataSource =  patient.ToList();
-            }
+            LoadPatients();
         }
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)

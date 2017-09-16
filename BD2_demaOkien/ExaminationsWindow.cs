@@ -37,6 +37,7 @@ namespace BD2_demaOkien
             int labExamId = (int)dataGridView1.CurrentRow.Cells["Column7"].Value;
 
             new ExaminationsDetailWindow(labExamId).ShowDialog();
+            LoadData();
 		}
 
 		private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)

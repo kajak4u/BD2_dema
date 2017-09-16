@@ -103,7 +103,7 @@ namespace BD2_demaOkien
         }
         static public bool ShowQuestion(String message, String caption="Pytanie")
         {
-            return MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.OK;
+            return MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
         }
     }
 }
