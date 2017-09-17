@@ -17,3 +17,11 @@
 /sources/MasterDetailGrid/obj
 /sources/packages/EntityFramework.6.1.3
 
+/BD2_demaOkien/obj
+/BD2_demaOkien/bin
+/BD2_demaOkien.BizzLayer/obj
+/BD2_demaOkien.BizzLayer/bin
+/MasterDetailGrid/obj
+/MasterDetailGrid/bin
+/BD2_demaOkien.Data/obj
+/BD2_demaOkien.Data/bin

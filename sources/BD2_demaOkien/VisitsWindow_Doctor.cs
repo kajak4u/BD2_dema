@@ -34,11 +34,10 @@ namespace BD2_demaOkien
         {
             daySchedulerMyVisits.SetViewRange(newDay, newDay);
             date = newDay;
-            int scroll = CalendarPanel.VerticalScroll.Value;
+//            int scroll = CalendarPanel.VerticalScroll.Value;
             RefreshData();
-            daySchedulerMyVisits.Focus();
-            CalendarPanel.VerticalScroll.Value = scroll;
-#warning scroll się nie odświeża... (tzn przestawia się ale nie odmalowuje się kontrolka)
+//            daySchedulerMyVisits.Focus();
+//            CalendarPanel.VerticalScroll.Value = scroll;
         }
         private void RefreshData()
         { 
