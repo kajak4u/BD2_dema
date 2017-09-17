@@ -41,15 +41,36 @@ namespace BD2_demaOkien
 
         private void Workers_Load(object sender, EventArgs e)
         {
-            LoadWorkers();
+            //LoadWorkers();
         }
 
         private void LoadWorkers()
         {
+            String Rola = "";
+            if (comboBox2.SelectedItem != null && comboBox2.SelectedIndex != -1) {
+                switch (comboBox2.SelectedItem.ToString()) {
+                    case ("Rejestrator"):
+                        Rola = "registrar";
+                        break;
+                    case ("Lekarz"):
+                        Rola = "doctor";
+                        break;
+                    case ("Laborant"):
+                        Rola = "lab";
+                        break;
+                    case ("Kierownik laboratorium"):
+                        Rola = "klab";
+                        break;
+                    case ("Administrator"):
+                        Rola = "admin";
+                        break;
+                }
+            }
+
             using (var Db = new Data.BD2_2Db())
             {
                 var worker = from workers in Db.Worker
-                              where workers.First_name.Contains(textBox1.Text) && workers.Last_name.Contains(textBox2.Text) && workers.PESEL.Contains(textBox3.Text)//FirstName == patients.First_name && LastName == patients.Last_name //&& Pesel == patients.PESEL
+                              where workers.First_name.Contains(textBox1.Text) && workers.Last_name.Contains(textBox2.Text) && workers.Role.Contains(Rola)//FirstName == patients.First_name && LastName == patients.Last_name //&& Pesel == patients.PESEL
                               select new
                               {
                                   WorkerId = workers.Worker_id,
@@ -142,7 +163,9 @@ namespace BD2_demaOkien
         {
             textBox1.Text = "";
             textBox2.Text = "";
-            textBox3.Text = "";
+            if (comboBox2.SelectedItem != null)
+                comboBox2.SelectedIndex = -1;
+            //textBox3.Text = "";
         }
 
         private void toolStripButtonSelect_Click(object sender, EventArgs e)
@@ -167,11 +190,6 @@ namespace BD2_demaOkien
         {
             if (selectMode)
                 toolStripButtonSelect_Click(sender, e);
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     } 
 }
