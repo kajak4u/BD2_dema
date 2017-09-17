@@ -32,11 +32,11 @@ namespace BD2_demaOkien
 
             bindingNavigatorEditItem.Enabled = currentExists;
             bindingNavigatorItemData.Enabled = currentExists;
-            bindingNavigatorItemVisits.Enabled = currentExists;
-            bindingNavigatorItemTests.Enabled = currentExists;
-            bindingNavigatorItemAddVisit.Enabled = currentExists;
-            var deleteItem = bindingNavigator1.Items.Find("bindingNavigatorDeleteItem", false);
-            deleteItem.First().Enabled = currentExists;
+            //bindingNavigatorItemVisits.Enabled = currentExists;
+            //bindingNavigatorItemTests.Enabled = currentExists;
+            //bindingNavigatorItemAddVisit.Enabled = currentExists;
+            //var deleteItem = bindingNavigator1.Items.Find("bindingNavigatorDeleteItem", false);
+            //deleteItem.First().Enabled = currentExists;
         }
 
         private void Workers_Load(object sender, EventArgs e)
