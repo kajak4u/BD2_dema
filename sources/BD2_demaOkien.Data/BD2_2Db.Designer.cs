@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'E:\LUKASZ\PolSl_INFORMATYKA\BD_2\PROJEKT\BD2_projekt_git\BD2_demaOkien.Data\BD2_2Db.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\STUDIA\semestr 6\BD2\BD2_dema\sources\BD2_demaOkien.Data\BD2_2Db.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

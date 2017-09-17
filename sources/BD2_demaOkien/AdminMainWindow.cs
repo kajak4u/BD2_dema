@@ -99,13 +99,6 @@ namespace BD2_demaOkien
 
         }
 
-        private void bindingNavigatorItemVisits_Click(object sender, EventArgs e)
-        {
-            int id = CurrentRecordID();
-            VisitsWindow visits = new VisitsWindow(id);
-            visits.MdiParent = this.MdiParent;
-            visits.Show();
-        }
         private int CurrentRecordID()
         {
             int id;
@@ -123,24 +116,7 @@ namespace BD2_demaOkien
         private void bindingNavigatorItemData_Click(object sender, EventArgs e)
         {
             int id = CurrentRecordID();
-            new PatientDetailsWindow(ViewMode.VIEW, id).ShowDialog();
-            LoadWorkers();
-        }
-
-        private void bindingNavigatorItemTests_Click(object sender, EventArgs e)
-        {
-            ExaminationsWindow examinations = new ExaminationsWindow
-            {
-                patientId = CurrentRecordID()
-            };
-            examinations.MdiParent = this.MdiParent;
-            examinations.Show();
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            int id = CurrentRecordID();
-            new VisitsAddWindow(ViewMode.CREATE, id).ShowDialog();
+            new WorkerDetailsWindow(ViewMode.VIEW, id).ShowDialog();
             LoadWorkers();
         }
 
@@ -149,47 +125,13 @@ namespace BD2_demaOkien
             LoadWorkers();
         }
 
-        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
-        {
-            if (MainWindow.ShowQuestion("Jesteś pewny, że chcesz usunąć pacjenta: " + Environment.NewLine + dataGridView1.CurrentRow.Cells[1].Value + " " + dataGridView1.CurrentRow.Cells[2].Value, "Usuwanie użytkownika"))
-            {
-                int id = CurrentRecordID();
-                BizzLayer.Visits.deleteUser(id);
-                LoadWorkers();
-            }
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             textBox1.Text = "";
             textBox2.Text = "";
             if (comboBox2.SelectedItem != null)
                 comboBox2.SelectedIndex = -1;
-            //textBox3.Text = "";
         }
 
-        private void toolStripButtonSelect_Click(object sender, EventArgs e)
-        {
-            Patient patient = BizzLayer.Patients.GetByID(CurrentRecordID());
-            if(patient==null)
-            {
-                MainWindow.ShowError("Nie wybrano pacjenta!");
-                return;
-            }
-            MainWindow.LastSelectResult = patient.PESEL;
-            Close();
-        }
-
-        private void toolStripButtonNoSelect_Click(object sender, EventArgs e)
-        {
-            MainWindow.LastSelectResult = null;
-            Close();
-        }
-
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (selectMode)
-                toolStripButtonSelect_Click(sender, e);
-        }
     } 
 }

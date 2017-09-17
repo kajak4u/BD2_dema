@@ -301,26 +301,6 @@
             this.bindingNavigatorSeparator5.Name = "bindingNavigatorSeparator5";
             this.bindingNavigatorSeparator5.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripButtonSelect
-            // 
-            this.toolStripButtonSelect.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonSelect.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSelect.Image")));
-            this.toolStripButtonSelect.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSelect.Name = "toolStripButtonSelect";
-            this.toolStripButtonSelect.Size = new System.Drawing.Size(53, 22);
-            this.toolStripButtonSelect.Text = "Wybierz";
-            this.toolStripButtonSelect.Click += new System.EventHandler(this.toolStripButtonSelect_Click);
-            // 
-            // toolStripButtonNoSelect
-            // 
-            this.toolStripButtonNoSelect.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonNoSelect.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonNoSelect.Image")));
-            this.toolStripButtonNoSelect.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonNoSelect.Name = "toolStripButtonNoSelect";
-            this.toolStripButtonNoSelect.Size = new System.Drawing.Size(49, 22);
-            this.toolStripButtonNoSelect.Text = "Powrót";
-            this.toolStripButtonNoSelect.Click += new System.EventHandler(this.toolStripButtonNoSelect_Click);
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -344,8 +324,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(539, 240);
             this.dataGridView1.TabIndex = 2;
-            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-            // 
+           // 
             // WorkerId
             // 
             this.WorkerId.DataPropertyName = "WorkerId";
