@@ -34,7 +34,7 @@ namespace BD2_demaOkien
         /// </summary>
         private void InitializeComponent()
         {
-            this.CalendarPanel = new System.Windows.Forms.Panel();
+            this.CalendarPanel = new PanelNoScrollOnFocus();
             this.ResultPanel = new System.Windows.Forms.Panel();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonApply = new System.Windows.Forms.Button();
@@ -327,7 +327,7 @@ namespace BD2_demaOkien
         }
 
         #endregion
-        private System.Windows.Forms.Panel CalendarPanel;
+        private PanelNoScrollOnFocus CalendarPanel;
         private Panel ResultPanel;
         private Button buttonCancel;
         private Button buttonApply;

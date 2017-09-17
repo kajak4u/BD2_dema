@@ -116,6 +116,9 @@
     <Compile Include="WorkerDetailWIndow.Designer.cs">
       <DependentUpon>WorkerDetailWIndow.cs</DependentUpon>
     </Compile>
+    <Compile Include="PanelNoScrollOnFocus.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PatientDetailsWindow.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -151,6 +151,13 @@ namespace BD2_demaOkien
         private void VisitDetailsWindow_Register_Load(object sender, EventArgs e)
         {
             buttonSetScheduler(this, null); // żeby scheduler nie dostał śmieci
+            DateTime time = DateTime.Now;
+            int modulo = time.Minute % 15;
+            if (modulo > 7)
+                time = time.AddMinutes(15 - modulo);
+            else
+                time = time.AddMinutes(-modulo);
+            dateTimeVisitTime.Value = time;
         }
 
         private void dayScheduler_ItemFocusChanged(object sender, CalendarTimeEventArgs e)
