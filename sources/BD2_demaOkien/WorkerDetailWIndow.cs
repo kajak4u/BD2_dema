@@ -13,11 +13,11 @@ namespace BD2_demaOkien
     public partial class WorkerDetailsWindow : Form
     {
         private ViewMode viewMode;
-        private int? patientId;
+        private int? workerId;
         public WorkerDetailsWindow(ViewMode mode, int id)
         {
             InitializeComponent();
-            this.patientId = id;
+            this.workerId = id;
             this.viewMode = mode;
             SetEnabledControls();
         }
@@ -38,21 +38,29 @@ namespace BD2_demaOkien
             textBoxStreet.ReadOnly = readOnly;
             textBoxHouseNo.ReadOnly = readOnly;
             textBoxFlatNo.ReadOnly = readOnly;
+			dateTimePicker1.Enabled = !readOnly;
+			comboBox2.Enabled = !readOnly;
+			textBox3.ReadOnly = readOnly;
+			textBox4.ReadOnly = readOnly;
+			textBox1.Visible = !readOnly;
+			label13.Visible = !readOnly;
         }
 
-        private void PatientDataWindow_Load(object sender, EventArgs e)
+        private void WorkerDataWindow_Load(object sender, EventArgs e)
         {
-            if (patientId.HasValue)
+            if (workerId.HasValue)
             {
-                PatientData patient = BizzLayer.Visits.getPatientById(patientId.Value);
-                textBoxName.Text = patient?.First_name;
-                textBoxSurname.Text = patient?.Last_name;
-                textBoxPESEL.Text = patient?.PESEL;
-                textBoxPhone.Text = patient?.Phone_number;
-                textBoxCity.Text = patient?.City;
-                textBoxStreet.Text = patient?.Street;
-                textBoxHouseNo.Text = patient?.HouseNo.ToString();
-                textBoxFlatNo.Text = patient?.FlatNo.ToString();
+#warning DODAĆ KLASĘ WorkerData do BizzLayer i PODŁĄCZYĆ TUTAJ JAKO ŹRÓDŁO DANYCH
+				// WorkerData worker = BizzLayer.Visits.getWorkerById(workerId.Value);
+				PatientData worker = BizzLayer.Visits.getPatientById(workerId.Value);
+				textBoxName.Text = worker?.First_name;
+                textBoxSurname.Text = worker?.Last_name;
+                textBoxPESEL.Text = worker?.PESEL;
+                textBoxPhone.Text = worker?.Phone_number;
+                textBoxCity.Text = worker?.City;
+                textBoxStreet.Text = worker?.Street;
+                textBoxHouseNo.Text = worker?.HouseNo.ToString();
+                textBoxFlatNo.Text = worker?.FlatNo.ToString();
 
             }
 
@@ -114,7 +122,7 @@ namespace BD2_demaOkien
                     }
                     flatNo = NonNullFlatNo;
                 }
-                BizzLayer.Visits.editPatientData(textBoxName.Text, textBoxSurname.Text, textBoxPESEL.Text, textBoxPhone.Text, textBoxCity.Text, textBoxStreet.Text, houseNo, flatNo, patientId.Value);
+                BizzLayer.Visits.editPatientData(textBoxName.Text, textBoxSurname.Text, textBoxPESEL.Text, textBoxPhone.Text, textBoxCity.Text, textBoxStreet.Text, houseNo, flatNo, workerId.Value);
                 Close();
             }
             else
@@ -146,10 +154,5 @@ namespace BD2_demaOkien
         {
             Close();
         }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-    }
+	}
 }
