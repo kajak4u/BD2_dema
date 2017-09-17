@@ -3,13 +3,17 @@
 ################################################################################
 
 /.vs
-/BD2_demaOkien/bin
-/BD2_demaOkien/obj
-/MasterDetailGrid/bin
-/MasterDetailGrid/obj
-/BD2_demaOkien.BizzLayer/bin
-/BD2_demaOkien.BizzLayer/obj
-/BD2_demaOkien.Data/bin
-/BD2_demaOkien.Data/obj
-/BD2_demaOkien.db/bin
-/BD2_demaOkien.db/obj
+/sources/.vs
+/sources/BD2_demaOkien/bin
+/sources/BD2_demaOkien/obj
+/sources/MasterDetailGrid/bin
+/sources/MasterDetailGrid/obj
+/sources/BD2_demaOkien.BizzLayer/bin
+/sources/BD2_demaOkien.BizzLayer/obj
+/sources/BD2_demaOkien.Data/bin
+/sources/BD2_demaOkien.Data/obj
+/sources/BD2_demaOkien.db/bin
+/sources/BD2_demaOkien.db/obj
+/sources/MasterDetailGrid/obj
+/sources/packages/EntityFramework.6.1.3
+
