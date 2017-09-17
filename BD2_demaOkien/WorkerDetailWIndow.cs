@@ -146,5 +146,10 @@ namespace BD2_demaOkien
         {
             Close();
         }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
