@@ -57,6 +57,8 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.panelView.SuspendLayout();
             this.panelAddEdit.SuspendLayout();
@@ -150,7 +152,7 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Location = new System.Drawing.Point(8, 212);
+            this.groupBox1.Location = new System.Drawing.Point(8, 249);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(448, 104);
             this.groupBox1.TabIndex = 16;
@@ -357,11 +359,33 @@
             this.textBox3.Size = new System.Drawing.Size(351, 20);
             this.textBox3.TabIndex = 26;
             // 
+            // label12
+            // 
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label12.Location = new System.Drawing.Point(12, 188);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(100, 20);
+            this.label12.TabIndex = 27;
+            this.label12.Text = "Hasło              ";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.label12.Click += new System.EventHandler(this.label12_Click);
+            // 
+            // textBox4
+            // 
+            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox4.Location = new System.Drawing.Point(93, 191);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(351, 20);
+            this.textBox4.TabIndex = 28;
+            // 
             // WorkerDetailsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(456, 561);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.textBox2);
@@ -429,5 +453,7 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }
