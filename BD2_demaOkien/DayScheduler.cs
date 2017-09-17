@@ -22,6 +22,7 @@ namespace BD2_demaOkien
     {
         private TimeSpan _dayBegin = new TimeSpan(0,0,0);
         private TimeSpan _dayEnd = new TimeSpan(24,0,0);
+        private bool timeUpdated = false;
         public delegate void CalendarTimeEventHandler(object sender, CalendarTimeEventArgs e);
         public event CalendarTimeEventHandler ItemFocusChanged;
         public TimeSpan dayBegin
@@ -44,7 +45,11 @@ namespace BD2_demaOkien
         public new void SetViewRange(DateTime dateStart, DateTime dateEnd)
         {
             base.SetViewRange(dateStart, dateEnd);
-            UpdatePos();
+            if (!timeUpdated)
+            {
+                UpdatePos();
+                timeUpdated = true;
+            }
         }
         private void UpdatePos()
         {
@@ -97,6 +102,9 @@ namespace BD2_demaOkien
             if (checkVisibility && this.Parent is ScrollableControl)
             {
                 ScrollableControl parent = (ScrollableControl)this.Parent;
+                PanelNoScrollOnFocus betterParent = null;
+                if (parent is PanelNoScrollOnFocus)
+                    betterParent = (PanelNoScrollOnFocus)parent;
                 ICalendarSelectableElement elem;
                 if (suspendBaseEvent)
                     elem = (e.KeyCode == Keys.Down) ? end : beg ;
@@ -106,7 +114,11 @@ namespace BD2_demaOkien
                 bounds.Location = new Point(bounds.Location.X, bounds.Location.Y + this.Top);
                 using (Control c = new Control() { Parent = parent, Bounds = bounds })
                 {
+                    if (betterParent != null)
+                        betterParent.EnableAutoScrolling = true;
                     parent.ScrollControlIntoView(c);
+                    if (betterParent != null)
+                        betterParent.EnableAutoScrolling = false;
                 }
                 if (ItemFocusChanged != null)
                     ItemFocusChanged(this, new CalendarTimeEventArgs(elem.Date));

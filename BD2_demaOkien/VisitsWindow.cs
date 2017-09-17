@@ -24,7 +24,7 @@ namespace BD2_demaOkien
             userRole = MainWindow.userRole;
             InitializeComponent();
             if (userRole == Role.DOCTOR)
-                doctorID = (int)id.Value;
+                doctorID = MainWindow.userId;
             else
                 patientID = (int)id.Value;
         }
