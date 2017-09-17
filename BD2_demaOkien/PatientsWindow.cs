@@ -59,7 +59,7 @@ namespace BD2_demaOkien
                                   Last_name = patients.Last_name,
                                   Phone_number = patients.Phone_number,
                                   PESEL = patients.PESEL,
-                                  Address = address.Flat_number != null ? address.City + " " + address.Street + " " + address.House_number + " " + address.Flat_number : address.City + " " + address.Street + " " + address.House_number
+                                  Address = address.Flat_number != null ? address.City + ", " + address.Street + " " + address.House_number + "/" + address.Flat_number : address.City + ", " + address.Street + " " + address.House_number
                               };
                 patientBindingSource.DataSource = patient.ToList();
             }
