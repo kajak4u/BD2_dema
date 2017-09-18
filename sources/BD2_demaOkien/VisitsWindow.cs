@@ -194,13 +194,13 @@ namespace BD2_demaOkien
         {
             int id = CurrentRowID();
 
-            if (BizzLayer.Visits.wasCanceled(id))
+            if (BizzLayer.Visits.wasRegistered(id))
             {
-                MainWindow.ShowError("Nie można edytować anulowanej wizyty.");
+                new VisitsAddWindow(ViewMode.EDIT, patientID, id).ShowDialog();
             }
             else
             {
-                new VisitsAddWindow(ViewMode.EDIT, patientID, id).ShowDialog();
+                MainWindow.ShowError("Można edytować jedynie zarejestrowaną wizytę.");
             }
             
             LoadVisits();
