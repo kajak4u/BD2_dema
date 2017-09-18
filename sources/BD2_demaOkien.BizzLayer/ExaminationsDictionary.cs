@@ -78,5 +78,29 @@ namespace BD2_demaOkien.BizzLayer
                 }
             }
         }
+
+        public static void Delete(string id)
+        {
+            using (var Db = new BD2_2Db())
+            {
+                var dictionary = Db.Examination_dictionary.Where(dict => dict.Examination_code.Equals(id)).FirstOrDefault();
+                Db.Examination_dictionary.Remove(dictionary);
+                Db.SaveChanges();
+            }
+        }
+
+        public static bool CanDelete(string id)
+        {
+            using (var Db = new BD2_2Db())
+            {
+                var labEx = Db.LAB_examination
+                    .Where(ex => ex.LAB_examination_code.Equals(id))
+                    .ToList();
+                var phEx = Db.Physical_examination
+                    .Where(ex => ex.Physical_examination_code.Equals(id))
+                    .ToList();
+                return labEx.Count == 0 && phEx.Count == 0;
+            }
+        }
     }
 }

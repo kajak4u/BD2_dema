@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BD2_demaOkien.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -72,6 +73,29 @@ namespace BD2_demaOkien
                     break;
             }
             RefreshData();
+        }
+
+        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        {
+            string id = CurrentRecordID();
+            Examination_dictionary dict = BizzLayer.ExaminationsDictionary.Get(id);
+            if (MainWindow.ShowQuestion("Jesteś pewny, że chcesz usunąć badanie: " + Environment.NewLine + dict.Examination_code+" - "+dict.Examination_name, "Usuwanie badania"))
+            {
+                if (BizzLayer.ExaminationsDictionary.CanDelete(id))
+                    BizzLayer.ExaminationsDictionary.Delete(id);
+                else
+                    MainWindow.ShowError("Nie można usunąć badania - jest używane.");
+                RefreshData();
+            }
+        }
+
+        private void bindingNavigator1_RefreshItems(object sender, EventArgs e)
+        {
+
+            bool currentExists = (bindingNavigator1.BindingSource != null && bindingNavigator1.BindingSource.Current != null);
+
+            var deleteItem = bindingNavigator1.Items.Find("bindingNavigatorDeleteItem", false);
+            deleteItem.First().Enabled = currentExists;
         }
     }
 }
