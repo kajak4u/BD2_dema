@@ -9,14 +9,28 @@ namespace BD2_demaOkien.BizzLayer
 {
     static public class ExaminationsDictionary
     {
-        public static List<Examination_dictionary> Get(ExaminationMode mode)
+        public static List<Examination_dictionary> Get(ExaminationMode? mode)
         {
             using (BD2_2Db Db = new BD2_2Db())
             {
-                string modeStr = (mode == ExaminationMode.LAB ? "L" : "F");
+                if (mode.HasValue)
+                {
+                    string modeStr = (mode == ExaminationMode.LAB ? "L" : "F");
+                    return Db.Examination_dictionary
+                        .Where(dict => dict.Examiantion_type.Equals(modeStr))
+                        .ToList();
+                }
+                else
+                    return Db.Examination_dictionary.ToList();
+            }
+        }
+        public static Examination_dictionary Get(string code)
+        {
+            using (BD2_2Db Db = new BD2_2Db())
+            {
                 return Db.Examination_dictionary
-                    .Where(dict => dict.Examiantion_type.Equals(modeStr))
-                    .ToList();
+                    .Where(dict => dict.Examination_code == code)
+                    .FirstOrDefault();
             }
         }
 
@@ -27,10 +41,11 @@ namespace BD2_demaOkien.BizzLayer
             {
                 var matchExam = db.Examination_dictionary
                     .Where(ex =>
-                    (ex.Examination_code == null ? exam.Examination_code == null : ex.Examination_code.Equals(exam.Examination_code)
-                    && ex.Examination_name == null ? exam.Examination_name == null : ex.Examination_name.Equals(exam.Examination_name)
-                    && ex.Examiantion_type == null ? exam.Examiantion_type == null : ex.Examiantion_type == exam.Examiantion_type));
-                if (matchExam.Count() == 0)
+                    (ex.Examination_code == null ? exam.Examination_code == null : ex.Examination_code.Equals(exam.Examination_code))
+                    && (ex.Examination_name == null ? exam.Examination_name == null : ex.Examination_name.Equals(exam.Examination_name))
+                    && (ex.Examiantion_type == null ? exam.Examiantion_type == null : ex.Examiantion_type.Equals(exam.Examiantion_type)))
+                    .Count();
+                if (matchExam == 0)
                 {
                     db.Examination_dictionary.Add(exam);
                     db.SaveChanges();

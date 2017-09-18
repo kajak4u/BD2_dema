@@ -1,4 +1,5 @@
 ﻿using BD2_demaOkien.BizzLayer;
+using BD2_demaOkien.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,49 +14,48 @@ namespace BD2_demaOkien
 {
 	public partial class ExaminationsDictionariesDetails : Form
 	{
-		private List<String> codes;
-		private List<String> names;
-		private List<String> types;
 		private ViewMode mode_mode;
+        private string examinationCode;
 
-		public ExaminationsDictionariesDetails(ViewMode mode)
+        public ExaminationsDictionariesDetails(ViewMode mode, string examinationCode, ExaminationMode? examinationType=null)
 		{
+            this.examinationCode = examinationCode;
 			InitializeComponent();
 			mode_mode = mode;
-			if (mode == ViewMode.CREATE)
-				Text = "Dodaj badanie";
-			else if (mode == ViewMode.EDIT)
-				Text = "Edytuj badanie";
-
-			using (var Db = new BD2_demaOkien.Data.BD2_2Db())
-			{
-				var dict = from exam in Db.Examination_dictionary
-						   select new
-						   {
-							   name = exam.Examination_name,
-							   code = exam.Examination_code,
-							   type = exam.Examiantion_type
-						   };
-				codes = dict.Select(a => a.code).ToList();
-				names = dict.Select(b => b.name).ToList();
-				types = dict.Select(b => b.type).ToList();
-			}
-			textBox2.AutoCompleteMode = AutoCompleteMode.Append;
-			textBox2.AutoCompleteSource = AutoCompleteSource.CustomSource;
-			AutoCompleteStringCollection col_code = new AutoCompleteStringCollection();
-			textBox1.AutoCompleteMode = AutoCompleteMode.Append;
-			textBox1.AutoCompleteSource = AutoCompleteSource.CustomSource;
-			AutoCompleteStringCollection col_name = new AutoCompleteStringCollection();
-			foreach (string c in codes)
-			{
-				col_code.Add(c);
-			}
-			foreach(string c in names)
-			{
-				col_name.Add(c);
-			}
-			textBox2.AutoCompleteCustomSource = col_code;
-			textBox1.AutoCompleteCustomSource = col_name;
+            if (mode == ViewMode.CREATE)
+            {
+                Text = "Dodaj badanie";
+                textBox2.Enabled = true;
+                if (examinationType.HasValue)
+                {
+                    switch (examinationType.Value)
+                    {
+                        case ExaminationMode.LAB:
+                            radioButton2.Checked = true;
+                            break;
+                        case ExaminationMode.PHYSICAL:
+                            radioButton1.Checked = true;
+                            break;
+                    }
+                }
+            }
+            else if (mode == ViewMode.EDIT)
+            {
+                Examination_dictionary dict = BizzLayer.ExaminationsDictionary.Get(examinationCode);
+                Text = "Edytuj badanie";
+                textBox2.Text = dict.Examination_code;
+                textBox1.Text = dict.Examination_name;
+                switch (dict.Examiantion_type)
+                {
+                    case "L":
+                        radioButton2.Checked = true;
+                        break;
+                    case "F":
+                        radioButton1.Checked = true;
+                        break;
+                }
+            }
+            
 		}
 
 		private void buttonApply_Click(object sender, EventArgs e)
@@ -63,7 +63,13 @@ namespace BD2_demaOkien
 			switch (mode_mode)
 			{
 				case ViewMode.CREATE:
-					ExaminationsDictionary.insertExaminationData(textBox1.Text, textBox2.Text, radioButton1.Checked ? "F" : "L");
+                    string newCode = textBox2.Text;
+                    if (ExaminationsDictionary.Get(newCode) != null)
+                    {
+                        MainWindow.ShowError("Badanie o podanym kodzie już istnieje!");
+                        return;
+                    }
+                    ExaminationsDictionary.insertExaminationData(textBox1.Text, textBox2.Text, radioButton1.Checked ? "F" : "L");
 					break;
 				case ViewMode.EDIT:
 					ExaminationsDictionary.editExaminationData(textBox1.Text, textBox2.Text, radioButton1.Checked ? "F" : "L");

@@ -31,11 +31,15 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExaminationsDictionariesWindow));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.examinationcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.examiantiontypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.examinationnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.examinationdictionaryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -46,13 +50,9 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorEditItem = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.examinationcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.examiantiontypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.examinationnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.examinationdictionaryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -71,6 +71,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(597, 41);
             this.panel1.TabIndex = 1;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Wszystkie",
+            "Fizykalne",
+            "Laboratoryjne"});
+            this.comboBox2.Location = new System.Drawing.Point(81, 6);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(223, 21);
+            this.comboBox2.TabIndex = 10;
+            this.comboBox2.SelectedValueChanged += new System.EventHandler(this.comboBox2_SelectedValueChanged);
             // 
             // label1
             // 
@@ -107,10 +121,40 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(593, 280);
             this.dataGridView1.TabIndex = 2;
+            // 
+            // examinationcodeDataGridViewTextBoxColumn
+            // 
+            this.examinationcodeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.examinationcodeDataGridViewTextBoxColumn.DataPropertyName = "Examination_code";
+            this.examinationcodeDataGridViewTextBoxColumn.HeaderText = "Kod";
+            this.examinationcodeDataGridViewTextBoxColumn.Name = "examinationcodeDataGridViewTextBoxColumn";
+            this.examinationcodeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.examinationcodeDataGridViewTextBoxColumn.Width = 51;
+            // 
+            // examiantiontypeDataGridViewTextBoxColumn
+            // 
+            this.examiantiontypeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.examiantiontypeDataGridViewTextBoxColumn.DataPropertyName = "Examiantion_type";
+            this.examiantiontypeDataGridViewTextBoxColumn.HeaderText = "Typ";
+            this.examiantiontypeDataGridViewTextBoxColumn.Name = "examiantiontypeDataGridViewTextBoxColumn";
+            this.examiantiontypeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.examiantiontypeDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // examinationnameDataGridViewTextBoxColumn
+            // 
+            this.examinationnameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.examinationnameDataGridViewTextBoxColumn.DataPropertyName = "Examination_name";
+            this.examinationnameDataGridViewTextBoxColumn.HeaderText = "Nazwa";
+            this.examinationnameDataGridViewTextBoxColumn.Name = "examinationnameDataGridViewTextBoxColumn";
+            this.examinationnameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // examinationdictionaryBindingSource
+            // 
+            this.examinationdictionaryBindingSource.DataSource = typeof(BD2_demaOkien.Data.Examination_dictionary);
             // 
             // bindingNavigator1
             // 
@@ -143,16 +187,6 @@
             this.bindingNavigator1.Stretch = true;
             this.bindingNavigator1.TabIndex = 1;
             this.bindingNavigator1.Text = "bindingNavigator1";
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
             // bindingNavigatorCountItem
             // 
@@ -230,6 +264,16 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
+            // 
             // bindingNavigatorEditItem
             // 
             this.bindingNavigatorEditItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -243,49 +287,6 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Wszystkie",
-            "Fizykalne",
-            "Laboratoryjne"});
-            this.comboBox2.Location = new System.Drawing.Point(81, 6);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(223, 21);
-            this.comboBox2.TabIndex = 10;
-            // 
-            // examinationcodeDataGridViewTextBoxColumn
-            // 
-            this.examinationcodeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.examinationcodeDataGridViewTextBoxColumn.DataPropertyName = "Examination_code";
-            this.examinationcodeDataGridViewTextBoxColumn.HeaderText = "Kod";
-            this.examinationcodeDataGridViewTextBoxColumn.Name = "examinationcodeDataGridViewTextBoxColumn";
-            this.examinationcodeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.examinationcodeDataGridViewTextBoxColumn.Width = 51;
-            // 
-            // examiantiontypeDataGridViewTextBoxColumn
-            // 
-            this.examiantiontypeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.examiantiontypeDataGridViewTextBoxColumn.DataPropertyName = "Examiantion_type";
-            this.examiantiontypeDataGridViewTextBoxColumn.HeaderText = "Typ";
-            this.examiantiontypeDataGridViewTextBoxColumn.Name = "examiantiontypeDataGridViewTextBoxColumn";
-            this.examiantiontypeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.examiantiontypeDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // examinationnameDataGridViewTextBoxColumn
-            // 
-            this.examinationnameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.examinationnameDataGridViewTextBoxColumn.DataPropertyName = "Examination_name";
-            this.examinationnameDataGridViewTextBoxColumn.HeaderText = "Nazwa";
-            this.examinationnameDataGridViewTextBoxColumn.Name = "examinationnameDataGridViewTextBoxColumn";
-            this.examinationnameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // examinationdictionaryBindingSource
-            // 
-            this.examinationdictionaryBindingSource.DataSource = typeof(BD2_demaOkien.Data.Examination_dictionary);
             // 
             // ExaminationsDictionariesWindow
             // 
