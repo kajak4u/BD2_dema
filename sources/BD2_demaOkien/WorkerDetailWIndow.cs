@@ -140,7 +140,24 @@ namespace BD2_demaOkien
                         return;
                     }
                     workerData.Password = pass1;
-                    BizzLayer.Workers.Create(workerData);
+                    try
+                    { 
+                        BizzLayer.Workers.Create(workerData);
+                    }
+                    catch (EntityValidationErrorWrapper ex)
+                    {
+                        ex.FormatForField("City", "Miasto");
+                        ex.FormatForField("Street", "Ulica");
+                        ex.FormatForField("First_name", "Imię");
+                        ex.FormatForField("Last_name", "Nazwisko");
+                        ex.FormatForField("Phone_number", "Nr telefonu");
+                        ex.FormatForField("PESEL", "PESEL");
+                        ex.FormatForField("E_mail_Address", "E-mail");
+                        ex.FormatForField("Login", "Login");
+                        MainWindow.ShowError(ex.FullMessage);
+                        DialogResult = DialogResult.None;
+                        return;
+                    }
                     Close();
                 }
                 catch (Exception exx)
@@ -185,7 +202,24 @@ namespace BD2_demaOkien
                 workerData.Worker_id = workerId.Value;
                 workerData.HouseNo = houseNo;
                 workerData.FlatNo = flatNo;
-                BizzLayer.Workers.Update(workerData);
+                try
+                {
+                    BizzLayer.Workers.Update(workerData);
+                }
+                catch (EntityValidationErrorWrapper ex)
+                {
+                    ex.FormatForField("City", "Miasto");
+                    ex.FormatForField("Street", "Ulica");
+                    ex.FormatForField("First_name", "Imię");
+                    ex.FormatForField("Last_name", "Nazwisko");
+                    ex.FormatForField("Phone_number", "Nr telefonu");
+                    ex.FormatForField("PESEL", "PESEL");
+                    ex.FormatForField("E_mail_Address", "E-mail");
+                    ex.FormatForField("Login", "Login");
+                    MainWindow.ShowError(ex.FullMessage);
+                    DialogResult = DialogResult.None;
+                    return;
+                }
                 Close();
             }
             else

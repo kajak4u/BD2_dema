@@ -134,7 +134,16 @@ namespace BD2_demaOkien
                     ending_date = visitTime,
                     status = "REJ"
                 };
-                BizzLayer.Visits.Add(visit);
+                try
+                {
+                    BizzLayer.Visits.Add(visit);
+                } catch(EntityValidationErrorWrapper ex)
+                {
+                    //ex.FormatForField("PESEL", "PESEL"); // nie ma tu w sumie złych pól
+                    MainWindow.ShowError(ex.FullMessage);
+                    DialogResult = DialogResult.None;
+                    return;
+                }
                 Close();
             }
             else
@@ -143,7 +152,17 @@ namespace BD2_demaOkien
                 visit.patient_id = patient.Patient_id;
                 visit.doctor_id = doctor.Worker_id.Value;
                 visit.ending_date = visitTime;
-                BizzLayer.Visits.Modify(visit);
+                try
+                {
+                    BizzLayer.Visits.Modify(visit);
+                }
+                catch (EntityValidationErrorWrapper ex)
+                {
+                    //ex.FormatForField("PESEL", "PESEL"); // nie ma tu w sumie złych pól
+                    MainWindow.ShowError(ex.FullMessage);
+                    DialogResult = DialogResult.None;
+                    return;
+                }
                 this.openMode = ViewMode.VIEW;
                 SetEnabledControls();
             }
