@@ -46,7 +46,25 @@ namespace BD2_demaOkien
                 textBox5.Text = data.dateZle.ToString();
                 textBox1.Text = data.patientName;
                 string examType = data.examType;
-                textBox3.Text = data.examStatus;
+
+                switch (data.examStatus)
+                {
+                    case "ZLE":
+                        textBox3.Text = "Zlecone";
+                        break;
+                    case "AN_L":
+                        textBox3.Text = "Anulowane przez laboranta";
+                        break;
+                    case "AN_K":
+                        textBox3.Text = "Anulowane przez kierownika";
+                        break;
+                    case "WYK":
+                        textBox3.Text = "Wykonane";
+                        break;
+                    case "AKC":
+                        textBox3.Text = "Zaakceptowane";
+                        break;
+                }
 
                 textBoxPatient.Text = data.doctor;
                 richTextBox1.Text = data.notes;
@@ -160,6 +178,11 @@ namespace BD2_demaOkien
                 return;
             }
             Close();
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
