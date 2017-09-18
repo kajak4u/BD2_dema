@@ -97,7 +97,14 @@ namespace BD2_demaOkien.BizzLayer
                 visit.status = "ZAK";
                 visit.diagnosis = diagnosis;
                 visit.description = interview;
-                Db.SaveChanges();
+                try
+                {
+                    Db.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    throw new EntityValidationErrorWrapper(ex);
+                }
             }
         }
 
@@ -149,7 +156,14 @@ namespace BD2_demaOkien.BizzLayer
             {
                 Visit visit = Db.Visit.Where(v => v.visit_id == visit_id).FirstOrDefault();
                 visit.status = "ANUL";
-                Db.SaveChanges();
+                try
+                {
+                    Db.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    throw new EntityValidationErrorWrapper(ex);
+                }
             }
         }
 
@@ -189,7 +203,14 @@ namespace BD2_demaOkien.BizzLayer
 
                 //Db.Address.Remove(add.First()); - adres zostaje w bazie! - co jeśli ktoś inny też go ma?
                 Db.Patient.Remove(patient);
-                Db.SaveChanges();
+                try
+                {
+                    Db.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    throw new EntityValidationErrorWrapper(ex);
+                }
             }
 
         }
@@ -212,14 +233,20 @@ namespace BD2_demaOkien.BizzLayer
                 if (matchAddresses.Count() == 0)
                 {
                     Db.Address.Add(address);
-                    //Db.SaveChanges(); // ważne!
                 }
                 else
                     address = matchAddresses.First();
 
                 patient.Address = address;
                 Db.Patient.Add(patient);
-                Db.SaveChanges();
+                try
+                {
+                    Db.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    throw new EntityValidationErrorWrapper(ex);
+                }
             }
         }
 
@@ -238,7 +265,14 @@ namespace BD2_demaOkien.BizzLayer
                 patientAddress.Street = street;
                 patientAddress.House_number = houseNo;
                 patientAddress.Flat_number = flatNo;
-                Db.SaveChanges();
+                try
+                {
+                    Db.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    throw new EntityValidationErrorWrapper(ex);
+                }
             }
         }
 
@@ -247,7 +281,14 @@ namespace BD2_demaOkien.BizzLayer
             using (var Db = new BD2_2Db())
             {
                 Db.Visit.Add(visit);
-                Db.SaveChanges();
+                try
+                {
+                    Db.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    throw new EntityValidationErrorWrapper(ex);
+                }
             }
         }
 
@@ -267,7 +308,14 @@ namespace BD2_demaOkien.BizzLayer
             using (var Db = new BD2_2Db())
             {
                 Db.Entry<Visit>(newVisit).State = System.Data.Entity.EntityState.Modified;
-                Db.SaveChanges();
+                try
+                {
+                    Db.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    throw new EntityValidationErrorWrapper(ex);
+                }
             }
         }
     }

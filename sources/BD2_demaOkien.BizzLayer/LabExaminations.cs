@@ -78,7 +78,14 @@ namespace BD2_demaOkien.BizzLayer
             using (var db = new BD2_2Db())
             {
                 db.LAB_examination.Add(exam);
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    throw new EntityValidationErrorWrapper(ex);
+                }
             }
         }
 
@@ -91,7 +98,14 @@ namespace BD2_demaOkien.BizzLayer
                 labEx.LAB_worker_id = userId;
                 labEx.LAB_examination_date = DateTime.Now;
                 labEx.status = "WYK";
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    throw new EntityValidationErrorWrapper(ex);
+                }
             }
         }
 
@@ -101,7 +115,14 @@ namespace BD2_demaOkien.BizzLayer
             {
                 var labEx = db.LAB_examination.Where(ex => ex.visit_id == visitId).ToList();
                 db.LAB_examination.RemoveRange(labEx);
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    throw new EntityValidationErrorWrapper(ex);
+                }
             }
         }
 
@@ -114,7 +135,14 @@ namespace BD2_demaOkien.BizzLayer
                 labEx.LAB_manager_id = userId;
                 labEx.ending_examination_date = DateTime.Now;
                 labEx.status = "AKC";
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    throw new EntityValidationErrorWrapper(ex);
+                }
             }
         }
 
@@ -127,7 +155,14 @@ namespace BD2_demaOkien.BizzLayer
                 labEx.LAB_manager_id = userId;
                 labEx.ending_examination_date = DateTime.Now;
                 labEx.status = "AN_K";
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    throw new EntityValidationErrorWrapper(ex);
+                }
             }
         }
 
@@ -140,7 +175,14 @@ namespace BD2_demaOkien.BizzLayer
                 labEx.LAB_worker_id = userId;
                 labEx.LAB_examination_date = DateTime.Now;
                 labEx.status = "AN_L";
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    throw new EntityValidationErrorWrapper(ex);
+                }
             }
         }
     }

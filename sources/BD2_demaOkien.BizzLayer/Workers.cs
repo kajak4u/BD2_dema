@@ -116,7 +116,14 @@ namespace BD2_demaOkien.BizzLayer
 
                 worker.Address = address;
                 Db.Worker.Add(worker);
-                Db.SaveChanges();
+                try
+                {
+                    Db.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    throw new EntityValidationErrorWrapper(ex);
+                }
             }
         }
         public static void Update(WorkerData wd)
@@ -151,8 +158,14 @@ namespace BD2_demaOkien.BizzLayer
                 worker.Expiration_date = worker2.Expiration_date;
                 worker.NPWZ = worker2.NPWZ;
                 worker.Address = address;
-                
-                Db.SaveChanges();
+                try
+                {
+                    Db.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    throw new EntityValidationErrorWrapper(ex);
+                }
             }
         }
     }

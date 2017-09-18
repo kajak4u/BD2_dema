@@ -63,7 +63,14 @@ namespace BD2_demaOkien.BizzLayer
             using (var db = new BD2_2Db())
             {
                 db.Physical_examination.Add(exam);
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    throw new EntityValidationErrorWrapper(ex);
+                }
             }
         }
 
@@ -73,7 +80,14 @@ namespace BD2_demaOkien.BizzLayer
             {
                 var phEx = db.Physical_examination.Where(ex => ex.visit_id == visitId).ToList();
                 db.Physical_examination.RemoveRange(phEx);
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    throw new EntityValidationErrorWrapper(ex);
+                }
             }
         }
     }

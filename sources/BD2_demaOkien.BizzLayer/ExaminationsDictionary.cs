@@ -48,7 +48,14 @@ namespace BD2_demaOkien.BizzLayer
                 if (matchExam == 0)
                 {
                     db.Examination_dictionary.Add(exam);
-                    db.SaveChanges();
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch(System.Data.Entity.Validation.DbEntityValidationException ex)
+                    {
+                        throw new EntityValidationErrorWrapper(ex);
+                    }
                 }
             }
         }
@@ -61,7 +68,14 @@ namespace BD2_demaOkien.BizzLayer
                 examData.Examiantion_type = type;
                 examData.Examination_code = code;
                 examData.Examination_name = name;
-                Db.SaveChanges();
+                try
+                {
+                    Db.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    throw new EntityValidationErrorWrapper(ex);
+                }
             }
         }
     }
