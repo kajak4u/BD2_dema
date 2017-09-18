@@ -82,8 +82,15 @@ namespace BD2_demaOkien
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            this.openMode = ViewMode.EDIT;
-            SetEnabledControls();
+            if (BizzLayer.Visits.wasCanceled(visitId))
+            {
+                MainWindow.ShowError("Nie można edytować anulowanej wizyty.");
+            }
+            else
+            {
+                this.openMode = ViewMode.EDIT;
+                SetEnabledControls();
+            }   
         }
 
         private void SetEnabledControls()
