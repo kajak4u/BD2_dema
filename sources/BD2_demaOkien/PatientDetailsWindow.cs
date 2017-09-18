@@ -82,6 +82,12 @@ namespace BD2_demaOkien
                         }
                         flatNo = NonNullFlatNo;
                     }
+                    string cityName = textBoxCity.Text;
+                    if (cityName == "")
+                    {
+                        MainWindow.ShowError("Brak miasta zamieszkania.");
+                        return;
+                    }
                     try
                     {
                         BizzLayer.Visits.setPatientData(textBoxName.Text, textBoxSurname.Text, textBoxPESEL.Text, textBoxPhone.Text, textBoxCity.Text, textBoxStreet.Text, houseNo, flatNo, null);
@@ -127,6 +133,12 @@ namespace BD2_demaOkien
                         return;
                     }
                     flatNo = NonNullFlatNo;
+                }
+                string cityName = textBoxCity.Text;
+                if (cityName == "")
+                {
+                    MainWindow.ShowError("Brak miasta zamieszkania.");
+                    return;
                 }
                 try
                 {
