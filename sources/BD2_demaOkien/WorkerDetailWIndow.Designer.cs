@@ -365,6 +365,7 @@
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(351, 20);
             this.textBoxPassword.TabIndex = 9;
+            this.textBoxPassword.UseSystemPasswordChar = true;
             // 
             // dateTimeExpire
             // 
@@ -416,6 +417,7 @@
             this.textBoxPassword2.Name = "textBoxPassword2";
             this.textBoxPassword2.Size = new System.Drawing.Size(326, 20);
             this.textBoxPassword2.TabIndex = 10;
+            this.textBoxPassword2.UseSystemPasswordChar = true;
             // 
             // textBoxEmail
             // 
