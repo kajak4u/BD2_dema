@@ -179,10 +179,5 @@ namespace BD2_demaOkien
             }
             Close();
         }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
