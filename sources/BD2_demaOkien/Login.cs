@@ -89,5 +89,13 @@ namespace BD2_demaOkien
                 MainWindow.ShowError("Błedny login i/lub hasło!", "Błąd logowania");
 			}
 		}
-	}
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            //auto-logowanie dla przyspieszenia testów
+            //loginBox.Text = "janusz";
+            //passwordBox.Text = "janusz";
+            //button1.PerformClick();
+        }
+    }
 }

@@ -26,7 +26,6 @@ namespace BD2_demaOkien
                 userLogin = login.userLogin;
                 userRole = login.userRole;
                 userId = login.userId;
-                SetVisibility(userRole);
             }
             else
                 throw new Exception("Permission denied");
@@ -40,34 +39,36 @@ namespace BD2_demaOkien
         }
         private void SetVisibility(Role role)
         {
+            Form startForm = null;
             switch (role)
             {
                 case Role.REGISTRAR:
-                    BringMenuToFront(rejestratorkaToolStripMenuItem);
+                    startForm = new PatientsWindow();
                     break;
                 case Role.DOCTOR:
                     BringMenuToFront(lekarzToolStripMenuItem);
+                    startForm = new VisitsWindow_Doctor();
                     break;
                 case Role.LAB:
-                    BringMenuToFront(laborantToolStripMenuItem);
+                    startForm = new ExaminationsWindow();
                     break;
                 case Role.KLAB:
-                    BringMenuToFront(kierLabToolStripMenuItem);
+                    startForm = new ExaminationsWindow();
                     break;
                 case Role.ADMIN:
-                    //rejestratorkaToolStripMenuItem.Visible = true;
-                    //lekarzToolStripMenuItem.Visible = true;
-                    //laborantToolStripMenuItem.Visible = true;
-                    //kierLabToolStripMenuItem.Visible = true;
-                    //adminToolStripMenuItem.Visible = true;
                     BringMenuToFront(adminToolStripMenuItem);
                     break;
                 default:
                     break;
             }
+            if(startForm != null)
+            {
+                OpenMDIWindow(startForm);
+                MakeNonClosable(startForm);
+            }
         }
 
-        private void OpenMDIWindow<_T>(_T window) where _T: Form
+        private void OpenMDIWindow(Form window)
         {
             window.MdiParent = this;
             window.Show();
@@ -112,9 +113,31 @@ namespace BD2_demaOkien
             return MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void MainWindow_Load(object sender, EventArgs e)
         {
+            SetVisibility(userRole);
+        }
 
+        private void MakeNonClosable(Form form)
+        {
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.WindowState = FormWindowState.Normal;
+            form.ControlBox = false;
+            form.MaximizeBox = false;
+            form.MinimizeBox = false;
+            form.Dock = DockStyle.Fill;
+            form.Activated += (sender, e) =>
+            {
+                ((Form)sender).WindowState = FormWindowState.Normal;
+                this.Text = "Program medyczny - [" + ((Form)sender).Text + "]";
+            };
+            this.Text = "Program medyczny - [" + form.Text + "]";
+
+            form.Deactivate += (sender, e) =>
+            {
+                this.Text = "Program medyczny";
+            };
+            form.Refresh();
         }
     }
 }

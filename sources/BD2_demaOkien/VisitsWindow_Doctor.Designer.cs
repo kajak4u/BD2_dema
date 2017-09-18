@@ -32,15 +32,15 @@
             this.button1 = new System.Windows.Forms.Button();
             this.dateTimeMyVisitsDate = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.CalendarPanel = new PanelNoScrollOnFocus();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonPatientData = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonPerform = new System.Windows.Forms.Button();
+            this.CalendarPanel = new BD2_demaOkien.PanelNoScrollOnFocus();
             this.daySchedulerMyVisits = new BD2_demaOkien.DayScheduler();
             this.DataPanel.SuspendLayout();
-            this.CalendarPanel.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.CalendarPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // DataPanel
@@ -52,7 +52,7 @@
             this.DataPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.DataPanel.Location = new System.Drawing.Point(0, 0);
             this.DataPanel.Name = "DataPanel";
-            this.DataPanel.Size = new System.Drawing.Size(696, 59);
+            this.DataPanel.Size = new System.Drawing.Size(559, 59);
             this.DataPanel.TabIndex = 26;
             // 
             // button1
@@ -86,27 +86,16 @@
             this.label1.Text = "Data wizyty      ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // CalendarPanel
-            // 
-            this.CalendarPanel.AutoScroll = true;
-            this.CalendarPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.CalendarPanel.Controls.Add(this.daySchedulerMyVisits);
-            this.CalendarPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CalendarPanel.Location = new System.Drawing.Point(0, 59);
-            this.CalendarPanel.Name = "CalendarPanel";
-            this.CalendarPanel.Size = new System.Drawing.Size(696, 388);
-            this.CalendarPanel.TabIndex = 27;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.buttonPatientData);
             this.panel1.Controls.Add(this.buttonCancel);
             this.panel1.Controls.Add(this.buttonPerform);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 447);
+            this.panel1.Location = new System.Drawing.Point(0, 364);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.panel1.Size = new System.Drawing.Size(696, 41);
+            this.panel1.Size = new System.Drawing.Size(559, 41);
             this.panel1.TabIndex = 28;
             // 
             // buttonPatientData
@@ -151,6 +140,19 @@
             this.buttonPerform.UseVisualStyleBackColor = true;
             this.buttonPerform.Click += new System.EventHandler(this.buttonPerform_Click);
             // 
+            // CalendarPanel
+            // 
+            this.CalendarPanel.AutoScroll = true;
+            this.CalendarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
+            this.CalendarPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.CalendarPanel.Controls.Add(this.daySchedulerMyVisits);
+            this.CalendarPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CalendarPanel.EnableAutoScrolling = false;
+            this.CalendarPanel.Location = new System.Drawing.Point(0, 59);
+            this.CalendarPanel.Name = "CalendarPanel";
+            this.CalendarPanel.Size = new System.Drawing.Size(559, 305);
+            this.CalendarPanel.TabIndex = 27;
+            // 
             // daySchedulerMyVisits
             // 
             this.daySchedulerMyVisits.AllowItemEdit = false;
@@ -169,7 +171,7 @@
             this.daySchedulerMyVisits.ItemsForeColor = System.Drawing.Color.Black;
             this.daySchedulerMyVisits.Location = new System.Drawing.Point(0, -780);
             this.daySchedulerMyVisits.Name = "daySchedulerMyVisits";
-            this.daySchedulerMyVisits.Size = new System.Drawing.Size(672, 1518);
+            this.daySchedulerMyVisits.Size = new System.Drawing.Size(518, 1518);
             this.daySchedulerMyVisits.TabIndex = 24;
             this.daySchedulerMyVisits.Text = "dayScheduler";
             this.daySchedulerMyVisits.TimeScale = WindowsFormsCalendar.CalendarTimeScale.FifteenMinutes;
@@ -181,7 +183,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(696, 488);
+            this.ClientSize = new System.Drawing.Size(559, 405);
             this.Controls.Add(this.CalendarPanel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.DataPanel);
@@ -190,9 +192,9 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.VisitsWindow_Doctor_Load);
             this.DataPanel.ResumeLayout(false);
-            this.CalendarPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.CalendarPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
