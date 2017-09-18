@@ -115,11 +115,19 @@ namespace BD2_demaOkien
                 return;
             }
             Visit visit = BizzLayer.Visits.GetByID(visitId.Value);
-            if (MainWindow.ShowQuestion("Jesteś pewny, że chcesz anulować wizytę: " + Environment.NewLine + visit.Patient.First_name + " " + visit.Patient.Last_name, "Anulowanie wizyty"))
+
+            if (BizzLayer.Visits.wasRegistered(visit.visit_id))
             {
-                BizzLayer.Visits.Cancel(visit.visit_id);
-                RefreshData();
+                if (MainWindow.ShowQuestion("Jesteś pewny, że chcesz anulować wizytę: " + Environment.NewLine + visit.Patient.First_name + " " + visit.Patient.Last_name, "Anulowanie wizyty"))
+                {
+                    BizzLayer.Visits.Cancel(visit.visit_id);  
+                }
             }
+            else
+            {
+                MainWindow.ShowError("Można anulować tylko zarejestrowaną wizytę.");
+            }
+            RefreshData();
         }
 
         private void VisitsWindow_Doctor_Activated(object sender, EventArgs e)
