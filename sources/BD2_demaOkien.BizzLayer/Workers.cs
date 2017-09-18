@@ -61,8 +61,6 @@ namespace BD2_demaOkien.BizzLayer
                         FlatNo = w.Address.Flat_number,
                         role = w.Role.ToString(),
                         login = w.Login,
-                        NPWZ = w.NPWZ,
-                        ExpirationDate = w.Expiration_date,
                         email = w.E_mail_Address
                     });
                 //var patients = Db.Patient.ToList();
