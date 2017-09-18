@@ -57,6 +57,7 @@ namespace BD2_demaOkien
                     break;
                 case Role.ADMIN:
                     BringMenuToFront(adminToolStripMenuItem);
+                    startForm = new AdminMainWindow();
                     break;
                 default:
                     break;

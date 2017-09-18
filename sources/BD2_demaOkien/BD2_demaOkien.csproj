@@ -110,11 +110,11 @@
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="WorkerDetailWIndow.cs">
+    <Compile Include="WorkerDetailWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WorkerDetailWIndow.Designer.cs">
-      <DependentUpon>WorkerDetailWIndow.cs</DependentUpon>
+    <Compile Include="WorkerDetailWindow.Designer.cs">
+      <DependentUpon>WorkerDetailWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="PanelNoScrollOnFocus.cs">
       <SubType>Component</SubType>
@@ -193,8 +193,8 @@
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WorkerDetailWIndow.resx">
-      <DependentUpon>WorkerDetailWIndow.cs</DependentUpon>
+    <EmbeddedResource Include="WorkerDetailWindow.resx">
+      <DependentUpon>WorkerDetailWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PatientDetailsWindow.resx">
       <DependentUpon>PatientDetailsWindow.cs</DependentUpon>

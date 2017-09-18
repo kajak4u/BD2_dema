@@ -117,7 +117,7 @@
             this.textBoxName.Location = new System.Drawing.Point(93, 9);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(351, 20);
-            this.textBoxName.TabIndex = 12;
+            this.textBoxName.TabIndex = 1;
             // 
             // textBoxSurname
             // 
@@ -126,7 +126,7 @@
             this.textBoxSurname.Location = new System.Drawing.Point(93, 35);
             this.textBoxSurname.Name = "textBoxSurname";
             this.textBoxSurname.Size = new System.Drawing.Size(351, 20);
-            this.textBoxSurname.TabIndex = 13;
+            this.textBoxSurname.TabIndex = 2;
             // 
             // textBoxPhone
             // 
@@ -135,7 +135,7 @@
             this.textBoxPhone.Location = new System.Drawing.Point(93, 87);
             this.textBoxPhone.Name = "textBoxPhone";
             this.textBoxPhone.Size = new System.Drawing.Size(351, 20);
-            this.textBoxPhone.TabIndex = 15;
+            this.textBoxPhone.TabIndex = 4;
             // 
             // textBoxPESEL
             // 
@@ -144,7 +144,7 @@
             this.textBoxPESEL.Location = new System.Drawing.Point(93, 61);
             this.textBoxPESEL.Name = "textBoxPESEL";
             this.textBoxPESEL.Size = new System.Drawing.Size(351, 20);
-            this.textBoxPESEL.TabIndex = 14;
+            this.textBoxPESEL.TabIndex = 3;
             // 
             // groupBox1
             // 
@@ -170,14 +170,14 @@
             this.textBoxFlatNo.Location = new System.Drawing.Point(298, 67);
             this.textBoxFlatNo.Name = "textBoxFlatNo";
             this.textBoxFlatNo.Size = new System.Drawing.Size(75, 20);
-            this.textBoxFlatNo.TabIndex = 23;
+            this.textBoxFlatNo.TabIndex = 15;
             // 
             // textBoxHouseNo
             // 
             this.textBoxHouseNo.Location = new System.Drawing.Point(89, 67);
             this.textBoxHouseNo.Name = "textBoxHouseNo";
             this.textBoxHouseNo.Size = new System.Drawing.Size(75, 20);
-            this.textBoxHouseNo.TabIndex = 22;
+            this.textBoxHouseNo.TabIndex = 14;
             // 
             // textBoxStreet
             // 
@@ -186,7 +186,7 @@
             this.textBoxStreet.Location = new System.Drawing.Point(89, 41);
             this.textBoxStreet.Name = "textBoxStreet";
             this.textBoxStreet.Size = new System.Drawing.Size(351, 20);
-            this.textBoxStreet.TabIndex = 21;
+            this.textBoxStreet.TabIndex = 13;
             // 
             // textBoxCity
             // 
@@ -195,7 +195,7 @@
             this.textBoxCity.Location = new System.Drawing.Point(89, 15);
             this.textBoxCity.Name = "textBoxCity";
             this.textBoxCity.Size = new System.Drawing.Size(351, 20);
-            this.textBoxCity.TabIndex = 20;
+            this.textBoxCity.TabIndex = 12;
             // 
             // label5
             // 
@@ -345,7 +345,7 @@
             this.textBoxLogin.Location = new System.Drawing.Point(93, 165);
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(351, 20);
-            this.textBoxLogin.TabIndex = 26;
+            this.textBoxLogin.TabIndex = 7;
             // 
             // label12
             // 
@@ -364,7 +364,7 @@
             this.textBoxPassword.Location = new System.Drawing.Point(93, 217);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(351, 20);
-            this.textBoxPassword.TabIndex = 28;
+            this.textBoxPassword.TabIndex = 9;
             // 
             // dateTimeExpire
             // 
@@ -375,7 +375,7 @@
             this.dateTimeExpire.Name = "dateTimeExpire";
             this.dateTimeExpire.ShowCheckBox = true;
             this.dateTimeExpire.Size = new System.Drawing.Size(270, 20);
-            this.dateTimeExpire.TabIndex = 29;
+            this.dateTimeExpire.TabIndex = 5;
             this.dateTimeExpire.Value = this.dateTimeExpire.MaxDate;
             // 
             // comboBoxRole
@@ -394,7 +394,7 @@
             this.comboBoxRole.Location = new System.Drawing.Point(93, 138);
             this.comboBoxRole.Name = "comboBoxRole";
             this.comboBoxRole.Size = new System.Drawing.Size(351, 21);
-            this.comboBoxRole.TabIndex = 30;
+            this.comboBoxRole.TabIndex = 6;
             this.comboBoxRole.ValueMember = "key";
             this.comboBoxRole.SelectedIndexChanged += new System.EventHandler(this.comboBoxRole_SelectedIndexChanged);
             // 
@@ -415,7 +415,7 @@
             this.textBoxPassword2.Location = new System.Drawing.Point(118, 243);
             this.textBoxPassword2.Name = "textBoxPassword2";
             this.textBoxPassword2.Size = new System.Drawing.Size(326, 20);
-            this.textBoxPassword2.TabIndex = 32;
+            this.textBoxPassword2.TabIndex = 10;
             // 
             // textBoxEmail
             // 
@@ -424,7 +424,7 @@
             this.textBoxEmail.Location = new System.Drawing.Point(93, 191);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(351, 20);
-            this.textBoxEmail.TabIndex = 34;
+            this.textBoxEmail.TabIndex = 8;
             // 
             // label14
             // 
@@ -443,7 +443,7 @@
             this.textBoxNPWZ.Location = new System.Drawing.Point(93, 269);
             this.textBoxNPWZ.Name = "textBoxNPWZ";
             this.textBoxNPWZ.Size = new System.Drawing.Size(351, 20);
-            this.textBoxNPWZ.TabIndex = 36;
+            this.textBoxNPWZ.TabIndex = 11;
             // 
             // label15
             // 
