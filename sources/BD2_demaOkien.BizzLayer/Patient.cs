@@ -24,10 +24,18 @@ namespace BD2_demaOkien.BizzLayer
         {
             using (var Db = new BD2_2Db())
             {
-                var worker = Db.Patient
+                var patient = Db.Patient
                     .Where(p => p.Patient_id == id)
                     .FirstOrDefault();
-                return worker;
+                return patient;
+            }
+        }
+        public static bool CanDelete(int id)
+        {
+            using (var Db = new BD2_2Db())
+            {
+                var visits = Db.Patient.Where(p => p.Patient_id == id).SelectMany(p => p.Visit).ToList();
+                return visits.Count == 0;
             }
         }
     }

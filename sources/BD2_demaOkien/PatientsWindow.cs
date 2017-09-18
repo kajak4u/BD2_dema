@@ -134,7 +134,10 @@ namespace BD2_demaOkien
             if (MainWindow.ShowQuestion("Jesteś pewny, że chcesz usunąć pacjenta: " + Environment.NewLine + dataGridView1.CurrentRow.Cells[1].Value + " " + dataGridView1.CurrentRow.Cells[2].Value, "Usuwanie użytkownika"))
             {
                 int id = CurrentRecordID();
-                BizzLayer.Visits.deleteUser(id);
+                if (BizzLayer.Patients.CanDelete(id))
+                    BizzLayer.Visits.deleteUser(id);
+                else
+                    MainWindow.ShowError("Nie można usunąć pacjenta - posiada wizyty.");
                 LoadPatients();
             }
         }
