@@ -62,6 +62,7 @@ namespace BD2_demaOkien
                 textBoxPESEL.Text = worker?.PESEL;
                 textBoxPhone.Text = worker?.Phone_number;
                 dateTimeExpire.Checked = worker.ExpirationDate.HasValue;
+                textBoxNPWZ.Text = worker?.NPWZ.ToString();
                 if(dateTimeExpire.Checked)
                     dateTimeExpire.Value = worker.ExpirationDate.Value;
                 textBoxCity.Text = worker?.City;
