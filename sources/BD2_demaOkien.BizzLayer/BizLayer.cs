@@ -10,10 +10,6 @@ using System.Text.RegularExpressions;
 
 namespace BD2_demaOkien
 {
-	class BizLayer
-	{
-		public static void Main() { }
-	}
 
     public class EntityValidationErrorWrapper : Exception
     {
@@ -58,22 +54,7 @@ namespace BD2_demaOkien
         {
             FullMessage = FullMessage.Replace(v1, "'" + v2 + "'");
         }
-
-        public string MakeMessage()
-        {
-            throw new NotImplementedException();
-        }
     }
-
-	public class AllPatientsData
-	{
-		public int Patient_id;
-		public string First_name;
-		public string Last_name;
-		public string PESEL;
-		public string Phone_number;
-		public string Address;
-	}
 
 	public class PatientData
 	{
