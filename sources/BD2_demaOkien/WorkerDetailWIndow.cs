@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BD2_demaOkien.BizzLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,12 +15,15 @@ namespace BD2_demaOkien
     {
         private ViewMode viewMode;
         private int? workerId;
-        public WorkerDetailsWindow(ViewMode mode, int id)
+        public WorkerDetailsWindow(ViewMode mode, int? id)
         {
             InitializeComponent();
             this.workerId = id;
             this.viewMode = mode;
             SetEnabledControls();
+            comboBoxRole.DataSource = UserRole.roleDictionary
+                .Where(role => !role.Key.Equals(""))
+                .ToList();
         }
 
         private void SetEnabledControls()
@@ -38,67 +42,111 @@ namespace BD2_demaOkien
             textBoxStreet.ReadOnly = readOnly;
             textBoxHouseNo.ReadOnly = readOnly;
             textBoxFlatNo.ReadOnly = readOnly;
-			dateTimePicker1.Enabled = !readOnly;
-			comboBox2.Enabled = !readOnly;
-			textBox3.ReadOnly = readOnly;
-			textBox4.ReadOnly = readOnly;
-			textBox1.Visible = !readOnly;
+			dateTimeExpire.Enabled = !readOnly;
+			comboBoxRole.Enabled = !readOnly;
+			textBoxLogin.ReadOnly = readOnly;
+			textBoxPassword.ReadOnly = readOnly;
+			textBoxPassword2.Visible = !readOnly;
 			label13.Visible = !readOnly;
+            textBoxNPWZ.ReadOnly = readOnly;
+            textBoxEmail.ReadOnly = readOnly;
         }
 
         private void WorkerDataWindow_Load(object sender, EventArgs e)
         {
             if (workerId.HasValue)
             {
-#warning DODAĆ KLASĘ WorkerData do BizzLayer i PODŁĄCZYĆ TUTAJ JAKO ŹRÓDŁO DANYCH
-				// WorkerData worker = BizzLayer.Visits.getWorkerById(workerId.Value);
-				PatientData worker = BizzLayer.Visits.getPatientById(workerId.Value);
+				WorkerData worker = BizzLayer.Workers.getByID(workerId.Value);
 				textBoxName.Text = worker?.First_name;
                 textBoxSurname.Text = worker?.Last_name;
                 textBoxPESEL.Text = worker?.PESEL;
                 textBoxPhone.Text = worker?.Phone_number;
+                dateTimeExpire.Checked = worker.ExpirationDate.HasValue;
+                if(dateTimeExpire.Checked)
+                    dateTimeExpire.Value = worker.ExpirationDate.Value;
                 textBoxCity.Text = worker?.City;
                 textBoxStreet.Text = worker?.Street;
                 textBoxHouseNo.Text = worker?.HouseNo.ToString();
                 textBoxFlatNo.Text = worker?.FlatNo.ToString();
-
+                textBoxEmail.Text = worker?.email;
+                comboBoxRole.SelectedValue = worker?.role;
+                textBoxLogin.Text = worker?.login;
             }
 
         }
 
         private void buttonApply_Click(object sender, EventArgs e)
         {
+            int? npwz = null;
+            if(textBoxNPWZ.Visible)
+            {
+                int NotNullNpwz;
+                if (!int.TryParse(textBoxNPWZ.Text, out NotNullNpwz))
+                {
+                    MainWindow.ShowError("Nieprawidłowy NPWZ");
+                    return;
+                }
+                npwz = NotNullNpwz;
+            }
+            WorkerData workerData = new WorkerData
+            {
+                First_name = textBoxName.Text,
+                Last_name = textBoxSurname.Text,
+                PESEL = textBoxPESEL.Text,
+                Phone_number = textBoxPhone.Text,
+                City = textBoxCity.Text,
+                Street = textBoxStreet.Text,
+                email = textBoxEmail.Text,
+                role = (string)comboBoxRole.SelectedValue,
+                ExpirationDate = dateTimeExpire.Checked ? dateTimeExpire.Value : (DateTime?)null,
+                login = textBoxLogin.Text,
+                NPWZ = npwz
+            };
             if (viewMode == ViewMode.CREATE)
             {
                 int? flatNo = null;
                 try
                 {
                     int houseNo;
-                    if(!int.TryParse(textBoxHouseNo.Text, out houseNo))
+                    if (!int.TryParse(textBoxHouseNo.Text, out houseNo))
                     {
                         MainWindow.ShowError("Nieprawidłowy nr domu");
                         return;
                     }
 
-                    if(textBoxFlatNo.Text!=null && textBoxFlatNo.Text!="")
+                    if (textBoxFlatNo.Text != null && textBoxFlatNo.Text != "")
                     {
                         int NonNullFlatNo;
-                        if(!int.TryParse(textBoxFlatNo.Text, out NonNullFlatNo))
+                        if (!int.TryParse(textBoxFlatNo.Text, out NonNullFlatNo))
                         {
                             MainWindow.ShowError("Nieprawidłowy nr mieszkania");
                             return;
                         }
                         flatNo = NonNullFlatNo;
                     }
-
-                    BizzLayer.Visits.setPatientData(textBoxName.Text, textBoxSurname.Text, textBoxPESEL.Text, textBoxPhone.Text, textBoxCity.Text, textBoxStreet.Text, houseNo, flatNo, null);
+                    workerData.HouseNo = houseNo;
+                    workerData.FlatNo = flatNo;
+                    string pass1 = textBoxPassword.Text;
+                    string pass2 = textBoxPassword2.Text;
+                    if (pass1 == "" && pass2 == "")
+                    {
+                        MainWindow.ShowError("Podaj hasło dla użytkownika");
+                        return;
+                    }
+                    if (!pass1.Equals(pass2))
+                    {
+                        MainWindow.ShowError("Podane hasła są różne");
+                        return;
+                    }
+                    workerData.Password = pass1;
+                    BizzLayer.Workers.Create(workerData);
                     Close();
                 }
                 catch (Exception exx)
                 {
                     MainWindow.ShowError(exx.Message
                         + Environment.NewLine + Environment.NewLine + exx.StackTrace);
-                       // + Environment.NewLine + Environment.NewLine + exx.InnerException.ToString());
+                    // + Environment.NewLine + Environment.NewLine + exx.InnerException.ToString());
                 }
 
             }
@@ -122,7 +170,21 @@ namespace BD2_demaOkien
                     }
                     flatNo = NonNullFlatNo;
                 }
-                BizzLayer.Visits.editPatientData(textBoxName.Text, textBoxSurname.Text, textBoxPESEL.Text, textBoxPhone.Text, textBoxCity.Text, textBoxStreet.Text, houseNo, flatNo, workerId.Value);
+                string pass1 = textBoxPassword.Text;
+                string pass2 = textBoxPassword2.Text;
+                if (pass1!="" || pass2!="")
+                {
+                    if(!pass1.Equals(pass2))
+                    {
+                        MainWindow.ShowError("Podane hasła są różne");
+                        return;
+                    }
+                    workerData.Password = pass1;
+                }
+                workerData.Worker_id = workerId.Value;
+                workerData.HouseNo = houseNo;
+                workerData.FlatNo = flatNo;
+                BizzLayer.Workers.Update(workerData);
                 Close();
             }
             else
@@ -154,5 +216,13 @@ namespace BD2_demaOkien
         {
             Close();
         }
-	}
+
+        private void comboBoxRole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bool visible = false;
+            if (comboBoxRole.SelectedValue != null && (string)comboBoxRole.SelectedValue == "doctor")
+                visible = true;
+            label15.Visible = textBoxNPWZ.Visible = visible;
+        }
+    }
 }

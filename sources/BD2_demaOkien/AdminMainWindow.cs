@@ -87,7 +87,7 @@ namespace BD2_demaOkien
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            new WorkerDetailsWindow(ViewMode.CREATE, 0).ShowDialog();
+            new WorkerDetailsWindow(ViewMode.CREATE, null).ShowDialog();
             LoadWorkers();
         }
 
