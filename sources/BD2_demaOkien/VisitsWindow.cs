@@ -172,8 +172,17 @@ namespace BD2_demaOkien
             Visit visit = BizzLayer.Visits.GetByID(CurrentRowID());
             if(MainWindow.ShowQuestion("Jesteś pewny, że chcesz anulować wizytę: " + Environment.NewLine + visit.Patient.First_name+" "+visit.Patient.Last_name, "Anulowanie wizyty"))
             {
-                BizzLayer.Visits.Cancel(visit.visit_id);
+                if (!BizzLayer.Visits.wasEnded(visit.visit_id))
+                {
+                    BizzLayer.Visits.Cancel(visit.visit_id);
+                }
+                else
+                {
+                    MainWindow.ShowError("Nie można anulować zakończonej wizyty.");
+                }
+
                 LoadVisits();
+
             }
         }
 

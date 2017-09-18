@@ -20,6 +20,15 @@ namespace BD2_demaOkien.BizzLayer
 
     static public class Visits
     {
+        public static bool wasEnded(int id)
+        {
+            using (var Db = new BD2_2Db())
+            {
+                Visit visit = Db.Visit.Where(v => v.visit_id == id).FirstOrDefault();
+                return visit.status == "ZAK";
+            }
+        }
+
         //takes all patients from db
         public static List<AllPatientsData> getAllPatients()
         {
