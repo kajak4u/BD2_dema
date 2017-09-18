@@ -25,6 +25,7 @@ namespace BD2_demaOkien
 
         private void VisitsWindow_Doctor_Load(object sender, EventArgs e)
         {
+            ((MainWindow)this.MdiParent).RegisterMDI(this, OnDuplicateAction.CloseThis);
             setSchedulerDate(DateTime.Now);
             visitId = null;
             this.dateTimeMyVisitsDate.Value = DateTime.Now;

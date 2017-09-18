@@ -39,36 +39,29 @@ namespace BD2_demaOkien
         }
         private void SetVisibility(Role role)
         {
-            Form startForm = null;
             switch (role)
             {
                 case Role.REGISTRAR:
-                    startForm = new PatientsWindow();
+                    OpenMDIWindow(new PatientsWindow());
                     break;
                 case Role.DOCTOR:
                     BringMenuToFront(lekarzToolStripMenuItem);
-                    startForm = new VisitsWindow_Doctor();
+                    OpenMDIWindow(new VisitsWindow_Doctor());
                     break;
                 case Role.LAB:
-                    startForm = new ExaminationsWindow();
+                    OpenMDIWindow(new ExaminationsWindow());
                     break;
                 case Role.KLAB:
-                    startForm = new ExaminationsWindow();
+                    OpenMDIWindow(new ExaminationsWindow());
                     break;
                 case Role.ADMIN:
                     BringMenuToFront(adminToolStripMenuItem);
-                    startForm = new AdminMainWindow();
+                    OpenMDIWindow(new AdminMainWindow());
                     break;
                 default:
                     break;
             }
-            if(startForm != null)
-            {
-                OpenMDIWindow(startForm);
-                MakeNonClosable(startForm);
-            }
         }
-
         private void OpenMDIWindow(Form window)
         {
             window.MdiParent = this;
@@ -119,8 +112,9 @@ namespace BD2_demaOkien
             SetVisibility(userRole);
         }
 
-        private void MakeNonClosable(Form form)
+        public void RegisterMDI(Form form, OnDuplicateAction onDuplicate)
         {
+            string newClassName = form.GetType().Name;
             form.FormBorderStyle = FormBorderStyle.None;
             form.WindowState = FormWindowState.Normal;
             form.ControlBox = false;
@@ -130,14 +124,26 @@ namespace BD2_demaOkien
             form.Activated += (sender, e) =>
             {
                 ((Form)sender).WindowState = FormWindowState.Normal;
-                this.Text = "Program medyczny - [" + ((Form)sender).Text + "]";
+                ((Form)sender).MdiParent.Text = "Program medyczny - [" + ((Form)sender).Text + "]";
             };
             this.Text = "Program medyczny - [" + form.Text + "]";
 
-            form.Deactivate += (sender, e) =>
+            foreach (Form openForm in MdiChildren)
             {
-                this.Text = "Program medyczny";
-            };
+                if(openForm.GetType().Name.Equals(newClassName) && openForm!=form)
+                {
+                    switch(onDuplicate)
+                    {
+                        case OnDuplicateAction.CloseOther:
+                            openForm.Close();
+                            break;
+                        case OnDuplicateAction.CloseThis:
+                            BeginInvoke(new MethodInvoker(form.Close));
+                            openForm.BringToFront();
+                            return;
+                    }
+                }
+            }
             form.Refresh();
         }
     }
