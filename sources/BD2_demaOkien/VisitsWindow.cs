@@ -61,6 +61,8 @@ namespace BD2_demaOkien
             if (userRole == Role.DOCTOR)
             {
                 bindingNavigatorAddNewItem.Visible = false;
+                bindingNavigatorEditItem.Visible = false;
+                bindingNavigatorItemData.Visible = false;
                 comboBox1.SelectedValue = "REJ";
             }
             else if(userRole == Role.REGISTRAR)
