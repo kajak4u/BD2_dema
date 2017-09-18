@@ -380,7 +380,7 @@
           <Property Name="PESEL" Type="String" Nullable="false" MaxLength="11" Unicode="false" FixedLength="false" />
           <Property Name="address_id" Type="Int32" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Address" Relationship="Self.FK_Worker_Address" FromRole="Worker" ToRole="Address" />
           <NavigationProperty Name="RegisteredVisits" Relationship="BD2_2Model.FK_Visit_Doctor" FromRole="Worker" ToRole="Visit" />
           <NavigationProperty Name="PerformedVisits" Relationship="BD2_2Model.FK_Visit_Registrar" FromRole="Worker" ToRole="Visit" />

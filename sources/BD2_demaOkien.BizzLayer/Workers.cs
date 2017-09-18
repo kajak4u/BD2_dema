@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace BD2_demaOkien.BizzLayer
 {
@@ -15,6 +17,28 @@ namespace BD2_demaOkien.BizzLayer
                 return Db.Worker
                     .Where(w => w.Role.Equals(strRole))
                     .ToList();
+            }
+        }
+        public static Data.Worker Get(String userLogin, String userPassword)
+        {
+            String hashPasswd = Hash(userPassword);
+            using (var Db = new BD2_2Db())
+            {
+                var worker = Db.Worker
+                    .Where(w => w.Login.Equals(userLogin) && w.Password.Equals(hashPasswd))
+                    .FirstOrDefault();
+                return worker;
+            }
+        }
+        public static string Hash(string stringToHash)
+        {
+            using (var sha1 = new SHA1Managed())
+            {
+                var hash = sha1.ComputeHash(Encoding.UTF8.GetBytes(stringToHash));
+                var sb = new StringBuilder(hash.Length * 2);
+                foreach (byte b in hash)
+                    sb.Append(b.ToString("x2"));
+                return sb.ToString();
             }
         }
 

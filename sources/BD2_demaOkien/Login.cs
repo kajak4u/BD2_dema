@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BD2_demaOkien.Data;
-//using BD2_demaOkien.BizzLayer;
+using BD2_demaOkien.BizzLayer;
 
 namespace BD2_demaOkien
 {
@@ -26,58 +26,50 @@ namespace BD2_demaOkien
 
 		private bool? PerformLogin()
 		{
-			userLogin = loginBox.Text;
+            //zaszyfruj wszystko
+            //using (BD2_2Db Db = new BD2_2Db())
+            //{
+            //    Db.Worker
+            //        .Where(w => w.Password.Length < 20)
+            //        .ToList()
+            //        .ForEach(w => w.Password = Workers.Hash(w.Password));
+            //    try
+            //    {
+            //        Db.SaveChanges();
+            //    }
+            //    catch (Exception e)
+            //    {
+
+            //    }
+            //}
+
+            userLogin = loginBox.Text;
 			userPassword = passwordBox.Text;
+            var worker = Workers.Get(userLogin, userPassword);
 
-			// tutaj łączenie z bazą i sprawdzanie poświadczeń
-			// ... bla bla bla ...
-			// jeżeli poprawne poświadczenia, to uzupelniamy rolę
-
-			using (var Db = new BD2_2Db())
-			{
-				var worker = Worker.getWorker(userLogin, userPassword);
-				/*var worker = Db.Worker.ToList()
-                    .Where(w => w.Login == userLogin && w.Password == userPassword)
-                    .FirstOrDefault();*/
-
-				//var userAdress = from workerTmp in Db.Worker
-				//                 join adress in Db.Address
-				//                 on workerTmp.address_id equals adress.Address_id
-				//                 where workerTmp.Worker_id == 1
-				//                 select new
-				//                 {
-				//                     workerTmp.First_name,
-				//                     workerTmp.Last_name,
-				//                     adress.City,
-				//                     adress.Street
-				//                 };
-
-				//var user = userAdress.FirstOrDefault()?.Last_name;//Zabezpiecznie przed null pointer exception
-
-				if (worker != null)
-				{
-					try
-					{
-						if (worker.Expiration_date != null && DateTime.Compare(worker.Expiration_date.Value, DateTime.Now) <= 0)
-						{
-                            this.DialogResult = DialogResult.None;
-                            MainWindow.ShowError("Konto wygasło!", "Błąd logowania");
-							return null;
-						}
-						userRole = (Role)Enum.Parse(typeof(Role), worker.Role.ToUpper());
-						userId = worker.Worker_id;
-						return true;
-					}
-					catch (Exception)
+            if (worker != null)
+            {
+                try
+                {
+                    if (worker.Expiration_date != null && DateTime.Compare(worker.Expiration_date.Value, DateTime.Now) <= 0)
                     {
                         this.DialogResult = DialogResult.None;
-                        MainWindow.ShowError("Nieznana rola!", "Błąd logowania");
+                        MainWindow.ShowError("Konto wygasło!", "Błąd logowania");
                         return null;
-					}
-				}
-				else
-					return false;
-			}
+                    }
+                    userRole = (Role)Enum.Parse(typeof(Role), worker.Role.ToUpper());
+                    userId = worker.Worker_id;
+                    return true;
+                }
+                catch (Exception)
+                {
+                    this.DialogResult = DialogResult.None;
+                    MainWindow.ShowError("Nieznana rola!", "Błąd logowania");
+                    return null;
+                }
+            }
+            else
+                return false;
 		}
 
 		private void button1_Click(object sender, EventArgs e)
@@ -93,8 +85,8 @@ namespace BD2_demaOkien
         private void Login_Load(object sender, EventArgs e)
         {
             //auto-logowanie dla przyspieszenia testów
-            //loginBox.Text = "janusz";
-            //passwordBox.Text = "janusz";
+            //loginBox.Text = "admin";
+            //passwordBox.Text = "admin";
             //button1.PerformClick();
         }
     }

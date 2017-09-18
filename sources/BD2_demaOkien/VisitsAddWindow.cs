@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BD2_demaOkien.BizzLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -114,7 +115,7 @@ namespace BD2_demaOkien
                 MainWindow.ShowError("Nieprawidłowy pacjent");
                 return;
             }
-            Data.Worker doctor = Worker.getByID((int)comboBoxDoctor.SelectedValue);
+            WorkerData doctor = Workers.getByID((int)comboBoxDoctor.SelectedValue);
             if (doctor == null)
             {
                 MainWindow.ShowError("Nieprawidłowy lekarz");
@@ -127,7 +128,7 @@ namespace BD2_demaOkien
                 Data.Visit visit = new Data.Visit
                 {
                     patient_id = patient.Patient_id,
-                    doctor_id = doctor.Worker_id,
+                    doctor_id = doctor.Worker_id.Value,
                     registerer_id = MainWindow.userId,
                     registration_date = DateTime.Now,
                     ending_date = visitTime,
@@ -140,7 +141,7 @@ namespace BD2_demaOkien
             {
                 Data.Visit visit = BizzLayer.Visits.GetByID(visitId);
                 visit.patient_id = patient.Patient_id;
-                visit.doctor_id = doctor.Worker_id;
+                visit.doctor_id = doctor.Worker_id.Value;
                 visit.ending_date = visitTime;
                 BizzLayer.Visits.Modify(visit);
                 this.openMode = ViewMode.VIEW;
