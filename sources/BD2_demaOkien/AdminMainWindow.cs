@@ -45,7 +45,7 @@ namespace BD2_demaOkien
             comboBox2.DataSource = UserRole.roleDictionary
                 .ToList();
             comboBox2.SelectedValue = "";
-            //LoadWorkers();
+            LoadWorkers();
         }
 
         private void LoadWorkers()
