@@ -176,5 +176,12 @@ namespace BD2_demaOkien
                 LoadVisits();
             }
         }
+
+        private void bindingNavigatorEditItem_Click(object sender, EventArgs e)
+        {
+            int id = CurrentRowID();
+            new VisitsAddWindow(ViewMode.EDIT, patientID, id).ShowDialog();
+            LoadVisits();
+        }
     }
 }
