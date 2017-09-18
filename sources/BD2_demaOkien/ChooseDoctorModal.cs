@@ -12,10 +12,10 @@ namespace BD2_demaOkien
 {
     public partial class ChooseDoctorModal : Form
     {
-        private string chosenDoctor; //TODO : change to class Worker
-        public string ChosenDoctor { get { return chosenDoctor; } }
+        public int doctorId { get; private set; }
         public ChooseDoctorModal()
         {
+            doctorId = 0;
             InitializeComponent();
         }
         private void SetCurrentRow(int rowIndex)
@@ -23,14 +23,12 @@ namespace BD2_demaOkien
             DataGridViewRow row = dataGridView1.Rows[rowIndex];
             if (row == null)
                 return;
-            chosenDoctor = row.Cells["First_Name"].Value.ToString();
-            chosenDoctor += " ";
-            chosenDoctor += row.Cells["Last_Name"].Value.ToString();
+            doctorId = (int)row.Cells["workeridDataGridViewTextBoxColumn"].Value;
         }
 
         private void ChooseDoctorModal_Load(object sender, EventArgs e)
         {
-            //this.workerBindingSource
+            workerBindingSource1.DataSource = BizzLayer.Workers.GetAll(Role.DOCTOR);
         }
 
         private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)

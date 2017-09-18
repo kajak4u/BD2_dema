@@ -190,7 +190,7 @@ namespace BD2_demaOkien
         {
             ChooseDoctorModal modal = new ChooseDoctorModal();
             if (modal.ShowDialog() == DialogResult.OK)
-                comboBoxDoctor.Text = modal.ChosenDoctor;
+                comboBoxDoctor.SelectedValue = modal.doctorId;
         }
 
         private void dayScheduler_ItemCreating(object sender, WindowsFormsCalendar.CalendarItemCancelEventArgs e)
