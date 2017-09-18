@@ -125,6 +125,12 @@ namespace BD2_demaOkien
                         }
                         flatNo = NonNullFlatNo;
                     }
+                    string cityName = textBoxCity.Text;
+                    if (cityName == "")
+                    {
+                        MainWindow.ShowError("Brak miasta zamieszkania.");
+                        return;
+                    }
                     workerData.HouseNo = houseNo;
                     workerData.FlatNo = flatNo;
                     string pass1 = textBoxPassword.Text;
@@ -187,6 +193,12 @@ namespace BD2_demaOkien
                         return;
                     }
                     flatNo = NonNullFlatNo;
+                }
+                string cityName = textBoxCity.Text;
+                if (cityName == "")
+                {
+                    MainWindow.ShowError("Brak miasta zamieszkania.");
+                    return;
                 }
                 string pass1 = textBoxPassword.Text;
                 string pass2 = textBoxPassword2.Text;
