@@ -171,7 +171,7 @@
             this.daySchedulerMyVisits.ItemsForeColor = System.Drawing.Color.Black;
             this.daySchedulerMyVisits.Location = new System.Drawing.Point(0, -780);
             this.daySchedulerMyVisits.Name = "daySchedulerMyVisits";
-            this.daySchedulerMyVisits.Size = new System.Drawing.Size(518, 1518);
+            this.daySchedulerMyVisits.Size = new System.Drawing.Size(501, 1518);
             this.daySchedulerMyVisits.TabIndex = 24;
             this.daySchedulerMyVisits.Text = "dayScheduler";
             this.daySchedulerMyVisits.TimeScale = WindowsFormsCalendar.CalendarTimeScale.FifteenMinutes;
@@ -190,6 +190,7 @@
             this.Name = "VisitsWindow_Doctor";
             this.Text = "Moje wizyty";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Activated += new System.EventHandler(this.VisitsWindow_Doctor_Activated);
             this.Load += new System.EventHandler(this.VisitsWindow_Doctor_Load);
             this.DataPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
