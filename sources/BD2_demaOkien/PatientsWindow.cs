@@ -51,7 +51,7 @@ namespace BD2_demaOkien
                 var patient = from patients in Db.Patient
                               join address in Db.Address
                               on patients.address_id equals address.Address_id
-                              where patients.First_name.Contains(textBox1.Text) && patients.Last_name.Contains(textBox2.Text) && patients.PESEL.Contains(textBox3.Text)//FirstName == patients.First_name && LastName == patients.Last_name //&& Pesel == patients.PESEL
+                              where patients.First_name.StartsWith(textBox1.Text) && patients.Last_name.StartsWith(textBox2.Text) && patients.PESEL.StartsWith(textBox3.Text)//FirstName == patients.First_name && LastName == patients.Last_name //&& Pesel == patients.PESEL
                               select new
                               {
                                   Patient_id = patients.Patient_id,
