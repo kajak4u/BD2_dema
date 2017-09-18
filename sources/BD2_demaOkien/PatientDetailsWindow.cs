@@ -128,7 +128,22 @@ namespace BD2_demaOkien
                     }
                     flatNo = NonNullFlatNo;
                 }
-                BizzLayer.Visits.editPatientData(textBoxName.Text, textBoxSurname.Text, textBoxPESEL.Text, textBoxPhone.Text, textBoxCity.Text, textBoxStreet.Text, houseNo, flatNo, patientId.Value);
+                try
+                {
+                    BizzLayer.Visits.editPatientData(textBoxName.Text, textBoxSurname.Text, textBoxPESEL.Text, textBoxPhone.Text, textBoxCity.Text, textBoxStreet.Text, houseNo, flatNo, patientId.Value);
+                }
+                catch (EntityValidationErrorWrapper ex)
+                {
+                    ex.FormatForField("City", "Miasto");
+                    ex.FormatForField("Street", "Ulica");
+                    ex.FormatForField("First_name", "Imię");
+                    ex.FormatForField("Last_name", "Nazwisko");
+                    ex.FormatForField("Phone_number", "Nr telefonu");
+                    ex.FormatForField("PESEL", "PESEL");
+                    MainWindow.ShowError(ex.FullMessage);
+                    DialogResult = DialogResult.None;
+                    return;
+                }
                 Close();
             }
             else
