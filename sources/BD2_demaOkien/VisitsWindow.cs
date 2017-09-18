@@ -172,26 +172,37 @@ namespace BD2_demaOkien
         private void bindingNavigatorItemCancel_Click(object sender, EventArgs e)
         {
             Visit visit = BizzLayer.Visits.GetByID(CurrentRowID());
-            if(MainWindow.ShowQuestion("Jesteś pewny, że chcesz anulować wizytę: " + Environment.NewLine + visit.Patient.First_name+" "+visit.Patient.Last_name, "Anulowanie wizyty"))
+            
+            if (BizzLayer.Visits.wasRegistered(visit.visit_id))
             {
-                if (!BizzLayer.Visits.wasEnded(visit.visit_id))
+                if (MainWindow.ShowQuestion("Jesteś pewny, że chcesz anulować wizytę: " + Environment.NewLine + visit.Patient.First_name + " " + visit.Patient.Last_name, "Anulowanie wizyty"))
                 {
                     BizzLayer.Visits.Cancel(visit.visit_id);
-                }
-                else
-                {
-                    MainWindow.ShowError("Nie można anulować zakończonej wizyty.");
-                }
-
-                LoadVisits();
-
+                }   
             }
+            else
+            {
+                MainWindow.ShowError("Można anulować tylko zarejestrowaną wizytę.");
+            }
+
+            LoadVisits();
+
+            
         }
 
         private void bindingNavigatorEditItem_Click(object sender, EventArgs e)
         {
             int id = CurrentRowID();
-            new VisitsAddWindow(ViewMode.EDIT, patientID, id).ShowDialog();
+
+            if (BizzLayer.Visits.wasCanceled(id))
+            {
+                MainWindow.ShowError("Nie można edytować anulowanej wizyty.");
+            }
+            else
+            {
+                new VisitsAddWindow(ViewMode.EDIT, patientID, id).ShowDialog();
+            }
+            
             LoadVisits();
         }
     }
