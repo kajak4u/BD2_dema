@@ -76,7 +76,16 @@ namespace BD2_demaOkien
                 MainWindow.ShowError("Nie wybrano wizyty!");
                 return;
             }
-            new VisitsPerformWindow(visitId.Value).ShowDialog();
+
+            if (!BizzLayer.Visits.wasCanceled((int)visitId))
+            {
+                new VisitsPerformWindow(visitId.Value).ShowDialog();
+            }
+            else
+            {
+                MainWindow.ShowError("Nie można przeprowadzić anulowanej wizyty!");
+            }
+            
             RefreshData();
         }
 
