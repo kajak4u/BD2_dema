@@ -66,7 +66,10 @@ namespace BD2_demaOkien
                 textBoxPESEL.Enabled = false;
                 Patient patient = BizzLayer.Patients.GetByID(patientId.Value);
                 textBoxPESEL.Text = patient.PESEL;
+                ((MainWindow)this.MdiParent).RegisterMDI(this, OnDuplicateAction.CloseOther); // zamykamy stare okno, bo mamy inny PESEL
             }
+            else
+                ((MainWindow)this.MdiParent).RegisterMDI(this, OnDuplicateAction.CloseThis);
             comboBoxStatus.DataSource = LabExaminationStatus.statusDictionary;
             comboBoxDoctor.DataSource = BizzLayer.Workers.GetAll(Role.DOCTOR)
                 .Select(doctor => new

@@ -21,6 +21,7 @@ namespace BD2_demaOkien
 
         private void ExaminationsDictionariesWindow_Load(object sender, EventArgs e)
         {
+            ((MainWindow)this.MdiParent).RegisterMDI(this, OnDuplicateAction.CloseThis);
             comboBox2.SelectedIndex = 0;
             RefreshData();
             // TODO: This line of code loads data into the 'bD_2DataSet.Examination_dictionary' table. You can move, or remove it, as needed.

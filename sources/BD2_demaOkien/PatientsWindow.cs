@@ -41,6 +41,7 @@ namespace BD2_demaOkien
 
         private void Patients_Load(object sender, EventArgs e)
         {
+            ((MainWindow)this.MdiParent).RegisterMDI(this, OnDuplicateAction.CloseThis);
             LoadPatients();
         }
 

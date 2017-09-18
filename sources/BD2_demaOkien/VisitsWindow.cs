@@ -77,7 +77,10 @@ namespace BD2_demaOkien
                 textBox3.Enabled = false;
                 textBox3.Text = p.PESEL;
                 this.Text = "Wizyty dla: " + p.First_name + " " + p.Last_name;
+                ((MainWindow)this.MdiParent).RegisterMDI(this, OnDuplicateAction.CloseOther);
             }
+            else
+                ((MainWindow)this.MdiParent).RegisterMDI(this, OnDuplicateAction.CloseThis);
             LoadVisits();
         }
         private int CurrentRowID()
