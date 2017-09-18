@@ -136,10 +136,10 @@
             this.visitidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonPatientData = new System.Windows.Forms.Button();
+            this.buttonReturn = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonApply = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.buttonReturn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1218,6 +1218,20 @@
             this.buttonPatientData.UseVisualStyleBackColor = true;
             this.buttonPatientData.Click += new System.EventHandler(this.buttonPatientData_Click);
             // 
+            // buttonReturn
+            // 
+            this.buttonReturn.AutoSize = true;
+            this.buttonReturn.Dock = System.Windows.Forms.DockStyle.Left;
+            this.buttonReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonReturn.Location = new System.Drawing.Point(225, 5);
+            this.buttonReturn.Name = "buttonReturn";
+            this.buttonReturn.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.buttonReturn.Size = new System.Drawing.Size(110, 31);
+            this.buttonReturn.TabIndex = 22;
+            this.buttonReturn.Text = "Powrót";
+            this.buttonReturn.UseVisualStyleBackColor = true;
+            this.buttonReturn.Click += new System.EventHandler(this.buttonReturn_Click);
+            // 
             // buttonCancel
             // 
             this.buttonCancel.AutoSize = true;
@@ -1254,20 +1268,6 @@
             this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView3.Size = new System.Drawing.Size(240, 150);
             this.dataGridView3.TabIndex = 0;
-            // 
-            // buttonReturn
-            // 
-            this.buttonReturn.AutoSize = true;
-            this.buttonReturn.Dock = System.Windows.Forms.DockStyle.Left;
-            this.buttonReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonReturn.Location = new System.Drawing.Point(225, 5);
-            this.buttonReturn.Name = "buttonReturn";
-            this.buttonReturn.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.buttonReturn.Size = new System.Drawing.Size(110, 31);
-            this.buttonReturn.TabIndex = 22;
-            this.buttonReturn.Text = "Powrót";
-            this.buttonReturn.UseVisualStyleBackColor = true;
-            this.buttonReturn.Click += new System.EventHandler(this.buttonReturn_Click);
             // 
             // VisitsPerformWindow
             // 
