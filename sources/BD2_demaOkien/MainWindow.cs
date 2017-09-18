@@ -42,6 +42,7 @@ namespace BD2_demaOkien
             switch (role)
             {
                 case Role.REGISTRAR:
+                    BringMenuToFront(rejestratorkaToolStripMenuItem);
                     OpenMDIWindow(new PatientsWindow());
                     break;
                 case Role.DOCTOR:
@@ -49,9 +50,11 @@ namespace BD2_demaOkien
                     OpenMDIWindow(new VisitsWindow_Doctor());
                     break;
                 case Role.LAB:
+                    BringMenuToFront(laborantToolStripMenuItem);
                     OpenMDIWindow(new ExaminationsWindow());
                     break;
                 case Role.KLAB:
+                    BringMenuToFront(kierLabToolStripMenuItem);
                     OpenMDIWindow(new ExaminationsWindow());
                     break;
                 case Role.ADMIN:
