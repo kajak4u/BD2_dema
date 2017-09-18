@@ -56,6 +56,8 @@ namespace BD2_demaOkien
             textBoxName.Text = patient.First_name;
             textBoxSurname.Text = patient.Last_name;
             textBoxPESEL.Text = patient.PESEL;
+            textBoxInterview.Text = BizzLayer.Visits.GetByID(VisitId).description;
+            textBoxDiagnosis.Text = BizzLayer.Visits.GetByID(VisitId).diagnosis;
             RefreshData();
         }
 
