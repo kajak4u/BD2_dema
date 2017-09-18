@@ -20,14 +20,14 @@ namespace BD2_demaOkien
         public VisitsWindow_Doctor()
         {
             InitializeComponent();
-            this.dateTimeMyVisitsDate.Value = DateTime.Now;
+            date = DateTime.Now;
         }
 
         private void VisitsWindow_Doctor_Load(object sender, EventArgs e)
         {
+            ((MainWindow)this.MdiParent).RegisterMDI(this, OnDuplicateAction.CloseThis);
             setSchedulerDate(DateTime.Now);
             visitId = null;
-            this.dateTimeMyVisitsDate.Value = DateTime.Now;
         }
 
         private void setSchedulerDate(DateTime newDay)
@@ -120,6 +120,11 @@ namespace BD2_demaOkien
                 BizzLayer.Visits.Cancel(visit.visit_id);
                 RefreshData();
             }
+        }
+
+        private void VisitsWindow_Doctor_Activated(object sender, EventArgs e)
+        {
+            this.dateTimeMyVisitsDate.Value = date;
         }
     }
 }

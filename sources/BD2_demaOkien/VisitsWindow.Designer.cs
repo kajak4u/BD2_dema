@@ -44,12 +44,6 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.visitidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.diagnosisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.registrationdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endingdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.visitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
@@ -69,6 +63,15 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorItemCancel = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorItemPerform = new System.Windows.Forms.ToolStripButton();
+            this.visitidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.diagnosisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.registrationdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endingdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.registererDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.doctorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.visitBindingSource)).BeginInit();
@@ -245,7 +248,10 @@
             this.diagnosisDataGridViewTextBoxColumn,
             this.statusDataGridViewTextBoxColumn,
             this.registrationdateDataGridViewTextBoxColumn,
-            this.endingdateDataGridViewTextBoxColumn});
+            this.endingdateDataGridViewTextBoxColumn,
+            this.patientDataGridViewTextBoxColumn,
+            this.registererDataGridViewTextBoxColumn,
+            this.doctorDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.visitBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -256,57 +262,6 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(539, 265);
             this.dataGridView1.TabIndex = 12;
-            // 
-            // visitidDataGridViewTextBoxColumn
-            // 
-            this.visitidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.visitidDataGridViewTextBoxColumn.DataPropertyName = "visit_id";
-            this.visitidDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.visitidDataGridViewTextBoxColumn.Name = "visitidDataGridViewTextBoxColumn";
-            this.visitidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.visitidDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Opis";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descriptionDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // diagnosisDataGridViewTextBoxColumn
-            // 
-            this.diagnosisDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.diagnosisDataGridViewTextBoxColumn.DataPropertyName = "diagnosis";
-            this.diagnosisDataGridViewTextBoxColumn.HeaderText = "Diagnoza";
-            this.diagnosisDataGridViewTextBoxColumn.Name = "diagnosisDataGridViewTextBoxColumn";
-            this.diagnosisDataGridViewTextBoxColumn.ReadOnly = true;
-            this.diagnosisDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // registrationdateDataGridViewTextBoxColumn
-            // 
-            this.registrationdateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.registrationdateDataGridViewTextBoxColumn.DataPropertyName = "registration_date";
-            this.registrationdateDataGridViewTextBoxColumn.HeaderText = "Data rejestracji";
-            this.registrationdateDataGridViewTextBoxColumn.Name = "registrationdateDataGridViewTextBoxColumn";
-            this.registrationdateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // endingdateDataGridViewTextBoxColumn
-            // 
-            this.endingdateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.endingdateDataGridViewTextBoxColumn.DataPropertyName = "ending_date";
-            this.endingdateDataGridViewTextBoxColumn.HeaderText = "Data wizyty";
-            this.endingdateDataGridViewTextBoxColumn.Name = "endingdateDataGridViewTextBoxColumn";
-            this.endingdateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // visitBindingSource
             // 
@@ -485,6 +440,81 @@
             this.bindingNavigatorItemPerform.Text = "Przeprowadź";
             this.bindingNavigatorItemPerform.Click += new System.EventHandler(this.bindingNavigatorItemPerform_Click);
             // 
+            // visitidDataGridViewTextBoxColumn
+            // 
+            this.visitidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.visitidDataGridViewTextBoxColumn.DataPropertyName = "visit_id";
+            this.visitidDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.visitidDataGridViewTextBoxColumn.Name = "visitidDataGridViewTextBoxColumn";
+            this.visitidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.visitidDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Opis";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descriptionDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // diagnosisDataGridViewTextBoxColumn
+            // 
+            this.diagnosisDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.diagnosisDataGridViewTextBoxColumn.DataPropertyName = "diagnosis";
+            this.diagnosisDataGridViewTextBoxColumn.HeaderText = "Diagnoza";
+            this.diagnosisDataGridViewTextBoxColumn.Name = "diagnosisDataGridViewTextBoxColumn";
+            this.diagnosisDataGridViewTextBoxColumn.ReadOnly = true;
+            this.diagnosisDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // registrationdateDataGridViewTextBoxColumn
+            // 
+            this.registrationdateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.registrationdateDataGridViewTextBoxColumn.DataPropertyName = "registration_date";
+            this.registrationdateDataGridViewTextBoxColumn.HeaderText = "Data rejestracji";
+            this.registrationdateDataGridViewTextBoxColumn.Name = "registrationdateDataGridViewTextBoxColumn";
+            this.registrationdateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // endingdateDataGridViewTextBoxColumn
+            // 
+            this.endingdateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.endingdateDataGridViewTextBoxColumn.DataPropertyName = "ending_date";
+            this.endingdateDataGridViewTextBoxColumn.HeaderText = "Data wizyty";
+            this.endingdateDataGridViewTextBoxColumn.Name = "endingdateDataGridViewTextBoxColumn";
+            this.endingdateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // patientDataGridViewTextBoxColumn
+            // 
+            this.patientDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.patientDataGridViewTextBoxColumn.DataPropertyName = "Patient";
+            this.patientDataGridViewTextBoxColumn.HeaderText = "Pacjent";
+            this.patientDataGridViewTextBoxColumn.Name = "patientDataGridViewTextBoxColumn";
+            this.patientDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // registererDataGridViewTextBoxColumn
+            // 
+            this.registererDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.registererDataGridViewTextBoxColumn.DataPropertyName = "Registerer";
+            this.registererDataGridViewTextBoxColumn.HeaderText = "Rejestrator";
+            this.registererDataGridViewTextBoxColumn.Name = "registererDataGridViewTextBoxColumn";
+            this.registererDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // doctorDataGridViewTextBoxColumn
+            // 
+            this.doctorDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.doctorDataGridViewTextBoxColumn.DataPropertyName = "Doctor";
+            this.doctorDataGridViewTextBoxColumn.HeaderText = "Lekarz";
+            this.doctorDataGridViewTextBoxColumn.Name = "doctorDataGridViewTextBoxColumn";
+            this.doctorDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // VisitsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -551,5 +581,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn registrationdateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn endingdateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn patientDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn registererDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn doctorDataGridViewTextBoxColumn;
     }
 }

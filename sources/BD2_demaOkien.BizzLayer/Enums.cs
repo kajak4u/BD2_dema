@@ -3,6 +3,11 @@ using System.Linq;
 
 namespace BD2_demaOkien
 {
+    public enum OnDuplicateAction
+    {
+        CloseThis,
+        CloseOther
+    }
     public enum ViewMode
     {
         CREATE,

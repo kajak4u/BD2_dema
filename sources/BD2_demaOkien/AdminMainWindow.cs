@@ -15,16 +15,9 @@ namespace BD2_demaOkien
 {
     public partial class AdminMainWindow : Form
     {
-        private bool selectMode;
-        public AdminMainWindow(bool selectMode=false)
+        public AdminMainWindow()
         {
-            this.selectMode = selectMode;
             InitializeComponent();
-            if(selectMode)
-            {
-                bindingNavigator1.Visible = false;
-                bindingNavigator_selectMode.Visible = true;
-            }
         }
 
         private void bindingNavigator1_RefreshItems(object sender, EventArgs e)
@@ -42,6 +35,7 @@ namespace BD2_demaOkien
 
         private void Workers_Load(object sender, EventArgs e)
         {
+            ((MainWindow)this.MdiParent).RegisterMDI(this, OnDuplicateAction.CloseThis);
             comboBox2.DataSource = UserRole.roleDictionary
                 .ToList();
             comboBox2.SelectedValue = "";
