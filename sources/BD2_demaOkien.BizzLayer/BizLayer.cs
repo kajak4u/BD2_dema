@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BD2_demaOkien.Data;
 using System.Security.Cryptography;
 using System.Data.Entity.Validation;
+using System.Text.RegularExpressions;
 
 namespace BD2_demaOkien
 {
@@ -29,16 +30,38 @@ namespace BD2_demaOkien
             }
         };
         public List<EntityError> errors { get; private set; }
+        public string FullMessage { get; private set; }
         public EntityValidationErrorWrapper(DbEntityValidationException e)
             : base(e.Message, e)
         {
+            FullMessage = "";
             errors = new List<EntityError>();
             foreach(var validateError in e.EntityValidationErrors)
             {
                 string className = validateError.Entry.Entity.GetType().ToString();
-                foreach(var error in validateError.ValidationErrors)
+                foreach (var error in validateError.ValidationErrors)
+                {
                     errors.Add(new EntityError(className, error.PropertyName, error.ErrorMessage));
+                    if (FullMessage != "")
+                        FullMessage += Environment.NewLine;
+                    FullMessage += Format(error.ErrorMessage);
+                }
             }
+        }
+        private string Format(string originalMessage)
+        {
+            originalMessage = Regex.Replace(originalMessage, "musi być ciągiem lub typem tablicy o maksymalnej długości (\\d+)", "nie może być dłuższe niż $1 znaków");
+            return originalMessage;
+        }
+
+        public void FormatForField(string v1, string v2)
+        {
+            FullMessage = FullMessage.Replace(v1, "'" + v2 + "'");
+        }
+
+        public string MakeMessage()
+        {
+            throw new NotImplementedException();
         }
     }
 

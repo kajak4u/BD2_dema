@@ -97,7 +97,17 @@ namespace BD2_demaOkien
         {
             if(MainWindow.ShowQuestion("Zakończyć wizytę?"))
             {
-                BizzLayer.Visits.Submit(VisitId, textBoxInterview.Text, textBoxDiagnosis.Text);
+                try
+                {
+                    BizzLayer.Visits.Submit(VisitId, textBoxInterview.Text, textBoxDiagnosis.Text);
+                }
+                catch(EntityValidationErrorWrapper ex)
+                {
+                    ex.FormatForField("diagnosis", "diagnoza");
+                    this.DialogResult = DialogResult.None;
+                    MainWindow.ShowError(ex.FullMessage);
+                    return;
+                }
                 Close();
             }
         }

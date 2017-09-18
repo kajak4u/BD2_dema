@@ -37,17 +37,26 @@ namespace BD2_demaOkien
 
 		private void buttonApply_Click(object sender, EventArgs e)
 		{
-			switch (mode)
-			{
-				case ExaminationMode.LAB:
-					LabExaminations.Add(comboBox1.SelectedValue.ToString(), richTextBox1.Text, visitId);
-					break;
-				case ExaminationMode.PHYSICAL:
-                    PhysicalExaminations.Add(comboBox1.SelectedValue.ToString(), richTextBox1.Text, visitId);
-					break;
-				default:
-					break;
-			}			
+            try
+            {
+                switch (mode)
+                {
+                    case ExaminationMode.LAB:
+                        LabExaminations.Add(comboBox1.SelectedValue.ToString(), richTextBox1.Text, visitId);
+                        break;
+                    case ExaminationMode.PHYSICAL:
+                        PhysicalExaminations.Add(comboBox1.SelectedValue.ToString(), richTextBox1.Text, visitId);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch(EntityValidationErrorWrapper ex)
+            {
+                this.DialogResult = DialogResult.None;
+                MainWindow.ShowError(ex.FullMessage);
+                return;
+            }			
 			Close();
 		}
 

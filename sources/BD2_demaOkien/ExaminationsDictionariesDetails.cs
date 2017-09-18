@@ -60,23 +60,38 @@ namespace BD2_demaOkien
 
 		private void buttonApply_Click(object sender, EventArgs e)
 		{
-			switch (mode_mode)
-			{
-				case ViewMode.CREATE:
-                    string newCode = textBox2.Text;
-                    if (ExaminationsDictionary.Get(newCode) != null)
-                    {
-                        MainWindow.ShowError("Badanie o podanym kodzie już istnieje!");
-                        return;
-                    }
-                    ExaminationsDictionary.insertExaminationData(textBox1.Text, textBox2.Text, radioButton1.Checked ? "F" : "L");
-					break;
-				case ViewMode.EDIT:
-					ExaminationsDictionary.editExaminationData(textBox1.Text, textBox2.Text, radioButton1.Checked ? "F" : "L");
-					break;
-				default:
-					break;
-			}
+            try
+            {
+                switch (mode_mode)
+                {
+                    case ViewMode.CREATE:
+                        string newCode = textBox2.Text;
+                        if (ExaminationsDictionary.Get(newCode) != null)
+                        {
+                            MainWindow.ShowError("Badanie o podanym kodzie już istnieje!");
+                            return;
+                        }
+                        if(!radioButton1.Checked && !radioButton2.Checked)
+                        {
+                            MainWindow.ShowError("Nie wybrano typu badania!");
+                            return;
+                        }
+                        ExaminationsDictionary.insertExaminationData(textBox1.Text, textBox2.Text, radioButton1.Checked ? "F" : "L");
+                        break;
+                    case ViewMode.EDIT:
+                        ExaminationsDictionary.editExaminationData(textBox1.Text, textBox2.Text, radioButton1.Checked ? "F" : "L");
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch(EntityValidationErrorWrapper ex)
+            {
+                ex.FormatForField("Examination_code", "kod badania");
+                ex.FormatForField("Examination_name", "nazwa badania");
+                MainWindow.ShowError(ex.FullMessage);
+                return;
+            }
 			Close();
 		}
 

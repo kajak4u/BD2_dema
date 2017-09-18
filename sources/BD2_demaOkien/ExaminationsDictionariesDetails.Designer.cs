@@ -149,7 +149,6 @@
             // 
             // buttonApply
             // 
-            this.buttonApply.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonApply.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonApply.Location = new System.Drawing.Point(5, 2);
             this.buttonApply.Name = "buttonApply";

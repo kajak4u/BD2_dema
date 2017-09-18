@@ -40,7 +40,7 @@ namespace BD2_demaOkien
                         labDate = ex.LAB_examination_date,
                         klabWorker = ex.Worker1.First_name + " " + ex.Worker1.Last_name,
                         klabNotes = ex.LAB_manager_notes,
-                        klabDate = ex.LAB_examination_date
+                        klabDate = ex.ending_examination_date
                     }).First();
 
                 textBox5.Text = data.dateZle.ToString();
@@ -112,14 +112,25 @@ namespace BD2_demaOkien
         {
             if (!MainWindow.ShowQuestion("Zatwierdzić badanie?", "Potwierdzenie"))
                 return;
-            switch(MainWindow.userRole)
+            try
             {
-                case Role.LAB:
-                    BizzLayer.LabExaminations.Perform(examinationId, MainWindow.userId, richTextBox2.Text);
-                    break;
-                case Role.KLAB:
-                    BizzLayer.LabExaminations.Accept(examinationId, MainWindow.userId, richTextBox3.Text);
-                    break;
+                switch (MainWindow.userRole)
+                {
+                    case Role.LAB:
+                        BizzLayer.LabExaminations.Perform(examinationId, MainWindow.userId, richTextBox2.Text);
+                        break;
+                    case Role.KLAB:
+                        BizzLayer.LabExaminations.Accept(examinationId, MainWindow.userId, richTextBox3.Text);
+                        break;
+                }
+            }
+            catch(EntityValidationErrorWrapper ex)
+            {
+                ex.FormatForField("LAB_examination_result", "wyniki badań");
+                ex.FormatForField("LAB_manager_notes", "notatki");
+                this.DialogResult = DialogResult.None;
+                MainWindow.ShowError(ex.FullMessage);
+                return;
             }
             Close();
         }
@@ -128,14 +139,25 @@ namespace BD2_demaOkien
         {
             if (!MainWindow.ShowQuestion("Anulować badanie?", "Potwierdzenie"))
                 return;
-            switch (MainWindow.userRole)
+            try
             {
-                case Role.LAB:
-                    BizzLayer.LabExaminations.CancelLab(examinationId, MainWindow.userId, richTextBox2.Text);
-                    break;
-                case Role.KLAB:
-                    BizzLayer.LabExaminations.CancelKlab(examinationId, MainWindow.userId, richTextBox2.Text);
-                    break;
+                switch (MainWindow.userRole)
+                {
+                    case Role.LAB:
+                        BizzLayer.LabExaminations.CancelLab(examinationId, MainWindow.userId, richTextBox2.Text);
+                        break;
+                    case Role.KLAB:
+                        BizzLayer.LabExaminations.CancelKlab(examinationId, MainWindow.userId, richTextBox3.Text);
+                        break;
+                }
+            }
+            catch (EntityValidationErrorWrapper ex)
+            {
+                ex.FormatForField("LAB_examination_result", "wyniki badań");
+                ex.FormatForField("LAB_manager_notes", "notatki");
+                this.DialogResult = DialogResult.None;
+                MainWindow.ShowError(ex.FullMessage);
+                return;
             }
             Close();
         }
