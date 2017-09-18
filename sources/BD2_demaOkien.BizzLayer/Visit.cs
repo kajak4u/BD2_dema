@@ -28,6 +28,14 @@ namespace BD2_demaOkien.BizzLayer
                 return visit.status == "REJ";
             }
         }
+        public static bool wasCanceled(int id)
+        {
+            using (var Db = new BD2_2Db())
+            {
+                Visit visit = Db.Visit.Where(v => v.visit_id == id).FirstOrDefault();
+                return visit.status == "ANUL";
+            }
+        }
 
         public static void Submit(int visitId, string interview, string diagnosis)
         {
