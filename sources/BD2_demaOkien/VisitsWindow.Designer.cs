@@ -494,7 +494,7 @@
             // patientDataGridViewTextBoxColumn
             // 
             this.patientDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.patientDataGridViewTextBoxColumn.DataPropertyName = "Patient";
+            this.patientDataGridViewTextBoxColumn.DataPropertyName = "Patient_name";
             this.patientDataGridViewTextBoxColumn.HeaderText = "Pacjent";
             this.patientDataGridViewTextBoxColumn.Name = "patientDataGridViewTextBoxColumn";
             this.patientDataGridViewTextBoxColumn.ReadOnly = true;
@@ -502,7 +502,7 @@
             // registererDataGridViewTextBoxColumn
             // 
             this.registererDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.registererDataGridViewTextBoxColumn.DataPropertyName = "Registerer";
+            this.registererDataGridViewTextBoxColumn.DataPropertyName = "Registrer_name";
             this.registererDataGridViewTextBoxColumn.HeaderText = "Rejestrator";
             this.registererDataGridViewTextBoxColumn.Name = "registererDataGridViewTextBoxColumn";
             this.registererDataGridViewTextBoxColumn.ReadOnly = true;
@@ -510,7 +510,7 @@
             // doctorDataGridViewTextBoxColumn
             // 
             this.doctorDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.doctorDataGridViewTextBoxColumn.DataPropertyName = "Doctor";
+            this.doctorDataGridViewTextBoxColumn.DataPropertyName = "Doctor_name";
             this.doctorDataGridViewTextBoxColumn.HeaderText = "Lekarz";
             this.doctorDataGridViewTextBoxColumn.Name = "doctorDataGridViewTextBoxColumn";
             this.doctorDataGridViewTextBoxColumn.ReadOnly = true;
