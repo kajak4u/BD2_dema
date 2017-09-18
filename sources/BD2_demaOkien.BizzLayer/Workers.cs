@@ -115,6 +115,7 @@ namespace BD2_demaOkien.BizzLayer
                     address = matchAddresses.First();
 
                 worker.Address = address;
+                worker.Password = Hash(worker.Password);
                 Db.Worker.Add(worker);
                 try
                 {
@@ -154,7 +155,7 @@ namespace BD2_demaOkien.BizzLayer
                 worker.Role = worker2.Role;
                 worker.Login = worker2.Login;
                 if(worker2.Password!=null)
-                    worker.Password = worker2.Password;
+                    worker.Password = Hash(worker2.Password);
                 worker.Expiration_date = worker2.Expiration_date;
                 worker.NPWZ = worker2.NPWZ;
                 worker.Address = address;
