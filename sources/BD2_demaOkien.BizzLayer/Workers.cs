@@ -79,6 +79,22 @@ namespace BD2_demaOkien.BizzLayer
                 Flat_number = wd.FlatNo
             };
         }
+
+        public static IEnumerable<Data.Worker> Get(UserFilterParams filter)
+        {
+            using (var Db = new BD2_2Db())
+            {
+                IQueryable<Data.Worker> res = Db.Worker;
+                if (filter.First_Name != null && filter.First_Name != "")
+                    res = res.Where(w => w.First_name.StartsWith(filter.First_Name));
+                if (filter.Last_Name != null && filter.Last_Name != "")
+                    res = res.Where(w => w.Last_name.StartsWith(filter.Last_Name));
+                if (filter.Role != null && filter.Role != "")
+                    res = res.Where(w => w.Role.Equals(filter.Role));
+                return res.ToList();
+            }
+        }
+
         private static Data.Worker ExtractWorker(WorkerData wd)
         {
             return new Data.Worker
@@ -190,5 +206,13 @@ namespace BD2_demaOkien.BizzLayer
         public string Password { get; set; }
         public DateTime? ExpirationDate { get; set; }
         public int? NPWZ { get; set; }
+    }
+
+
+    public class UserFilterParams
+    {
+        public string First_Name { get; set; }
+        public string Last_Name { get; set; }
+        public string Role { get; set; }
     }
 }

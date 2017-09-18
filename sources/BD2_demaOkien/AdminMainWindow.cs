@@ -1,4 +1,5 @@
-﻿using BD2_demaOkien.Data;
+﻿using BD2_demaOkien.BizzLayer;
+using BD2_demaOkien.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,48 +42,31 @@ namespace BD2_demaOkien
 
         private void Workers_Load(object sender, EventArgs e)
         {
+            comboBox2.DataSource = UserRole.roleDictionary
+                .ToList();
+            comboBox2.SelectedValue = "";
             //LoadWorkers();
         }
 
         private void LoadWorkers()
         {
-            String Rola = "";
-            if (comboBox2.SelectedItem != null && comboBox2.SelectedIndex != -1) {
-                switch (comboBox2.SelectedItem.ToString()) {
-                    case ("Rejestrator"):
-                        Rola = "registrar";
-                        break;
-                    case ("Lekarz"):
-                        Rola = "doctor";
-                        break;
-                    case ("Laborant"):
-                        Rola = "lab";
-                        break;
-                    case ("Kierownik laboratorium"):
-                        Rola = "klab";
-                        break;
-                    case ("Administrator"):
-                        Rola = "admin";
-                        break;
-                }
-            }
-
-            using (var Db = new Data.BD2_2Db())
-            {
-                var worker = from workers in Db.Worker
-                              where workers.First_name.Contains(textBox1.Text) && workers.Last_name.Contains(textBox2.Text) && workers.Role.Contains(Rola)//FirstName == patients.First_name && LastName == patients.Last_name //&& Pesel == patients.PESEL
-                              select new
-                              {
-                                  WorkerId = workers.Worker_id,
-                                  First_name = workers.First_name,
-                                  Last_name = workers.Last_name,
-                                  Phone_number = workers.Phone_number,
-                                  PESEL = workers.PESEL,
-                                  Role = workers.Role,
-                                  Expiration = workers.Expiration_date
-                              };
-                patientBindingSource.DataSource = worker.ToList();
-            }
+            patientBindingSource.DataSource = BizzLayer.Workers
+                .Get(new UserFilterParams
+                {
+                    First_Name = textBox1.Text,
+                    Last_Name = textBox2.Text,
+                    Role = (string)comboBox2.SelectedValue
+                })
+                .Select(worker => new
+                {
+                    WorkerId = worker.Worker_id,
+                    First_name = worker.First_name,
+                    Last_name = worker.Last_name,
+                    Phone_number = worker.Phone_number,
+                    PESEL = worker.PESEL,
+                    Role = worker.Role,
+                    Expiration = worker.Expiration_date
+                }).ToList();
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
@@ -129,9 +113,8 @@ namespace BD2_demaOkien
         {
             textBox1.Text = "";
             textBox2.Text = "";
-            if (comboBox2.SelectedItem != null)
-                comboBox2.SelectedIndex = -1;
+            comboBox2.SelectedValue = "";
         }
 
-    } 
+    }
 }
