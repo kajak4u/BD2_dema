@@ -129,6 +129,8 @@ namespace BD2_demaOkien
                 ((Form)sender).WindowState = FormWindowState.Normal;
                 ((Form)sender).MdiParent.Text = "Program medyczny - [" + ((Form)sender).Text + "]";
             };
+            this.ActivateMdiChild(null);
+            this.ActivateMdiChild(form);
             this.Text = "Program medyczny - [" + form.Text + "]";
 
             foreach (Form openForm in MdiChildren)
@@ -139,14 +141,18 @@ namespace BD2_demaOkien
                     {
                         case OnDuplicateAction.CloseOther:
                             openForm.Close();
+                            form.BringToFront();
                             break;
                         case OnDuplicateAction.CloseThis:
-                            BeginInvoke(new MethodInvoker(form.Close));
-                            openForm.BringToFront();
+                            BeginInvoke((Action)(()=> {
+                                form.Close();
+                                openForm.BringToFront();
+                            }));
                             return;
                     }
                 }
             }
+            form.BringToFront();
             form.Refresh();
         }
     }
