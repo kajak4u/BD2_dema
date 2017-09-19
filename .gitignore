@@ -29,3 +29,5 @@
 *.pdb
 *.xml
 /bin/BD2_demaOkien.vshost.exe
+/bin/BD2_demaOkien.vshost.exe.config
+/bin/BD2_demaOkien.vshost.exe.manifest
