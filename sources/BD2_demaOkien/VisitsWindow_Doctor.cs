@@ -77,13 +77,13 @@ namespace BD2_demaOkien
                 return;
             }
 
-            if (!BizzLayer.Visits.wasCanceled((int)visitId))
+            if (BizzLayer.Visits.wasRegistered((int)visitId))
             {
                 new VisitsPerformWindow(visitId.Value).ShowDialog();
             }
             else
             {
-                MainWindow.ShowError("Nie można przeprowadzić anulowanej wizyty!");
+                MainWindow.ShowError("Można przeprowadzić jedynie zarejestrowaną wizytę.");
             }
             
             RefreshData();
