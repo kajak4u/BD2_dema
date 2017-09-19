@@ -32,7 +32,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.buttonChooseDoctor = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,7 +48,6 @@
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Controls.Add(this.buttonChooseDoctor);
             this.panel1.Controls.Add(this.richTextBox1);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label3);
@@ -95,17 +93,6 @@
             this.comboBox1.ValueMember = "Examination_code";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             this.comboBox1.Enter += new System.EventHandler(this.comboBox1_Enter);
-            // 
-            // buttonChooseDoctor
-            // 
-            this.buttonChooseDoctor.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonChooseDoctor.Location = new System.Drawing.Point(300, 5);
-            this.buttonChooseDoctor.Name = "buttonChooseDoctor";
-            this.buttonChooseDoctor.Size = new System.Drawing.Size(25, 23);
-            this.buttonChooseDoctor.TabIndex = 2;
-            this.buttonChooseDoctor.Text = "...";
-            this.buttonChooseDoctor.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonChooseDoctor.UseVisualStyleBackColor = true;
             // 
             // richTextBox1
             // 
@@ -198,7 +185,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button buttonChooseDoctor;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel ResultPanel;
